@@ -107,7 +107,7 @@
     <h2 class="center">Работы</h2>
     <p class="section-desc center" style="margin-left:auto;margin-right:auto">Портфолио команды. Фильтруйте по участнику или смотрите всё сразу.</p>
 
-    <!-- Кнопки фильтрации -->
+    <!-- Фильтры -->
     <div class="portfolio-filter center">
       <button class="filter-btn active" data-filter="all">Все</button>
       <button class="filter-btn" data-filter="honnili">HonniLi</button>
@@ -115,12 +115,12 @@
       <button class="filter-btn" data-filter="ai">Работы ИИ</button>
     </div>
 
-    <!-- Сетка галереи -->
+    <!-- Сетка карточек -->
     <div class="portfolio-grid" id="portfolio-grid">
       
-      <!-- Ряд 1 (Первые 3 карточки показаны сразу) -->
+      <!-- Ряд 1 (Показывается сразу) -->
       <div class="portfolio-item honnili" data-full="image/sugar.jpg">
-        <img src="image/sugar.jpg" alt="Арт HonniLi">
+        <img src="image/sugar.jpg" alt="HonniLi">
         <div class="portfolio-overlay">
           <div class="portfolio-info">
             <span class="work-price">1 500 руб.</span>
@@ -130,7 +130,7 @@
       </div>
 
       <div class="portfolio-item sugar" data-full="image/sugar.jpg">
-        <img src="image/sugar.jpg" alt="Арт Сахарная девочка">
+        <img src="image/sugar.jpg" alt="Сахарная девочка">
         <div class="portfolio-overlay">
           <div class="portfolio-info">
             <span class="work-price">12 000 руб.</span>
@@ -140,7 +140,7 @@
       </div>
 
       <div class="portfolio-item ai" data-full="image/sugar.jpg">
-        <img src="image/sugar.jpg" alt="Работа ИИ">
+        <img src="image/sugar.jpg" alt="Работы ИИ">
         <div class="portfolio-overlay">
           <div class="portfolio-info">
             <span class="work-price">800 руб.</span>
@@ -149,9 +149,9 @@
         </div>
       </div>
 
-      <!-- Дополнительные ряды (скрыты класс `hidden-item` по умолчанию) -->
+      <!-- Скрытые ряды для кнопки "Показать ещё" -->
       <div class="portfolio-item honnili hidden-item" data-full="image/sugar.jpg">
-        <img src="image/sugar.jpg" alt="Арт HonniLi">
+        <img src="image/sugar.jpg" alt="HonniLi">
         <div class="portfolio-overlay">
           <div class="portfolio-info">
             <span class="work-price">1 000 руб.</span>
@@ -161,7 +161,7 @@
       </div>
 
       <div class="portfolio-item sugar hidden-item" data-full="image/sugar.jpg">
-        <img src="image/sugar.jpg" alt="Арт Сахарная девочка">
+        <img src="image/sugar.jpg" alt="Сахарная девочка">
         <div class="portfolio-overlay">
           <div class="portfolio-info">
             <span class="work-price">18 000 руб.</span>
@@ -171,7 +171,7 @@
       </div>
 
       <div class="portfolio-item ai hidden-item" data-full="image/sugar.jpg">
-        <img src="image/sugar.jpg" alt="Работа ИИ">
+        <img src="image/sugar.jpg" alt="Работы ИИ">
         <div class="portfolio-overlay">
           <div class="portfolio-info">
             <span class="work-price">1 500 руб.</span>
@@ -180,157 +180,18 @@
         </div>
       </div>
 
-      <div class="portfolio-item honnili hidden-item" data-full="image/sugar.jpg">
-        <img src="image/sugar.jpg" alt="Арт HonniLi">
-        <div class="portfolio-overlay">
-          <div class="portfolio-info">
-            <span class="work-price">700 руб.</span>
-            <span class="work-client">Заказчик: MiniArt</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="portfolio-item ai hidden-item" data-full="image/sugar.jpg">
-        <img src="image/sugar.jpg" alt="Работа ИИ">
-        <div class="portfolio-overlay">
-          <div class="portfolio-info">
-            <span class="work-price">500 руб.</span>
-            <span class="work-client">Апскейл 4K</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="portfolio-item sugar hidden-item" data-full="image/sugar.jpg">
-        <img src="image/sugar.jpg" alt="Арт Сахарная девочка">
-        <div class="portfolio-overlay">
-          <div class="portfolio-info">
-            <span class="work-price">4 500 руб.</span>
-            <span class="work-client">Анимация</span>
-          </div>
-        </div>
-      </div>
-
     </div>
 
     <div class="center" style="margin-top: 32px;">
-      <button id="load-more-btn" class="btn-secondary">Показать ещё</button>
+      <button id="load-more-btn" class="filter-btn" style="background: #b185ff; color: #fff;">Показать ещё</button>
     </div>
   </div>
 </section>
 
-<!-- Модальное окно для полноэкранного просмотра (вставить в самый конец перед </body>) -->
+<!-- Модальное окно (поместить перед закрывающим тегом </body>) -->
 <div id="lightbox" class="lightbox">
   <span class="lightbox-close">&times;</span>
-  <img class="lightbox-content" id="lightbox-img">
-</div>
-
-    <!-- Сетка галереи -->
-    <div class="portfolio-grid" id="portfolio-grid">
-      
-      <!-- Ряд 1 (Первые 3 карточки показаны сразу) -->
-      <div class="portfolio-item honnili" data-full="image/sugar.jpg">
-        <img src="image/sugar.jpg" alt="Арт HonniLi">
-        <div class="portfolio-overlay">
-          <div class="portfolio-info">
-            <span class="work-price">1 500 руб.</span>
-            <span class="work-client">Заказчик: User1</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="portfolio-item sugar" data-full="image/sugar.jpg">
-        <img src="image/sugar.jpg" alt="Арт Сахарная девочка">
-        <div class="portfolio-overlay">
-          <div class="portfolio-info">
-            <span class="work-price">12 000 руб.</span>
-            <span class="work-client">Заказчик: VTuber Streamer</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="portfolio-item ai" data-full="image/sugar.jpg">
-        <img src="image/sugar.jpg" alt="Работа ИИ">
-        <div class="portfolio-overlay">
-          <div class="portfolio-info">
-            <span class="work-price">800 руб.</span>
-            <span class="work-client">ИИ-генерация + Ретушь</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Дополнительные ряды (скрыты класс `hidden-item` по умолчанию) -->
-      <div class="portfolio-item honnili hidden-item" data-full="image/sugar.jpg">
-        <img src="image/sugar.jpg" alt="Арт HonniLi">
-        <div class="portfolio-overlay">
-          <div class="portfolio-info">
-            <span class="work-price">1 000 руб.</span>
-            <span class="work-client">Заказчик: Alex</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="portfolio-item sugar hidden-item" data-full="image/sugar.jpg">
-        <img src="image/sugar.jpg" alt="Арт Сахарная девочка">
-        <div class="portfolio-overlay">
-          <div class="portfolio-info">
-            <span class="work-price">18 000 руб.</span>
-            <span class="work-client">Заказчик: Kuro</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="portfolio-item ai hidden-item" data-full="image/sugar.jpg">
-        <img src="image/sugar.jpg" alt="Работа ИИ">
-        <div class="portfolio-overlay">
-          <div class="portfolio-info">
-            <span class="work-price">1 500 руб.</span>
-            <span class="work-client">Комплексный ИИ-арт</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="portfolio-item honnili hidden-item" data-full="image/sugar.jpg">
-        <img src="image/sugar.jpg" alt="Арт HonniLi">
-        <div class="portfolio-overlay">
-          <div class="portfolio-info">
-            <span class="work-price">700 руб.</span>
-            <span class="work-client">Заказчик: MiniArt</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="portfolio-item ai hidden-item" data-full="image/sugar.jpg">
-        <img src="image/sugar.jpg" alt="Работа ИИ">
-        <div class="portfolio-overlay">
-          <div class="portfolio-info">
-            <span class="work-price">500 руб.</span>
-            <span class="work-client">Апскейл 4K</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="portfolio-item sugar hidden-item" data-full="image/sugar.jpg">
-        <img src="image/sugar.jpg" alt="Арт Сахарная девочка">
-        <div class="portfolio-overlay">
-          <div class="portfolio-info">
-            <span class="work-price">4 500 руб.</span>
-            <span class="work-client">Анимация</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="center" style="margin-top: 32px;">
-      <button id="load-more-btn" class="btn-secondary">Показать ещё</button>
-    </div>
-  </div>
-</section>
-
-<!-- Модальное окно для полноэкранного просмотра (вставить в самый конец перед </body>) -->
-<div id="lightbox" class="lightbox">
-  <span class="lightbox-close">&times;</span>
-  <img class="lightbox-content" id="lightbox-img">
+  <img class="lightbox-content" id="lightbox-img" src="" alt="Full View">
 </div>
 <!-- Цены -->
 <section id="services">
