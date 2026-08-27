@@ -1,1 +1,354 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PonyOni — творческая команда</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
 
+<header>
+  <div class="container nav">
+    <a href="#hero" class="logo">
+      <span class="ph" style="width:40px;height:40px">
+        <img src="./images/logo.png" alt="PonyOni лого">
+      </span>
+      PonyOni
+    </a>
+    <ul class="menu" id="menu">
+      <li><a href="#about">О команде</a></li>
+      <li><a href="#team">Команда</a></li>
+      <li><a href="#works">Работы</a></li>
+      <li><a href="#services">Услуги</a></li>
+      <li><a href="#contacts">Контакты</a></li>
+    </ul>
+    <a href="#contacts" class="btn btn-primary header-cta">Заказать</a>
+    <button class="burger" id="burger" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section id="hero" style="padding-top:24px">
+  <div class="container hero reveal">
+    <div>
+      <h1>PonyOni — творческая команда</h1>
+      <p class="hero-sub">Мы создаём арты, анимацию, Live2D-риггинг и ИИ-графику. Полный цикл — от идеи до готового анимированного персонажа под ключ.</p>
+      <div class="hero-cta">
+        <a href="#works" class="btn btn-primary">Наши работы</a>
+        <a href="#contacts" class="btn btn-secondary">Связаться</a>
+      </div>
+      <div class="badges">
+        <span class="badge">Арт</span>
+        <span class="badge">Анимация</span>
+        <span class="badge">Live2D</span>
+        <span class="badge">ИИ-графика</span>
+        <span class="badge dot">Приём заказов открыт</span>
+      </div>
+    </div>
+    <div class="ph hero-img card">
+      <img src="./images/hero.jpg" alt="Работа команды PonyOni">
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container center reveal">
+    <h2>О команде</h2>
+    <p class="section-desc">PonyOni — это дуэт специалистов, объединивших цифровую иллюстрацию, анимацию, Live2D и ИИ-графику. Мы берёмся за проекты любой сложности: от одиночного концепт-арта до полноценных анимированных персонажей.</p>
+  </div>
+</section>
+
+<section id="team">
+  <div class="container reveal">
+    <h2 class="center">Команда</h2>
+    <p class="section-desc center" style="margin-left:auto;margin-right:auto">Каждый участник — мастер в своём деле.</p>
+    <div class="team-grid">
+
+      <div class="card member">
+        <div class="ph member-ava"><img src="./images/honnili.jpg" alt="HonniLi"></div>
+        <h3>HonniLi</h3>
+        <div class="role">Художник</div>
+        <p>Рисует персонажей, иллюстрации и концепт-арт. Отвечает за визуальный стиль команды.</p>
+        <div class="m-tags">
+          <span class="tag">Иллюстрации</span>
+          <span class="tag">Персонажи</span>
+          <span class="tag">Концепт</span>
+          <span class="tag">ИИ-графика</span>
+        </div>
+        <a href="#works" class="btn btn-secondary" onclick="setFilter('honnili')">Работы HonniLi</a>
+        <div class="member-socials">
+          <a href="https://t.me/Honnistar" target="_blank" rel="noopener" class="msoc" style="color:#28A8E6">TG</a>
+          <a href="https://www.twitch.tv/your_honni" target="_blank" rel="noopener" class="msoc" style="color:#9146FF">TW</a>
+          <a href="https://vk.ru/club240301955" target="_blank" rel="noopener" class="msoc" style="color:#0077FF">ВК</a>
+        </div>
+      </div>
+
+      <div class="card member">
+        <div class="ph member-ava"><img src="./images/sugar.jpg" alt="Сахарная девочка"></div>
+        <h3>Сахарная девочка</h3>
+        <div class="role">Риггер, аниматор &amp; ИИ-специалист</div>
+        <p>Оживляет рисунки (Live2D и покадровая анимация), а также занимается ИИ-генерацией и обработкой графики.</p>
+        <div class="m-tags">
+          <span class="tag">Live2D</span>
+          <span class="tag">Rigging</span>
+          <span class="tag">Анимация</span>
+          <span class="tag">ИИ-графика</span>
+        </div>
+        <a href="#works" class="btn btn-secondary" onclick="setFilter('sugar')">Работы Сахарной</a>
+        <div class="member-socials">
+          <a href="https://t.me/CaharookTwitch" target="_blank" rel="noopener" class="msoc" style="color:#28A8E6">TG</a>
+          <a href="https://www.twitch.tv/caharook" target="_blank" rel="noopener" class="msoc" style="color:#9146FF">TW</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="works">
+  <div class="container reveal">
+    <h2 class="center">Работы</h2>
+    <p class="section-desc center" style="margin-left:auto;margin-right:auto">Портфолио команды. Фильтруйте по участнику или смотрите всё сразу.</p>
+    <div class="filters" id="filters">
+      <button class="filter active" data-f="all">Все</button>
+      <button class="filter" data-f="honnili">HonniLi</button>
+      <button class="filter" data-f="sugar">Сахарная девочка</button>
+    </div>
+    <div class="works-grid" id="worksGrid"></div>
+    <div class="empty-state" id="emptyState">
+      <p>В этой категории пока нет работ. Загляните позже!</p>
+    </div>
+    <div class="more-wrap">
+      <button class="btn btn-ghost" id="moreBtn">Показать ещё</button>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container reveal">
+    <h2 class="center">Услуги и цены</h2>
+    <p class="section-desc center" style="margin-left:auto;margin-right:auto">Каждый участник ведёт своё направление. Напишите нам для индивидуального расчёта.</p>
+
+    <!-- Сетка карточек в стиле аниме-прайса -->
+    <div class="anime-services-grid">
+
+      <!-- Карточка 1: HonniLi -->
+      <div class="card anime-service-card">
+        <div class="anime-card-header">
+          <div class="ico">🎨</div>
+          <div>
+            <h3>Арт / Иллюстрация</h3>
+            <span class="author-badge">HonniLi</span>
+          </div>
+        </div>
+
+        <div class="price-table">
+          <div class="price-row">
+            <span class="price-label">Портрет</span>
+            <span class="price-pill">от 1 500 ₽</span>
+          </div>
+          <div class="price-row">
+            <span class="price-label">По пояс</span>
+            <span class="price-pill">от 2 500 ₽</span>
+          </div>
+          <div class="price-row">
+            <span class="price-label">Полный рост (Full)</span>
+            <span class="price-pill">от 3 500 ₽</span>
+          </div>
+        </div>
+
+        <div class="anime-details">
+          <div class="anime-details-title">В стоимость входит:</div>
+          <ul>
+            <li>Проработка деталей и фона</li>
+            <li>2–3 этапа правок</li>
+            <li>Высокое разрешение (PNG/JPG)</li>
+          </ul>
+        </div>
+
+        <a href="#contacts" class="btn btn-primary full-width">Заказать арт</a>
+      </div>
+
+      <!-- Карточка 2: Сахарная девочка (Live2D) -->
+      <div class="card anime-service-card">
+        <div class="anime-card-header">
+          <div class="ico">🎞️</div>
+          <div>
+            <h3>Live2D &amp; Анимация</h3>
+            <span class="author-badge">Сахарная девочка</span>
+          </div>
+        </div>
+
+        <div class="price-table">
+          <div class="price-row">
+            <span class="price-label">Покадровая анимация</span>
+            <span class="price-pill">от 3 000 ₽</span>
+          </div>
+          <div class="price-row">
+            <span class="price-label">Chibi Live2D модель</span>
+            <span class="price-pill">от 10 000 ₽</span>
+          </div>
+          <div class="price-row">
+            <span class="price-label">Full Body Live2D риг</span>
+            <span class="price-pill">от 15 000 ₽</span>
+          </div>
+        </div>
+
+        <div class="anime-details">
+          <div class="anime-details-title">В стоимость входит:</div>
+          <ul>
+            <li>Разбивка арта на слои</li>
+            <li>Риггинг тела, лица и физики</li>
+            <li>Настройка под VTube Studio</li>
+          </ul>
+        </div>
+
+        <a href="#contacts" class="btn btn-primary full-width">Заказать Live2D</a>
+      </div>
+
+      <!-- Карточка 3: Сахарная девочка (ИИ) -->
+      <div class="card anime-service-card">
+        <div class="anime-card-header">
+          <div class="ico">🤖</div>
+          <div>
+            <h3>ИИ-генерация и обработка</h3>
+            <span class="author-badge">Сахарная девочка</span>
+          </div>
+        </div>
+
+        <div class="price-table">
+          <div class="price-row">
+            <span class="price-label">Генерация по ТЗ</span>
+            <span class="price-pill">от 500 ₽</span>
+          </div>
+          <div class="price-row">
+            <span class="price-label">Апскейл и ретушь</span>
+            <span class="price-pill">от 700 ₽</span>
+          </div>
+          <div class="price-row">
+            <span class="price-label">Пост-обработка / Правки</span>
+            <span class="price-pill">от 1 000 ₽</span>
+          </div>
+        </div>
+
+        <div class="anime-details">
+          <div class="anime-details-title">В стоимость входит:</div>
+          <ul>
+            <li>Быстрые сроки выполнения</li>
+            <li>Точная генерация по вашему ТЗ</li>
+            <li>Исправление дефектов и улучшение</li>
+          </ul>
+        </div>
+
+        <a href="#contacts" class="btn btn-primary full-width">Заказать ИИ-арт</a>
+      </div>
+
+    </div>
+
+    <!-- Блок с условиями -->
+    <div class="card anime-conditions">
+      <h3>Условия работы</h3>
+      <div class="conditions-grid">
+        <div class="cond-item">💖 Частичная или полная предоплата</div>
+        <div class="cond-item">💖 Дедлайн: от 1 до 3 недель</div>
+        <div class="cond-item">💖 Правки на этапе скетча — бесплатно</div>
+      </div>
+    </div>
+
+    <h2 class="steps-title">Как проходит работа</h2>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><b>Заявка</b><span>Вы пишите нам в Telegram или Вконтакте</span></div>
+      <div class="step"><div class="step-num">2</div><b>Обсуждение</b><span>Уточняем детали, устанавливаем сроки и обговариваем цену</span></div>
+      <div class="step"><div class="step-num">3</div><b>Работа</b><span>Показываем этапы и вносим правки</span></div>
+      <div class="step"><div class="step-num">4</div><b>Финал</b><span>Отдаём готовый проект в нужных форматах</span></div>
+    </div>
+  </div>
+</section>
+    </div>
+    <h2 class="steps-title">Как проходит работа</h2>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><b>Заявка</b><span>Вы пишите нам в Telegram или Вконтакте</span></div>
+      <div class="step"><div class="step-num">2</div><b>Обсуждение</b><span>Уточняем детали, устанавливаем сроки и обговариваем цену</span></div>
+      <div class="step"><div class="step-num">3</div><b>Работа</b><span>Показываем этапы и вносим правки</span></div>
+      <div class="step"><div class="step-num">4</div><b>Финал</b><span>Отдаём готовый проект в нужных форматах</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacts">
+  <div class="container reveal">
+    <h2 class="center">Контакты</h2>
+    <p class="section-desc center" style="margin:12px auto 0">Хотите заказать проект или обсудить сотрудничество? Напишите команде PonyOni — отвечаем в течение 24 часов.</p>
+    <div class="contact-links">
+      <a href="https://t.me/PonyOni" target="_blank" rel="noopener" class="contact-card card">
+        <span class="ico-lg" style="background:#E3F3FC;color:#28A8E6">TG</span>
+        <b>Telegram</b>
+        <span>Общий чат команды</span>
+      </a>
+      <a href="https://vk.ru/club240301955" target="_blank" rel="noopener" class="contact-card card">
+        <span class="ico-lg" style="background:#E7F0FF;color:#0077FF">ВК</span>
+        <b>ВКонтакте</b>
+        <span>Группа команды</span>
+      </a>
+    </div>
+    <p class="reply-note center" style="margin-top:20px">Отвечаем в течение 24 часов • Каждый день</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-in">
+      <a href="#hero" class="logo">
+        <span class="ph" style="width:40px;height:40px">
+          <img src="./images/logo.png" alt="PonyOni лого">
+        </span>
+        PonyOni
+      </a>
+      <ul class="footer-menu">
+        <li><a href="#about">О команде</a></li>
+        <li><a href="#team">Команда</a></li>
+        <li><a href="#works">Работы</a></li>
+        <li><a href="#services">Услуги</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+      <div class="socials" style="margin:0">
+        <a href="https://t.me/PonyOni" target="_blank" rel="noopener" class="social">TG</a>
+        <a href="https://vk.ru/club240301955" target="_blank" rel="noopener" class="social">ВК</a>
+      </div>
+    </div>
+    <p class="copy">© 2026, команда PonyOni. Все права защищены.</p>
+  </div>
+</footer>
+
+<!-- ЛАЙТБОКС -->
+<div class="lightbox" id="lightbox">
+  <div class="lb-content">
+    <div class="lb-counter" id="lbCounter">1 / 18</div>
+    <div class="lb-viewport" id="lbViewport">
+      <div class="lb-img-wrap" id="lbImgWrap"></div>
+    </div>
+    <div class="lb-info" id="lbInfo">
+      <div class="lb-author" id="lbAuthor"></div>
+      <h3 id="lbTitle"></h3>
+      <p id="lbDesc"></p>
+      <div class="lb-tags" id="lbTags"></div>
+    </div>
+    <div class="lb-zoom-bar" id="lbZoomBar">
+      <button id="lbZoomOut" title="Уменьшить">−</button>
+      <span class="lb-zoom-label" id="lbZoomLabel">100%</span>
+      <button id="lbZoomIn" title="Увеличить">+</button>
+      <button id="lbZoomReset" title="Сбросить" style="font-size:14px;width:36px;height:36px">↺</button>
+    </div>
+    <button class="lb-arrow prev" id="lbPrev" aria-label="Предыдущая">‹</button>
+    <button class="lb-arrow next" id="lbNext" aria-label="Следующая">›</button>
+    <button class="lb-close" id="lbClose" aria-label="Закрыть">✕</button>
+  </div>
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>
