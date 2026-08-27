@@ -1,1 +1,148 @@
+/* --- АНИМЕ-СТИЛЬ УСЛУГ И ЦЕН --- */
+.anime-services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
 
+.anime-service-card {
+  border: 2px solid #f2d6ea;
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.anime-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px dashed #f2d6ea;
+}
+
+.anime-card-header h3 {
+  font-size: 19px;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.author-badge {
+  font-size: 12px;
+  background: #f3e8f8;
+  color: #8a5cf5;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+/* Плашки цен (строки как на картинке) */
+.price-table {
+  background: #fdf8fb;
+  border-radius: 20px;
+  padding: 12px 16px;
+  border: 1px solid #f7e2f1;
+  margin-bottom: 20px;
+}
+
+.price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #faebf5;
+}
+
+.price-row:last-child {
+  border-bottom: none;
+}
+
+.price-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4a4a5a;
+}
+
+/* Округлые чипсы с ценами */
+.price-pill {
+  background: #ffffff;
+  border: 1.5px solid #dcbbee;
+  color: #8a5cf5;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 4px 14px;
+  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(138, 92, 245, 0.08);
+}
+
+/* Список деталей с сердечками */
+.anime-details {
+  margin-bottom: 24px;
+}
+
+.anime-details-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #888899;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.anime-details ul li {
+  font-size: 14px;
+  color: #555566;
+  margin-bottom: 6px;
+  position: relative;
+  padding-left: 22px;
+  list-style: none;
+}
+
+.anime-details ul li::before {
+  content: '♥';
+  position: absolute;
+  left: 0;
+  color: #f78ca0;
+  font-size: 14px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+/* Блок условий в стиле референса */
+.anime-conditions {
+  background: #fcf4f9;
+  border: 2px dashed #eccce3;
+  border-radius: 24px;
+  padding: 24px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.anime-conditions h3 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: #2b2b36;
+}
+
+.conditions-grid {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.cond-item {
+  font-size: 14px;
+  font-weight: 600;
+  color: #665577;
+  background: #ffffff;
+  padding: 8px 18px;
+  border-radius: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
