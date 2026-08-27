@@ -112,15 +112,15 @@
       <button class="filter-btn active" data-filter="all">Все</button>
       <button class="filter-btn" data-filter="honnili">HonniLi</button>
       <button class="filter-btn" data-filter="sugar">Сахарная девочка</button>
-      <button class="filter-btn" data-filter="ai">Работы ИИ</button>
+      <button class="filter-btn" data-filter="iskhein">Iskhein</button>
     </div>
 
-    <!-- Сетка карточек -->
+    <!-- Сетка карточек (3 в ряд, пропорция 16:9) -->
     <div class="portfolio-grid" id="portfolio-grid">
       
-      <!-- Ряд 1 (Показывается сразу) -->
-      <div class="portfolio-item honnili" data-full="image/cugar.jpg">
-        <img src="image/sugar.jpg" alt="HonniLi">
+      <!-- Карточка 1 -->
+      <div class="portfolio-item honnili" data-full="image/fox.png">
+        <img src="image/fox.png" alt="Персонаж">
         <div class="portfolio-overlay">
           <div class="portfolio-info">
             <span class="work-price">1 500 руб.</span>
@@ -129,69 +129,104 @@
         </div>
       </div>
 
-      <div class="portfolio-item sugar" data-full="image/cugar.jpg">
-        <img src="image/sugar.jpg" alt="Сахарная девочка">
+      <!-- Карточка 2 -->
+      <div class="portfolio-item honnili" data-full="image/knight.png">
+        <img src="image/knight.png" alt="Концепт «Рыцарь»">
         <div class="portfolio-overlay">
           <div class="portfolio-info">
-            <span class="work-price">12 000 руб.</span>
-            <span class="work-client">Заказчик: VTuber Streamer</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="portfolio-item ai" data-full="image/cugar.jpg">
-        <img src="image/sugar.jpg" alt="Работы ИИ">
-        <div class="portfolio-overlay">
-          <div class="portfolio-info">
-            <span class="work-price">800 руб.</span>
-            <span class="work-client">ИИ-генерация + Ретушь</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Скрытые ряды для кнопки "Показать ещё" -->
-      <div class="portfolio-item honnili hidden-item" data-full="image/cugar.jpg">
-        <img src="image/sugar.jpg" alt="HonniLi">
-        <div class="portfolio-overlay">
-          <div class="portfolio-info">
-            <span class="work-price">1 000 руб.</span>
+            <span class="work-price">2 000 руб.</span>
             <span class="work-client">Заказчик: Alex</span>
           </div>
         </div>
       </div>
 
-      <div class="portfolio-item sugar hidden-item" data-full="image/cugar.jpg">
-        <img src="image/sugar.jpg" alt="Сахарная девочка">
+      <!-- Карточка 3 -->
+      <div class="portfolio-item sugar" data-full="image/fox_furry.png">
+        <img src="image/fox_furry.png" alt="Фурри-персонаж «Лис»">
         <div class="portfolio-overlay">
           <div class="portfolio-info">
-            <span class="work-price">18 000 руб.</span>
-            <span class="work-client">Заказчик: Kuro</span>
+            <span class="work-price">1 800 руб.</span>
+            <span class="work-client">Заказчик: FoxFan</span>
           </div>
         </div>
       </div>
 
-      <div class="portfolio-item ai hidden-item" data-full="image/cugar.jpg">
-        <img src="image/sugar.jpg" alt="Работы ИИ">
+      <!-- Карточка 4 -->
+      <div class="portfolio-item sugar" data-full="image/chibi.png">
+        <img src="image/chibi.png" alt="Чиби-набор «Эмоции»">
         <div class="portfolio-overlay">
           <div class="portfolio-info">
-            <span class="work-price">1 500 руб.</span>
-            <span class="work-client">Комплексный ИИ-арт</span>
+            <span class="work-price">3 000 руб.</span>
+            <span class="work-client">Заказчик: VTuber</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Карточка 5 -->
+      <div class="portfolio-item iskhein" data-full="image/winter.png">
+        <img src="image/winter.png" alt="Иллюстрация «Зима»">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <span class="work-price">1 200 руб.</span>
+            <span class="work-client">Заказчик: Snow</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Карточка 6 -->
+      <div class="portfolio-item iskhein" data-full="image/dragon.png">
+        <img src="image/dragon.png" alt="Аватар «Дракон»">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <span class="work-price">2 500 руб.</span>
+            <span class="work-client">Заказчик: Draco</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Дополнительные ряды (Скрыты для кнопки "Показать ещё") -->
+      <div class="portfolio-item honnili hidden-item" data-full="image/art7.png">
+        <img src="image/art7.png" alt="Доп. работа 1">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <span class="work-price">1 000 руб.</span>
+            <span class="work-client">Заказчик: Client</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-item sugar hidden-item" data-full="image/art8.png">
+        <img src="image/art8.png" alt="Доп. работа 2">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <span class="work-price">1 400 руб.</span>
+            <span class="work-client">Заказчик: Client</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-item iskhein hidden-item" data-full="image/art9.png">
+        <img src="image/art9.png" alt="Доп. работа 3">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <span class="work-price">900 руб.</span>
+            <span class="work-client">Заказчик: Client</span>
           </div>
         </div>
       </div>
 
     </div>
 
-    <div class="center" style="margin-top: 32px;">
-      <button id="load-more-btn" class="filter-btn" style="background: #b185ff; color: #fff;">Показать ещё</button>
+    <div class="center" style="margin-top: 36px;">
+      <button id="load-more-btn" class="load-more-btn">Показать ещё</button>
     </div>
   </div>
 </section>
 
-<!-- Модальное окно (поместить перед закрывающим тегом </body>) -->
+<!-- Модальное окно просмотра (Вставить перед </body>) -->
 <div id="lightbox" class="lightbox">
   <span class="lightbox-close">&times;</span>
-  <img class="lightbox-content" id="lightbox-img" src="" alt="Full View">
+  <img class="lightbox-content" id="lightbox-img" src="" alt="Zoom view">
 </div>
 <!-- Цены -->
 <section id="services">
