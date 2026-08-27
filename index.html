@@ -133,10 +133,11 @@
     <h2 class="center">Услуги и цены</h2>
     <p class="section-desc center" style="margin-left:auto;margin-right:auto">Каждый участник ведёт своё направление. Напишите нам для индивидуального расчёта.</p>
 
-    <div class="price-grid">
+    <!-- Выстраиваем карточки строго в один столбец -->
+    <div class="price-grid" style="display: flex !important; flex-direction: column !important; gap: 32px !important; max-width: 850px !important; margin: 0 auto 40px auto !important;">
 
       <!-- Карточка 1: Арт / Иллюстрация -->
-      <div class="price-card">
+      <div class="price-card" style="width: 100% !important; padding: 32px !important;">
         <div class="price-card-header">
           <div>
             <h3>Арт / Иллюстрация</h3>
@@ -147,37 +148,37 @@
 
         <div class="table-wrapper">
           <div class="price-table">
-            <div class="price-row header-row">
+            <div class="price-row header-row" style="grid-template-columns: 2fr repeat(3, 1fr) !important;">
               <div class="cell"></div>
               <div class="cell">Скетч (чб)</div>
               <div class="cell">Лайн+цвет</div>
               <div class="cell">Рендер</div>
             </div>
-            <div class="price-row">
+            <div class="price-row" style="grid-template-columns: 2fr repeat(3, 1fr) !important;">
               <div class="cell label">Портрет</div>
               <div class="cell"><span class="price-pill">500 руб.</span></div>
               <div class="cell"><span class="price-pill">500 руб.</span></div>
               <div class="cell"><span class="price-pill">500 руб.</span></div>
             </div>
-            <div class="price-row">
+            <div class="price-row" style="grid-template-columns: 2fr repeat(3, 1fr) !important;">
               <div class="cell label">По грудь</div>
               <div class="cell"><span class="price-pill">700 руб.</span></div>
               <div class="cell"><span class="price-pill">700 руб.</span></div>
               <div class="cell"><span class="price-pill">700 руб.</span></div>
             </div>
-            <div class="price-row">
+            <div class="price-row" style="grid-template-columns: 2fr repeat(3, 1fr) !important;">
               <div class="cell label">По пояс</div>
               <div class="cell"><span class="price-pill">1000 руб.</span></div>
               <div class="cell"><span class="price-pill">1000 руб.</span></div>
               <div class="cell"><span class="price-pill">1000 руб.</span></div>
             </div>
-            <div class="price-row">
+            <div class="price-row" style="grid-template-columns: 2fr repeat(3, 1fr) !important;">
               <div class="cell label">По бедра</div>
               <div class="cell"><span class="price-pill">1200 руб.</span></div>
               <div class="cell"><span class="price-pill">1200 руб.</span></div>
               <div class="cell"><span class="price-pill">1200 руб.</span></div>
             </div>
-            <div class="price-row">
+            <div class="price-row" style="grid-template-columns: 2fr repeat(3, 1fr) !important;">
               <div class="cell label">Full</div>
               <div class="cell"><span class="price-pill">1500 руб.</span></div>
               <div class="cell"><span class="price-pill">1500 руб.</span></div>
@@ -196,7 +197,7 @@
       </div>
 
       <!-- Карточка 2: Live2D & Анимация -->
-      <div class="price-card">
+      <div class="price-card" style="width: 100% !important; padding: 32px !important;">
         <div class="price-card-header">
           <div>
             <h3>Live2D &amp; Анимация</h3>
@@ -207,31 +208,31 @@
 
         <div class="table-wrapper">
           <div class="price-table">
-            <div class="price-row header-row">
+            <div class="price-row header-row" style="grid-template-columns: 2fr repeat(3, 1fr) !important;">
               <div class="cell"></div>
               <div class="cell">Базовый</div>
               <div class="cell">Стандарт</div>
               <div class="cell">Премиум</div>
             </div>
-            <div class="price-row">
+            <div class="price-row" style="grid-template-columns: 2fr repeat(3, 1fr) !important;">
               <div class="cell label">Покадровая</div>
               <div class="cell"><span class="price-pill">3000 руб.</span></div>
               <div class="cell"><span class="price-pill">4500 руб.</span></div>
               <div class="cell"><span class="price-pill">6000 руб.</span></div>
             </div>
-            <div class="price-row">
+            <div class="price-row" style="grid-template-columns: 2fr repeat(3, 1fr) !important;">
               <div class="cell label">Chibi Rig</div>
               <div class="cell"><span class="price-pill">8000 руб.</span></div>
               <div class="cell"><span class="price-pill">10000 руб.</span></div>
               <div class="cell"><span class="price-pill">12000 руб.</span></div>
             </div>
-            <div class="price-row">
+            <div class="price-row" style="grid-template-columns: 2fr repeat(3, 1fr) !important;">
               <div class="cell label">Half Body</div>
               <div class="cell"><span class="price-pill">10000 руб.</span></div>
               <div class="cell"><span class="price-pill">12000 руб.</span></div>
               <div class="cell"><span class="price-pill">14000 руб.</span></div>
             </div>
-            <div class="price-row">
+            <div class="price-row" style="grid-template-columns: 2fr repeat(3, 1fr) !important;">
               <div class="cell label">Full Body</div>
               <div class="cell"><span class="price-pill">15000 руб.</span></div>
               <div class="cell"><span class="price-pill">18000 руб.</span></div>
@@ -250,7 +251,7 @@
       </div>
 
       <!-- Карточка 3: ИИ-генерация и обработка -->
-      <div class="price-card">
+      <div class="price-card" style="width: 100% !important; padding: 32px !important;">
         <div class="price-card-header">
           <div>
             <h3>ИИ-генерация и обработка</h3>
@@ -261,31 +262,31 @@
 
         <div class="table-wrapper">
           <div class="price-table">
-            <div class="price-row header-row">
+            <div class="price-row header-row" style="grid-template-columns: 2fr repeat(3, 1fr) !important;">
               <div class="cell"></div>
               <div class="cell">Быстрый</div>
               <div class="cell">Детальный</div>
               <div class="cell">PRO</div>
             </div>
-            <div class="price-row">
+            <div class="price-row" style="grid-template-columns: 2fr repeat(3, 1fr) !important;">
               <div class="cell label">ИИ-арт по ТЗ</div>
               <div class="cell"><span class="price-pill">500 руб.</span></div>
               <div class="cell"><span class="price-pill">700 руб.</span></div>
               <div class="cell"><span class="price-pill">1000 руб.</span></div>
             </div>
-            <div class="price-row">
+            <div class="price-row" style="grid-template-columns: 2fr repeat(3, 1fr) !important;">
               <div class="cell label">Апскейл (4K)</div>
               <div class="cell"><span class="price-pill">300 руб.</span></div>
               <div class="cell"><span class="price-pill">500 руб.</span></div>
               <div class="cell"><span class="price-pill">800 руб.</span></div>
             </div>
-            <div class="price-row">
+            <div class="price-row" style="grid-template-columns: 2fr repeat(3, 1fr) !important;">
               <div class="cell label">Пост-обработка</div>
               <div class="cell"><span class="price-pill">500 руб.</span></div>
               <div class="cell"><span class="price-pill">800 руб.</span></div>
               <div class="cell"><span class="price-pill">1200 руб.</span></div>
             </div>
-            <div class="price-row">
+            <div class="price-row" style="grid-template-columns: 2fr repeat(3, 1fr) !important;">
               <div class="cell label">Ретушь / Правки</div>
               <div class="cell"><span class="price-pill">400 руб.</span></div>
               <div class="cell"><span class="price-pill">600 руб.</span></div>
@@ -306,7 +307,7 @@
     </div>
 
     <!-- Информационные плашки: Дополнения и Условия -->
-    <div class="info-grid">
+    <div class="info-grid" style="max-width: 850px; margin: 0 auto 60px auto;">
       <div class="info-card">
         <div class="info-card-header">
           <h3>Дополнения</h3>
