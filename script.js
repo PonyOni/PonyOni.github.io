@@ -26,79 +26,64 @@ function setFilter(authorKey) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const filterBtns = document.querySelectorAll('.filter-btn');
+  const filterBtns = document.querySelectorAll('.filter-btn:not(#load-more-btn)');
   const items = document.querySelectorAll('.portfolio-item');
   const loadMoreBtn = document.getElementById('load-more-btn');
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxClose = document.querySelector('.lightbox-close');
 
-  let currentFilter = 'all';
-
-  // 1. Фильтрация
+  // 1. Фильтрация категорий
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      
-      currentFilter = btn.getAttribute('data-filter');
-      
+
+      const filter = btn.getAttribute('data-filter');
+
       items.forEach(item => {
-        const matchesFilter = currentFilter === 'all' || item.classList.contains(currentFilter);
-        
-        if (matchesFilter) {
+        const matches = filter === 'all' || item.classList.contains(filter);
+        if (matches) {
           item.classList.remove('hide-by-filter');
         } else {
           item.classList.add('hide-by-filter');
         }
       });
-      
-      // Сбрасываем показ скрытых при переключении фильтра
-      checkLoadMoreVisibility();
+      updateLoadMore();
     });
   });
 
-  // 2. Кнопка "Показать ещё" (открывает скрытые карточки)
+  // 2. Кнопка "Показать ещё" (раскрывает скрытые карточки по 3 штуки / 1 ряд)
   loadMoreBtn.addEventListener('click', () => {
     const hiddenItems = document.querySelectorAll('.portfolio-item.hidden-item:not(.hide-by-filter)');
-    
-    // Открываем до 6 элементов (2 ряда)
-    let count = 0;
+    let opened = 0;
     hiddenItems.forEach(item => {
-      if (count < 6) {
+      if (opened < 6) { // Показывает 2 следующих ряда (6 карточек)
         item.classList.remove('hidden-item');
-        count++;
+        opened++;
       }
     });
-
-    checkLoadMoreVisibility();
+    updateLoadMore();
   });
 
-  function checkLoadMoreVisibility() {
-    const remainingHidden = document.querySelectorAll('.portfolio-item.hidden-item:not(.hide-by-filter)');
-    if (remainingHidden.length === 0) {
-      loadMoreBtn.style.display = 'none';
-    } else {
-      loadMoreBtn.style.display = 'inline-block';
-    }
+  function updateLoadMore() {
+    const remaining = document.querySelectorAll('.portfolio-item.hidden-item:not(.hide-by-filter)');
+    loadMoreBtn.style.display = remaining.length === 0 ? 'none' : 'inline-block';
   }
 
-  // 3. Увеличение по клику (Lightbox)
+  // 3. Увеличение картинки при клике
   items.forEach(item => {
     item.addEventListener('click', () => {
-      const fullImgSrc = item.getAttribute('data-full') || item.querySelector('img').src;
-      lightboxImg.src = fullImgSrc;
+      const img = item.querySelector('img');
+      lightboxImg.src = item.getAttribute('data-full') || img.src;
       lightbox.style.display = 'flex';
     });
   });
 
-  lightboxClose.addEventListener('click', () => {
-    lightbox.style.display = 'none';
+  lightboxClose.addEventListener('click', () => lightbox.style.display = 'none');
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) lightbox.style.display = 'none';
   });
 
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
-      lightbox.style.display = 'none';
-    }
-  });
+  updateLoadMore();
 });
