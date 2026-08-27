@@ -359,67 +359,78 @@ h2 {
   color: #66667a;
 }
 
-/* ТАБЛИЦЫ ПРАЙС-ЛИСТОВ И БЛОКИ УСЛУГ */
+/* ТАБЛИЦЫ ПРАЙС-ЛИСТОВ (БЛОКИ ДРУГ ПОД ДРУГОМ) */
 .price-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 30px;
-  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  max-width: 850px;
+  margin: 0 auto 50px auto;
 }
 
 .price-card {
   background: #ffffff;
   border-radius: 24px;
-  padding: 24px;
+  padding: 32px 36px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%;
 }
 
 .price-card-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+}
+
+.price-card-header h3 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1a1a24;
 }
 
 .author-tag {
-  font-size: 13px;
+  font-size: 14px;
   color: #8a5cf5;
   font-weight: 600;
+  display: inline-block;
+  margin-top: 2px;
 }
 
 .pill-badge {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   background: #a88beb;
 }
 
 .table-wrapper {
   overflow-x: auto;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .price-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 13px;
 }
 
 .price-row {
   display: grid;
-  grid-template-columns: 1.2fr repeat(3, 1fr);
+  grid-template-columns: 2fr repeat(3, 1fr);
   align-items: center;
-  padding: 8px 0;
+  padding: 12px 0;
   border-bottom: 1px solid #f0edf5;
 }
 
 .header-row {
   font-weight: 700;
   color: #1a1a24;
+  font-size: 15px;
   border-bottom: 2px solid #e2d9f3;
+  padding-bottom: 14px;
 }
 
 .cell {
@@ -430,23 +441,25 @@ h2 {
 .cell.label {
   text-align: left;
   font-weight: 600;
+  font-size: 15px;
+  color: #2b2b36;
 }
 
 .price-pill {
   background: #f3f0fd;
   color: #6b3ba7;
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 12px;
+  padding: 6px 14px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 14px;
   display: inline-block;
 }
 
 .banner-box {
   background: linear-gradient(135deg, #f78ca0 0%, #a88beb 100%);
   color: #ffffff;
-  border-radius: 16px;
-  padding: 16px;
+  border-radius: 18px;
+  padding: 20px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -457,14 +470,18 @@ h2 {
   flex-direction: column;
 }
 
+.banner-text b {
+  font-size: 16px;
+}
+
 .banner-text span {
-  font-size: 12px;
+  font-size: 13px;
   opacity: 0.9;
 }
 
 .banner-price {
   font-weight: 800;
-  font-size: 16px;
+  font-size: 20px;
   white-space: nowrap;
 }
 
@@ -473,13 +490,14 @@ h2 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 24px;
-  margin-bottom: 60px;
+  max-width: 850px;
+  margin: 0 auto 60px auto;
 }
 
 .info-card {
   background: #ffffff;
   border-radius: 24px;
-  padding: 24px;
+  padding: 28px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
 }
 
@@ -487,23 +505,25 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .info-card ul li {
   font-size: 14px;
   color: #555566;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   position: relative;
-  padding-left: 18px;
+  padding-left: 20px;
 }
 
 .info-card ul li::before {
   content: '•';
   color: #8a5cf5;
+  font-size: 18px;
   font-weight: bold;
   position: absolute;
   left: 0;
+  top: -2px;
 }
 
 /* ШАГИ "КАК ПРОХОДИТ РАБОТА" */
@@ -699,6 +719,7 @@ footer {
   cursor: pointer;
 }
 
+/* МОБИЛЬНАЯ АДАПТАЦИЯ */
 @media (max-width: 768px) {
   .hero {
     grid-template-columns: 1fr;
@@ -720,13 +741,27 @@ footer {
     gap: 20px;
   }
 
+  .price-card {
+    padding: 20px 16px;
+  }
+
   .price-row {
-    grid-template-columns: 1fr repeat(3, 1fr);
-    font-size: 11px;
+    grid-template-columns: 1.2fr repeat(3, 1fr);
+    font-size: 12px;
+  }
+
+  .cell.label {
+    font-size: 12px;
   }
 
   .price-pill {
-    font-size: 10px;
-    padding: 2px 4px;
+    font-size: 11px;
+    padding: 4px 6px;
+  }
+
+  .banner-box {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
   }
 }
