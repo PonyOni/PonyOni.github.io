@@ -6,7 +6,7 @@
 <title>PonyOni — творческая команда</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
@@ -227,6 +227,31 @@
     <p class="copy">© 2026, команда PonyOni. Все права защищены.</p>
   </div>
 </footer>
+
+<!-- ЛАЙТБОКС -->
+<div class="lightbox" id="lightbox">
+  <div class="lb-content">
+    <div class="lb-counter" id="lbCounter">1 / 18</div>
+    <div class="lb-viewport" id="lbViewport">
+      <div class="lb-img-wrap" id="lbImgWrap"></div>
+    </div>
+    <div class="lb-info" id="lbInfo">
+      <div class="lb-author" id="lbAuthor"></div>
+      <h3 id="lbTitle"></h3>
+      <p id="lbDesc"></p>
+      <div class="lb-tags" id="lbTags"></div>
+    </div>
+    <div class="lb-zoom-bar" id="lbZoomBar">
+      <button id="lbZoomOut" title="Уменьшить">−</button>
+      <span class="lb-zoom-label" id="lbZoomLabel">100%</span>
+      <button id="lbZoomIn" title="Увеличить">+</button>
+      <button id="lbZoomReset" title="Сбросить" style="font-size:14px;width:36px;height:36px">↺</button>
+    </div>
+    <button class="lb-arrow prev" id="lbPrev" aria-label="Предыдущая">‹</button>
+    <button class="lb-arrow next" id="lbNext" aria-label="Следующая">›</button>
+    <button class="lb-close" id="lbClose" aria-label="Закрыть">✕</button>
+  </div>
+</div>
 
 <script src="./script.js"></script>
 </body>
