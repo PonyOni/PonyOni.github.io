@@ -26,14 +26,14 @@ function setFilter(authorKey) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const filterBtns = document.querySelectorAll('.filter-btn:not(#load-more-btn)');
+  const filterBtns = document.querySelectorAll('.filter-btn');
   const items = document.querySelectorAll('.portfolio-item');
   const loadMoreBtn = document.getElementById('load-more-btn');
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxClose = document.querySelector('.lightbox-close');
 
-  // 1. Фильтрация категорий
+  // Фильтрация
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
@@ -53,12 +53,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 2. Кнопка "Показать ещё" (раскрывает скрытые карточки по 3 штуки / 1 ряд)
+  // Пагинация по кнопке "Показать ещё"
   loadMoreBtn.addEventListener('click', () => {
     const hiddenItems = document.querySelectorAll('.portfolio-item.hidden-item:not(.hide-by-filter)');
     let opened = 0;
     hiddenItems.forEach(item => {
-      if (opened < 6) { // Показывает 2 следующих ряда (6 карточек)
+      if (opened < 6) { // Открывает по 6 штук (2 ряда)
         item.classList.remove('hidden-item');
         opened++;
       }
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadMoreBtn.style.display = remaining.length === 0 ? 'none' : 'inline-block';
   }
 
-  // 3. Увеличение картинки при клике
+  // Клик по карточке — открытие модального окна на весь экран
   items.forEach(item => {
     item.addEventListener('click', () => {
       const img = item.querySelector('img');
