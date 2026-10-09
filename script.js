@@ -87,3 +87,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   updateLoadMore();
 });
+
+function openSocialModal() { 
+  document.getElementById('socialModal').classList.add('active'); 
+}
+
+function closeSocialModal() { 
+  document.getElementById('socialModal').classList.remove('active'); 
+}
+
+function closeSocialModalOnBg(e) { 
+  if (e.target.id === 'socialModal') closeSocialModal(); 
+}
