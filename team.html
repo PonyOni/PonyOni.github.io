@@ -113,21 +113,9 @@
       text-transform: uppercase;
     }
 
-    /* РАЗМЕРЫ ДЛЯ КАЖДОГО НИКНЕЙМА */
-    .text-honnili {
-      font-size: 18vw;
-      letter-spacing: 12px;
-    }
-
-    .text-sugar {
-      font-size: 8.5vw;
-      letter-spacing: 6px;
-    }
-
-    .text-kate {
-      font-size: 9.5vw;
-      letter-spacing: 8px;
-    }
+    .text-honnili { font-size: 18vw; letter-spacing: 12px; }
+    .text-sugar { font-size: 8.5vw; letter-spacing: 6px; }
+    .text-kate { font-size: 9.5vw; letter-spacing: 8px; }
 
     /* ЦЕНТРАЛЬНЫЙ АРТ ПЕРСОНАЖА */
     .character-center-img {
@@ -139,6 +127,60 @@
       z-index: 2;
       pointer-events: none;
       filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+    }
+
+    /* СТЕКЛЯННЫЕ БЛОКИ С ЦЕНАМИ И УСЛУГАМИ */
+    .glass-price-box {
+      position: absolute;
+      z-index: 4;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 20px 24px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      max-width: 300px;
+      width: 100%;
+    }
+
+    /* Левый блок с ценами (сверху слева) */
+    .price-box-left {
+      top: 110px;
+      left: 40px;
+    }
+
+    /* Правый блок с доп. услугами (снизу справа) */
+    .extras-box-right {
+      bottom: 90px;
+      right: 40px;
+    }
+
+    .box-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffd1dc;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .service-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: #e2d7f5;
+      margin-bottom: 6px;
+    }
+    .service-row:last-child { margin-bottom: 0; }
+    .service-price {
+      font-weight: 700;
+      color: #ffffff;
     }
 
     /* ЛЕВАЯ ПОДПИСЬ */
@@ -207,7 +249,7 @@
     /* КНОПКИ */
     .poster-actions {
       position: absolute;
-      bottom: 50px;
+      bottom: 25px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 5;
@@ -217,7 +259,7 @@
 
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
-      padding: 12px 28px; border-radius: 50px; font-weight: 600; font-size: 14px;
+      padding: 10px 24px; border-radius: 50px; font-weight: 600; font-size: 13px;
       text-decoration: none; cursor: pointer; border: none;
       background: linear-gradient(135deg, #a88beb 0%, #e87999 100%); color: #ffffff;
       box-shadow: 0 10px 25px rgba(168, 139, 235, 0.4);
@@ -226,7 +268,7 @@
     .btn:hover { transform: translateY(-2px); }
     .btn-secondary { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.25); }
 
-    .scroll-hint { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); text-align: center; font-size: 12px; color: rgba(255, 255, 255, 0.5); font-weight: 500; animation: bounce 2s infinite; cursor: pointer; z-index: 5; }
+    .scroll-hint { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); text-align: center; font-size: 11px; color: rgba(255, 255, 255, 0.5); font-weight: 500; animation: bounce 2s infinite; cursor: pointer; z-index: 5; }
     @keyframes bounce {
       0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);}
       40% {transform: translateX(-50%) translateY(-6px);}
@@ -250,9 +292,9 @@
     .modal-card p { font-size: 15px; color: #d1b8ff; line-height: 1.6; margin-bottom: 30px; }
     .modal-close { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.1); border: none; color: #fff; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 18px; }
 
-    @media(max-width: 900px) {
+    @media(max-width: 1000px) {
       .nav-menu { display: none; }
-      .poster-label-left, .poster-label-right, .poster-brand-sub { display: none; }
+      .poster-label-left, .poster-label-right, .poster-brand-sub, .glass-price-box { display: none; }
       .character-center-img { width: 90%; height: auto; }
     }
   </style>
@@ -283,6 +325,22 @@
     <div class="poster-scene">
       <div class="bg-watermark-text text-honnili">HonniLi</div>
       
+      <!-- Левый блок с ценами -->
+      <div class="glass-price-box price-box-left">
+        <div class="box-title">Основные цены</div>
+        <div class="service-row"><span>Портрет / Арт</span><span class="service-price">от 5 000 ₽</span></div>
+        <div class="service-row"><span>Концепт персонажа</span><span class="service-price">от 8 000 ₽</span></div>
+        <div class="service-row"><span>Full Body Арт</span><span class="service-price">от 12 000 ₽</span></div>
+      </div>
+
+      <!-- Правый блок с доп. услугами -->
+      <div class="glass-price-box extras-box-right">
+        <div class="box-title">Доп. услуги</div>
+        <div class="service-row"><span>Сложный фон</span><span class="service-price">+3 000 ₽</span></div>
+        <div class="service-row"><span>Эмоут / Стикер</span><span class="service-price">400 ₽</span></div>
+        <div class="service-row"><span>PSD по слоям</span><span class="service-price">+2 000 ₽</span></div>
+      </div>
+
       <div class="poster-label-left">
         <span>Художник</span>
         <div class="line"></div>
@@ -309,6 +367,22 @@
     <div class="poster-scene">
       <div class="bg-watermark-text text-sugar">Сахарная девочка</div>
       
+      <!-- Левый блок с ценами -->
+      <div class="glass-price-box price-box-left">
+        <div class="box-title">Основные цены</div>
+        <div class="service-row"><span>Live2D Риг (Голова)</span><span class="service-price">от 10 000 ₽</span></div>
+        <div class="service-row"><span>Full Body Риг</span><span class="service-price">от 25 000 ₽</span></div>
+        <div class="service-row"><span>Настройка физики</span><span class="service-price">от 7 000 ₽</span></div>
+      </div>
+
+      <!-- Правый блок с доп. услугами -->
+      <div class="glass-price-box extras-box-right">
+        <div class="box-title">Доп. услуги</div>
+        <div class="service-row"><span>Смена одежды</span><span class="service-price">+8 000 ₽</span></div>
+        <div class="service-row"><span>Доп. эмоции (х3)</span><span class="service-price">+3 000 ₽</span></div>
+        <div class="service-row"><span>Интеграция ИИ</span><span class="service-price">от 5 000 ₽</span></div>
+      </div>
+
       <div class="poster-label-left">
         <span>Риггер</span>
         <div class="line"></div>
@@ -335,13 +409,29 @@
     <div class="poster-scene">
       <div class="bg-watermark-text text-kate">sad_potato_kate</div>
       
+      <!-- Левый блок с ценами -->
+      <div class="glass-price-box price-box-left">
+        <div class="box-title">Основные цены</div>
+        <div class="service-row"><span>Скетч арт</span><span class="service-price">от 3 000 ₽</span></div>
+        <div class="service-row"><span>Полноценный арт</span><span class="service-price">от 6 500 ₽</span></div>
+        <div class="service-row"><span>Chibi персонаж</span><span class="service-price">от 4 000 ₽</span></div>
+      </div>
+
+      <!-- Правый блок с доп. услугами -->
+      <div class="glass-price-box extras-box-right">
+        <div class="box-title">Доп. услуги</div>
+        <div class="service-row"><span>Второй персонаж</span><span class="service-price">+70%</span></div>
+        <div class="service-row"><span>Срочный заказ</span><span class="service-price">+50%</span></div>
+        <div class="service-row"><span>Исходник PSD</span><span class="service-price">+1 500 ₽</span></div>
+      </div>
+
       <div class="poster-label-left">
         <span>Художник</span>
         <div class="line"></div>
       </div>
       <div class="poster-brand-sub">PonyOni</div>
 
-      <img src="image/TeamKate.png" alt="TeamKate" class="character-center-img">
+      <img src="image/knight.png" alt="Kate Art" class="character-center-img">
 
       <div class="poster-label-right">
         <div class="line"></div>
@@ -349,8 +439,8 @@
       </div>
 
       <div class="poster-actions">
-        <a href="https://www.twitch.tv/sad_potato_kate" target="_blank" class="btn">Twitch</a>
-        <a href="https://t.me/sadpotato_Kate" target="_blank" class="btn">Telegram</a>
+        <a href="https://www.twitch.tv/sad_potato_kate" target="_blank" class="btn btn-secondary">Twitch</a>
+        <a href="https://t.me/sadpotato_Kate" target="_blank" class="btn">Заказать работу</a>
       </div>
     </div>
     <div class="scroll-hint">© 2026, команда PonyOni ✨</div>
