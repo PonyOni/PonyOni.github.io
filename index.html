@@ -10,6 +10,200 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
   
   <style>
+    /* ПРАВАЯ ПЛАВАЮЩАЯ КНОПКА «СОЦСЕТИ» */
+.social-trigger-btn {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  background: rgba(37, 35, 54, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-right: none;
+  border-radius: 14px 0 0 14px;
+  padding: 14px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #ffffff;
+  box-shadow: -10px 10px 30px rgba(0,0,0,0.4);
+  transition: all 0.25s ease;
+}
+
+.social-trigger-btn:hover {
+  background: rgba(45, 42, 66, 0.95);
+  padding-left: 14px;
+}
+
+.social-trigger-btn svg {
+  width: 20px;
+  height: 20px;
+  stroke: #ffd1dc;
+}
+
+.social-trigger-btn span {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #e2d7f5;
+}
+
+/* МОДАЛЬНОЕ ОКНО СОЦСЕТЕЙ */
+.social-modal-overlay {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(15, 14, 23, 0.75); backdrop-filter: blur(10px);
+  display: flex; align-items: center; justify-content: center; z-index: 2000;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+}
+.social-modal-overlay.active { opacity: 1; pointer-events: auto; }
+
+.social-modal-card {
+  background: #252336;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 28px;
+  padding: 36px;
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+  text-align: left;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.social-modal-header {
+  font-size: 11px;
+  font-weight: 700;
+  color: #a88beb;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+
+.social-modal-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.social-modal-subtitle {
+  font-size: 13px;
+  color: #a09cb8;
+  margin-bottom: 24px;
+}
+
+.social-modal-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: background 0.2s;
+}
+.social-modal-close:hover { background: rgba(255, 255, 255, 0.18); }
+
+.social-section-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffd1dc;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  margin-top: 16px;
+}
+
+.social-links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.social-link-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.social-link-item:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.social-link-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.social-link-icon {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.social-link-text h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.social-link-text p {
+  font-size: 12px;
+  color: #a09cb8;
+}
+
+.social-link-arrow {
+  color: #ffd1dc;
+  font-size: 16px;
+}
+
+.social-footer-note {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 12px;
+  color: #8c88a3;
+}
+.social-footer-note a {
+  color: #ffd1dc;
+  text-decoration: none;
+}
+
+@media(max-width: 1000px) {
+  .social-trigger-btn { display: none; }
+}
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
