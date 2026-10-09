@@ -239,7 +239,7 @@ body {
 }
 
 /* АДАПТИВ ДЛЯ ТЕЛЕФОНОВ */
-max-width: 900px {
+@media (max-width: 900px) {
   .grid-layout {
     grid-template-columns: 1fr;
   }
