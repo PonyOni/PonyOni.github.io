@@ -148,7 +148,7 @@
       width: 800px;
       height: 300px;
       padding: 24px 30px;
-      overflow: hidden;
+      overflow: visible; /* Важно для отображения подсказок, чтобы они не обрезались */
     }
 
     /* ПРАВЫЙ НИЖНИЙ БЛОК (ПРИМЕРЫ РАБОТ) */
@@ -194,6 +194,96 @@
     .price-table td {
       color: #ffffff;
       font-weight: 500;
+    }
+
+    /* СТИЛИ ДЛЯ ИНТЕРАКТИВНОЙ ПОДСКАЗКИ (TOOLTIP) */
+    .tooltip-container {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: help;
+    }
+
+    .info-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #ffd1dc;
+      background: rgba(255, 209, 220, 0.15);
+      border: 1px solid rgba(255, 209, 220, 0.4);
+      border-radius: 50%;
+      transition: all 0.2s ease;
+    }
+
+    .tooltip-container:hover .info-icon {
+      background: #ffd1dc;
+      color: #1b1a2e;
+    }
+
+    /* ВСПЛЫВАЮЩЕЕ ОКНО ПОДСКАЗКИ */
+    .tooltip-box {
+      position: absolute;
+      bottom: 130%;
+      left: 50%;
+      transform: translateX(-50%) translateY(6px);
+      background: #252336;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 14px 18px;
+      width: 320px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+      z-index: 100;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.25s ease;
+      pointer-events: none;
+      text-align: left;
+    }
+
+    /* Стрелочка тултипа */
+    .tooltip-box::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 6px;
+      border-style: solid;
+      border-color: #252336 transparent transparent transparent;
+    }
+
+    .tooltip-container:hover .tooltip-box {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .tooltip-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 400;
+      color: #e2d7f5;
+    }
+
+    .tooltip-list li {
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .tooltip-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: #ffd1dc;
+      font-weight: bold;
     }
 
     /* СЕТКА ПРИМЕРОВ РАБОТ В ПРАВОМ НИЖНЕМ БЛОКЕ */
@@ -357,7 +447,7 @@
     <div class="poster-scene">
       <div class="bg-watermark-text text-honnili">HonniLi</div>
       
-      <!-- ЛЕВЫЙ ВЕРХНИЙ БЛОК ЦЕН (ШИРИНА 800PX, ВЫСОТА 300PX) -->
+      <!-- ЛЕВЫЙ ВЕРХНИЙ БЛОК ЦЕН -->
       <div class="glass-box box-left-top">
         <div class="box-title">Основные цены</div>
         <table class="price-table">
@@ -370,11 +460,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td>Фулл</td><td>1 500 ₽</td><td>2 000 ₽</td><td>4 000 ₽</td></tr>
-            <tr><td>По бедра</td><td>1 000 ₽</td><td>1 000 ₽</td><td>2 000 ₽</td></tr>
-            <tr><td>По пояс</td><td>1 000 ₽</td><td>1 000 ₽</td><td>1 500 ₽</td></tr>
-            <tr><td>По грудь</td><td>500 ₽</td><td>700 ₽</td><td>1 200 ₽</td></tr>
-            <tr><td>Смайлики</td><td>100 ₽</td>
+            <tr><td>Фулл</td><td>1 500 ₽</td><td>3 500 ₽</td><td>6 000 ₽</td></tr>
+            <tr><td>По бедра</td><td>1 200 ₽</td><td>2 800 ₽</td><td>4 800 ₽</td></tr>
+            <tr><td>По пояс</td><td>1 000 ₽</td><td>2 200 ₽</td><td>3 800 ₽</td></tr>
+            <tr><td>По грудь</td><td>800 ₽</td><td>1 600 ₽</td><td>2 800 ₽</td></tr>
+            <tr><td>Смайлики</td><td>400 ₽</td><td>600 ₽</td><td>900 ₽</td></tr>
           </tbody>
         </table>
       </div>
@@ -410,7 +500,7 @@
     <div class="scroll-hint" onclick="scrollToScreen('member-2')">Следующий участник ↓</div>
   </section>
 
-  <!-- УЧАСТНИК 2: САХАРНАЯ ДЕВОЧКА -->
+  <!-- УЧАСТНИК 2: САХАРНАЯ ДЕВОЧКА (РИГГЕР С БАЗОЙ И УЛУЧШЕННЫМ ТАРИФОМ) -->
   <section id="member-2" class="full-screen-section">
     <div class="poster-scene">
       <div class="bg-watermark-text text-sugar">Сахарная девочка</div>
@@ -421,15 +511,69 @@
           <thead>
             <tr>
               <th>Формат</th>
-              <th>База</th>
-              <th>Улучшенный</th>
+              <th>
+                <div style="display: inline-flex; justify-content: center; width: 100%;">
+                  <div class="tooltip-container">
+                    <span>База</span>
+                    <span class="info-icon">i</span>
+                    <div class="tooltip-box">
+                      <ul class="tooltip-list">
+                        <li>Повороты головы по XYZ</li>
+                        <li>Повороты тела по XYZ</li>
+                        <li>Базовое отслеживание лица</li>
+                        <li>Базовая физика одежды</li>
+                        <li>Базовая физика волос</li>
+                        <li>3 статичные эмоции</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </th>
+              <th>
+                <div style="display: inline-flex; justify-content: center; width: 100%;">
+                  <div class="tooltip-container">
+                    <span>Улучшенный</span>
+                    <span class="info-icon">i</span>
+                    <div class="tooltip-box">
+                      <ul class="tooltip-list">
+                        <li>Глубокие повороты головы по XYZ</li>
+                        <li>Повороты тела по XYZ</li>
+                        <li>Наклоны тела вперёд-назад</li>
+                        <li>Шаги при поворотах по XYZ</li>
+                        <li>Продвинутое отслеживание лица — более экспрессивные глаза и брови</li>
+                        <li>Продвинутая физика одежды</li>
+                        <li>Продвинутая физика волос</li>
+                        <li>Дополнительная физика бёдер</li>
+                        <li>Дополнительная физика кистей рук</li>
+                        <li>3 статичные эмоции</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>Фулл</td><td>19 000 ₽</td><td>20 000 ₽</td>
-            <tr><td>Chibi</td><td>3 000 ₽</td><td>4 500 ₽</td>
-            <tr><td>Фон</td><td>2 000 ₽</td>
-            <tr><td>Смайлики</td><td>300 ₽</td>
+            <tr>
+              <td>Фулл</td>
+              <td>19 000 ₽</td>
+              <td>20 000 ₽</td>
+            </tr>
+            <tr>
+              <td>Chibi</td>
+              <td>3 000 ₽</td>
+              <td>4 500 ₽</td>
+            </tr>
+            <tr>
+              <td>Фон</td>
+              <td>2 000 ₽</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>Смайлики</td>
+              <td>300 ₽</td>
+              <td>—</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -476,13 +620,16 @@
             <tr>
               <th>Формат</th>
               <th>Скетч (чб)</th>
+              <th>Лайн+цвет</th>
               <th>Рендер</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>Фулл</td><td>1 500 ₽</td><td>3 000 ₽</td>
-            <tr><td>По пояс</td><td>1 000 ₽</td><td>2 000 ₽</td>
-            <tr><td>Смайлики</td><td>400 ₽</td><td>600 ₽</td>
+            <tr><td>Фулл</td><td>1 200 ₽</td><td>3 000 ₽</td><td>5 500 ₽</td></tr>
+            <tr><td>По бедра</td><td>1 000 ₽</td><td>2 400 ₽</td><td>4 400 ₽</td></tr>
+            <tr><td>По пояс</td><td>800 ₽</td><td>1 900 ₽</td><td>3 500 ₽</td></tr>
+            <tr><td>По грудь</td><td>650 ₽</td><td>1 400 ₽</td><td>2 500 ₽</td></tr>
+            <tr><td>Смайлики</td><td>350 ₽</td><td>550 ₽</td><td>800 ₽</td></tr>
           </tbody>
         </table>
       </div>
@@ -502,7 +649,7 @@
       </div>
       <div class="poster-brand-sub">PonyOni</div>
 
-      <img src="image/TeamKate.png" alt="TeamKate" class="character-center-img">
+      <img src="image/knight.png" alt="Kate Art" class="character-center-img">
 
       <div class="poster-label-right">
         <div class="line"></div>
