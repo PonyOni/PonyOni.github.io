@@ -21,7 +21,7 @@
       overflow-x: hidden;
     }
 
-    /* ЕДИНАЯ ФИКСИРОВАННАЯ ШАПКА СВЕРХУ */
+    /* ИСПРАВЛЕННАЯ ШАПКА */
     .global-header {
       position: fixed;
       top: 0;
@@ -37,6 +37,14 @@
       backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
+
+    /* ЛЕВАЯ ГРУППА: ЛОГОТИП + КНОПКА «ЗАКАЗАТЬ» СХОДИМ БЛИЖЕ */
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
     .logo {
       font-family: 'Poppins', sans-serif;
       font-weight: 800;
@@ -69,14 +77,14 @@
     }
     .nav-menu a:hover, .nav-menu a.active { color: #ffffff; font-weight: 700; }
 
-    /* ПОЛНОЭКРАННЫЕ БЛОКИ (Full-page Scroll) */
+    /* ПОЛНОЭКРАННЫЕ БЛОКИ */
     .full-screen-section {
       width: 100vw;
       height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 100px 40px 40px 40px; /* отступ сверху под фиксированную шапку */
+      padding: 100px 40px 40px 40px;
       position: relative;
     }
 
@@ -90,7 +98,6 @@
       position: relative;
     }
 
-    /* ТЕКСТ И КОНТЕНТ */
     .screen-content {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
@@ -112,7 +119,7 @@
 
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
-      padding: 14px 32px; border-radius: 50px; font-weight: 600; font-size: 15px;
+      padding: 12px 28px; border-radius: 50px; font-weight: 600; font-size: 14px;
       text-decoration: none; cursor: pointer; border: none;
       background: linear-gradient(135deg, #a88beb 0%, #e87999 100%); color: #ffffff;
       box-shadow: 0 10px 25px rgba(168, 139, 235, 0.4);
@@ -123,7 +130,6 @@
 
     .single-visual img { width: 100%; height: 360px; object-fit: cover; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); border: 1px solid rgba(255, 255, 255, 0.2); }
 
-    /* СЕТКА УСЛУГ (6 БЛОКОВ) */
     .services-grid { 
       display: grid; 
       grid-template-columns: repeat(3, 1fr); 
@@ -141,14 +147,12 @@
     .service-box p { font-size: 13px; color: #d1b8ff; margin-bottom: 14px; line-height: 1.5; }
     .price-tag { font-weight: 700; color: #ffd1dc; font-size: 15px; display: block; }
 
-    /* ОЧЕРЕДЬ И ОТЗЫВЫ */
     .queue-list, .reviews-list { display: flex; flex-direction: column; gap: 14px; margin-top: 20px; }
     .queue-box { background: rgba(255, 255, 255, 0.07); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.12); padding: 20px 24px; border-radius: 18px; display: flex; justify-content: space-between; align-items: center; font-size: 16px; font-weight: 600; color: #ffffff; }
     .review-card { background: rgba(255, 255, 255, 0.07); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.12); padding: 24px; border-radius: 20px; }
     .review-card h4 { font-family: 'Poppins', sans-serif; font-size: 17px; color: #ffffff; margin-bottom: 6px; }
     .review-card p { font-size: 15px; color: #d1b8ff; margin-bottom: 0; }
 
-    /* СТРЕЛКА ПРОКРУТКИ */
     .scroll-hint { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); text-align: center; font-size: 13px; color: rgba(255, 255, 255, 0.6); font-weight: 500; animation: bounce 2s infinite; cursor: pointer; }
     @keyframes bounce {
       0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);}
@@ -156,7 +160,6 @@
       60% {transform: translateX(-50%) translateY(-3px);}
     }
 
-    /* МОДАЛКА */
     .modal-overlay {
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
       background: rgba(15, 14, 23, 0.7); backdrop-filter: blur(8px);
@@ -185,9 +188,13 @@
 
   <!-- ФИКСИРОВАННАЯ ШАПКА -->
   <header class="global-header">
-    <a href="#screen-intro" class="logo">
-      <img src="image/logo.png" alt="Logo"> PonyOni 🎄
-    </a>
+    <div class="header-left">
+      <a href="#screen-intro" class="logo">
+        <img src="image/logo.png" alt="Logo"> PonyOni 🎄
+      </a>
+      <button class="btn" style="padding: 8px 20px; font-size: 13px;" onclick="openModal()">Заказать</button>
+    </div>
+
     <ul class="nav-menu">
       <li><a href="#screen-intro" id="link-intro" class="active">Главная</a></li>
       <li><a href="team.html" id="link-team">Команда</a></li>
@@ -195,7 +202,6 @@
       <li><a href="#screen-queue" id="link-queue">Очередь</a></li>
       <li><a href="#screen-reviews" id="link-reviews">Отзывы</a></li>
     </ul>
-    <button class="btn" onclick="openModal()">Заказать</button>
   </header>
 
   <!-- ЭКРАН 0: ВСТУПЛЕНИЕ -->
@@ -222,7 +228,6 @@
       <div class="scroll-hint" onclick="scrollToScreen('screen-services')">Листайте вниз к услугам ↓</div>
     </div>
   </section>
-
 
   <!-- ЭКРАН 1: ВИДЫ УСЛУГ -->
   <section id="screen-services" class="full-screen-section">
@@ -268,7 +273,6 @@
     </div>
   </section>
 
-
   <!-- ЭКРАН 2: ОЧЕРЕДЬ ЗАКАЗОВ -->
   <section id="screen-queue" class="full-screen-section">
     <div class="screen-container">
@@ -295,7 +299,6 @@
     </div>
   </section>
 
-
   <!-- ЭКРАН 3: ОТЗЫВЫ КЛИЕНТОВ -->
   <section id="screen-reviews" class="full-screen-section">
     <div class="screen-container">
@@ -320,8 +323,7 @@
     </div>
   </section>
 
-
-  <!-- МОДАЛКА «НАПИСАТЬ НАМ» -->
+  <!-- МОДАЛКА -->
   <div id="orderModal" class="modal-overlay" onclick="closeModalOnBg(event)">
     <div class="modal-card">
       <button class="modal-close" onclick="closeModal()">×</button>
@@ -334,8 +336,6 @@
     </div>
   </div>
 
-
-  <!-- СКРИПТЫ -->
   <script>
     function openModal() { document.getElementById('orderModal').classList.add('active'); }
     function closeModal() { document.getElementById('orderModal').classList.remove('active'); }
@@ -345,7 +345,6 @@
       document.getElementById(screenId).scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Подсветка активной ссылки в шапке при скролле
     const sections = ['screen-intro', 'screen-services', 'screen-queue', 'screen-reviews'];
     const navLinks = {
       'screen-intro': document.getElementById('link-intro'),
@@ -365,7 +364,6 @@
       });
     });
 
-    // Плавный скролл колесиком мыши по экранам
     let isScrolling = false;
     window.addEventListener('wheel', (e) => {
       if (document.getElementById('orderModal').classList.contains('active')) return;
