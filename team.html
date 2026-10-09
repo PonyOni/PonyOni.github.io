@@ -141,14 +141,14 @@
       box-shadow: 0 20px 40px rgba(0,0,0,0.4);
     }
 
-    /* ЛЕВЫЙ ВЕРХНИЙ БЛОК ЦЕН (ШИРИНА 800PX, ВЫСОТА 300PX) */
+    /* ЛЕВЫЙ ВЕРХНИЙ БЛОК ЦЕН (ШИРИНА 800PX, ВЫСОТА 330PX) */
     .box-left-top {
-      top: 92px;
+      top: 96px;
       left: 50px;
       width: 800px;
-      height: 300px;
+      height: 330px;
       padding: 24px 30px;
-      overflow: visible; /* Важно для отображения подсказок, чтобы они не обрезались */
+      overflow: visible; /* Чтобы тултипы свободно выходили за границы блока, если нужно */
     }
 
     /* ПРАВЫЙ НИЖНИЙ БЛОК (ПРИМЕРЫ РАБОТ) */
@@ -176,7 +176,7 @@
       font-size: 15px;
     }
     .price-table th, .price-table td {
-      padding: 10px 12px;
+      padding: 12px 14px;
       text-align: center;
       border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     }
@@ -196,7 +196,7 @@
       font-weight: 500;
     }
 
-    /* СТИЛИ ДЛЯ ИНТЕРАКТИВНОЙ ПОДСКАЗКИ (TOOLTIP) */
+    /* СТИЛИ ДЛЯ ИНТЕРАКТИВНОЙ ПОДСКАЗКИ (ПОЯВЛЯЕТСЯ СНИЗУ) */
     .tooltip-container {
       position: relative;
       display: inline-flex;
@@ -225,19 +225,19 @@
       color: #1b1a2e;
     }
 
-    /* ВСПЛЫВАЮЩЕЕ ОКНО ПОДСКАЗКИ */
+    /* ВСПЛЫВАЮЩЕЕ ОКНО ПОДСКАЗКИ (ТЕПЕРЬ СНИЗУ) */
     .tooltip-box {
       position: absolute;
-      bottom: 130%;
+      top: 140%; /* Появляется строго под заголовком */
       left: 50%;
-      transform: translateX(-50%) translateY(6px);
+      transform: translateX(-50%) translateY(-6px);
       background: #252336;
       border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 12px;
       padding: 14px 18px;
       width: 320px;
       box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-      z-index: 100;
+      z-index: 999;
       opacity: 0;
       visibility: hidden;
       transition: all 0.25s ease;
@@ -245,16 +245,16 @@
       text-align: left;
     }
 
-    /* Стрелочка тултипа */
+    /* Стрелочка тултипа сверху */
     .tooltip-box::after {
       content: '';
       position: absolute;
-      top: 100%;
+      bottom: 100%;
       left: 50%;
       transform: translateX(-50%);
       border-width: 6px;
       border-style: solid;
-      border-color: #252336 transparent transparent transparent;
+      border-color: transparent transparent #252336 transparent;
     }
 
     .tooltip-container:hover .tooltip-box {
