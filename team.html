@@ -255,3 +255,99 @@
           </h1>
           <div class="role">Риггер, аниматор &amp; ИИ-специалист</div>
           <p class="desc">Виртуозно оживляет рисунки в Live2D, настраивает физику движения и внедряет продвинутые ИИ-технологии в пайплайн обработки графики.</p>
+          <div style="display: flex; gap: 12px;">
+            <a href="https://t.me/PonyOni" target="_blank" class="btn">Связаться</a>
+            <button class="btn btn-secondary" onclick="openModal()">Заказать риг</button>
+          </div>
+        </div>
+        <div class="member-visual">
+          <img src="image/sugar.jpg" alt="Rig 1">
+          <img src="image/knight.png" alt="Rig 2">
+        </div>
+      </div>
+      <div class="scroll-hint" onclick="scrollToScreen('member-3')">Следующий участник ↓</div>
+    </div>
+  </section>
+
+  <!-- УЧАСТНИК 3: SAD_POTATO_KATE -->
+  <section id="member-3" class="full-screen-section">
+    <div class="screen-container">
+      <div class="screen-content">
+        <div>
+          <h1>
+            <img src="image/sad_potato_kate.jpg" alt="Kate" class="member-avatar-big">
+            sad_potato_kate
+          </h1>
+          <div class="role">Художник</div>
+          <p class="desc">Создает атмосферные иллюстрации и выразительных персонажей, наполняя каждый проект живыми и уникальными эмоциями.</p>
+          <div style="display: flex; gap: 12px;">
+            <a href="index.html" class="btn">На главную</a>
+            <button class="btn btn-secondary" onclick="openModal()">Заказать работу</button>
+          </div>
+        </div>
+        <div class="member-visual">
+          <img src="image/knight.png" alt="Kate Art 1">
+          <img src="image/HonArt1.png" alt="Kate Art 2">
+        </div>
+      </div>
+      <div style="text-align: center; font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 20px;">
+        © 2026, команда PonyOni. Счастливого Нового года! ✨
+      </div>
+    </div>
+  </section>
+
+  <!-- МОДАЛКА -->
+  <div id="orderModal" class="modal-overlay" onclick="closeModalOnBg(event)">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <h3>Хочешь сделать заказ?</h3>
+      <p>Напиши нам — обсудим твою идею, подберём формат и рассчитаем стоимость. Отвечаем в течении суток.</p>
+      <div style="display: flex; gap: 12px; justify-content: center;">
+        <a href="https://t.me/Honnistar" target="_blank" class="btn">Telegram</a>
+        <a href="https://vk.ru/club240301955" target="_blank" class="btn btn-secondary">ВКонтакте</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openModal() { document.getElementById('orderModal').classList.add('active'); }
+    function closeModal() { document.getElementById('orderModal').classList.remove('active'); }
+    function closeModalOnBg(e) { if (e.target.id === 'orderModal') closeModal(); }
+
+    function scrollToScreen(screenId) {
+      document.getElementById(screenId).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Плавный скролл колесиком мыши по всем трем участникам
+    let isScrolling = false;
+    const sections = ['member-1', 'member-2', 'member-3'];
+    
+    window.addEventListener('wheel', (e) => {
+      if (document.getElementById('orderModal').classList.contains('active')) return;
+      if (isScrolling) return;
+      
+      let currentIdx = 0;
+      let minDistance = Infinity;
+      
+      sections.forEach((id, idx) => {
+        const el = document.getElementById(id);
+        const rect = el.getBoundingClientRect();
+        if (Math.abs(rect.top) < minDistance) {
+          minDistance = Math.abs(rect.top);
+          currentIdx = idx;
+        }
+      });
+
+      if (e.deltaY > 50 && currentIdx < sections.length - 1) {
+        isScrolling = true;
+        document.getElementById(sections[currentIdx + 1]).scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => { isScrolling = false; }, 800);
+      } else if (e.deltaY < -50 && currentIdx > 0) {
+        isScrolling = true;
+        document.getElementById(sections[currentIdx - 1]).scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => { isScrolling = false; }, 800);
+      }
+    }, { passive: true });
+  </script>
+</body>
+</html>
