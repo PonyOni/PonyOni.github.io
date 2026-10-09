@@ -11,199 +11,200 @@
   
   <style>
     /* ПРАВАЯ ПЛАВАЮЩАЯ КНОПКА «СОЦСЕТИ» */
-.social-trigger-btn {
-  position: fixed;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 50;
-  background: rgba(37, 35, 54, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-right: none;
-  border-radius: 14px 0 0 14px;
-  padding: 14px 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  color: #ffffff;
-  box-shadow: -10px 10px 30px rgba(0,0,0,0.4);
-  transition: all 0.25s ease;
-}
+    .social-trigger-btn {
+      position: fixed;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 9999;
+      background: rgba(37, 35, 54, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-right: none;
+      border-radius: 14px 0 0 14px;
+      padding: 16px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      color: #ffffff;
+      box-shadow: -10px 10px 30px rgba(0,0,0,0.5);
+      transition: all 0.25s ease;
+    }
 
-.social-trigger-btn:hover {
-  background: rgba(45, 42, 66, 0.95);
-  padding-left: 14px;
-}
+    .social-trigger-btn:hover {
+      background: rgba(55, 50, 78, 0.95);
+      padding-left: 18px;
+    }
 
-.social-trigger-btn svg {
-  width: 20px;
-  height: 20px;
-  stroke: #ffd1dc;
-}
+    .social-trigger-btn svg {
+      width: 20px;
+      height: 20px;
+      stroke: #ffd1dc;
+    }
 
-.social-trigger-btn span {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  font-family: 'Poppins', sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #e2d7f5;
-}
+    .social-trigger-btn span {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #e2d7f5;
+    }
 
-/* МОДАЛЬНОЕ ОКНО СОЦСЕТЕЙ */
-.social-modal-overlay {
-  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-  background: rgba(15, 14, 23, 0.75); backdrop-filter: blur(10px);
-  display: flex; align-items: center; justify-content: center; z-index: 2000;
-  opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
-}
-.social-modal-overlay.active { opacity: 1; pointer-events: auto; }
+    /* МОДАЛЬНОЕ ОКНО СОЦСЕТЕЙ */
+    .social-modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(15, 14, 23, 0.75); backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: center; z-index: 2000;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+    }
+    .social-modal-overlay.active { opacity: 1; pointer-events: auto; }
 
-.social-modal-card {
-  background: #252336;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 28px;
-  padding: 36px;
-  width: 100%;
-  max-width: 420px;
-  position: relative;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-  text-align: left;
-  max-height: 90vh;
-  overflow-y: auto;
-}
+    .social-modal-card {
+      background: #252336;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 28px;
+      padding: 36px;
+      width: 100%;
+      max-width: 420px;
+      position: relative;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+      text-align: left;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
 
-.social-modal-header {
-  font-size: 11px;
-  font-weight: 700;
-  color: #a88beb;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 6px;
-}
+    .social-modal-header {
+      font-size: 11px;
+      font-weight: 700;
+      color: #a88beb;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
 
-.social-modal-title {
-  font-family: 'Poppins', sans-serif;
-  font-size: 24px;
-  font-weight: 800;
-  color: #ffffff;
-  margin-bottom: 4px;
-}
+    .social-modal-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
 
-.social-modal-subtitle {
-  font-size: 13px;
-  color: #a09cb8;
-  margin-bottom: 24px;
-}
+    .social-modal-subtitle {
+      font-size: 13px;
+      color: #a09cb8;
+      margin-bottom: 24px;
+    }
 
-.social-modal-close {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #fff;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  transition: background 0.2s;
-}
-.social-modal-close:hover { background: rgba(255, 255, 255, 0.18); }
+    .social-modal-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #fff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: background 0.2s;
+    }
+    .social-modal-close:hover { background: rgba(255, 255, 255, 0.18); }
 
-.social-section-label {
-  font-family: 'Poppins', sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  color: #ffd1dc;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 12px;
-  margin-top: 16px;
-}
+    .social-section-label {
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #ffd1dc;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      margin-top: 16px;
+    }
 
-.social-links-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+    .social-links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
-.social-link-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 14px;
-  padding: 12px 16px;
-  text-decoration: none;
-  color: #ffffff;
-  transition: all 0.2s ease;
-}
+    .social-link-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 12px 16px;
+      text-decoration: none;
+      color: #ffffff;
+      transition: all 0.2s ease;
+    }
 
-.social-link-item:hover {
-  background: rgba(255, 255, 255, 0.09);
-  border-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
-}
+    .social-link-item:hover {
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
 
-.social-link-info {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
+    .social-link-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-.social-link-icon {
-  width: 36px;
-  height: 36px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-}
+    .social-link-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
 
-.social-link-text h4 {
-  font-size: 14px;
-  font-weight: 600;
-  color: #ffffff;
-}
+    .social-link-text h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #ffffff;
+    }
 
-.social-link-text p {
-  font-size: 12px;
-  color: #a09cb8;
-}
+    .social-link-text p {
+      font-size: 12px;
+      color: #a09cb8;
+    }
 
-.social-link-arrow {
-  color: #ffd1dc;
-  font-size: 16px;
-}
+    .social-link-arrow {
+      color: #ffd1dc;
+      font-size: 16px;
+    }
 
-.social-footer-note {
-  text-align: center;
-  margin-top: 24px;
-  font-size: 12px;
-  color: #8c88a3;
-}
-.social-footer-note a {
-  color: #ffd1dc;
-  text-decoration: none;
-}
+    .social-footer-note {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 12px;
+      color: #8c88a3;
+    }
+    .social-footer-note a {
+      color: #ffd1dc;
+      text-decoration: none;
+    }
 
-@media(max-width: 1000px) {
-  .social-trigger-btn { display: none; }
-}
+    @media(max-width: 1000px) {
+      .social-trigger-btn { display: none; }
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
@@ -562,10 +563,87 @@
     </div>
   </div>
 
+  <!-- ПРАВАЯ ПЛАВАЮЩАЯ КНОПКА «СОЦСЕТИ» -->
+  <button class="social-trigger-btn" onclick="openSocialModal()">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+    </svg>
+    <span>Соцсети</span>
+  </button>
+
+  <!-- МОДАЛЬНОЕ ОКНО СОЦСЕТЕЙ -->
+  <div id="socialModal" class="social-modal-overlay" onclick="closeSocialModalOnBg(event)">
+    <div class="social-modal-card">
+      <button class="social-modal-close" onclick="closeSocialModal()">×</button>
+      <div class="social-modal-header">Все ссылки</div>
+      <div class="social-modal-title">PonyOni в соцсетях</div>
+      <div class="social-modal-subtitle">Команда художников, риггеров и создателей контента</div>
+
+      <div class="social-section-label">Соцсети</div>
+      <div class="social-links-list">
+        <a href="https://www.twitch.tv/your_honni" target="_blank" class="social-link-item">
+          <div class="social-link-info">
+            <div class="social-link-icon">🎮</div>
+            <div class="social-link-text">
+              <h4>Twitch</h4>
+              <p>трансляции и творческий процесс</p>
+            </div>
+          </div>
+          <div class="social-link-arrow">→</div>
+        </a>
+
+        <a href="https://t.me/PonyOni" target="_blank" class="social-link-item">
+          <div class="social-link-info">
+            <div class="social-link-icon">📢</div>
+            <div class="social-link-text">
+              <h4>Telegram</h4>
+              <p>новости, анонсы и арты</p>
+            </div>
+          </div>
+          <div class="social-link-arrow">→</div>
+        </a>
+
+        <a href="https://vk.ru/club240301955" target="_blank" class="social-link-item">
+          <div class="social-link-info">
+            <div class="social-link-icon">💬</div>
+            <div class="social-link-text">
+              <h4>ВКонтакте</h4>
+              <p>сообщество и заказы</p>
+            </div>
+          </div>
+          <div class="social-link-arrow">→</div>
+        </a>
+      </div>
+
+      <div class="social-section-label">Связь и проекты</div>
+      <div class="social-links-list">
+        <a href="https://t.me/Honnistar" target="_blank" class="social-link-item">
+          <div class="social-link-info">
+            <div class="social-link-icon">✍️</div>
+            <div class="social-link-text">
+              <h4>Написать в Telegram</h4>
+              <p>по вопросам сотрудничества</p>
+            </div>
+          </div>
+          <div class="social-link-arrow">→</div>
+        </a>
+      </div>
+
+      <div class="social-footer-note">
+        Команда PonyOni ✨ · 2026
+      </div>
+    </div>
+  </div>
+
   <script>
     function openModal() { document.getElementById('orderModal').classList.add('active'); }
     function closeModal() { document.getElementById('orderModal').classList.remove('active'); }
     function closeModalOnBg(e) { if (e.target.id === 'orderModal') closeModal(); }
+
+    function openSocialModal() { document.getElementById('socialModal').classList.add('active'); }
+    function closeSocialModal() { document.getElementById('socialModal').classList.remove('active'); }
+    function closeSocialModalOnBg(e) { if (e.target.id === 'socialModal') closeSocialModal(); }
 
     function scrollToScreen(screenId) {
       document.getElementById(screenId).scrollIntoView({ behavior: 'smooth' });
@@ -592,7 +670,7 @@
 
     let isScrolling = false;
     window.addEventListener('wheel', (e) => {
-      if (document.getElementById('orderModal').classList.contains('active')) return;
+      if (document.getElementById('orderModal').classList.contains('active') || document.getElementById('socialModal').classList.contains('active')) return;
       if (isScrolling) return;
       
       let currentIdx = 0;
@@ -618,77 +696,5 @@
       }
     }, { passive: true });
   </script>
-  <!-- ПРАВАЯ ПЛАВАЮЩАЯ КНОПКА «СОЦСЕТИ» -->
-<button class="social-trigger-btn" onclick="openSocialModal()">
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-  </svg>
-  <span>Соцсети</span>
-</button>
-
-<!-- МОДАЛЬНОЕ ОКНО СОЦСЕТЕЙ -->
-<div id="socialModal" class="social-modal-overlay" onclick="closeSocialModalOnBg(event)">
-  <div class="social-modal-card">
-    <button class="social-modal-close" onclick="closeSocialModal()">×</button>
-    <div class="social-modal-header">Все ссылки</div>
-    <div class="social-modal-title">PonyOni в соцсетях</div>
-    <div class="social-modal-subtitle">Команда художников, риггеров и создателей контента</div>
-
-    <div class="social-section-label">Соцсети</div>
-    <div class="social-links-list">
-      <a href="https://www.twitch.tv/your_honni" target="_blank" class="social-link-item">
-        <div class="social-link-info">
-          <div class="social-link-icon">🎮</div>
-          <div class="social-link-text">
-            <h4>Twitch</h4>
-            <p>трансляции и творческий процесс</p>
-          </div>
-        </div>
-        <div class="social-link-arrow">→</div>
-      </a>
-
-      <a href="https://t.me/PonyOni" target="_blank" class="social-link-item">
-        <div class="social-link-info">
-          <div class="social-link-icon">📢</div>
-          <div class="social-link-text">
-            <h4>Telegram</h4>
-            <p>новости, анонсы и арты</p>
-          </div>
-        </div>
-        <div class="social-link-arrow">→</div>
-      </a>
-
-      <a href="https://vk.ru/club240301955" target="_blank" class="social-link-item">
-        <div class="social-link-info">
-          <div class="social-link-icon">💬</div>
-          <div class="social-link-text">
-            <h4>ВКонтакте</h4>
-            <p>сообщество и заказы</p>
-          </div>
-        </div>
-        <div class="social-link-arrow">→</div>
-      </a>
-    </div>
-
-    <div class="social-section-label">Связь и проекты</div>
-    <div class="social-links-list">
-      <a href="https://t.me/Honnistar" target="_blank" class="social-link-item">
-        <div class="social-link-info">
-          <div class="social-link-icon">✍️</div>
-          <div class="social-link-text">
-            <h4>Написать в Telegram</h4>
-            <p>по вопросам сотрудничества</p>
-          </div>
-        </div>
-        <div class="social-link-arrow">→</div>
-      </a>
-    </div>
-
-    <div class="social-footer-note">
-      Команда PonyOni ✨ · 2026
-    </div>
-  </div>
-</div>
 </body>
 </html>
