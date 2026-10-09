@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PonyOni — Команда авторов</title>
+  <title>PonyOni — Творческое сообщество</title>
   
   <link rel="icon" type="image/png" href="image/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,49 +18,40 @@
 
     html {
       scroll-behavior: smooth;
-      /* Включаем привязку скролла к каждому экрану */
-      scroll-snap-type: y mandatory;
     }
 
     body {
       font-family: 'Inter', sans-serif;
       color: #2b2b36;
       background: linear-gradient(135deg, #1b1a2e 0%, #2d2442 40%, #42325c 100%);
+      background-attachment: fixed;
       min-height: 100vh;
       overflow-x: hidden;
     }
 
-    /* КАЖДЫЙ ЭКРАН НА РАЗМЕР ВЕСЬ МОНИТОР */
+    /* ПОЛНОЭКРАННЫЕ БЛОКИ БЕЗ БОЛЬШИХ РАМОК */
     .full-screen-section {
       width: 100vw;
       height: 100vh;
-      scroll-snap-align: start;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 30px;
+      padding: 40px;
       position: relative;
     }
 
-    /* ВНУТРЕННЯЯ СТЕКЛЯННАЯ КАРТОЧКА ЭКРАНА */
-    .screen-card {
+    /* СОДЕРЖИМОЕ ЭКРАНА (СВОБОДНОЕ, БЕЗ СТЕКЛЯННОГО БЛОКА-ПОДЛОЖКИ) */
+    .screen-container {
       width: 100%;
-      max-width: 1100px;
-      height: 85vh;
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-radius: 36px;
-      padding: 40px 50px;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+      max-width: 1140px;
+      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      position: relative;
-      overflow: hidden;
+      padding: 20px 0;
     }
 
-    /* ШАПКА ВНУТРИ КАРТОЧКИ */
+    /* ШАПКА */
     .screen-header {
       display: flex;
       justify-content: space-between;
@@ -70,99 +61,107 @@
     .logo {
       font-family: 'Poppins', sans-serif;
       font-weight: 800;
-      font-size: 20px;
-      color: #1a1a24;
+      font-size: 22px;
+      color: #ffffff;
       text-decoration: none;
       display: flex;
       align-items: center;
       gap: 10px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
     }
     .logo img {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
       object-fit: cover;
     }
 
     .nav-hints {
       font-size: 13px;
-      color: #8a5cf5;
+      color: #e2d7f5;
       font-weight: 600;
-      background: #f3eff9;
-      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 8px 16px;
       border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
-    /* КОНТЕНТ ЭКРАНА (СЕТКА) */
+    /* ЦЕНТРАЛЬНЫЙ КОНТЕНТ */
     .screen-content {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 50px;
       align-items: center;
     }
 
     .author-info h1 {
       font-family: 'Poppins', sans-serif;
-      font-size: 42px;
+      font-size: 44px;
       font-weight: 800;
-      color: #1a1a24;
-      margin-bottom: 8px;
+      color: #ffffff;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
       gap: 16px;
+      text-shadow: 0 2px 15px rgba(0,0,0,0.2);
     }
 
     .author-avatar-big {
-      width: 64px;
-      height: 64px;
+      width: 68px;
+      height: 68px;
       border-radius: 50%;
       object-fit: cover;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      border: 3px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
     }
 
     .author-role {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 600;
-      color: #8a5cf5;
+      color: #d1b8ff;
       margin-bottom: 16px;
     }
 
     .author-desc {
-      font-size: 15px;
-      color: #555566;
-      line-height: 1.6;
+      font-size: 16px;
+      color: #e2d7f5;
+      line-height: 1.7;
       margin-bottom: 24px;
     }
 
     .tags-container {
       display: flex;
-      gap: 8px;
+      gap: 10px;
       flex-wrap: wrap;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
 
     .tag {
-      background: #f3eff9;
-      color: #6b46c1;
-      padding: 6px 14px;
-      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+      color: #ffffff;
+      padding: 8px 16px;
+      border-radius: 14px;
       font-size: 13px;
       font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
-    /* КАРТИНКА / ПОРТФОЛИО АВТОРА СПРАВА */
+    /* КАРТИНКИ СПРАВА */
     .author-visual {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      gap: 20px;
     }
 
     .author-visual img {
       width: 100%;
-      height: 260px;
+      height: 280px;
       object-fit: cover;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      border-radius: 24px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       transition: transform 0.3s;
     }
 
@@ -170,34 +169,36 @@
       transform: scale(1.03);
     }
 
-    /* КНОПКИ И ССЫЛКИ */
+    /* КНОПКИ */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 12px 28px;
+      padding: 14px 32px;
       border-radius: 50px;
       font-weight: 600;
-      font-size: 14px;
+      font-size: 15px;
       text-decoration: none;
       cursor: pointer;
       border: none;
       background: linear-gradient(135deg, #a88beb 0%, #e87999 100%);
       color: #ffffff;
-      box-shadow: 0 6px 20px rgba(168, 139, 235, 0.4);
-      transition: transform 0.2s;
+      box-shadow: 0 10px 25px rgba(168, 139, 235, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
     .btn:hover {
       transform: translateY(-2px);
+      box-shadow: 0 15px 30px rgba(232, 121, 153, 0.5);
     }
 
-    /* ИНДИКАТОР ПРОКРУТКИ ВНИЗ */
+    /* СТРЕЛКА ПРОКРУТКИ */
     .scroll-hint {
       text-align: center;
       font-size: 13px;
-      color: #888899;
+      color: rgba(255, 255, 255, 0.6);
       font-weight: 500;
       animation: bounce 2s infinite;
+      cursor: pointer;
     }
 
     @keyframes bounce {
@@ -206,38 +207,69 @@
       60% {transform: translateY(-3px);}
     }
 
-    /* АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ */
+    /* АДАПТИВНОСТЬ */
     @media (max-width: 900px) {
-      html {
-        scroll-snap-type: none; /* на телефонах лучше стандартный скролл */
-      }
       .full-screen-section {
         height: auto;
-        padding: 15px;
-      }
-      .screen-card {
-        height: auto;
-        padding: 24px;
+        min-height: 100vh;
+        padding: 20px;
       }
       .screen-content {
         grid-template-columns: 1fr;
       }
       .author-visual img {
-        height: 180px;
+        height: 200px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- ЭКРАН 1: ГЛАВНЫЙ (HONNILI) -->
-  <section id="screen-1" class="full-screen-section">
-    <div class="screen-card">
+  <!-- ЭКРАН 0: ПРИВЕТСТВИЕ И ОПИСАНИЕ СООБЩЕСТВА -->
+  <section id="screen-0" class="full-screen-section">
+    <div class="screen-container">
       <div class="screen-header">
-        <a href="#screen-1" class="logo">
+        <a href="#screen-0" class="logo">
           <img src="image/logo.png" alt="Logo"> PonyOni 🎄
         </a>
-        <div class="nav-hints">Автор 1 из 3 • Листайте вниз ↓</div>
+        <div class="nav-hints">О сообществе</div>
+      </div>
+
+      <div class="screen-content" style="grid-template-columns: 1.2fr 0.8fr;">
+        <div class="author-info">
+          <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.15); backdrop-filter:blur(10px); padding:6px 16px; border-radius:20px; font-size:13px; font-weight:600; color:#ffd1dc; margin-bottom:16px; border:1px solid rgba(255,255,255,0.2);">
+            ✨ Творческое объединение
+          </div>
+          <h1>Добро пожаловать в PonyOni!</h1>
+          <p class="author-desc">Мы — независимая команда художников, риггеров и разработчиков. Создаем уникальных персонажей, атмосферные иллюстрации, Live2D анимацию и воплощаем смелые визуальные миры в реальность.</p>
+          <div class="tags-container">
+            <span class="tag">Иллюстрации</span>
+            <span class="tag">Live2D Риг</span>
+            <span class="tag">Концепт-арт</span>
+            <span class="tag">Анимация</span>
+          </div>
+          <a href="#screen-1" class="btn">Познакомиться с авторами ↓</a>
+        </div>
+
+        <div class="author-visual">
+          <img src="image/artsait1.png" alt="Community Art 1">
+          <img src="image/HonArt1.png" alt="Community Art 2">
+        </div>
+      </div>
+
+      <div class="scroll-hint" onclick="scrollToScreen('screen-1')">Листайте вниз к авторам ↓</div>
+    </div>
+  </section>
+
+
+  <!-- ЭКРАН 1: HONNILI -->
+  <section id="screen-1" class="full-screen-section">
+    <div class="screen-container">
+      <div class="screen-header">
+        <a href="#screen-0" class="logo">
+          <img src="image/logo.png" alt="Logo"> PonyOni 🎄
+        </a>
+        <div class="nav-hints">Автор 1 из 3</div>
       </div>
 
       <div class="screen-content">
@@ -247,7 +279,7 @@
             HonniLi
           </h1>
           <div class="author-role">Художник &amp; Визуальный стиль</div>
-          <p class="author-desc">Создает ярких персонажей, детальные иллюстрации и концепт-арты. Отвечает за общее визуальное оформление и эстетику команды.</p>
+          <p class="author-desc">Создает ярких персонажей, детальные иллюстрации и концепт-арты. Отвечает за общее визуальное оформление, эстетику и характер персонажей команды.</p>
           <div class="tags-container">
             <span class="tag">Иллюстрации</span>
             <span class="tag">Персонажи</span>
@@ -262,16 +294,16 @@
         </div>
       </div>
 
-      <div class="scroll-hint">Следующий автор ↓</div>
+      <div class="scroll-hint" onclick="scrollToScreen('screen-2')">Следующий автор ↓</div>
     </div>
   </section>
 
 
   <!-- ЭКРАН 2: САХАРНАЯ ДЕВОЧКА -->
   <section id="screen-2" class="full-screen-section">
-    <div class="screen-card">
+    <div class="screen-container">
       <div class="screen-header">
-        <a href="#screen-1" class="logo">
+        <a href="#screen-0" class="logo">
           <img src="image/logo.png" alt="Logo"> PonyOni 🎄
         </a>
         <div class="nav-hints">Автор 2 из 3</div>
@@ -300,16 +332,16 @@
         </div>
       </div>
 
-      <div class="scroll-hint">Следующий автор ↓</div>
+      <div class="scroll-hint" onclick="scrollToScreen('screen-3')">Следующий автор ↓</div>
     </div>
   </section>
 
 
   <!-- ЭКРАН 3: SAD_POTATO_KATE -->
   <section id="screen-3" class="full-screen-section">
-    <div class="screen-card">
+    <div class="screen-container">
       <div class="screen-header">
-        <a href="#screen-1" class="logo">
+        <a href="#screen-0" class="logo">
           <img src="image/logo.png" alt="Logo"> PonyOni 🎄
         </a>
         <div class="nav-hints">Автор 3 из 3 • Финал</div>
@@ -328,7 +360,7 @@
             <span class="tag">Персонажи</span>
             <span class="tag">Атмосфера</span>
           </div>
-          <a href="#screen-1" class="btn">В начало сайта ↑</a>
+          <a href="#screen-0" class="btn">В начало сайта ↑</a>
         </div>
 
         <div class="author-visual">
@@ -337,11 +369,51 @@
         </div>
       </div>
 
-      <div style="text-align: center; font-size: 13px; color: #888899;">
+      <div style="text-align: center; font-size: 13px; color: rgba(255,255,255,0.5);">
         © 2026, команда PonyOni. Счастливого Нового года! ✨
       </div>
     </div>
   </section>
+
+
+  <!-- СКРИПТ ДЛЯ ПЛАВНОГО СКРОЛЛА (ПАРУ СЕКУНД ИЛИ ПОЛНЫЙ МЯГКИЙ ШАГ) -->
+  <script>
+    function scrollToScreen(screenId) {
+      document.getElementById(screenId).scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+
+    // Плавная прокрутка колесиком мыши по одному экрану за раз
+    let isScrolling = false;
+    const sections = ['screen-0', 'screen-1', 'screen-2', 'screen-3'];
+    
+    window.addEventListener('wheel', (e) => {
+      if (isScrolling) return;
+      
+      let currentIdx = 0;
+      let minDistance = Infinity;
+      
+      sections.forEach((id, idx) => {
+        const el = document.getElementById(id);
+        const rect = el.getBoundingClientRect();
+        if (Math.abs(rect.top) < minDistance) {
+          minDistance = Math.abs(rect.top);
+          currentIdx = idx;
+        }
+      });
+
+      if (e.deltaY > 50 && currentIdx < sections.length - 1) {
+        isScrolling = true;
+        document.getElementById(sections[currentIdx + 1]).scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => { isScrolling = false; }, 800);
+      } else if (e.deltaY < -50 && currentIdx > 0) {
+        isScrolling = true;
+        document.getElementById(sections[currentIdx - 1]).scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => { isScrolling = false; }, 800);
+      }
+    }, { passive: true });
+  </script>
 
 </body>
 </html>
