@@ -3,53 +3,277 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PonyOni — Новогодняя творческая команда</title>
+  <title>PonyOni — Команда разработчиков и художников</title>
   
-  <!-- Иконка вкладки -->
   <link rel="icon" type="image/png" href="image/logo.png">
-  
-  <!-- Шрифты -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
   
-  <!-- Стили -->
-  <link rel="stylesheet" href="./style.css">
+  <!-- Встроенные стили, чтобы ничего не ломалось и не зависело от кэша CSS -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #2b2b36;
+      background: linear-gradient(135deg, #1b1a2e 0%, #2d2442 40%, #42325c 100%);
+      background-attachment: fixed;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+    .dashboard-container {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(20px);
+      border-radius: 36px;
+      padding: 40px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+    .logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      color: #1a1a24;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo img {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+    }
+    .menu {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .menu a {
+      color: #555566;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .menu a:hover {
+      color: #6b46c1;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #a88beb 0%, #e87999 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(168, 139, 235, 0.4);
+    }
+    .btn-secondary {
+      background: #f3eff9;
+      color: #6b46c1;
+    }
+    .hero-dashboard {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(246, 236, 243, 0.8) 0%, rgba(226, 215, 245, 0.8) 100%);
+      border-radius: 28px;
+      padding: 40px;
+      margin-bottom: 30px;
+    }
+    .profile-info {
+      flex: 1.2;
+    }
+    .profile-info h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      color: #1a1a24;
+      margin-bottom: 12px;
+    }
+    .profile-info p {
+      color: #555566;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .hero-img-large {
+      flex: 1;
+    }
+    .hero-img-large img {
+      border-radius: 20px;
+      width: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    /* ГЛАВНАЯ СЕТКА НА 3 КОЛОНКИ */
+    .grid-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 30px;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    }
+    .card h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: #1a1a24;
+      margin-bottom: 6px;
+    }
+    .card p.desc {
+      font-size: 13px;
+      color: #66667a;
+      margin-bottom: 20px;
+    }
+    .works-preview {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .work-thumb img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+    }
+    .categories-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .cat-btn {
+      background: #f3eff9;
+      border: none;
+      padding: 12px;
+      border-radius: 16px;
+      font-weight: 600;
+      color: #6b46c1;
+      text-align: center;
+      width: 100%;
+    }
+    .artists-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .artist-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #fcfbfe;
+      padding: 10px 14px;
+      border-radius: 16px;
+    }
+    .artist-ava {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .artist-name {
+      font-weight: 700;
+      font-size: 14px;
+      color: #1a1a24;
+    }
+    .price-table-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    }
+    .price-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f0f5;
+      font-size: 14px;
+      align-items: center;
+    }
+    .price-row.header {
+      font-weight: 700;
+      color: #8a5cf5;
+      font-size: 13px;
+    }
+    .price-pill {
+      background: #f3eff9;
+      padding: 4px 10px;
+      border-radius: 10px;
+      font-weight: 600;
+      color: #6b46c1;
+    }
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+    }
+    @media (max-width: 900px) {
+      .grid-layout {
+        grid-template-columns: 1fr;
+      }
+      .hero-dashboard {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
 
   <div class="container">
-    <!-- ОСНОВНОЙ СТЕКЛЯННЫЙ ДАШБОРД -->
     <div class="dashboard-container">
       
       <!-- ШАПКА -->
       <header>
         <div class="nav">
-          <a href="#hero" class="logo">
-            <span style="width:40px;height:40px">
-              <img src="image/logo.png" alt="Logo">
-            </span>
+          <a href="#" class="logo">
+            <img src="image/logo.png" alt="Logo">
             PonyOni 🎄
           </a>
-          <ul class="menu" id="menu">
+          <ul class="menu">
             <li><a href="#works">Работы</a></li>
             <li><a href="#team">Команда</a></li>
             <li><a href="#services">Услуги</a></li>
-            <li><a href="#contacts">Контакты</a></li>
           </ul>
           <a href="#contacts" class="btn btn-primary">Связаться</a>
         </div>
       </header>
 
-      <!-- ГЛАВНЫЙ БЛОК ПРОФИЛЯ / HERO -->
-      <section id="hero" class="hero-dashboard">
+      <!-- HERO СЕКЦИЯ -->
+      <section class="hero-dashboard">
         <div class="profile-info">
-          <div class="team-badge">
-            <img src="image/logo.png" alt="" style="width:16px;height:16px;border-radius:50%"> 
-            PonyOni Team • Приём новогодних заказов открыт ✨
+          <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.8); padding:6px 14px; border-radius:20px; font-size:12px; font-weight:600; color:#8a5cf5; margin-bottom:12px;">
+            ✨ Приём новогодних заказов открыт
           </div>
-          <h1 style="margin-top: 16px;">Творим зимнюю сказку вместе!</h1>
+          <h1>Творим зимнюю сказку вместе!</h1>
           <p>Привет! Мы — творческая команда PonyOni. Создаем арты, Live2D-риггинг, анимацию и новогоднее настроение в каждом штрихе.</p>
-          <div class="hero-cta">
+          <div style="display: flex; gap: 12px;">
             <a href="#works" class="btn btn-primary">Смотреть работы</a>
             <a href="#services" class="btn btn-secondary">Прайс-лист</a>
           </div>
@@ -59,59 +283,41 @@
         </div>
       </section>
 
-      <!-- СЕТКА КОНТЕНТА (Дашборд) -->
+      <!-- СЕТКА ДАШБОРДА (3 КОЛОНКИ) -->
       <div class="grid-layout">
         
-        <!-- КОЛОНКА 1: ПРЕВЬЮ РАБОТ И АНИМАЦИИ -->
+        <!-- Колонка 1: Работы -->
         <div class="card" id="works">
-          <h2 class="section-title">Anime scene</h2>
-          <p class="section-desc">Live2D Art &amp; Character Showcase</p>
-          
+          <h2>Anime scene</h2>
+          <p class="desc">Live2D Art &amp; Character Showcase</p>
           <div class="works-preview">
-            <div class="work-thumb">
-              <img src="image/HonArt1.png" alt="Art 1">
-            </div>
-            <div class="work-thumb">
-              <img src="image/knight.png" alt="Art 2">
-            </div>
+            <div class="work-thumb"><img src="image/HonArt1.png" alt="Art 1"></div>
+            <div class="work-thumb"><img src="image/knight.png" alt="Art 2"></div>
           </div>
-          
-          <a href="#services" class="btn btn-secondary" style="width: 100%;">Посмотреть все работы</a>
+          <a href="#services" class="btn btn-secondary" style="width: 100%; text-align: center;">Все работы</a>
         </div>
 
-        <!-- КОЛОНКА 2: КАТЕГОРИИ И НАПРАВЛЕНИЯ -->
+        <!-- Колонка 2: Категории -->
         <div class="card">
-          <h2 class="section-title">Категории</h2>
-          <p class="section-desc">Направления команды</p>
-          
+          <h2>Категории</h2>
+          <p class="desc">Направления команды</p>
           <div class="categories-list">
             <button class="cat-btn">Chibi Rig &amp; Live2D</button>
             <button class="cat-btn">Full Body Art</button>
             <button class="cat-btn">Арт &amp; Иллюстрация</button>
-            <button class="cat-btn">ИИ-генерация</button>
-          </div>
-          
-          <div class="center" style="color: #8a5cf5; font-weight: 600; font-size: 14px;">
-            ❄ Праздничные скидки на риг!
           </div>
         </div>
 
-        <!-- КОЛОНКА 3: КОМАНДА (АРТИСТЫ) -->
+        <!-- Колонка 3: Команда (3 участника) -->
         <div class="card" id="team">
-          <h2 class="section-title">Команда</h2>
-          <p class="section-desc">Наши творцы</p>
-          
+          <h2>Команда</h2>
+          <p class="desc">Наши творцы</p>
           <div class="artists-list">
             <div class="artist-item">
               <img src="image/HonniLi.png" alt="HonniLi" class="artist-ava">
               <div>
                 <div class="artist-name">HonniLi</div>
-                <div style="font-size: 12px; color:
-Error 404 (Not Found)!!1
-fonts.googleapis.com
-
-
-;">Художник</div>
+                <div style="font-size: 11px; color: #66667a;">Художник</div>
               </div>
             </div>
             
@@ -119,7 +325,7 @@ fonts.googleapis.com
               <img src="image/sugar.jpg" alt="Sugar" class="artist-ava">
               <div>
                 <div class="artist-name">Сахарная девочка</div>
-                <div style="font-size: 12px; color: #66667a;">Риггер &amp; ИИ</div>
+                <div style="font-size: 11px; color: #66667a;">Риггер &amp; ИИ</div>
               </div>
             </div>
 
@@ -127,7 +333,7 @@ fonts.googleapis.com
               <img src="image/sad_potato_kate.jpg" alt="Kate" class="artist-ava">
               <div>
                 <div class="artist-name">sad_potato_kate</div>
-                <div style="font-size: 12px; color: #66667a;">Художник</div>
+                <div style="font-size: 11px; color: #66667a;">Художник</div>
               </div>
             </div>
           </div>
@@ -135,10 +341,10 @@ fonts.googleapis.com
 
       </div>
 
-      <!-- НИЖНИЙ БЛОК: ТАБЛИЦА ЦЕН И УСЛОВИЙ -->
-      <div class="card price-table-card" id="services" style="margin-top: 24px;">
-        <h2 class="section-title">Праздничный прайс-лист</h2>
-        <p class="section-desc">Прозрачные цены на услуги нашей команды</p>
+      <!-- ТАБЛИЦА ЦЕН -->
+      <div class="card price-table-card" id="services">
+        <h2>Праздничный прайс-лист</h2>
+        <p class="desc">Прозрачные цены на услуги нашей команды</p>
 
         <div class="price-table">
           <div class="price-row header">
@@ -166,32 +372,14 @@ fonts.googleapis.com
             <div>-</div>
           </div>
         </div>
-
-        <div class="total-banner">
-          <div>
-            <span>❄ Новогодний комплект (Full Body + Rig)</span>
-            <div style="font-size: 12px; opacity: 0.9;">Специальное предложение зимнего сезона</div>
-          </div>
-          <div style="font-size: 20px;">15 500 ₽</div>
-        </div>
       </div>
-
-      <!-- КОНТАКТЫ -->
-      <section id="contacts" class="center" style="margin-top: 40px; padding: 20px 0;">
-        <h2>Свяжитесь с нами</h2>
-        <p style="color: #66667a; margin-bottom: 20px;">Обсудим ваш проект и воплотим его в лучшем виде!</p>
-        <div style="display: flex; justify-content: center; gap: 16px;">
-          <a href="https://t.me/PonyOni" target="_blank" class="btn btn-primary">Telegram канал</a>
-          <a href="https://vk.ru/club240301955" target="_blank" class="btn btn-secondary">ВКонтакте</a>
-        </div>
-      </section>
 
     </div>
   </div>
 
   <footer>
-    <p>© 2026, команда PonyOni. Счастливого Нового года и творческих успехов! ✨</p>
+    <p>© 2026, команда PonyOni. Счастливого Нового года! ✨</p>
   </footer>
 
 </body>
-</html>#66667a
+</html>
