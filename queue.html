@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PonyOni — Полная очередь заказов</title>
+  
+  <link rel="icon" type="image/png" href="image/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #2b2b36;
+      background: linear-gradient(135deg, #1b1a2e 0%, #2d2442 40%, #42325c 100%);
+      background-attachment: fixed;
+      min-height: 100vh;
+      padding: 120px 20px 60px 20px;
+    }
+
+    /* ФИКСИРОВАННАЯ ШАПКА */
+    .global-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      z-index: 100;
+      background: rgba(27, 26, 46, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header-container {
+      width: 100%;
+      max-width: 1140px;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      color: #ffffff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .logo img { width: 36px; height: 36px; border-radius: 10px; object-fit: cover; }
+    
+    .nav-menu {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      padding: 10px 28px;
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .nav-menu a {
+      color: #e2d7f5;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .nav-menu a:hover { color: #ffffff; font-weight: 700; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 10px 24px; border-radius: 50px; font-weight: 600; font-size: 14px;
+      text-decoration: none; cursor: pointer; border: none;
+      background: linear-gradient(135deg, #a88beb 0%, #e87999 100%); color: #ffffff;
+      box-shadow: 0 10px 25px rgba(168, 139, 235, 0.4);
+      transition: transform 0.2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-secondary { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.25); color: #fff; }
+
+    /* КОНТЕЙНЕР ОЧЕРЕДИ */
+    .queue-page-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .page-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 6px;
+      text-shadow: 0 2px 15px rgba(0,0,0,0.2);
+    }
+    .page-desc {
+      font-size: 15px;
+      color: #e2d7f5;
+      margin-bottom: 30px;
+    }
+
+    /* КАРТОЧКА ЗАКАЗА (в стиле примера) */
+    .queue-card-item {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      padding: 24px 28px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      position: relative;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    }
+
+    .order-num {
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      color: #ffffff;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .order-details {
+      flex: 1;
+    }
+
+    .client-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .service-type {
+      font-size: 14px;
+      color: #d1b8ff;
+      margin-bottom: 16px;
+    }
+
+    /* ЭТАПЫ ВЫПОЛНЕНИЯ */
+    .steps-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .step-item.active {
+      color: #ffffff;
+      font-weight: 600;
+    }
+    .step-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+    }
+    .step-item.active .step-dot {
+      background: #a88beb;
+      box-shadow: 0 0 10px #a88beb;
+    }
+
+    .update-time {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* СТАТУС СПРАВА СВЕРХУ */
+    .status-badge {
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    footer { text-align: center; padding: 40px 0 20px 0; color: rgba(255, 255, 255, 0.5); font-size: 14px; }
+
+    @media(max-width: 768px) {
+      .queue-card-item { flex-direction: column; padding: 20px; }
+      .status-badge { position: static; margin-bottom: 12px; display: inline-block; }
+      .nav-menu { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ФИКСИРОВАННАЯ ШАПКА -->
+  <header class="global-header">
+    <div class="header-container">
+      <a href="index.html#screen-intro" class="logo">
+        <img src="image/logo.png" alt="Logo"> PonyOni 🎄
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="team.html">Команда</a></li>
+        <li><a href="index.html#screen-services">Услуги</a></li>
+        <li><a href="index.html#screen-queue">Очередь</a></li>
+        <li><a href="index.html#screen-reviews">Отзывы</a></li>
+      </ul>
+
+      <button class="btn" onclick="openModal()">Заказать</button>
+    </div>
+  </header>
+
+  <div class="queue-page-container">
+    <h1 class="page-title">Очередь заказов</h1>
+    <p class="page-desc">Актуальный статус выполнения всех текущих проектов команды • Обновлено 10.10.2026</p>
+
+    <!-- ЗАКАЗ 01 -->
+    <div class="queue-card-item">
+      <div class="order-num">01</div>
+      <div class="order-details">
+        <div class="client-name">Д••••• ...........</div>
+        <div class="service-type">Эмоуты</div>
+        <div class="steps-row">
+          <div class="step-item active"><div class="step-dot"></div> Арт</div>
+          <span>—</span>
+          <div class="step-item"><div class="step-dot"></div> Правки</div>
+          <span>—</span>
+          <div class="step-item"><div class="step-dot"></div> Готово</div>
+        </div>
+        <div class="update-time">Обновлено 9 октября, 15:50</div>
+      </div>
+      <div class="status-badge" style="background: rgba(86, 171, 235, 0.2); border-color: rgba(86,171,235,0.4); color: #8cd3ff;">Лэйн</div>
+    </div>
+
+    <!-- ЗАКАЗ 02 -->
+    <div class="queue-card-item">
+      <div class="order-num">02</div>
+      <div class="order-details">
+        <div class="client-name">G••••••••</div>
+        <div class="service-type">PNG VTuber Model</div>
+        <div class="steps-row">
+          <div class="step-item active"><div class="step-dot"></div> Арт</div>
+          <span>—</span>
+          <div class="step-item"><div class="step-dot"></div> Правки</div>
+          <span>—</span>
+          <div class="step-item"><div class="step-dot"></div> Готово</div>
+        </div>
+        <div class="update-time">Обновлено 9 октября, 15:44</div>
+      </div>
+      <div class="status-badge" style="background: rgba(56, 239, 125, 0.2); border-color: rgba(56,239,125,0.4); color: #73ffb2;">Покрас</div>
+    </div>
+
+    <!-- ЗАКАЗ 03 -->
+    <div class="queue-card-item">
+      <div class="order-num">03</div>
+      <div class="order-details">
+        <div class="client-name">M••••• ...</div>
+        <div class="service-type">YCH «Осенний»</div>
+        <div class="steps-row">
+          <div class="step-item active"><div class="step-dot"></div> Арт</div>
+          <span>—</span>
+          <div class="step-item"><div class="step-dot"></div> Правки</div>
+          <span>—</span>
+          <div class="step-item"><div class="step-dot"></div> Готово</div>
+        </div>
+        <div class="update-time">Обновлено 9 октября, 15:44</div>
+      </div>
+      <div class="status-badge" style="background: rgba(232, 121, 153, 0.2); border-color: rgba(232,121,153,0.4); color: #ffb3c9;">Рендер</div>
+    </div>
+
+    <!-- ЗАКАЗ 04 -->
+    <div class="queue-card-item">
+      <div class="order-num">04</div>
+      <div class="order-details">
+        <div class="client-name">П••••••• ......</div>
+        <div class="service-type">Full Body VTuber под ключ</div>
+        <div class="steps-row">
+          <div class="step-item active"><div class="step-dot"></div> Арт</div>
+          <span>—</span>
+          <div class="step-item"><div class="step-dot"></div> Правки</div>
+          <span>—</span>
+          <div class="step-item"><div class="step-dot"></div> Готово</div>
+        </div>
+        <div class="update-time">Обновлено 9 октября, 15:28</div>
+      </div>
+      <div class="status-badge" style="background: rgba(232, 121, 153, 0.2); border-color: rgba(232,121,153,0.4); color: #ffb3c9;">Рендер</div>
+    </div>
+
+    <!-- ЗАКАЗ 05 -->
+    <div class="queue-card-item">
+      <div class="order-num">05</div>
+      <div class="order-details">
+        <div class="client-name">Р••• ......</div>
+        <div class="service-type">Live2D Ригмика головы</div>
+        <div class="steps-row">
+          <div class="step-item active"><div class="step-dot"></div> Арт</div>
+          <span>—</span>
+          <div class="step-item active"><div class="step-dot"></div> Правки</div>
+          <span>—</span>
+          <div class="step-item"><div class="step-dot"></div> Готово</div>
+          <span>—</span>
+          <div class="step-item active"><div class="step-dot"></div> Риг</div>
+        </div>
+        <div class="update-time">Обновлено 9 октября, 15:56</div>
+      </div>
+      <div class="status-badge" style="background: rgba(168, 139, 235, 0.2); border-color: rgba(168,139,235,0.4); color: #d1b8ff;">Риг головы</div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026, команда PonyOni. Все права защищены. ✨</p>
+  </footer>
+
+  <!-- МОДАЛКА -->
+  <div id="orderModal" class="modal-overlay" onclick="closeModalOnBg(event)">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <h3>Хочешь сделать заказ?</h3>
+      <p>Напиши нам — обсудим твою идею, подберём формат и рассчитаем стоимость. Отвечаем в течении суток.</p>
+      <div style="display: flex; gap: 12px; justify-content: center;">
+        <a href="https://t.me/Honnistar" target="_blank" class="btn">Telegram</a>
+        <a href="https://vk.ru/club240301955" target="_blank" class="btn btn-secondary">ВКонтакте</a>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(15, 14, 23, 0.7); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center; z-index: 1000;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+    }
+    .modal-overlay.active { opacity: 1; pointer-events: auto; }
+    .modal-card {
+      background: #252336; border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 32px; padding: 40px; max-width: 440px; width: 90%; text-align: center;
+      color: #fff; position: relative; box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    }
+    .modal-card h3 { font-family: 'Poppins', sans-serif; font-size: 26px; margin-bottom: 14px; }
+    .modal-card p { font-size: 15px; color: #d1b8ff; line-height: 1.6; margin-bottom: 30px; }
+    .modal-close { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.1); border: none; color: #fff; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 18px; }
+  </style>
+
+  <script>
+    function openModal() { document.getElementById('orderModal').classList.add('active'); }
+    function closeModal() { document.getElementById('orderModal').classList.remove('active'); }
+    function closeModalOnBg(e) { if (e.target.id === 'orderModal') closeModal(); }
+  </script>
+</body>
+</html>
