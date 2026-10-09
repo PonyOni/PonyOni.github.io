@@ -9,7 +9,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
   
-  <!-- Встроенные стили, чтобы ничего не ломалось и не зависело от кэша CSS -->
   <style>
     * {
       margin: 0;
@@ -55,6 +54,7 @@
       width: 36px;
       height: 36px;
       border-radius: 10px;
+      object-fit: cover;
     }
     .menu {
       display: flex;
@@ -120,10 +120,12 @@
     .hero-img-large img {
       border-radius: 20px;
       width: 100%;
+      max-height: 340px;
       object-fit: cover;
       display: block;
     }
-    /* ГЛАВНАЯ СЕТКА НА 3 КОЛОНКИ */
+    
+    /* СЕТКА СЕКЦИЙ */
     .grid-layout {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -148,35 +150,56 @@
       color: #66667a;
       margin-bottom: 20px;
     }
-    .works-preview {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-    .work-thumb img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 16px;
-      display: block;
-    }
-    .categories-list {
+    
+    /* СТИЛИ ДЛЯ АВТОРОВ */
+    .author-section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: #1a1a24;
+      margin: 40px 0 20px 0;
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 16px;
+      align-items: center;
+      gap: 12px;
     }
-    .cat-btn {
-      background: #f3eff9;
-      border: none;
-      padding: 12px;
-      border-radius: 16px;
-      font-weight: 600;
-      color: #6b46c1;
-      text-align: center;
+    .author-avatar-title {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .portfolio-item {
+      background: #ffffff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+      padding: 16px;
+    }
+    .portfolio-item img {
       width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 14px;
+      margin-bottom: 12px;
     }
+    .portfolio-item h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1a1a24;
+      margin-bottom: 4px;
+    }
+    .portfolio-item p {
+      font-size: 12px;
+      color: #66667a;
+    }
+
     .artists-list {
       display: flex;
       flex-direction: column;
@@ -201,11 +224,13 @@
       font-size: 14px;
       color: #1a1a24;
     }
+
     .price-table-card {
       background: #ffffff;
       border-radius: 24px;
       padding: 28px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+      margin-bottom: 30px;
     }
     .price-row {
       display: grid;
@@ -235,7 +260,7 @@
       font-size: 14px;
     }
     @media (max-width: 900px) {
-      .grid-layout {
+      .grid-layout, .portfolio-grid {
         grid-template-columns: 1fr;
       }
       .hero-dashboard {
@@ -257,9 +282,9 @@
             PonyOni 🎄
           </a>
           <ul class="menu">
-            <li><a href="#works">Работы</a></li>
             <li><a href="#team">Команда</a></li>
-            <li><a href="#services">Услуги</a></li>
+            <li><a href="#works">Работы авторов</a></li>
+            <li><a href="#services">Прайс</a></li>
           </ul>
           <a href="#contacts" class="btn btn-primary">Связаться</a>
         </div>
@@ -274,7 +299,7 @@
           <h1>Творим зимнюю сказку вместе!</h1>
           <p>Привет! Мы — творческая команда PonyOni. Создаем арты, Live2D-риггинг, анимацию и новогоднее настроение в каждом штрихе.</p>
           <div style="display: flex; gap: 12px;">
-            <a href="#works" class="btn btn-primary">Смотреть работы</a>
+            <a href="#works" class="btn btn-primary">Работы авторов</a>
             <a href="#services" class="btn btn-secondary">Прайс-лист</a>
           </div>
         </div>
@@ -283,62 +308,96 @@
         </div>
       </section>
 
-      <!-- СЕТКА ДАШБОРДА (3 КОЛОНКИ) -->
-      <div class="grid-layout">
-        
-        <!-- Колонка 1: Работы -->
-        <div class="card" id="works">
-          <h2>Anime scene</h2>
-          <p class="desc">Live2D Art &amp; Character Showcase</p>
-          <div class="works-preview">
-            <div class="work-thumb"><img src="image/HonArt1.png" alt="Art 1"></div>
-            <div class="work-thumb"><img src="image/knight.png" alt="Art 2"></div>
-          </div>
-          <a href="#services" class="btn btn-secondary" style="width: 100%; text-align: center;">Все работы</a>
-        </div>
-
-        <!-- Колонка 2: Категории -->
-        <div class="card">
-          <h2>Категории</h2>
-          <p class="desc">Направления команды</p>
-          <div class="categories-list">
-            <button class="cat-btn">Chibi Rig &amp; Live2D</button>
-            <button class="cat-btn">Full Body Art</button>
-            <button class="cat-btn">Арт &amp; Иллюстрация</button>
-          </div>
-        </div>
-
-        <!-- Колонка 3: Команда (3 участника) -->
-        <div class="card" id="team">
-          <h2>Команда</h2>
-          <p class="desc">Наши творцы</p>
-          <div class="artists-list">
-            <div class="artist-item">
-              <img src="image/HonniLi.png" alt="HonniLi" class="artist-ava">
-              <div>
-                <div class="artist-name">HonniLi</div>
-                <div style="font-size: 11px; color: #66667a;">Художник</div>
-              </div>
+      <!-- БЛОК С КОМАНДОЙ (ОБЩИЙ) -->
+      <div class="card" id="team" style="margin-bottom: 40px;">
+        <h2>Наша команда</h2>
+        <p class="desc">Участники творческого объединения</p>
+        <div class="artists-list" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+          <div class="artist-item">
+            <img src="image/HonniLi.png" alt="HonniLi" class="artist-ava">
+            <div>
+              <div class="artist-name">HonniLi</div>
+              <div style="font-size: 11px; color: #66667a;">Художник</div>
             </div>
-            
-            <div class="artist-item">
-              <img src="image/sugar.jpg" alt="Sugar" class="artist-ava">
-              <div>
-                <div class="artist-name">Сахарная девочка</div>
-                <div style="font-size: 11px; color: #66667a;">Риггер &amp; ИИ</div>
-              </div>
+          </div>
+          
+          <div class="artist-item">
+            <img src="image/sugar.jpg" alt="Sugar" class="artist-ava">
+            <div>
+              <div class="artist-name">Сахарная девочка</div>
+              <div style="font-size: 11px; color: #66667a;">Риггер &amp; ИИ</div>
             </div>
+          </div>
 
-            <div class="artist-item">
-              <img src="image/sad_potato_kate.jpg" alt="Kate" class="artist-ava">
-              <div>
-                <div class="artist-name">sad_potato_kate</div>
-                <div style="font-size: 11px; color: #66667a;">Художник</div>
-              </div>
+          <div class="artist-item">
+            <img src="image/sad_potato_kate.jpg" alt="Kate" class="artist-ava">
+            <div>
+              <div class="artist-name">sad_potato_kate</div>
+              <div style="font-size: 11px; color: #66667a;">Художник</div>
             </div>
           </div>
         </div>
+      </div>
 
+      <!-- РАЗДЕЛ РАБОТ: HONNILI -->
+      <div id="works">
+        <div class="author-section-title">
+          <img src="image/HonniLi.png" alt="HonniLi" class="author-avatar-title">
+          Работы HonniLi (Художник)
+        </div>
+        <div class="portfolio-grid">
+          <div class="portfolio-item">
+            <img src="image/HonArt1.png" alt="Art 1">
+            <h4>Концепт персонажа</h4>
+            <p>Иллюстрация и проработка стиля</p>
+          </div>
+          <div class="portfolio-item">
+            <img src="image/knight.png" alt="Art 2">
+            <h4>Арт «Рыцарь»</h4>
+            <p>Детализированный арт</p>
+          </div>
+          <div class="portfolio-item">
+            <img src="image/artsait1.png" alt="Art 3">
+            <h4>Командный арт</h4>
+            <p>Праздничная иллюстрация</p>
+          </div>
+        </div>
+
+        <!-- РАЗДЕЛ РАБОТ: САХАРНАЯ ДЕВОЧКА -->
+        <div class="author-section-title">
+          <img src="image/sugar.jpg" alt="Sugar" class="author-avatar-title">
+          Работы Сахарной девочки (Риггер &amp; ИИ-специалист)
+        </div>
+        <div class="portfolio-grid">
+          <div class="portfolio-item">
+            <img src="image/sugar.jpg" alt="Rig 1">
+            <h4>Live2D Риг</h4>
+            <p>Оживление и физика моделей</p>
+          </div>
+          <div class="portfolio-item">
+            <img src="image/HonArt1.png" alt="Rig 2">
+            <h4>ИИ-генерация &amp; Арт</h4>
+            <p>Обработка и доработка графики</p>
+          </div>
+        </div>
+
+        <!-- РАЗДЕЛ РАБОТ: SAD_POTATO_KATE -->
+        <div class="author-section-title">
+          <img src="image/sad_potato_kate.jpg" alt="Kate" class="author-avatar-title">
+          Работы sad_potato_kate (Художник)
+        </div>
+        <div class="portfolio-grid">
+          <div class="portfolio-item">
+            <img src="image/knight.png" alt="Kate Art 1">
+            <h4>Атмосферный арт</h4>
+            <p>Персонажи и окружение</p>
+          </div>
+          <div class="portfolio-item">
+            <img src="image/HonArt1.png" alt="Kate Art 2">
+            <h4>Скетчи и концепты</h4>
+            <p>Ранние наброски и стилизация</p>
+          </div>
+        </div>
       </div>
 
       <!-- ТАБЛИЦА ЦЕН -->
@@ -373,6 +432,16 @@
           </div>
         </div>
       </div>
+
+      <!-- КОНТАКТЫ -->
+      <section id="contacts" style="text-align: center; padding: 20px 0;">
+        <h2>Свяжитесь с нами</h2>
+        <p style="color: #66667a; margin-bottom: 20px;">Обсудим ваш проект и воплотим его в лучшем виде!</p>
+        <div style="display: flex; justify-content: center; gap: 16px;">
+          <a href="https://t.me/Honnistar" target="_blank" class="btn btn-primary">Telegram</a>
+          <a href="https://www.twitch.tv/your_honni" target="_blank" class="btn btn-secondary">Twitch</a>
+        </div>
+      </section>
 
     </div>
   </div>
