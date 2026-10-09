@@ -129,20 +129,20 @@
       filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
     }
 
-    /* ШИРОКИЙ ЛЕВЫЙ БЛОК С ТАБЛИЦЕЙ ЦЕН И ДОП. УСЛУГАМИ */
+    /* РАСШИРЕННЫЙ И ЧИТАЕМЫЙ ЛЕВЫЙ БЛОК */
     .glass-price-box {
       position: absolute;
       top: 95px;
       left: 40px;
       z-index: 4;
-      background: rgba(255, 255, 255, 0.06);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(27, 26, 46, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 24px;
-      padding: 20px 22px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-      width: 440px;
+      padding: 24px 28px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      width: 520px; /* Сделали значительно шире */
     }
 
     /* ПУСТОЙ ПРАВЫЙ НИЖНИЙ БЛОК */
@@ -163,31 +163,31 @@
 
     .box-title {
       font-family: 'Poppins', sans-serif;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 700;
       color: #ffd1dc;
       text-transform: uppercase;
       letter-spacing: 1px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
-    /* СТИЛИ ТАБЛИЦЫ ЦЕН */
+    /* СТИЛИ ЧИТАЕМОЙ ТАБЛИЦЫ ЦЕН */
     .price-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 12px;
-      margin-bottom: 12px;
+      font-size: 14px; /* Увеличенный размер шрифта для читаемости */
+      margin-bottom: 16px;
     }
     .price-table th, .price-table td {
-      padding: 5px 6px;
+      padding: 8px 10px;
       text-align: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
     .price-table th {
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
       color: #ffd1dc;
-      font-size: 11px;
+      font-size: 13px;
     }
     .price-table td:first-child {
       text-align: left;
@@ -201,16 +201,16 @@
 
     /* СЕКЦИЯ ДОП. УСЛУГ ВНУТРИ БЛОКА */
     .extras-section {
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
-      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      padding-top: 12px;
     }
     .extra-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 12px;
+      font-size: 14px; /* Увеличенный размер шрифта */
       color: #e2d7f5;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
     .extra-row:last-child { margin-bottom: 0; }
     .extra-val {
@@ -355,7 +355,7 @@
     <div class="poster-scene">
       <div class="bg-watermark-text text-honnili">HonniLi</div>
       
-      <!-- ТАБЛИЦА ЦЕН + ДОП УСЛУГИ СНИЗУ -->
+      <!-- РАСШИРЕННЫЙ БЛОК ЦЕН -->
       <div class="glass-price-box">
         <div class="box-title">Основные цены</div>
         <table class="price-table">
@@ -376,17 +376,16 @@
           </tbody>
         </table>
 
-        <div class="box-title" style="margin-top: 12px;">Доп. услуги</div>
+        <div class="box-title" style="margin-top: 16px;">Доп. услуги</div>
         <div class="extras-section">
           <div class="extra-row"><span>Дополнительный персонаж</span><span class="extra-val">+100%</span></div>
           <div class="extra-row"><span>Питомец</span><span class="extra-val">+700 ₽</span></div>
           <div class="extra-row"><span>Сложный фон</span><span class="extra-val">+10 000 ₽</span></div>
           <div class="extra-row"><span>Срочный заказ</span><span class="extra-val">+70%</span></div>
-          <div class="extra-row" style="margin-top: 4px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 4px;"><span>Предоплата</span><span class="extra-val">50%</span></div>
+          <div class="extra-row" style="margin-top: 6px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 6px;"><span>Предоплата</span><span class="extra-val">50%</span></div>
         </div>
       </div>
 
-      <!-- ПУСТОЙ ПРАВЫЙ НИЖНИЙ БЛОК -->
       <div class="glass-empty-box"></div>
 
       <div class="poster-label-left">
@@ -435,13 +434,13 @@
           </tbody>
         </table>
 
-        <div class="box-title" style="margin-top: 12px;">Доп. услуги</div>
+        <div class="box-title" style="margin-top: 16px;">Доп. услуги</div>
         <div class="extras-section">
           <div class="extra-row"><span>Дополнительный персонаж</span><span class="extra-val">+100%</span></div>
           <div class="extra-row"><span>Питомец</span><span class="extra-val">+700 ₽</span></div>
           <div class="extra-row"><span>Сложный фон</span><span class="extra-val">+10 000 ₽</span></div>
           <div class="extra-row"><span>Срочный заказ</span><span class="extra-val">+70%</span></div>
-          <div class="extra-row" style="margin-top: 4px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 4px;"><span>Предоплата</span><span class="extra-val">50%</span></div>
+          <div class="extra-row" style="margin-top: 6px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 6px;"><span>Предоплата</span><span class="extra-val">50%</span></div>
         </div>
       </div>
 
@@ -493,13 +492,13 @@
           </tbody>
         </table>
 
-        <div class="box-title" style="margin-top: 12px;">Доп. услуги</div>
+        <div class="box-title" style="margin-top: 16px;">Доп. услуги</div>
         <div class="extras-section">
           <div class="extra-row"><span>Дополнительный персонаж</span><span class="extra-val">+100%</span></div>
           <div class="extra-row"><span>Питомец</span><span class="extra-val">+700 ₽</span></div>
           <div class="extra-row"><span>Сложный фон</span><span class="extra-val">+10 000 ₽</span></div>
           <div class="extra-row"><span>Срочный заказ</span><span class="extra-val">+70%</span></div>
-          <div class="extra-row" style="margin-top: 4px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 4px;"><span>Предоплата</span><span class="extra-val">50%</span></div>
+          <div class="extra-row" style="margin-top: 6px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 6px;"><span>Предоплата</span><span class="extra-val">50%</span></div>
         </div>
       </div>
 
