@@ -29,7 +29,7 @@
       overflow-x: hidden;
     }
 
-    /* ПОЛНОЭКРАННЫЕ БЛОКИ БЕЗ БОЛЬШИХ РАМОК */
+    /* ПОЛНОЭКРАННЫЕ БЛОКИ */
     .full-screen-section {
       width: 100vw;
       height: 100vh;
@@ -40,7 +40,6 @@
       position: relative;
     }
 
-    /* СОДЕРЖИМОЕ ЭКРАНА (СВОБОДНОЕ, БЕЗ СТЕКЛЯННОГО БЛОКА-ПОДЛОЖКИ) */
     .screen-container {
       width: 100%;
       max-width: 1140px;
@@ -51,7 +50,7 @@
       padding: 20px 0;
     }
 
-    /* ШАПКА */
+    /* ШАПКА С МЕНЮ */
     .screen-header {
       display: flex;
       justify-content: space-between;
@@ -76,15 +75,27 @@
       object-fit: cover;
     }
 
-    .nav-hints {
-      font-size: 13px;
+    .nav-menu {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      padding: 10px 28px;
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .nav-menu a {
       color: #e2d7f5;
-      font-weight: 600;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      padding: 8px 16px;
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .nav-menu a:hover {
+      color: #ffffff;
     }
 
     /* ЦЕНТРАЛЬНЫЙ КОНТЕНТ */
@@ -97,10 +108,10 @@
 
     .author-info h1 {
       font-family: 'Poppins', sans-serif;
-      font-size: 44px;
+      font-size: 42px;
       font-weight: 800;
       color: #ffffff;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       display: flex;
       align-items: center;
       gap: 16px;
@@ -127,28 +138,51 @@
       font-size: 16px;
       color: #e2d7f5;
       line-height: 1.7;
-      margin-bottom: 24px;
-    }
-
-    .tags-container {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
       margin-bottom: 28px;
     }
 
-    .tag {
+    /* БЛОК С ТЭГАМИ ВВЕРХУ И СТАТУСОМ */
+    .badges-top {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .badge-tag {
       background: rgba(255, 255, 255, 0.12);
       backdrop-filter: blur(10px);
-      color: #ffffff;
-      padding: 8px 16px;
-      border-radius: 14px;
-      font-size: 13px;
+      color: #ffd1dc;
+      padding: 6px 14px;
+      border-radius: 12px;
+      font-size: 12px;
       font-weight: 600;
       border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
-    /* КАРТИНКИ СПРАВА */
+    .badge-status {
+      background: rgba(56, 239, 125, 0.15);
+      backdrop-filter: blur(10px);
+      color: #38ef7d;
+      padding: 6px 14px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid rgba(56, 239, 125, 0.3);
+    }
+
+    /* ОДНО БОЛЬШОЕ ИЗОБРАЖЕНИЕ СПРАВА */
+    .single-visual img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      border-radius: 28px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* КАРТИНКИ ДЛЯ АВТОРОВ (ДВЕ ШТУКИ) */
     .author-visual {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -162,14 +196,15 @@
       border-radius: 24px;
       box-shadow: 0 15px 35px rgba(0,0,0,0.3);
       border: 1px solid rgba(255, 255, 255, 0.2);
-      transition: transform 0.3s;
-    }
-
-    .author-visual img:hover {
-      transform: scale(1.03);
     }
 
     /* КНОПКИ */
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -191,6 +226,82 @@
       box-shadow: 0 15px 30px rgba(232, 121, 153, 0.5);
     }
 
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    /* МОДАЛЬНОЕ ОКНО «НАПИСАТЬ НАМ» */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 14, 23, 0.7);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background: #252336;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 32px;
+      padding: 40px;
+      max-width: 440px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+      position: relative;
+    }
+
+    .modal-card h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 14px;
+    }
+
+    .modal-card p {
+      font-size: 15px;
+      color: #d1b8ff;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .modal-socials {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: #fff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
     /* СТРЕЛКА ПРОКРУТКИ */
     .scroll-hint {
       text-align: center;
@@ -207,7 +318,6 @@
       60% {transform: translateY(-3px);}
     }
 
-    /* АДАПТИВНОСТЬ */
     @media (max-width: 900px) {
       .full-screen-section {
         height: auto;
@@ -217,43 +327,48 @@
       .screen-content {
         grid-template-columns: 1fr;
       }
-      .author-visual img {
-        height: 200px;
+      .nav-menu {
+        display: none;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- ЭКРАН 0: ПРИВЕТСТВИЕ И ОПИСАНИЕ СООБЩЕСТВА -->
+  <!-- ЭКРАН 0: ГЛАВНАЯ / О СООБЩЕСТВЕ -->
   <section id="screen-0" class="full-screen-section">
     <div class="screen-container">
       <div class="screen-header">
         <a href="#screen-0" class="logo">
           <img src="image/logo.png" alt="Logo"> PonyOni 🎄
         </a>
-        <div class="nav-hints">О сообществе</div>
+        <ul class="nav-menu">
+          <li><a href="#screen-0">Главная</a></li>
+          <li><a href="#screen-1">Команда</a></li>
+          <li><a href="#screen-0" onclick="openModal()">Вопросы</a></li>
+          <li><a href="#" onclick="openModal()">Заказать</a></li>
+        </ul>
       </div>
 
-      <div class="screen-content" style="grid-template-columns: 1.2fr 0.8fr;">
+      <div class="screen-content">
         <div class="author-info">
-          <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.15); backdrop-filter:blur(10px); padding:6px 16px; border-radius:20px; font-size:13px; font-weight:600; color:#ffd1dc; margin-bottom:16px; border:1px solid rgba(255,255,255,0.2);">
-            ✨ Творческое объединение
+          <div class="badges-top">
+            <span class="badge-tag">✨ Творческое объединение</span>
+            <span class="badge-tag">Live2D · VTuber · 2D Art</span>
+            <span class="badge-status">✦ Заказы открыты</span>
           </div>
           <h1>Добро пожаловать в PonyOni!</h1>
-          <p class="author-desc">Мы — независимая команда художников, риггеров и разработчиков. Создаем уникальных персонажей, атмосферные иллюстрации, Live2D анимацию и воплощаем смелые визуальные миры в реальность.</p>
-          <div class="tags-container">
-            <span class="tag">Иллюстрации</span>
-            <span class="tag">Live2D Риг</span>
-            <span class="tag">Концепт-арт</span>
-            <span class="tag">Анимация</span>
+          <p class="author-desc">Привет, мы команда из художников и Live2D-риггера. Создаем VTuber-модели под ключ: рисуем арт, делим его на слои и ригаем в Live2D для VTube Studio или делаем только риг по готовому PSD.</p>
+          
+          <div class="btn-group">
+            <a href="#screen-1" class="btn">Познакомиться с авторами ↓</a>
+            <button class="btn btn-secondary" onclick="openModal()">Написать нам</button>
           </div>
-          <a href="#screen-1" class="btn">Познакомиться с авторами ↓</a>
         </div>
 
-        <div class="author-visual">
-          <img src="image/artsait1.png" alt="Community Art 1">
-          <img src="image/HonArt1.png" alt="Community Art 2">
+        <!-- Одно большое изображение справа -->
+        <div class="single-visual">
+          <img src="image/artsait1.png" alt="PonyOni Showcase">
         </div>
       </div>
 
@@ -269,7 +384,12 @@
         <a href="#screen-0" class="logo">
           <img src="image/logo.png" alt="Logo"> PonyOni 🎄
         </a>
-        <div class="nav-hints">Автор 1 из 3</div>
+        <ul class="nav-menu">
+          <li><a href="#screen-0">Главная</a></li>
+          <li><a href="#screen-1">Команда</a></li>
+          <li><a href="#" onclick="openModal()">Вопросы</a></li>
+          <li><a href="#" onclick="openModal()">Заказать</a></li>
+        </ul>
       </div>
 
       <div class="screen-content">
@@ -280,12 +400,10 @@
           </h1>
           <div class="author-role">Художник &amp; Визуальный стиль</div>
           <p class="author-desc">Создает ярких персонажей, детальные иллюстрации и концепт-арты. Отвечает за общее визуальное оформление, эстетику и характер персонажей команды.</p>
-          <div class="tags-container">
-            <span class="tag">Иллюстрации</span>
-            <span class="tag">Персонажи</span>
-            <span class="tag">Концепт</span>
+          <div class="btn-group">
+            <a href="https://t.me/Honnistar" target="_blank" class="btn">Telegram канал</a>
+            <button class="btn btn-secondary" onclick="openModal()">Заказать арт</button>
           </div>
-          <a href="https://t.me/Honnistar" target="_blank" class="btn">Telegram канал</a>
         </div>
 
         <div class="author-visual">
@@ -306,7 +424,12 @@
         <a href="#screen-0" class="logo">
           <img src="image/logo.png" alt="Logo"> PonyOni 🎄
         </a>
-        <div class="nav-hints">Автор 2 из 3</div>
+        <ul class="nav-menu">
+          <li><a href="#screen-0">Главная</a></li>
+          <li><a href="#screen-1">Команда</a></li>
+          <li><a href="#" onclick="openModal()">Вопросы</a></li>
+          <li><a href="#" onclick="openModal()">Заказать</a></li>
+        </ul>
       </div>
 
       <div class="screen-content">
@@ -317,13 +440,10 @@
           </h1>
           <div class="author-role">Риггер, аниматор &amp; ИИ-специалист</div>
           <p class="author-desc">Виртуозно оживляет рисунки в Live2D, настраивает физику движения и внедряет продвинутые ИИ-технологии в пайплайн обработки графики.</p>
-          <div class="tags-container">
-            <span class="tag">Live2D</span>
-            <span class="tag">Rigging</span>
-            <span class="tag">Анимация</span>
-            <span class="tag">ИИ-арты</span>
+          <div class="btn-group">
+            <a href="https://t.me/PonyOni" target="_blank" class="btn">Связаться в Telegram</a>
+            <button class="btn btn-secondary" onclick="openModal()">Заказать риг</button>
           </div>
-          <a href="https://t.me/PonyOni" target="_blank" class="btn">Связаться с риггером</a>
         </div>
 
         <div class="author-visual">
@@ -344,7 +464,12 @@
         <a href="#screen-0" class="logo">
           <img src="image/logo.png" alt="Logo"> PonyOni 🎄
         </a>
-        <div class="nav-hints">Автор 3 из 3 • Финал</div>
+        <ul class="nav-menu">
+          <li><a href="#screen-0">Главная</a></li>
+          <li><a href="#screen-1">Команда</a></li>
+          <li><a href="#" onclick="openModal()">Вопросы</a></li>
+          <li><a href="#" onclick="openModal()">Заказать</a></li>
+        </ul>
       </div>
 
       <div class="screen-content">
@@ -355,12 +480,10 @@
           </h1>
           <div class="author-role">Художник</div>
           <p class="author-desc">Создает атмосферные иллюстрации и выразительных персонажей, наполняя каждый проект живыми и уникальными эмоциями.</p>
-          <div class="tags-container">
-            <span class="tag">Иллюстрации</span>
-            <span class="tag">Персонажи</span>
-            <span class="tag">Атмосфера</span>
+          <div class="btn-group">
+            <a href="#screen-0" class="btn">В начало ↑</a>
+            <button class="btn btn-secondary" onclick="openModal()">Заказать работу</button>
           </div>
-          <a href="#screen-0" class="btn">В начало сайта ↑</a>
         </div>
 
         <div class="author-visual">
@@ -376,8 +499,36 @@
   </section>
 
 
-  <!-- СКРИПТ ДЛЯ ПЛАВНОГО СКРОЛЛА (ПАРУ СЕКУНД ИЛИ ПОЛНЫЙ МЯГКИЙ ШАГ) -->
+  <!-- МОДАЛЬНОЕ ОКНО «НАПИСАТЬ НАМ» -->
+  <div id="orderModal" class="modal-overlay" onclick="closeModalOnBg(event)">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <h3>Хочешь сделать заказ?</h3>
+      <p>Напиши нам — обсудим твою идею, подберём формат и рассчитаем стоимость. Отвечаем в течении суток.</p>
+      <div class="modal-socials">
+        <a href="https://t.me/Honnistar" target="_blank" class="btn">Telegram</a>
+        <a href="https://vk.ru/club240301955" target="_blank" class="btn btn-secondary">ВКонтакте</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- СКРИПТЫ ДЛЯ МОДАЛКИ И ПЛАВНОГО СКРОЛЛА -->
   <script>
+    function openModal() {
+      document.getElementById('orderModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('orderModal').classList.remove('active');
+    }
+
+    function closeModalOnBg(e) {
+      if (e.target.id === 'orderModal') {
+        closeModal();
+      }
+    }
+
     function scrollToScreen(screenId) {
       document.getElementById(screenId).scrollIntoView({
         behavior: 'smooth'
@@ -389,6 +540,8 @@
     const sections = ['screen-0', 'screen-1', 'screen-2', 'screen-3'];
     
     window.addEventListener('wheel', (e) => {
+      // Если открыто модальное окно, скролл страницы не переключаем
+      if (document.getElementById('orderModal').classList.contains('active')) return;
       if (isScrolling) return;
       
       let currentIdx = 0;
