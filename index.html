@@ -37,7 +37,6 @@
       justify-content: center;
     }
 
-    /* КОНТЕЙНЕР ШАПКИ ДЛЯ ИДЕАЛЬНОГО РАСПРЕДЕЛЕНИЯ */
     .header-container {
       width: 100%;
       max-width: 1140px;
@@ -149,8 +148,29 @@
     .service-box p { font-size: 13px; color: #d1b8ff; margin-bottom: 14px; line-height: 1.5; }
     .price-tag { font-weight: 700; color: #ffd1dc; font-size: 15px; display: block; }
 
-    .queue-list, .reviews-list { display: flex; flex-direction: column; gap: 14px; margin-top: 20px; }
-    .queue-box { background: rgba(255, 255, 255, 0.07); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.12); padding: 20px 24px; border-radius: 18px; display: flex; justify-content: space-between; align-items: center; font-size: 16px; font-weight: 600; color: #ffffff; }
+    /* ОЧЕРЕДЬ В 2 КОЛОНКИ (ПО 5 СТРОК) */
+    .queue-container-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .queue-box { 
+      background: rgba(255, 255, 255, 0.08); 
+      backdrop-filter: blur(12px); 
+      border: 1px solid rgba(255, 255, 255, 0.15); 
+      padding: 14px 20px; 
+      border-radius: 18px; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      font-size: 14px; 
+      font-weight: 600; 
+      color: #ffffff; 
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .reviews-list { display: flex; flex-direction: column; gap: 14px; margin-top: 20px; }
     .review-card { background: rgba(255, 255, 255, 0.07); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.12); padding: 24px; border-radius: 20px; }
     .review-card h4 { font-family: 'Poppins', sans-serif; font-size: 17px; color: #ffffff; margin-bottom: 6px; }
     .review-card p { font-size: 15px; color: #d1b8ff; margin-bottom: 0; }
@@ -179,7 +199,7 @@
     .modal-close { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.1); border: none; color: #fff; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 18px; }
 
     @media(max-width: 900px) {
-      .services-grid, .screen-content { grid-template-columns: 1fr; }
+      .services-grid, .screen-content, .queue-container-grid { grid-template-columns: 1fr; }
       .nav-menu { display: none; }
       .full-screen-section { height: auto; min-height: 100vh; padding: 100px 20px 40px 20px; }
     }
@@ -190,12 +210,10 @@
   <!-- ФИКСИРОВАННАЯ ШАПКА -->
   <header class="global-header">
     <div class="header-container">
-      <!-- Логотип слева -->
       <a href="#screen-intro" class="logo">
         <img src="image/logo.png" alt="Logo"> PonyOni 🎄
       </a>
 
-      <!-- Навигация по центру -->
       <ul class="nav-menu">
         <li><a href="#screen-intro" id="link-intro" class="active">Главная</a></li>
         <li><a href="team.html" id="link-team">Команда</a></li>
@@ -204,7 +222,6 @@
         <li><a href="#screen-reviews" id="link-reviews">Отзывы</a></li>
       </ul>
 
-      <!-- Кнопка «Заказать» справа -->
       <button class="btn" onclick="openModal()">Заказать</button>
     </div>
   </header>
@@ -283,21 +300,31 @@
     <div class="screen-container">
       <div>
         <h2>Очередь заказов</h2>
-        <p>Текущий статус работы над текущими проектами</p>
+        <p>Текущий статус работы над текущими проектами обновлен 10.10.2026</p>
 
-        <div class="queue-list">
-          <div class="queue-box">
-            <span>Заказ #142 (Full Body Rig)</span>
-            <span style="color: #a88beb;">⚡ В процессе (Риг)</span>
+        <!-- 10 заказов: 5 слева, 5 справа -->
+        <div class="queue-container-grid">
+          <!-- Левая колонка (5 строк) -->
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div class="queue-box"><span>Заказ #142 (Full Body Rig)</span><span style="color: #a88beb;">⚡ В процессе (Риг)</span></div>
+            <div class="queue-box"><span>Заказ #143 (Chibi Арт)</span><span style="color: #38ef7d;">🎨 Набросок</span></div>
+            <div class="queue-box"><span>Заказ #144 (PSD Скелет)</span><span style="color: #ffd1dc;">⏳ Ожидает очереди</span></div>
+            <div class="queue-box"><span>Заказ #145 (Эмоуты x5)</span><span style="color: #38ef7d;">🎨 Набросок</span></div>
+            <div class="queue-box"><span>Заказ #146 (2D Иллюстрация)</span><span style="color: #ffd1dc;">⏳ Ожидает очереди</span></div>
           </div>
-          <div class="queue-box">
-            <span>Заказ #143 (Chibi Арт)</span>
-            <span style="color: #38ef7d;">🎨 Набросок</span>
+          <!-- Правая колонка (5 строк) -->
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div class="queue-box"><span>Заказ #147 (VTuber Доп)</span><span style="color: #a88beb;">⚡ В процессе</span></div>
+            <div class="queue-box"><span>Заказ #148 (Full Body Арт)</span><span style="color: #38ef7d;">🎨 Набросок</span></div>
+            <div class="queue-box"><span>Заказ #149 (Chibi Rig)</span><span style="color: #ffd1dc;">⏳ Ожидает очереди</span></div>
+            <div class="queue-box"><span>Заказ #150 (Скин одежды)</span><span style="color: #ffd1dc;">⏳ Ожидает очереди</span></div>
+            <div class="queue-box"><span>Заказ #151 (PSD Риг)</span><span style="color: #ffd1dc;">⏳ Ожидает очереди</span></div>
           </div>
-          <div class="queue-box">
-            <span>Заказ #144 (PSD Скелет)</span>
-            <span style="color: #ffd1dc;">⏳ Ожидает очереди</span>
-          </div>
+        </div>
+
+        <!-- Кнопка перехода на полную очередь -->
+        <div style="text-align: center; margin-top: 24px;">
+          <a href="queue.html" class="btn">Посмотреть всю очередь →</a>
         </div>
       </div>
       <div class="scroll-hint" onclick="scrollToScreen('screen-reviews')">К отзывам клиентов ↓</div>
