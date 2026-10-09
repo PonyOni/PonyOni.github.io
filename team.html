@@ -89,7 +89,6 @@
       padding-top: 80px;
     }
 
-    /* КОМПОЗИЦИЯ ПОСТЕРА */
     .poster-scene {
       position: relative;
       width: 100%;
@@ -99,11 +98,12 @@
       justify-content: center;
     }
 
-   /* ОГРОМНЫЙ НИКНЕЙМ НА ЗАДНЕМ ФОНЕ (Адаптивный под длину текста) */
+    /* БАЗОВЫЙ СТИЛЬ ФОНОВОГО ТЕКСТА */
     .bg-watermark-text {
       position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
       font-family: 'Poppins', sans-serif;
-      font-size: 11vw; /* Уменьшили базовый размер, чтобы длинные имена влезали целиком */
       font-weight: 900;
       color: rgba(255, 255, 255, 0.04);
       white-space: nowrap;
@@ -111,12 +111,25 @@
       pointer-events: none;
       user-select: none;
       text-transform: uppercase;
-      letter-spacing: 6px;
-      text-align: center;
-      width: 100%;
     }
-    
-  /* ЦЕНТРАЛЬНЫЙ АРТ ПЕРСОНАЖА (Увеличен до низа страницы) */
+
+    /* ИНДИВИДУАЛЬНЫЕ РАЗМЕРЫ ДЛЯ КАЖДОГО НИКНЕЙМА */
+    .text-honnili {
+      font-size: 18vw;
+      letter-spacing: 12px;
+    }
+
+    .text-sugar {
+      font-size: 8.5vw; /* Уменьшили, чтобы длинная фраза целиком влезла в экран */
+      letter-spacing: 6px;
+    }
+
+    .text-kate {
+      font-size: 11vw;
+      letter-spacing: 8px;
+    }
+
+    /* ЦЕНТРАЛЬНЫЙ АРТ ПЕРСОНАЖА (Касается низа страницы) */
     .character-center-img {
       position: absolute;
       bottom: 0;
@@ -128,7 +141,7 @@
       filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
     }
 
-    /* ЛЕВАЯ ПОДПИСЬ (Художник + Линия) */
+    /* ЛЕВАЯ ПОДПИСЬ */
     .poster-label-left {
       position: absolute;
       top: 38%;
@@ -154,7 +167,6 @@
       background: rgba(255, 255, 255, 0.6);
     }
 
-    /* ПОДПИСЬ PONYONI СНИЗУ СЛЕВА */
     .poster-brand-sub {
       position: absolute;
       top: 45%;
@@ -166,7 +178,7 @@
       font-style: italic;
     }
 
-    /* ПРАВАЯ ПОДПИСЬ (Визуальный стиль + Линия) */
+    /* ПРАВАЯ ПОДПИСЬ */
     .poster-label-right {
       position: absolute;
       bottom: 35%;
@@ -192,7 +204,7 @@
       background: rgba(255, 255, 255, 0.6);
     }
 
-    /* КНОПКИ ВЗАИМОДЕЙСТВИЯ ПОВЕРХ */
+    /* КНОПКИ */
     .poster-actions {
       position: absolute;
       bottom: 50px;
@@ -269,7 +281,7 @@
   <!-- УЧАСТНИК 1: HONNILI -->
   <section id="member-1" class="full-screen-section">
     <div class="poster-scene">
-      <div class="bg-watermark-text">HonniLi</div>
+      <div class="bg-watermark-text text-honnili">HonniLi</div>
       
       <div class="poster-label-left">
         <span>Художник</span>
@@ -277,7 +289,6 @@
       </div>
       <div class="poster-brand-sub">PonyOni</div>
 
-      <!-- Правильный путь с учетом папки image -->
       <img src="image/TeamHonniLi.png" alt="HonniLi Art" class="character-center-img">
 
       <div class="poster-label-right">
@@ -296,7 +307,7 @@
   <!-- УЧАСТНИК 2: САХАРНАЯ ДЕВОЧКА -->
   <section id="member-2" class="full-screen-section">
     <div class="poster-scene">
-      <div class="bg-watermark-text">Сахарная девочка</div>
+      <div class="bg-watermark-text text-sugar">Сахарная девочка</div>
       
       <div class="poster-label-left">
         <span>Риггер</span>
@@ -322,7 +333,7 @@
   <!-- УЧАСТНИК 3: SAD_POTATO_KATE -->
   <section id="member-3" class="full-screen-section">
     <div class="poster-scene">
-      <div class="bg-watermark-text">sad_potato_kate</div>
+      <div class="bg-watermark-text text-kate">sad_potato_kate</div>
       
       <div class="poster-label-left">
         <span>Художник</span>
