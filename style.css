@@ -211,3 +211,18 @@ max-width: 992px {
     grid-template-columns: 1fr;
   }
 }
+/* ИСПРАВЛЕНИЕ СЕТКИ ДАШБОРДА */
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 24px;
+  align-items: start;
+  margin-top: 24px;
+}
+
+/* Адаптив для планшетов и телефонов */
+max-width: 1024px {
+  .grid-layout {
+    grid-template-columns: 1fr !important;
+  }
+}
