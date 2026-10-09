@@ -129,7 +129,7 @@
       filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
     }
 
-    /* РАЗМЕРЫ БЛОКОВ ТОЧНО КАК В ПРИМЕРЕ */
+    /* СТЕКЛЯННЫЕ БЛОКИ (СООТВЕТСТВУЮТ РАЗМЕРАМ СЕРОГО ПРИМЕРА) */
     .glass-box {
       position: absolute;
       z-index: 4;
@@ -138,18 +138,18 @@
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 20px;
-      padding: 18px 22px;
+      padding: 16px 20px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.4);
     }
 
-    /* Левый верхний блок (как серый прямоугольник сверху слева) */
+    /* Левый верхний блок: Цены + Доп. услуги снизу */
     .box-left-top {
       top: 100px;
       left: 60px;
       width: 440px;
     }
 
-    /* Правый нижний блок (как серый прямоугольник снизу справа) */
+    /* Правый нижний блок: Примеры работ */
     .box-right-bottom {
       bottom: 100px;
       right: 60px;
@@ -170,10 +170,11 @@
     .price-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 12px;
+      font-size: 11.5px;
+      margin-bottom: 10px;
     }
     .price-table th, .price-table td {
-      padding: 4px 6px;
+      padding: 4px 5px;
       text-align: center;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
@@ -181,7 +182,7 @@
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
       color: #ffd1dc;
-      font-size: 11px;
+      font-size: 10.5px;
     }
     .price-table td:first-child {
       text-align: left;
@@ -193,26 +194,51 @@
       font-weight: 500;
     }
 
-    /* СПИСОК ДОП. УСЛУГ */
+    /* СЕКЦИЯ ДОП. УСЛУГ ВНУТРИ ЛЕВОГО БЛОКА */
+    .extras-section {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 8px;
+    }
     .extras-list {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 5px;
     }
     .extra-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 12px;
+      font-size: 11.5px;
       color: #e2d7f5;
-      padding-bottom: 4px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
-    .extra-row:last-child { border-bottom: none; }
     .extra-val {
       font-weight: 700;
       color: #ffffff;
       white-space: nowrap;
+    }
+
+    /* СЕТКА ПРИМЕРОВ РАБОТ В ПРАВОМ НИЖНЕМ БЛОКЕ */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .portfolio-item {
+      aspect-ratio: 1;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      cursor: pointer;
+      transition: transform 0.2s;
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .portfolio-item:hover {
+      transform: scale(1.03);
+    }
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     /* ЛЕВАЯ ПОДПИСЬ */
@@ -302,7 +328,7 @@
       60% {transform: translateX(-50%) translateY(-3px);}
     }
 
-    /* МОДАЛКА */
+    /* МОДАЛКА ЗАКАЗА */
     .modal-overlay {
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
       background: rgba(15, 14, 23, 0.7); backdrop-filter: blur(8px);
@@ -352,7 +378,7 @@
     <div class="poster-scene">
       <div class="bg-watermark-text text-honnili">HonniLi</div>
       
-      <!-- ЛЕВЫЙ ВЕРХНИЙ БЛОК: ОСНОВНЫЕ ЦЕНЫ -->
+      <!-- ЛЕВЫЙ ВЕРХНИЙ БЛОК: ЦЕНЫ + ДОП. УСЛУГИ -->
       <div class="glass-box box-left-top">
         <div class="box-title">Основные цены</div>
         <table class="price-table">
@@ -372,17 +398,26 @@
             <tr><td>Смайлики</td><td>400 ₽</td><td>600 ₽</td><td>900 ₽</td></tr>
           </tbody>
         </table>
+
+        <div class="box-title" style="margin-top: 10px;">Доп. услуги</div>
+        <div class="extras-section">
+          <div class="extras-list">
+            <div class="extra-row"><span>Дополнительный персонаж</span><span class="extra-val">+100%</span></div>
+            <div class="extra-row"><span>Питомец</span><span class="extra-val">+700 ₽</span></div>
+            <div class="extra-row"><span>Сложный фон</span><span class="extra-val">+10 000 ₽</span></div>
+            <div class="extra-row"><span>Срочный заказ</span><span class="extra-val">+70%</span></div>
+            <div class="extra-row" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 4px;"><span>Предоплата</span><span class="extra-val">50%</span></div>
+          </div>
+        </div>
       </div>
 
-      <!-- ПРАВЫЙ НИЖНИЙ БЛОК: ДОП. УСЛУГИ -->
+      <!-- ПРАВЫЙ НИЖНИЙ БЛОК: ПРИМЕРЫ РАБОТ -->
       <div class="glass-box box-right-bottom">
-        <div class="box-title">Доп. услуги</div>
-        <div class="extras-list">
-          <div class="extra-row"><span>Дополнительный персонаж</span><span class="extra-val">+100%</span></div>
-          <div class="extra-row"><span>Питомец</span><span class="extra-val">+700 ₽</span></div>
-          <div class="extra-row"><span>Сложный фон</span><span class="extra-val">+10 000 ₽</span></div>
-          <div class="extra-row"><span>Срочный заказ</span><span class="extra-val">+70%</span></div>
-          <div class="extra-row" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 4px;"><span>Предоплата</span><span class="extra-val">50%</span></div>
+        <div class="box-title">Примеры работ</div>
+        <div class="portfolio-grid">
+          <div class="portfolio-item"><img src="image/TeamHonniLi.png" alt="Work 1"></div>
+          <div class="portfolio-item"><img src="image/HonArt1.png" alt="Work 2"></div>
+          <div class="portfolio-item"><img src="image/logo.png" alt="Work 3"></div>
         </div>
       </div>
 
@@ -431,16 +466,25 @@
             <tr><td>Смайлики</td><td>500 ₽</td><td>800 ₽</td><td>1 200 ₽</td></tr>
           </tbody>
         </table>
+
+        <div class="box-title" style="margin-top: 10px;">Доп. услуги</div>
+        <div class="extras-section">
+          <div class="extras-list">
+            <div class="extra-row"><span>Дополнительный персонаж</span><span class="extra-val">+100%</span></div>
+            <div class="extra-row"><span>Питомец</span><span class="extra-val">+700 ₽</span></div>
+            <div class="extra-row"><span>Сложный фон</span><span class="extra-val">+10 000 ₽</span></div>
+            <div class="extra-row"><span>Срочный заказ</span><span class="extra-val">+70%</span></div>
+            <div class="extra-row" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 4px;"><span>Предоплата</span><span class="extra-val">50%</span></div>
+          </div>
+        </div>
       </div>
 
       <div class="glass-box box-right-bottom">
-        <div class="box-title">Доп. услуги</div>
-        <div class="extras-list">
-          <div class="extra-row"><span>Дополнительный персонаж</span><span class="extra-val">+100%</span></div>
-          <div class="extra-row"><span>Питомец</span><span class="extra-val">+700 ₽</span></div>
-          <div class="extra-row"><span>Сложный фон</span><span class="extra-val">+10 000 ₽</span></div>
-          <div class="extra-row"><span>Срочный заказ</span><span class="extra-val">+70%</span></div>
-          <div class="extra-row" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 4px;"><span>Предоплата</span><span class="extra-val">50%</span></div>
+        <div class="box-title">Примеры работ</div>
+        <div class="portfolio-grid">
+          <div class="portfolio-item"><img src="image/TeamCaharook.png" alt="Work 1"></div>
+          <div class="portfolio-item"><img src="image/sugar.jpg" alt="Work 2"></div>
+          <div class="portfolio-item"><img src="image/logo.png" alt="Work 3"></div>
         </div>
       </div>
 
@@ -489,16 +533,25 @@
             <tr><td>Смайлики</td><td>350 ₽</td><td>550 ₽</td><td>800 ₽</td></tr>
           </tbody>
         </table>
+
+        <div class="box-title" style="margin-top: 10px;">Доп. услуги</div>
+        <div class="extras-section">
+          <div class="extras-list">
+            <div class="extra-row"><span>Дополнительный персонаж</span><span class="extra-val">+100%</span></div>
+            <div class="extra-row"><span>Питомец</span><span class="extra-val">+700 ₽</span></div>
+            <div class="extra-row"><span>Сложный фон</span><span class="extra-val">+10 000 ₽</span></div>
+            <div class="extra-row"><span>Срочный заказ</span><span class="extra-val">+70%</span></div>
+            <div class="extra-row" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 4px;"><span>Предоплата</span><span class="extra-val">50%</span></div>
+          </div>
+        </div>
       </div>
 
       <div class="glass-box box-right-bottom">
-        <div class="box-title">Доп. услуги</div>
-        <div class="extras-list">
-          <div class="extra-row"><span>Дополнительный персонаж</span><span class="extra-val">+100%</span></div>
-          <div class="extra-row"><span>Питомец</span><span class="extra-val">+700 ₽</span></div>
-          <div class="extra-row"><span>Сложный фон</span><span class="extra-val">+10 000 ₽</span></div>
-          <div class="extra-row"><span>Срочный заказ</span><span class="extra-val">+70%</span></div>
-          <div class="extra-row" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 4px;"><span>Предоплата</span><span class="extra-val">50%</span></div>
+        <div class="box-title">Примеры работ</div>
+        <div class="portfolio-grid">
+          <div class="portfolio-item"><img src="image/knight.png" alt="Work 1"></div>
+          <div class="portfolio-item"><img src="image/sad_potato_kate.jpg" alt="Work 2"></div>
+          <div class="portfolio-item"><img src="image/logo.png" alt="Work 3"></div>
         </div>
       </div>
 
