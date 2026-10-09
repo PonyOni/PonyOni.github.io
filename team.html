@@ -98,7 +98,7 @@
       justify-content: center;
     }
 
-    /* БАЗОВЫЙ СТИЛЬ ФОНОВОГО ТЕКСТА */
+    /* ФОНОВЫЙ ТЕКСТ */
     .bg-watermark-text {
       position: absolute;
       left: 50%;
@@ -117,7 +117,7 @@
     .text-sugar { font-size: 8.5vw; letter-spacing: 6px; }
     .text-kate { font-size: 9.5vw; letter-spacing: 8px; }
 
-    /* ЦЕНТРАЛЬНЫЙ АРТ ПЕРСОНАЖА */
+    /* ЦЕНТРАЛЬНЫЙ АРТ */
     .character-center-img {
       position: absolute;
       bottom: 0;
@@ -129,71 +129,105 @@
       filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
     }
 
-    /* УВЕЛИЧЕННЫЕ СТЕКЛЯННЫЕ БЛОКИ С ЦЕНАМИ И УСЛУГАМИ */
+    /* ШИРОКИЙ ЛЕВЫЙ БЛОК С ТАБЛИЦЕЙ ЦЕН И ДОП. УСЛУГАМИ */
     .glass-price-box {
       position: absolute;
+      top: 95px;
+      left: 40px;
       z-index: 4;
       background: rgba(255, 255, 255, 0.06);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 24px;
-      padding: 24px 28px;
+      padding: 20px 22px;
       box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-      width: 330px; /* Сделали блок пошире */
+      width: 440px;
     }
 
-    /* Левый блок с ценами (сверху слева) */
-    .price-box-left {
-      top: 100px;
-      left: 40px;
-    }
-
-    /* Правый блок с доп. услугами (снизу справа) */
-    .extras-box-right {
+    /* ПУСТОЙ ПРАВЫЙ НИЖНИЙ БЛОК */
+    .glass-empty-box {
+      position: absolute;
       bottom: 80px;
       right: 40px;
+      z-index: 4;
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px dashed rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 24px 28px;
+      width: 300px;
+      height: 140px;
     }
 
     .box-title {
       font-family: 'Poppins', sans-serif;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       color: #ffd1dc;
       text-transform: uppercase;
       letter-spacing: 1px;
-      margin-bottom: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      margin-bottom: 10px;
     }
 
-    .service-row {
+    /* СТИЛИ ТАБЛИЦЫ ЦЕН */
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+    .price-table th, .price-table td {
+      padding: 5px 6px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .price-table th {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      color: #ffd1dc;
+      font-size: 11px;
+    }
+    .price-table td:first-child {
+      text-align: left;
+      font-weight: 600;
+      color: #e2d7f5;
+    }
+    .price-table td {
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    /* СЕКЦИЯ ДОП. УСЛУГ ВНУТРИ БЛОКА */
+    .extras-section {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 10px;
+    }
+    .extra-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 13px;
+      font-size: 12px;
       color: #e2d7f5;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
-    .service-row:last-child { margin-bottom: 0; }
-    .service-price {
+    .extra-row:last-child { margin-bottom: 0; }
+    .extra-val {
       font-weight: 700;
       color: #ffffff;
-      white-space: nowrap;
     }
 
     /* ЛЕВАЯ ПОДПИСЬ */
     .poster-label-left {
       position: absolute;
-      top: 38%;
+      top: 45%;
       left: 10%;
       z-index: 3;
       display: flex;
       align-items: center;
       gap: 20px;
     }
-
     .poster-label-left span {
       font-family: 'Poppins', sans-serif;
       font-size: 16px;
@@ -202,16 +236,14 @@
       letter-spacing: 2px;
       color: #ffffff;
     }
-
     .poster-label-left .line {
       width: 180px;
       height: 2px;
       background: rgba(255, 255, 255, 0.6);
     }
-
     .poster-brand-sub {
       position: absolute;
-      top: 45%;
+      top: 52%;
       left: 12%;
       z-index: 3;
       font-family: 'Poppins', sans-serif;
@@ -223,14 +255,13 @@
     /* ПРАВАЯ ПОДПИСЬ */
     .poster-label-right {
       position: absolute;
-      bottom: 35%;
+      bottom: 30%;
       right: 10%;
       z-index: 3;
       display: flex;
       align-items: center;
       gap: 20px;
     }
-
     .poster-label-right span {
       font-family: 'Poppins', sans-serif;
       font-size: 16px;
@@ -239,7 +270,6 @@
       letter-spacing: 2px;
       color: #ffffff;
     }
-
     .poster-label-right .line {
       width: 180px;
       height: 2px;
@@ -294,7 +324,7 @@
 
     @media(max-width: 1000px) {
       .nav-menu { display: none; }
-      .poster-label-left, .poster-label-right, .poster-brand-sub, .glass-price-box { display: none; }
+      .poster-label-left, .poster-label-right, .poster-brand-sub, .glass-price-box, .glass-empty-box { display: none; }
       .character-center-img { width: 90%; height: auto; }
     }
   </style>
@@ -325,28 +355,39 @@
     <div class="poster-scene">
       <div class="bg-watermark-text text-honnili">HonniLi</div>
       
-      <!-- Блок цен -->
-      <div class="glass-price-box price-box-left">
+      <!-- ТАБЛИЦА ЦЕН + ДОП УСЛУГИ СНИЗУ -->
+      <div class="glass-price-box">
         <div class="box-title">Основные цены</div>
-        <div class="service-row"><span>Скетч (чб)</span><span class="service-price">от 1 500 ₽</span></div>
-        <div class="service-row"><span>Лайн + цвет</span><span class="service-price">от 3 500 ₽</span></div>
-        <div class="service-row"><span>Рендер</span><span class="service-price">от 6 000 ₽</span></div>
-        <div class="service-row" style="margin-top: 6px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 6px;"><span>Смайлики / Эмоуты</span><span class="service-price">от 400 ₽</span></div>
-        <div class="service-row"><span>По грудь</span><span class="service-price">от 4 000 ₽</span></div>
-        <div class="service-row"><span>По бедра</span><span class="service-price">от 7 000 ₽</span></div>
-        <div class="service-row"><span>По пояс</span><span class="service-price">от 5 500 ₽</span></div>
-        <div class="service-row"><span>Фулл (В полный рост)</span><span class="service-price">от 9 500 ₽</span></div>
+        <table class="price-table">
+          <thead>
+            <tr>
+              <th>Формат</th>
+              <th>Скетч (чб)</th>
+              <th>Лайн+цвет</th>
+              <th>Рендер</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Фулл</td><td>1 500 ₽</td><td>3 500 ₽</td><td>6 000 ₽</td></tr>
+            <tr><td>По бедра</td><td>1 200 ₽</td><td>2 800 ₽</td><td>4 800 ₽</td></tr>
+            <tr><td>По пояс</td><td>1 000 ₽</td><td>2 200 ₽</td><td>3 800 ₽</td></tr>
+            <tr><td>По грудь</td><td>800 ₽</td><td>1 600 ₽</td><td>2 800 ₽</td></tr>
+            <tr><td>Смайлики</td><td>400 ₽</td><td>600 ₽</td><td>900 ₽</td></tr>
+          </tbody>
+        </table>
+
+        <div class="box-title" style="margin-top: 12px;">Доп. услуги</div>
+        <div class="extras-section">
+          <div class="extra-row"><span>Дополнительный персонаж</span><span class="extra-val">+100%</span></div>
+          <div class="extra-row"><span>Питомец</span><span class="extra-val">+700 ₽</span></div>
+          <div class="extra-row"><span>Сложный фон</span><span class="extra-val">+10 000 ₽</span></div>
+          <div class="extra-row"><span>Срочный заказ</span><span class="extra-val">+70%</span></div>
+          <div class="extra-row" style="margin-top: 4px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 4px;"><span>Предоплата</span><span class="extra-val">50%</span></div>
+        </div>
       </div>
 
-      <!-- Блок доп. услуг -->
-      <div class="glass-price-box extras-box-right">
-        <div class="box-title">Доп. услуги</div>
-        <div class="service-row"><span>Дополнительный персонаж</span><span class="service-price">+100%</span></div>
-        <div class="service-row"><span>Питомец</span><span class="service-price">+700 ₽</span></div>
-        <div class="service-row"><span>Сложный фон</span><span class="service-price">+10 000 ₽</span></div>
-        <div class="service-row"><span>Срочный заказ</span><span class="service-price">+70%</span></div>
-        <div class="service-row" style="margin-top: 6px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 6px;"><span>Предоплата</span><span class="service-price">50%</span></div>
-      </div>
+      <!-- ПУСТОЙ ПРАВЫЙ НИЖНИЙ БЛОК -->
+      <div class="glass-empty-box"></div>
 
       <div class="poster-label-left">
         <span>Художник</span>
@@ -374,28 +415,37 @@
     <div class="poster-scene">
       <div class="bg-watermark-text text-sugar">Сахарная девочка</div>
       
-      <!-- Блок цен -->
-      <div class="glass-price-box price-box-left">
+      <div class="glass-price-box">
         <div class="box-title">Основные цены</div>
-        <div class="service-row"><span>Скетч (чб)</span><span class="service-price">от 2 000 ₽</span></div>
-        <div class="service-row"><span>Лайн + цвет</span><span class="service-price">от 4 000 ₽</span></div>
-        <div class="service-row"><span>Рендер</span><span class="service-price">от 7 500 ₽</span></div>
-        <div class="service-row" style="margin-top: 6px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 6px;"><span>Смайлики / Эмоуты</span><span class="service-price">от 500 ₽</span></div>
-        <div class="service-row"><span>По грудь</span><span class="service-price">от 5 000 ₽</span></div>
-        <div class="service-row"><span>По бедра</span><span class="service-price">от 8 000 ₽</span></div>
-        <div class="service-row"><span>По пояс</span><span class="service-price">от 6 500 ₽</span></div>
-        <div class="service-row"><span>Фулл (В полный рост)</span><span class="service-price">от 11 000 ₽</span></div>
+        <table class="price-table">
+          <thead>
+            <tr>
+              <th>Формат</th>
+              <th>Скетч (чб)</th>
+              <th>Лайн+цвет</th>
+              <th>Рендер</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Фулл</td><td>2 000 ₽</td><td>4 500 ₽</td><td>7 500 ₽</td></tr>
+            <tr><td>По бедра</td><td>1 600 ₽</td><td>3 600 ₽</td><td>6 000 ₽</td></tr>
+            <tr><td>По пояс</td><td>1 300 ₽</td><td>2 800 ₽</td><td>4 800 ₽</td></tr>
+            <tr><td>По грудь</td><td>1 000 ₽</td><td>2 000 ₽</td><td>3 500 ₽</td></tr>
+            <tr><td>Смайлики</td><td>500 ₽</td><td>800 ₽</td><td>1 200 ₽</td></tr>
+          </tbody>
+        </table>
+
+        <div class="box-title" style="margin-top: 12px;">Доп. услуги</div>
+        <div class="extras-section">
+          <div class="extra-row"><span>Дополнительный персонаж</span><span class="extra-val">+100%</span></div>
+          <div class="extra-row"><span>Питомец</span><span class="extra-val">+700 ₽</span></div>
+          <div class="extra-row"><span>Сложный фон</span><span class="extra-val">+10 000 ₽</span></div>
+          <div class="extra-row"><span>Срочный заказ</span><span class="extra-val">+70%</span></div>
+          <div class="extra-row" style="margin-top: 4px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 4px;"><span>Предоплата</span><span class="extra-val">50%</span></div>
+        </div>
       </div>
 
-      <!-- Блок доп. услуг -->
-      <div class="glass-price-box extras-box-right">
-        <div class="box-title">Доп. услуги</div>
-        <div class="service-row"><span>Дополнительный персонаж</span><span class="service-price">+100%</span></div>
-        <div class="service-row"><span>Питомец</span><span class="service-price">+700 ₽</span></div>
-        <div class="service-row"><span>Сложный фон</span><span class="service-price">+10 000 ₽</span></div>
-        <div class="service-row"><span>Срочный заказ</span><span class="service-price">+70%</span></div>
-        <div class="service-row" style="margin-top: 6px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 6px;"><span>Предоплата</span><span class="service-price">50%</span></div>
-      </div>
+      <div class="glass-empty-box"></div>
 
       <div class="poster-label-left">
         <span>Риггер</span>
@@ -423,28 +473,37 @@
     <div class="poster-scene">
       <div class="bg-watermark-text text-kate">sad_potato_kate</div>
       
-      <!-- Блок цен -->
-      <div class="glass-price-box price-box-left">
+      <div class="glass-price-box">
         <div class="box-title">Основные цены</div>
-        <div class="service-row"><span>Скетч (чб)</span><span class="service-price">от 1 200 ₽</span></div>
-        <div class="service-row"><span>Лайн + цвет</span><span class="service-price">от 3 000 ₽</span></div>
-        <div class="service-row"><span>Рендер</span><span class="service-price">от 5 500 ₽</span></div>
-        <div class="service-row" style="margin-top: 6px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 6px;"><span>Смайлики / Эмоуты</span><span class="service-price">от 350 ₽</span></div>
-        <div class="service-row"><span>По грудь</span><span class="service-price">от 3 500 ₽</span></div>
-        <div class="service-row"><span>По бедра</span><span class="service-price">от 6 000 ₽</span></div>
-        <div class="service-row"><span>По пояс</span><span class="service-price">от 4 800 ₽</span></div>
-        <div class="service-row"><span>Фулл (В полный рост)</span><span class="service-price">от 8 500 ₽</span></div>
+        <table class="price-table">
+          <thead>
+            <tr>
+              <th>Формат</th>
+              <th>Скетч (чб)</th>
+              <th>Лайн+цвет</th>
+              <th>Рендер</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Фулл</td><td>1 200 ₽</td><td>3 000 ₽</td><td>5 500 ₽</td></tr>
+            <tr><td>По бедра</td><td>1 000 ₽</td><td>2 400 ₽</td><td>4 400 ₽</td></tr>
+            <tr><td>По пояс</td><td>800 ₽</td><td>1 900 ₽</td><td>3 500 ₽</td></tr>
+            <tr><td>По грудь</td><td>650 ₽</td><td>1 400 ₽</td><td>2 500 ₽</td></tr>
+            <tr><td>Смайлики</td><td>350 ₽</td><td>550 ₽</td><td>800 ₽</td></tr>
+          </tbody>
+        </table>
+
+        <div class="box-title" style="margin-top: 12px;">Доп. услуги</div>
+        <div class="extras-section">
+          <div class="extra-row"><span>Дополнительный персонаж</span><span class="extra-val">+100%</span></div>
+          <div class="extra-row"><span>Питомец</span><span class="extra-val">+700 ₽</span></div>
+          <div class="extra-row"><span>Сложный фон</span><span class="extra-val">+10 000 ₽</span></div>
+          <div class="extra-row"><span>Срочный заказ</span><span class="extra-val">+70%</span></div>
+          <div class="extra-row" style="margin-top: 4px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 4px;"><span>Предоплата</span><span class="extra-val">50%</span></div>
+        </div>
       </div>
 
-      <!-- Блок доп. услуг -->
-      <div class="glass-price-box extras-box-right">
-        <div class="box-title">Доп. услуги</div>
-        <div class="service-row"><span>Дополнительный персонаж</span><span class="service-price">+100%</span></div>
-        <div class="service-row"><span>Питомец</span><span class="service-price">+700 ₽</span></div>
-        <div class="service-row"><span>Сложный фон</span><span class="service-price">+10 000 ₽</span></div>
-        <div class="service-row"><span>Срочный заказ</span><span class="service-price">+70%</span></div>
-        <div class="service-row" style="margin-top: 6px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 6px;"><span>Предоплата</span><span class="service-price">50%</span></div>
-      </div>
+      <div class="glass-empty-box"></div>
 
       <div class="poster-label-left">
         <span>Художник</span>
