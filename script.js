@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
   // Плавный скролл для всех внутренних ссылок
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -54,19 +53,22 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Пагинация по кнопке "Показать ещё"
-  loadMoreBtn.addEventListener('click', () => {
-    const hiddenItems = document.querySelectorAll('.portfolio-item.hidden-item:not(.hide-by-filter)');
-    let opened = 0;
-    hiddenItems.forEach(item => {
-      if (opened < 6) { // Открывает по 6 штук (2 ряда)
-        item.classList.remove('hidden-item');
-        opened++;
-      }
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener('click', () => {
+      const hiddenItems = document.querySelectorAll('.portfolio-item.hidden-item:not(.hide-by-filter)');
+      let opened = 0;
+      hiddenItems.forEach(item => {
+        if (opened < 6) { // Открывает по 6 штук (2 ряда)
+          item.classList.remove('hidden-item');
+          opened++;
+        }
+      });
+      updateLoadMore();
     });
-    updateLoadMore();
-  });
+  }
 
   function updateLoadMore() {
+    if (!loadMoreBtn) return;
     const remaining = document.querySelectorAll('.portfolio-item.hidden-item:not(.hide-by-filter)');
     loadMoreBtn.style.display = remaining.length === 0 ? 'none' : 'inline-block';
   }
@@ -75,25 +77,32 @@ document.addEventListener('DOMContentLoaded', () => {
   items.forEach(item => {
     item.addEventListener('click', () => {
       const img = item.querySelector('img');
-      lightboxImg.src = item.getAttribute('data-full') || img.src;
-      lightbox.style.display = 'flex';
+      if (lightbox && lightboxImg) {
+        lightboxImg.src = item.getAttribute('data-full') || (img ? img.src : '');
+        lightbox.style.display = 'flex';
+      }
     });
   });
 
-  lightboxClose.addEventListener('click', () => lightbox.style.display = 'none');
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) lightbox.style.display = 'none';
-  });
+  if (lightboxClose && lightbox) {
+    lightboxClose.addEventListener('click', () => lightbox.style.display = 'none');
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) lightbox.style.display = 'none';
+    });
+  }
 
   updateLoadMore();
 });
 
+// Функции для плавающей кнопки «Соцсети»
 function openSocialModal() { 
-  document.getElementById('socialModal').classList.add('active'); 
+  const modal = document.getElementById('socialModal');
+  if (modal) modal.classList.add('active'); 
 }
 
 function closeSocialModal() { 
-  document.getElementById('socialModal').classList.remove('active'); 
+  const modal = document.getElementById('socialModal');
+  if (modal) modal.classList.remove('active'); 
 }
 
 function closeSocialModalOnBg(e) { 
