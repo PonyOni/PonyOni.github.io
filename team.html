@@ -717,5 +717,77 @@
       }
     }, { passive: true });
   </script>
+  <!-- ПРАВАЯ ПЛАВАЮЩАЯ КНОПКА «СОЦСЕТИ» -->
+<button class="social-trigger-btn" onclick="openSocialModal()">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+  </svg>
+  <span>Соцсети</span>
+</button>
+
+<!-- МОДАЛЬНОЕ ОКНО СОЦСЕТЕЙ -->
+<div id="socialModal" class="social-modal-overlay" onclick="closeSocialModalOnBg(event)">
+  <div class="social-modal-card">
+    <button class="social-modal-close" onclick="closeSocialModal()">×</button>
+    <div class="social-modal-header">Все ссылки</div>
+    <div class="social-modal-title">PonyOni в соцсетях</div>
+    <div class="social-modal-subtitle">Команда художников, риггеров и создателей контента</div>
+
+    <div class="social-section-label">Соцсети</div>
+    <div class="social-links-list">
+      <a href="https://www.twitch.tv/your_honni" target="_blank" class="social-link-item">
+        <div class="social-link-info">
+          <div class="social-link-icon">🎮</div>
+          <div class="social-link-text">
+            <h4>Twitch</h4>
+            <p>трансляции и творческий процесс</p>
+          </div>
+        </div>
+        <div class="social-link-arrow">→</div>
+      </a>
+
+      <a href="https://t.me/PonyOni" target="_blank" class="social-link-item">
+        <div class="social-link-info">
+          <div class="social-link-icon">📢</div>
+          <div class="social-link-text">
+            <h4>Telegram</h4>
+            <p>новости, анонсы и арты</p>
+          </div>
+        </div>
+        <div class="social-link-arrow">→</div>
+      </a>
+
+      <a href="https://vk.ru/club240301955" target="_blank" class="social-link-item">
+        <div class="social-link-info">
+          <div class="social-link-icon">💬</div>
+          <div class="social-link-text">
+            <h4>ВКонтакте</h4>
+            <p>сообщество и заказы</p>
+          </div>
+        </div>
+        <div class="social-link-arrow">→</div>
+      </a>
+    </div>
+
+    <div class="social-section-label">Связь и проекты</div>
+    <div class="social-links-list">
+      <a href="https://t.me/Honnistar" target="_blank" class="social-link-item">
+        <div class="social-link-info">
+          <div class="social-link-icon">✍️</div>
+          <div class="social-link-text">
+            <h4>Написать в Telegram</h4>
+            <p>по вопросам сотрудничества</p>
+          </div>
+        </div>
+        <div class="social-link-arrow">→</div>
+      </a>
+    </div>
+
+    <div class="social-footer-note">
+      Команда PonyOni ✨ · 2026
+    </div>
+  </div>
+</div>
 </body>
 </html>
