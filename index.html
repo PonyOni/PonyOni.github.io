@@ -18,7 +18,7 @@
       user-select: none;
       font-family: 'Inter', sans-serif;
       color: #ffffff;
-      background: #1b1a2e; /* Фирменный темный фон */
+      background: #1b1a2e;
       min-height: 100vh;
       overflow-x: hidden;
       margin: 0;
@@ -310,6 +310,34 @@
       padding: 100px 40px 40px 40px;
       position: relative;
       box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    /* ФОНОВЫЙ ТУСКИЙ АРТ НА ПЕРВОМ ЭКРАНЕ */
+    .hero-bg-art {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.22; /* Настройка тусклости арта */
+      z-index: 1;
+      pointer-events: none;
+      filter: blur(2px);
+    }
+
+    /* ГРАДИЕНТНОЕ ЗАТЕМНЕНИЕ ФОНА ДЛЯ ИДЕАЛЬНОЙ ЧИТАЕМОСТИ */
+    .hero-bg-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(27, 26, 46, 0.65) 0%, rgba(27, 26, 46, 0.95) 100%);
+      z-index: 2;
+      pointer-events: none;
     }
 
     .screen-container {
@@ -320,25 +348,36 @@
       flex-direction: column;
       justify-content: center;
       position: relative;
+      z-index: 3;
     }
 
-    .screen-content {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 50px;
+    .intro-center-box {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
       align-items: center;
+      background: rgba(27, 26, 46, 0.45);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 42px 36px;
+      border-radius: 32px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
     }
+
     h1, h2 {
       font-family: 'Poppins', sans-serif;
       color: #ffffff;
-      text-shadow: 0 2px 15px rgba(0,0,0,0.2);
+      text-shadow: 0 2px 15px rgba(0,0,0,0.3);
       margin: 0;
     }
-    h1 { font-size: 42px; font-weight: 800; margin-bottom: 16px; }
+    h1 { font-size: 46px; font-weight: 800; margin-bottom: 16px; }
     h2 { font-size: 34px; font-weight: 800; margin-bottom: 8px; }
     p { font-size: 16px; color: #e2d7f5; line-height: 1.7; margin-top: 0; margin-bottom: 24px; }
 
-    .badges-top { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+    .badges-top { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 20px; }
     .badge-tag { background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(10px); color: #ffd1dc; padding: 6px 14px; border-radius: 12px; font-size: 12px; font-weight: 600; border: 1px solid rgba(255, 255, 255, 0.15); }
     .badge-status { background: rgba(56, 239, 125, 0.15); backdrop-filter: blur(10px); color: #38ef7d; padding: 6px 14px; border-radius: 12px; font-size: 12px; font-weight: 600; border: 1px solid rgba(56, 239, 125, 0.3); }
 
@@ -352,8 +391,6 @@
     }
     .btn:hover { transform: translateY(-2px); }
     .btn-secondary { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.25); }
-
-    .single-visual img { width: 100%; height: 360px; object-fit: cover; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); border: 1px solid rgba(255, 255, 255, 0.2); }
 
     .services-grid { 
       display: grid; 
@@ -398,7 +435,7 @@
     .review-card h4 { font-family: 'Poppins', sans-serif; font-size: 17px; color: #ffffff; margin-top: 0; margin-bottom: 6px; }
     .review-card p { font-size: 15px; color: #d1b8ff; margin-bottom: 0; }
 
-    .scroll-hint { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); text-align: center; font-size: 13px; color: rgba(255, 255, 255, 0.6); font-weight: 500; animation: bounce 2s infinite; cursor: pointer; }
+    .scroll-hint { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); text-align: center; font-size: 13px; color: rgba(255, 255, 255, 0.6); font-weight: 500; animation: bounce 2s infinite; cursor: pointer; z-index: 10; }
     @keyframes bounce {
       0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);}
       40% {transform: translateX(-50%) translateY(-6px);}
@@ -422,9 +459,11 @@
     .modal-close { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.1); border: none; color: #fff; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 18px; }
 
     @media(max-width: 900px) {
-      .services-grid, .screen-content, .queue-container-grid { grid-template-columns: 1fr; }
+      .services-grid, .queue-container-grid { grid-template-columns: 1fr; }
       .nav-menu { display: none; }
       .full-screen-section { height: auto; min-height: 100vh; padding: 100px 20px 40px 20px; }
+      h1 { font-size: 32px; }
+      .intro-center-box { padding: 28px 20px; }
     }
   </style>
 </head>
@@ -437,7 +476,6 @@
         <img src="image/logo.png" alt="Logo"> PonyOni 🎄
       </a>
 
-      <!-- ВКЛАДКА КОМАНДА ВОССТАНОВЛЕНА -->
       <ul class="nav-menu">
         <li><a href="#screen-intro" id="link-intro" class="active">Главная</a></li>
         <li><a href="team.html" id="link-team">Команда</a></li>
@@ -450,25 +488,24 @@
     </div>
   </header>
 
-  <!-- ЭКРАН 0: ВСТУПЛЕНИЕ -->
+  <!-- ЭКРАН 0: ВСТУПЛЕНИЕ С ФОНОВЫМ ТУСКЛЫМ РИСУНКОМ -->
   <section id="screen-intro" class="full-screen-section">
+    <!-- ТУСКИЙ АРТ НА ВЕСЬ ЭКРАН С ЗАТЕМНЕНИЕМ -->
+    <img src="image/prev.jpe" alt="Background" class="hero-bg-art">
+    <div class="hero-bg-overlay"></div>
+
     <div class="screen-container">
-      <div class="screen-content">
-        <div>
-          <div class="badges-top">
-            <span class="badge-tag">✨ Творческое объединение</span>
-            <span class="badge-tag">Live2D · VTuber · 2D Art</span>
-            <span class="badge-status">✦ Заказы открыты</span>
-          </div>
-          <h1>Добро пожаловать в PonyOni!</h1>
-          <p>Привет, мы команда из художников и Live2D-риггера. Создаем VTuber-модели под ключ: рисуем арт, делим его на слои и ригаем в Live2D для VTube Studio или делаем только риг по готовому PSD.</p>
-          <div style="display: flex; gap: 12px;">
-            <a href="team.html" class="btn">Посмотреть команду →</a>
-            <button class="btn btn-secondary" onclick="openModal()">Написать нам</button>
-          </div>
+      <div class="intro-center-box">
+        <div class="badges-top">
+          <span class="badge-tag">✨ Творческое объединение</span>
+          <span class="badge-tag">Live2D · VTuber · 2D Art</span>
+          <span class="badge-status">✦ Заказы открыты</span>
         </div>
-        <div class="single-visual">
-          <img src="image/prev.jpe" alt="Prev">
+        <h1>Добро пожаловать в PonyOni!</h1>
+        <p>Привет, мы команда из художников и Live2D-риггера. Создаем VTuber-модели под ключ: рисуем арт, делим его на слои и ригаем в Live2D для VTube Studio или делаем только риг по готовому PSD.</p>
+        <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+          <a href="team.html" class="btn">Посмотреть команду →</a>
+          <button class="btn btn-secondary" onclick="openModal()">Написать нам</button>
         </div>
       </div>
       <div class="scroll-hint" onclick="scrollToScreen('screen-services')">Листайте вниз к услугам ↓</div>
@@ -597,7 +634,7 @@
     <span>Соцсети</span>
   </button>
 
-<!-- БОКОВАЯ ВЫДВИЖНАЯ ПАНЕЛЬ СОЦСЕТЕЙ -->
+  <!-- БОКОВАЯ ВЫДВИЖНАЯ ПАНЕЛЬ СОЦСЕТЕЙ -->
   <div id="socialModal" class="social-modal-overlay" onclick="closeSocialModalOnBg(event)">
     <div class="social-modal-card">
       <button class="social-modal-close" onclick="closeSocialModal()">×</button>
