@@ -324,67 +324,71 @@
       filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
     }
 
-    /* ОБЩИЙ СТИЛЬ БЛОКОВ */
+    /* ОБЩИЙ СТИЛЬ БЛОКОВ СЛЕВА ШИРИНОЙ 800PX */
     .glass-box {
       position: absolute;
       z-index: 4;
-      background: rgba(27, 26, 46, 0.85);
+      background: rgba(27, 26, 46, 0.88);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 20px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      width: 800px;
+      left: 50px;
+      padding: 20px 24px;
     }
 
-    /* ЛЕВЫЕ БЛОКИ */
+    /* СТИЛИ ДЛЯ ЛЕВЫХ БЛОКОВ ПО ВЕРТИКАЛИ */
     .box-left-top {
       top: 90px;
-      left: 40px;
-      width: 480px;
-      padding: 16px 20px;
     }
 
     .box-left-bottom {
-      top: 360px;
-      left: 40px;
-      width: 480px;
-      padding: 14px 20px;
+      top: 360px; /* Аккуратный отступ под блоком цен */
     }
 
     /* ПРАВЫЙ НИЖНИЙ БЛОК (ПРИМЕРЫ РАБОТ) */
     .box-right-bottom {
+      position: absolute;
       bottom: 90px;
-      right: 40px;
-      width: 480px;
-      padding: 16px 20px;
+      right: 50px;
+      width: 460px;
+      padding: 18px 22px;
+      z-index: 4;
+      background: rgba(27, 26, 46, 0.88);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
     }
 
     .box-title {
       font-family: 'Poppins', sans-serif;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 700;
       color: #ffd1dc;
       text-transform: uppercase;
       letter-spacing: 1px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
-    /* ТАБЛИЦА ЦЕН */
+    /* КРУПНАЯ И ЧИТАЕМАЯ ТАБЛИЦА ЦЕН */
     .price-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 13.5px;
+      font-size: 15px;
     }
     .price-table th, .price-table td {
-      padding: 8px 10px;
+      padding: 10px 14px;
       text-align: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     }
     .price-table th {
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
       color: #ffd1dc;
-      font-size: 13px;
+      font-size: 14px;
     }
     .price-table td:first-child {
       text-align: left;
@@ -396,19 +400,20 @@
       font-weight: 500;
     }
 
-    /* СПИСОК ДОП. УСЛУГ */
-    .extras-list {
+    /* СЕТКА ДОП. УСЛУГ (КРУПНЫЙ, ЧИТАЕМЫЙ ТЕКСТ) */
+    .extras-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px 16px;
-      font-size: 12.5px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px 24px;
     }
     .extra-item {
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
       color: #e2d7f5;
-      padding: 3px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
     .extra-item span:last-child {
       font-weight: 700;
@@ -428,9 +433,9 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 16px;
-      height: 16px;
-      font-size: 10px;
+      width: 18px;
+      height: 18px;
+      font-size: 11px;
       font-weight: 700;
       color: #ffd1dc;
       background: rgba(255, 209, 220, 0.15);
@@ -452,8 +457,8 @@
       background: #252336;
       border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 12px;
-      padding: 12px 16px;
-      width: 280px;
+      padding: 14px 18px;
+      width: 300px;
       box-shadow: 0 15px 35px rgba(0,0,0,0.6);
       z-index: 999;
       opacity: 0;
@@ -484,15 +489,15 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      font-size: 12px;
+      gap: 6px;
+      font-size: 13px;
       font-weight: 400;
       color: #e2d7f5;
     }
 
     .tooltip-list li {
       position: relative;
-      padding-left: 12px;
+      padding-left: 14px;
     }
 
     .tooltip-list li::before {
@@ -530,8 +535,8 @@
     /* ЛЕВАЯ ПОДПИСЬ */
     .poster-label-left {
       position: absolute;
-      top: 45%;
-      left: 8%;
+      top: 55%;
+      left: 6%;
       z-index: 3;
       display: flex;
       align-items: center;
@@ -539,7 +544,7 @@
     }
     .poster-label-left span {
       font-family: 'Poppins', sans-serif;
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 2px;
@@ -552,8 +557,8 @@
     }
     .poster-brand-sub {
       position: absolute;
-      top: 52%;
-      left: 10%;
+      top: 61%;
+      left: 8%;
       z-index: 3;
       font-family: 'Poppins', sans-serif;
       font-size: 14px;
@@ -564,8 +569,8 @@
     /* ПРАВАЯ ПОДПИСЬ */
     .poster-label-right {
       position: absolute;
-      bottom: 30%;
-      right: 8%;
+      bottom: 34%;
+      right: 6%;
       z-index: 3;
       display: flex;
       align-items: center;
@@ -573,7 +578,7 @@
     }
     .poster-label-right span {
       font-family: 'Poppins', sans-serif;
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 2px;
@@ -665,7 +670,7 @@
     <div class="poster-scene">
       <div class="bg-watermark-text text-honnili">HonniLi</div>
       
-      <!-- ЦЕНЫ СВЕРХУ СЛЕВА -->
+      <!-- ОСНОВНЫЕ ЦЕНЫ -->
       <div class="glass-box box-left-top">
         <div class="box-title">Основные цены</div>
         <table class="price-table">
@@ -687,20 +692,20 @@
         </table>
       </div>
 
-      <!-- ДОП. УСЛУГИ СНИЗУ СЛЕВА -->
+      <!-- ДОП. УСЛУГИ -->
       <div class="glass-box box-left-bottom">
         <div class="box-title">Доп. услуги</div>
-        <div class="extras-list">
+        <div class="extras-grid">
           <div class="extra-item"><span>Доп. персонаж</span><span>+100%</span></div>
           <div class="extra-item"><span>Питомец</span><span>+700 ₽</span></div>
           <div class="extra-item"><span>Сложный фон</span><span>+10 000 ₽</span></div>
           <div class="extra-item"><span>Срочный заказ</span><span>+70%</span></div>
-          <div class="extra-item"><span>Предоплата</span><span>50%</span></div>
+          <div class="extra-item" style="grid-column: span 2;"><span>Предоплата</span><span>50%</span></div>
         </div>
       </div>
 
       <!-- ПРАВЫЙ НИЖНИЙ БЛОК (ПРИМЕРЫ РАБОТ) -->
-      <div class="glass-box box-right-bottom">
+      <div class="box-right-bottom">
         <div class="box-title">Примеры работ</div>
         <div class="portfolio-grid">
           <div class="portfolio-item"><img src="image/TeamHonniLi.png" alt="Work 1"></div>
@@ -792,14 +797,14 @@
 
       <div class="glass-box box-left-bottom">
         <div class="box-title">Доп. услуги</div>
-        <div class="extras-list">
+        <div class="extras-grid">
           <div class="extra-item"><span>Доп. эмоция</span><span>+1 000 ₽</span></div>
           <div class="extra-item"><span>Анимация предметов</span><span>+10–30%</span></div>
           <div class="extra-item" style="grid-column: span 2;"><span>Срочный риггинг</span><span>+50%</span></div>
         </div>
       </div>
 
-      <div class="glass-box box-right-bottom">
+      <div class="box-right-bottom">
         <div class="box-title">Примеры работ</div>
         <div class="portfolio-grid">
           <div class="portfolio-item"><img src="image/TeamCaharook.png" alt="Work 1"></div>
@@ -857,18 +862,18 @@
 
       <div class="glass-box box-left-bottom" style="top: 380px;">
         <div class="box-title">Доп. услуги</div>
-        <div class="extras-list">
+        <div class="extras-grid">
           <div class="extra-item"><span>Доп. наряд</span><span>+50%</span></div>
           <div class="extra-item"><span>Доп. прическа</span><span>+50%</span></div>
           <div class="extra-item"><span>Доп. эмоция</span><span>+50%</span></div>
-          <div class="extra-item"><span>Референс/концепт</span><span>4 500 ₽</span></div>
+          <div class="extra-item"><span>Референс / концепт</span><span>4 500 ₽</span></div>
           <div class="extra-item"><span>Доп. персонаж</span><span>+100%</span></div>
           <div class="extra-item"><span>Коммерция</span><span>+100%</span></div>
           <div class="extra-item" style="grid-column: span 2;"><span>NSFW-версия</span><span>+50%</span></div>
         </div>
       </div>
 
-      <div class="glass-box box-right-bottom">
+      <div class="box-right-bottom">
         <div class="box-title">Примеры работ</div>
         <div class="portfolio-grid">
           <div class="portfolio-item"><img src="image/knight.png" alt="Work 1"></div>
