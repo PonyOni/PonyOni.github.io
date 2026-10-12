@@ -300,11 +300,10 @@
     }
     .nav-menu a:hover, .nav-menu a.active { color: #ffffff; font-weight: 700; }
 
-    /* СЕКЦИИ КОМАНДЫ */
+    /* ПОЛНОЭКРАННЫЕ СЛАЙДЫ */
     .full-screen-section {
       width: 100vw;
       height: 100vh;
-      min-height: 750px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -318,7 +317,6 @@
       position: relative;
       width: 100%;
       height: 100%;
-      max-width: 1300px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -332,7 +330,7 @@
       transform: translate(-50%, -50%);
       font-family: 'Poppins', sans-serif;
       font-weight: 900;
-      color: rgba(255, 255, 255, 0.03);
+      color: rgba(255, 255, 255, 0.04);
       white-space: nowrap;
       z-index: 1;
       pointer-events: none;
@@ -340,29 +338,29 @@
       text-transform: uppercase;
     }
 
-    .text-honnili { font-size: 16vw; letter-spacing: 12px; }
-    .text-sugar { font-size: 7.5vw; letter-spacing: 6px; }
-    .text-kate { font-size: 8.5vw; letter-spacing: 8px; }
+    .text-honnili { font-size: 18vw; letter-spacing: 12px; }
+    .text-sugar { font-size: 8.5vw; letter-spacing: 6px; }
+    .text-kate { font-size: 9.5vw; letter-spacing: 8px; }
 
-    /* ЦЕНТРАЛЬНЫЙ АРТ */
+    /* ЦЕНТРАЛЬНЫЙ КРУПНЫЙ АРТ ПЕРСОНАЖА */
     .character-center-img {
       position: absolute;
       bottom: 0;
-      height: 82vh;
-      max-height: 680px;
+      height: 92vh;
+      max-height: none;
       object-fit: contain;
       z-index: 2;
       pointer-events: none;
       filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
     }
 
-    /* ЛЕВЫЙ ВЕРХНИЙ БЛОК (ЦЕНЫ) */
+    /* ОСНОВНОЙ СТИЛЬ БЛОКА ЦЕН (ЛЕВЫЙ ВЕРХНИЙ УГОЛ) */
     .box-left-top {
       position: absolute;
-      top: 25px;
-      left: 30px;
-      width: 480px;
-      padding: 16px 20px;
+      top: 100px;
+      left: 50px;
+      width: 750px;
+      padding: 22px 26px;
       z-index: 4;
       background: rgba(27, 26, 46, 0.88);
       backdrop-filter: blur(16px);
@@ -373,13 +371,13 @@
       box-sizing: border-box;
     }
 
-    /* ЛЕВЫЙ НИЖНИЙ БЛОК (ДОП. УСЛУГИ) */
+    /* БЛОК ДОП. УСЛУГ (ЛЕВЫЙ НИЖНИЙ УГОЛ) */
     .box-left-bottom {
       position: absolute;
-      bottom: 75px;
-      left: 30px;
-      width: 480px;
-      padding: 14px 20px;
+      bottom: 90px;
+      left: 50px;
+      width: 750px;
+      padding: 18px 26px;
       z-index: 4;
       background: rgba(27, 26, 46, 0.88);
       backdrop-filter: blur(16px);
@@ -393,10 +391,10 @@
     /* ПРАВЫЙ НИЖНИЙ БЛОК (ПРИМЕРЫ РАБОТ) */
     .box-right-bottom {
       position: absolute;
-      bottom: 75px;
-      right: 30px;
-      width: 380px;
-      padding: 14px 18px;
+      bottom: 90px;
+      right: 50px;
+      width: 440px;
+      padding: 18px 22px;
       z-index: 4;
       background: rgba(27, 26, 46, 0.88);
       backdrop-filter: blur(16px);
@@ -408,30 +406,30 @@
 
     .box-title {
       font-family: 'Poppins', sans-serif;
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 700;
       color: #ffd1dc;
       text-transform: uppercase;
       letter-spacing: 1px;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
     }
 
     /* ТАБЛИЦА ЦЕН */
     .price-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 13px;
+      font-size: 15px;
     }
     .price-table th, .price-table td {
-      padding: 6px 10px;
+      padding: 8px 12px;
       text-align: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     }
     .price-table th {
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
       color: #ffd1dc;
-      font-size: 12px;
+      font-size: 14px;
     }
     .price-table td:first-child {
       text-align: left;
@@ -443,57 +441,65 @@
       font-weight: 500;
     }
 
-    /* СЕТКА ДОП. УСЛУГ */
+    /* СЕТКА ДОП. УСЛУГ В 2 КОЛОНКИ */
     .extras-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 6px 20px;
+      gap: 8px 28px;
     }
     .extra-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 12.5px;
+      font-size: 14px;
       color: #e2d7f5;
-      padding: 2px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 3px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
     .extra-item span:last-child {
       font-weight: 700;
       color: #ffd1dc;
     }
 
-    /* ВСПОМОГАТЕЛЬНЫЕ ТУЛТИПЫ */
+    /* СТИЛИ ДЛЯ ИНТЕРАКТИВНОЙ ПОДСКАЗКИ */
     .tooltip-container {
       position: relative;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
       cursor: help;
     }
+
     .info-icon {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 15px;
-      height: 15px;
-      font-size: 10px;
+      width: 18px;
+      height: 18px;
+      font-size: 11px;
       font-weight: 700;
       color: #ffd1dc;
       background: rgba(255, 209, 220, 0.15);
       border: 1px solid rgba(255, 209, 220, 0.4);
       border-radius: 50%;
+      transition: all 0.2s ease;
     }
+
+    .tooltip-container:hover .info-icon {
+      background: #ffd1dc;
+      color: #1b1a2e;
+    }
+
     .tooltip-box {
       position: absolute;
-      bottom: 130%;
+      top: 140%;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translateX(-50%) translateY(-6px);
       background: #252336;
       border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 12px;
-      padding: 12px 16px;
-      width: 260px;
+      padding: 14px 18px;
+      width: 300px;
       box-shadow: 0 15px 35px rgba(0,0,0,0.6);
       z-index: 999;
       opacity: 0;
@@ -502,33 +508,66 @@
       pointer-events: none;
       text-align: left;
     }
+
+    .tooltip-box::after {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 6px;
+      border-style: solid;
+      border-color: transparent transparent #252336 transparent;
+    }
+
     .tooltip-container:hover .tooltip-box {
       opacity: 1;
       visibility: visible;
+      transform: translateX(-50%) translateY(0);
     }
+
     .tooltip-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      font-size: 12px;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 400;
       color: #e2d7f5;
       padding: 0;
       margin: 0;
     }
 
-    /* СЕТКА ПРИМЕРОВ */
+    .tooltip-list li {
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .tooltip-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: #ffd1dc;
+      font-weight: bold;
+    }
+
+    /* СЕТКА ПРИМЕРОВ РАБОТ */
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
+      gap: 10px;
     }
     .portfolio-item {
       aspect-ratio: 1;
-      border-radius: 8px;
+      border-radius: 10px;
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.15);
+      cursor: pointer;
+      transition: transform 0.2s;
       background: rgba(255, 255, 255, 0.05);
+    }
+    .portfolio-item:hover {
+      transform: scale(1.03);
     }
     .portfolio-item img {
       width: 100%;
@@ -536,82 +575,91 @@
       object-fit: cover;
     }
 
-    /* НАДПИСИ ПО БОКАМ */
+    /* ЛЕВАЯ ПОДПИСЬ */
     .poster-label-left {
       position: absolute;
-      top: 45%;
-      left: 4%;
+      top: 48%;
+      left: 6%;
       z-index: 3;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 16px;
     }
     .poster-label-left span {
       font-family: 'Poppins', sans-serif;
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 2px;
       color: #ffffff;
     }
-    .poster-label-left .line { width: 100px; height: 2px; background: rgba(255, 255, 255, 0.6); }
+    .poster-label-left .line {
+      width: 140px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.6);
+    }
     .poster-brand-sub {
       position: absolute;
-      top: 50%;
-      left: 6%;
+      top: 54%;
+      left: 8%;
       z-index: 3;
       font-family: 'Poppins', sans-serif;
-      font-size: 13px;
+      font-size: 14px;
       color: rgba(255, 255, 255, 0.6);
       font-style: italic;
     }
 
+    /* ПРАВАЯ ПОДПИСЬ */
     .poster-label-right {
       position: absolute;
-      top: 45%;
-      right: 4%;
+      top: 48%;
+      right: 6%;
       z-index: 3;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 16px;
     }
     .poster-label-right span {
       font-family: 'Poppins', sans-serif;
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 2px;
       color: #ffffff;
     }
-    .poster-label-right .line { width: 100px; height: 2px; background: rgba(255, 255, 255, 0.6); }
+    .poster-label-right .line {
+      width: 140px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.6);
+    }
 
-    /* КНОПКИ ВНИЗУ ПО ЦЕНТРУ */
+    /* КНОПКИ УПРАВЛЕНИЯ */
     .poster-actions {
       position: absolute;
-      bottom: 18px;
+      bottom: 25px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 5;
       display: flex;
-      gap: 12px;
+      gap: 14px;
     }
 
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
-      padding: 9px 22px; border-radius: 50px; font-weight: 600; font-size: 13px;
+      padding: 12px 28px; border-radius: 50px; font-weight: 600; font-size: 14px;
       text-decoration: none; cursor: pointer; border: none;
       background: linear-gradient(135deg, #a88beb 0%, #e87999 100%); color: #ffffff;
-      box-shadow: 0 8px 20px rgba(168, 139, 235, 0.4);
+      box-shadow: 0 10px 25px rgba(168, 139, 235, 0.4);
       transition: transform 0.2s;
     }
     .btn:hover { transform: translateY(-2px); }
     .btn-secondary { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.25); }
 
-    .scroll-hint { position: absolute; bottom: 2px; left: 50%; transform: translateX(-50%); text-align: center; font-size: 11px; color: rgba(255, 255, 255, 0.5); font-weight: 500; animation: bounce 2s infinite; cursor: pointer; z-index: 5; }
+    .scroll-hint { position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%); text-align: center; font-size: 11px; color: rgba(255, 255, 255, 0.5); font-weight: 500; animation: bounce 2s infinite; cursor: pointer; z-index: 5; }
     @keyframes bounce {
       0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);}
-      40% {transform: translateX(-50%) translateY(-4px);}
-      60% {transform: translateX(-50%) translateY(-2px);}
+      40% {transform: translateX(-50%) translateY(-6px);}
+      60% {transform: translateX(-50%) translateY(-3px);}
     }
 
     .modal-overlay {
@@ -630,7 +678,7 @@
     .modal-card p { font-size: 15px; color: #d1b8ff; line-height: 1.6; margin-bottom: 30px; }
     .modal-close { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.1); border: none; color: #fff; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 18px; }
 
-    @media(max-width: 1000px) {
+    @media(max-width: 1100px) {
       .nav-menu { display: none; }
       .poster-label-left, .poster-label-right, .poster-brand-sub, .box-left-top, .box-left-bottom, .box-right-bottom { display: none; }
       .character-center-img { width: 90%; height: auto; }
@@ -663,6 +711,7 @@
     <div class="poster-scene">
       <div class="bg-watermark-text text-honnili">HonniLi</div>
       
+      <!-- ОСНОВНЫЕ ЦЕНЫ -->
       <div class="box-left-top">
         <div class="box-title">Основные цены</div>
         <table class="price-table">
@@ -684,6 +733,7 @@
         </table>
       </div>
 
+      <!-- ДОП. УСЛУГИ -->
       <div class="box-left-bottom">
         <div class="box-title">Доп. услуги</div>
         <div class="extras-grid">
@@ -695,6 +745,7 @@
         </div>
       </div>
 
+      <!-- ПРАВЫЙ НИЖНИЙ БЛОК (ПРИМЕРЫ РАБОТ) -->
       <div class="box-right-bottom">
         <div class="box-title">Примеры работ</div>
         <div class="portfolio-grid">
@@ -737,31 +788,40 @@
             <tr>
               <th>Формат</th>
               <th>
-                <div class="tooltip-container">
-                  <span>База</span>
-                  <span class="info-icon">i</span>
-                  <div class="tooltip-box">
-                    <ul class="tooltip-list">
-                      <li>Повороты головы по XYZ</li>
-                      <li>Повороты тела по XYZ</li>
-                      <li>Базовое отслеживание лица</li>
-                      <li>Базовая физика одежды и волос</li>
-                      <li>3 статичные эмоции</li>
-                    </ul>
+                <div style="display: inline-flex; justify-content: center; width: 100%;">
+                  <div class="tooltip-container">
+                    <span>База</span>
+                    <span class="info-icon">i</span>
+                    <div class="tooltip-box">
+                      <ul class="tooltip-list">
+                        <li>Повороты головы по XYZ</li>
+                        <li>Повороты тела по XYZ</li>
+                        <li>Базовое отслеживание лица</li>
+                        <li>Базовая физика одежды</li>
+                        <li>Базовая физика волос</li>
+                        <li>3 статичные эмоции</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </th>
               <th>
-                <div class="tooltip-container">
-                  <span>Улучшенный</span>
-                  <span class="info-icon">i</span>
-                  <div class="tooltip-box">
-                    <ul class="tooltip-list">
-                      <li>Глубокие повороты головы и тела</li>
-                      <li>Наклоны вперед-назад</li>
-                      <li>Шаги при поворотах по XYZ</li>
-                      <li>Продвинутая физика и эмоции</li>
-                    </ul>
+                <div style="display: inline-flex; justify-content: center; width: 100%;">
+                  <div class="tooltip-container">
+                    <span>Улучшенный</span>
+                    <span class="info-icon">i</span>
+                    <div class="tooltip-box">
+                      <ul class="tooltip-list">
+                        <li>Глубокие повороты головы по XYZ</li>
+                        <li>Повороты тела по XYZ</li>
+                        <li>Наклоны тела вперёд-назад</li>
+                        <li>Шаги при поворотах по XYZ</li>
+                        <li>Продвинутое отслеживание лица</li>
+                        <li>Продвинутая физика одежды и волос</li>
+                        <li>Доп. физика бёдер и кистей рук</li>
+                        <li>3 статичные эмоции</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </th>
@@ -884,7 +944,7 @@
     <div class="scroll-hint">© 2026, команда PonyOni ✨</div>
   </section>
 
-  <!-- МОДАЛКА -->
+  <!-- МОДАЛКА ЗАКАЗА -->
   <div id="orderModal" class="modal-overlay" onclick="closeModalOnBg(event)">
     <div class="modal-card">
       <button class="modal-close" onclick="closeModal()">×</button>
@@ -906,7 +966,7 @@
     <span>Соцсети</span>
   </button>
 
-<!-- БОКОВАЯ ВЫДВИЖНАЯ ПАНЕЛЬ СОЦСЕТЕЙ -->
+  <!-- БОКОВАЯ ВЫДВИЖНАЯ ПАНЕЛЬ СОЦСЕТЕЙ -->
   <div id="socialModal" class="social-modal-overlay" onclick="closeSocialModalOnBg(event)">
     <div class="social-modal-card">
       <button class="social-modal-close" onclick="closeSocialModal()">×</button>
