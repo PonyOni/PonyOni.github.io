@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Запрет контекстного меню (правая кнопка мыши)
+  document.addEventListener('contextmenu', (e) => e.preventDefault());
+  
+  // Запрет выделения текста
+  document.addEventListener('selectstart', (e) => e.preventDefault());
+  
+  // Запрет перетаскивания изображений
+  document.addEventListener('dragstart', (e) => e.preventDefault());
+
   // Плавный скролл для всех внутренних ссылок
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -58,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const hiddenItems = document.querySelectorAll('.portfolio-item.hidden-item:not(.hide-by-filter)');
       let opened = 0;
       hiddenItems.forEach(item => {
-        if (opened < 6) { // Открывает по 6 штук (2 ряда)
+        if (opened < 6) {
           item.classList.remove('hidden-item');
           opened++;
         }
