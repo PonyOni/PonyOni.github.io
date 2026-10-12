@@ -313,7 +313,7 @@
       overflow: hidden;
     }
 
-    /* ФОНОВЫЙ ТУСКИЙ АРТ НА ПЕРВОМ ЭКРАНЕ */
+    /* ФОНОВЫЙ АРТ НА ПЕРВОМ ЭКРАНЕ (ЯРКИЙ И ЧЁТКИЙ) */
     .hero-bg-art {
       position: absolute;
       top: 0;
@@ -322,20 +322,19 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
-      opacity: 0.22; /* Настройка тусклости арта */
+      opacity: 0.55; /* Сделали рисунок заметно ярче */
       z-index: 1;
       pointer-events: none;
-      filter: blur(2px);
     }
 
-    /* ГРАДИЕНТНОЕ ЗАТЕМНЕНИЕ ФОНА ДЛЯ ИДЕАЛЬНОЙ ЧИТАЕМОСТИ */
+    /* ГРАДИЕНТНОЕ ЗАТЕМНЕНИЕ ФОНА ПО ЦЕНТРУ ДЛЯ ЧИТАЕМОСТИ ТЕКСТА */
     .hero-bg-overlay {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at center, rgba(27, 26, 46, 0.65) 0%, rgba(27, 26, 46, 0.95) 100%);
+      background: radial-gradient(circle at center, rgba(27, 26, 46, 0.4) 0%, rgba(27, 26, 46, 0.9) 100%);
       z-index: 2;
       pointer-events: none;
     }
@@ -351,35 +350,33 @@
       z-index: 3;
     }
 
+    /* БЕЗ ВНЕШНЕГО БЛОКА/РАМКИ — ЧИСТЫЙ ТЕКСТ */
     .intro-center-box {
-      max-width: 760px;
+      max-width: 800px;
       margin: 0 auto;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: rgba(27, 26, 46, 0.45);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 42px 36px;
-      border-radius: 32px;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 0;
     }
 
     h1, h2 {
       font-family: 'Poppins', sans-serif;
       color: #ffffff;
-      text-shadow: 0 2px 15px rgba(0,0,0,0.3);
+      text-shadow: 0 2px 15px rgba(0,0,0,0.4);
       margin: 0;
     }
     h1 { font-size: 46px; font-weight: 800; margin-bottom: 16px; }
     h2 { font-size: 34px; font-weight: 800; margin-bottom: 8px; }
-    p { font-size: 16px; color: #e2d7f5; line-height: 1.7; margin-top: 0; margin-bottom: 24px; }
+    p { font-size: 16px; color: #e2d7f5; line-height: 1.7; margin-top: 0; margin-bottom: 24px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 
     .badges-top { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 20px; }
-    .badge-tag { background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(10px); color: #ffd1dc; padding: 6px 14px; border-radius: 12px; font-size: 12px; font-weight: 600; border: 1px solid rgba(255, 255, 255, 0.15); }
-    .badge-status { background: rgba(56, 239, 125, 0.15); backdrop-filter: blur(10px); color: #38ef7d; padding: 6px 14px; border-radius: 12px; font-size: 12px; font-weight: 600; border: 1px solid rgba(56, 239, 125, 0.3); }
+    .badge-tag { background: rgba(27, 26, 46, 0.7); backdrop-filter: blur(10px); color: #ffd1dc; padding: 6px 14px; border-radius: 12px; font-size: 12px; font-weight: 600; border: 1px solid rgba(255, 255, 255, 0.2); }
+    .badge-status { background: rgba(56, 239, 125, 0.25); backdrop-filter: blur(10px); color: #38ef7d; padding: 6px 14px; border-radius: 12px; font-size: 12px; font-weight: 600; border: 1px solid rgba(56, 239, 125, 0.4); }
 
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
@@ -390,7 +387,7 @@
       transition: transform 0.2s;
     }
     .btn:hover { transform: translateY(-2px); }
-    .btn-secondary { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.25); }
+    .btn-secondary { background: rgba(27, 26, 46, 0.75); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); }
 
     .services-grid { 
       display: grid; 
@@ -399,14 +396,14 @@
       margin-top: 20px; 
     }
     .service-box { 
-      background: rgba(255, 255, 255, 0.07); 
+      background: rgba(27, 26, 46, 0.85); 
       backdrop-filter: blur(12px); 
       border: 1px solid rgba(255, 255, 255, 0.12); 
       padding: 20px; 
       border-radius: 20px; 
     }
     .service-box h3 { font-family: 'Poppins', sans-serif; font-size: 17px; color: #ffffff; margin-top: 0; margin-bottom: 8px; }
-    .service-box p { font-size: 13px; color: #d1b8ff; margin-bottom: 14px; line-height: 1.5; }
+    .service-box p { font-size: 13px; color: #d1b8ff; margin-bottom: 14px; line-height: 1.5; text-shadow: none; }
     .price-tag { font-weight: 700; color: #ffd1dc; font-size: 15px; display: block; }
 
     .queue-container-grid {
@@ -416,7 +413,7 @@
       margin-top: 20px;
     }
     .queue-box { 
-      background: rgba(255, 255, 255, 0.08); 
+      background: rgba(27, 26, 46, 0.85); 
       backdrop-filter: blur(12px); 
       border: 1px solid rgba(255, 255, 255, 0.15); 
       padding: 14px 20px; 
@@ -431,11 +428,11 @@
     }
 
     .reviews-list { display: flex; flex-direction: column; gap: 14px; margin-top: 20px; }
-    .review-card { background: rgba(255, 255, 255, 0.07); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.12); padding: 24px; border-radius: 20px; }
+    .review-card { background: rgba(27, 26, 46, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.12); padding: 24px; border-radius: 20px; }
     .review-card h4 { font-family: 'Poppins', sans-serif; font-size: 17px; color: #ffffff; margin-top: 0; margin-bottom: 6px; }
-    .review-card p { font-size: 15px; color: #d1b8ff; margin-bottom: 0; }
+    .review-card p { font-size: 15px; color: #d1b8ff; margin-bottom: 0; text-shadow: none; }
 
-    .scroll-hint { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); text-align: center; font-size: 13px; color: rgba(255, 255, 255, 0.6); font-weight: 500; animation: bounce 2s infinite; cursor: pointer; z-index: 10; }
+    .scroll-hint { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); text-align: center; font-size: 13px; color: rgba(255, 255, 255, 0.6); font-weight: 500; animation: bounce 2s infinite; cursor: pointer; z-index: 10; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
     @keyframes bounce {
       0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);}
       40% {transform: translateX(-50%) translateY(-6px);}
@@ -455,7 +452,7 @@
       color: #fff; position: relative; box-shadow: 0 30px 60px rgba(0,0,0,0.5);
     }
     .modal-card h3 { font-family: 'Poppins', sans-serif; font-size: 26px; margin-top: 0; margin-bottom: 14px; }
-    .modal-card p { font-size: 15px; color: #d1b8ff; line-height: 1.6; margin-bottom: 30px; }
+    .modal-card p { font-size: 15px; color: #d1b8ff; line-height: 1.6; margin-bottom: 30px; text-shadow: none; }
     .modal-close { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.1); border: none; color: #fff; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 18px; }
 
     @media(max-width: 900px) {
@@ -463,7 +460,7 @@
       .nav-menu { display: none; }
       .full-screen-section { height: auto; min-height: 100vh; padding: 100px 20px 40px 20px; }
       h1 { font-size: 32px; }
-      .intro-center-box { padding: 28px 20px; }
+      .intro-center-box { padding: 10px; }
     }
   </style>
 </head>
@@ -488,9 +485,8 @@
     </div>
   </header>
 
-  <!-- ЭКРАН 0: ВСТУПЛЕНИЕ С ФОНОВЫМ ТУСКЛЫМ РИСУНКОМ -->
+  <!-- ЭКРАН 0: ВСТУПЛЕНИЕ С ФОНОВЫМ РИСУНКОМ БЕЗ РАМОК -->
   <section id="screen-intro" class="full-screen-section">
-    <!-- ТУСКИЙ АРТ НА ВЕСЬ ЭКРАН С ЗАТЕМНЕНИЕМ -->
     <img src="image/prev.jpe" alt="Background" class="hero-bg-art">
     <div class="hero-bg-overlay"></div>
 
