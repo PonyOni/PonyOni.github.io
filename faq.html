@@ -100,7 +100,7 @@
     .btn:hover { transform: translateY(-2px); }
     .btn-secondary { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.25); }
 
-    /* ПОЛНОЭКРАННАЯ СЕКЦИЯ ВОПРОСОВ И УСЛОВИЙ */
+    /* ПОЛНОЭКРАННАЯ СЕКЦИЯ ВОПРОСОВ И УСЛУГ */
     .faq-page-section {
       width: 100vw;
       min-height: 100vh;
@@ -168,19 +168,30 @@
       margin-bottom: 20px;
     }
 
+    /* КЛИКАБЕЛЬНЫЕ КАРТОЧКИ НАДБАВОК */
     .extra-card-item {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 16px;
       padding: 24px 16px;
       text-align: center;
+      cursor: pointer;
       transition: all 0.25s ease;
+      position: relative;
     }
 
     .extra-card-item:hover {
       background: rgba(255, 255, 255, 0.09);
-      border-color: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.25);
       transform: translateY(-3px);
+    }
+
+    /* АКТИВНАЯ КАРТОЧКА (ВЫБРАНА) */
+    .extra-card-item.active {
+      background: rgba(255, 209, 220, 0.12);
+      border-color: #ffd1dc;
+      box-shadow: 0 0 20px rgba(255, 209, 220, 0.25);
+      transform: translateY(-2px);
     }
 
     .extra-card-value {
@@ -195,6 +206,17 @@
       font-size: 13px;
       color: #d1c8e8;
       font-weight: 500;
+    }
+
+    /* ИНТЕРАКТИВНЫЙ РАСЧЕТ / ПРИМЕР */
+    .faq-calc-example {
+      font-size: 13.5px;
+      color: #ffd1dc;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 8px;
+      min-height: 20px;
+      transition: all 0.2s ease;
     }
 
     .faq-note-text {
@@ -243,7 +265,7 @@
       margin-bottom: 28px;
     }
 
-    /* ПАПКА С ШАГАМИ (TIMELINE) */
+    /* ТАЙМЛАЙН ШАГОВ */
     .steps-timeline {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -301,7 +323,6 @@
       text-align: center;
     }
 
-    /* НИЖНИЕ КАРТОЧКИ ПОДРОБНОСТЕЙ */
     .step-details-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -332,7 +353,6 @@
       margin: 0;
     }
 
-    /* КНОПКА ВНИЗУ */
     .steps-bottom-action {
       text-align: center;
       margin-top: 24px;
@@ -428,7 +448,7 @@
     </div>
   </header>
 
-  <!-- ОСНОВНОЙ ФУЛЛ-СКРИН СЕКЦИИ ВОПРОСОВ И УСЛОВИЙ -->
+  <!-- ОСНОВНОЙ ФУЛЛ-СКРИН СЕКЦИИ ВОПРОСОВ И УСЛУГ -->
   <main class="faq-page-section">
     
     <div class="faq-header-block">
@@ -440,23 +460,29 @@
     <!-- БЛОК НАДБАВОК -->
     <div class="faq-card-main">
       <div class="extras-cards-row">
-        <div class="extra-card-item">
+        <div class="extra-card-item" id="opt-conf" onclick="toggleOption('conf')">
           <div class="extra-card-value">+20%</div>
           <div class="extra-card-label">Конфиденциальность заказа</div>
         </div>
-        <div class="extra-card-item">
+        <div class="extra-card-item" id="opt-rush" onclick="toggleOption('rush')">
           <div class="extra-card-value">+25%</div>
           <div class="extra-card-label">Срочный заказ (rush)</div>
         </div>
-        <div class="extra-card-item">
+        <div class="extra-card-item" id="opt-commercial" onclick="toggleOption('commercial')">
           <div class="extra-card-value">Договорная</div>
           <div class="extra-card-label">Коммерческая лицензия</div>
         </div>
       </div>
+
+      <!-- ДИНАМИЧЕСКИЙ ПРИМЕР СТОИМОСТИ -->
+      <div class="faq-calc-example" id="calcExampleText">
+        Пример: Fullbody Base 50 000 ₽. Нажмите на надбавку — покажу, как меняется сумма.
+      </div>
+
       <p class="faq-note-text">Точную стоимость и сроки уточняем индивидуально после составления ТЗ. Как проходит работа и оплата — ниже.</p>
     </div>
 
-    <!-- БЛОК ШАГОВ ВЫПОЛНЕНИЯ (ТИП ПО ВТОРОМУ СКРИНШОТУ) -->
+    <!-- БЛОК ШАГОВ ВЫПОЛНЕНИЯ -->
     <div class="steps-card-container">
       <div class="steps-title-sub">Путь заказа</div>
       <h2 class="steps-main-title">Как всё пройдёт — по шагам</h2>
@@ -526,15 +552,6 @@
     </div>
   </div>
 
-  <!-- КНОПКА СОЦСЕТИ -->
-  <button class="social-trigger-btn" onclick="openSocialModal()">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-    </svg>
-    <span>Соцсети</span>
-  </button>
-
   <script>
     document.addEventListener('contextmenu', (e) => e.preventDefault());
     document.addEventListener('selectstart', (e) => e.preventDefault());
@@ -543,6 +560,63 @@
     function openModal() { document.getElementById('orderModal').classList.add('active'); }
     function closeModal() { document.getElementById('orderModal').classList.remove('active'); }
     function closeModalOnBg(e) { if (e.target.id === 'orderModal') closeModal(); }
+
+    // ЛОГИКА ИНТЕРАКТИВНОГО РАСЧЕТА
+    const selectedOptions = {
+      conf: false,       // +20%
+      rush: false,       // +25%
+      commercial: false  // Договорная
+    };
+
+    function toggleOption(optKey) {
+      selectedOptions[optKey] = !selectedOptions[optKey];
+      
+      const cardEl = document.getElementById('opt-' + optKey);
+      if (selectedOptions[optKey]) {
+        cardEl.classList.add('active');
+      } else {
+        cardEl.classList.remove('active');
+      }
+
+      updateCalcResult();
+    }
+
+    function updateCalcResult() {
+      const basePrice = 50000;
+      let total = basePrice;
+      let activeLabels = [];
+
+      if (selectedOptions.conf) {
+        total += basePrice * 0.20;
+        activeLabels.push('конфиденциальность заказа');
+      }
+
+      if (selectedOptions.rush) {
+        total += basePrice * 0.25;
+        activeLabels.push('срочный заказ (rush)');
+      }
+
+      if (selectedOptions.commercial) {
+        activeLabels.push('коммерческая лицензия');
+      }
+
+      const calcTextEl = document.getElementById('calcExampleText');
+
+      if (activeLabels.length === 0) {
+        calcTextEl.innerHTML = 'Пример: Fullbody Base 50 000 ₽. Нажмите на надбавку — покажу, как меняется сумма.';
+      } else {
+        const formattedTotal = total.toLocaleString('ru-RU') + ' ₽';
+        let labelsStr = activeLabels.join(', ');
+
+        if (selectedOptions.commercial && !selectedOptions.conf && !selectedOptions.rush) {
+          calcTextEl.innerHTML = `Пример: Fullbody Base 50 000 ₽ → 50 000 ₽, лицензия обсуждается отдельно · ${labelsStr}`;
+        } else if (selectedOptions.commercial) {
+          calcTextEl.innerHTML = `Пример: Fullbody Base 50 000 ₽ → ${formattedTotal}, лицензия обсуждается отдельно · ${labelsStr}`;
+        } else {
+          calcTextEl.innerHTML = `Пример: Fullbody Base 50 000 ₽ → ${formattedTotal} · ${labelsStr}`;
+        }
+      }
+    }
   </script>
 </body>
 </html>
