@@ -168,7 +168,6 @@
       margin-bottom: 20px;
     }
 
-    /* КЛИКАБЕЛЬНЫЕ КАРТОЧКИ НАДБАВОК */
     .extra-card-item {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -186,7 +185,6 @@
       transform: translateY(-3px);
     }
 
-    /* АКТИВНАЯ КАРТОЧКА (ВЫБРАНА) */
     .extra-card-item.active {
       background: rgba(255, 209, 220, 0.12);
       border-color: #ffd1dc;
@@ -208,7 +206,6 @@
       font-weight: 500;
     }
 
-    /* ИНТЕРАКТИВНЫЙ РАСЧЕТ / ПРИМЕР */
     .faq-calc-example {
       font-size: 13.5px;
       color: #ffd1dc;
@@ -291,6 +288,12 @@
       align-items: center;
       position: relative;
       z-index: 2;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .step-node:hover {
+      transform: translateY(-2px);
     }
 
     .step-number {
@@ -298,29 +301,47 @@
       height: 36px;
       border-radius: 50%;
       background: #252336;
-      border: 2px solid #a88beb;
-      color: #ffffff;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      color: #8f88a8;
       font-weight: 700;
       font-size: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 10px;
-      box-shadow: 0 0 15px rgba(168, 139, 235, 0.3);
+      transition: all 0.25s ease;
+    }
+
+    /* АКТИВНЫЙ ШАГ */
+    .step-node.active .step-number {
+      background: #a88beb;
+      border-color: #ffd1dc;
+      color: #ffffff;
+      box-shadow: 0 0 20px rgba(168, 139, 235, 0.6);
     }
 
     .step-name {
       font-size: 12px;
       font-weight: 600;
-      color: #ffffff;
+      color: #a09cb8;
       text-align: center;
       margin-bottom: 2px;
+      transition: color 0.25s ease;
+    }
+
+    .step-node.active .step-name {
+      color: #ffffff;
+      font-weight: 700;
     }
 
     .step-time {
       font-size: 11px;
-      color: #8f88a8;
+      color: #726d8a;
       text-align: center;
+    }
+
+    .step-node.active .step-time {
+      color: #ffd1dc;
     }
 
     .step-details-grid {
@@ -334,6 +355,7 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 16px;
       padding: 16px 18px;
+      transition: all 0.25s ease;
     }
 
     .detail-card-title {
@@ -482,52 +504,53 @@
       <p class="faq-note-text">Точную стоимость и сроки уточняем индивидуально после составления ТЗ. Как проходит работа и оплата — ниже.</p>
     </div>
 
-    <!-- БЛОК ШАГОВ ВЫПОЛНЕНИЯ -->
+    <!-- БЛОК ШАГОВ ВЫПОЛНЕНИЯ (ИНТЕРАКТИВНЫЙ) -->
     <div class="steps-card-container">
       <div class="steps-title-sub">Путь заказа</div>
       <h2 class="steps-main-title">Как всё пройдёт — по шагам</h2>
       <p class="steps-main-desc">Посмотрите, что нужно от вас, что делаем мы и где можно внести изменения.</p>
 
       <div class="steps-timeline">
-        <div class="step-node">
+        <div class="step-node active" id="step-node-1" onclick="selectStep(1)">
           <div class="step-number">1</div>
           <div class="step-name">Проверка ТЗ</div>
           <div class="step-time">1–2 дня</div>
         </div>
-        <div class="step-node">
+        <div class="step-node" id="step-node-2" onclick="selectStep(2)">
           <div class="step-number">2</div>
           <div class="step-name">Свяжусь с тобой</div>
           <div class="step-time">обсудим детали</div>
         </div>
-        <div class="step-node">
+        <div class="step-node" id="step-node-3" onclick="selectStep(3)">
           <div class="step-number">3</div>
           <div class="step-name">Уточним детали</div>
           <div class="step-time">фиксируем цену</div>
         </div>
-        <div class="step-node">
+        <div class="step-node" id="step-node-4" onclick="selectStep(4)">
           <div class="step-number">4</div>
           <div class="step-name">Бронь и предоплата</div>
           <div class="step-time">30% – 50% от суммы</div>
         </div>
-        <div class="step-node">
+        <div class="step-node" id="step-node-5" onclick="selectStep(5)">
           <div class="step-number">5</div>
           <div class="step-name">Старт работы</div>
           <div class="step-time">этапы и правки</div>
         </div>
       </div>
 
+      <!-- ДИНАМИЧЕСКИЕ БЛОКИ ИНФОРМАЦИИ ПО ШАГАМ -->
       <div class="step-details-grid">
         <div class="detail-card">
           <div class="detail-card-title">От тебя</div>
-          <p class="detail-card-text">Состав заказа, референсы картинки, цвета и настроение персонажа — можно приложить прямо к заявке.</p>
+          <p class="detail-card-text" id="step-text-user">Состав заказа из корзины или конструктора и пара слов о персонаже. Референсы — картинки, шедев, настроение: их можно приложить прямо к заказу.</p>
         </div>
         <div class="detail-card">
           <div class="detail-card-title">Делаем мы</div>
-          <p class="detail-card-text">Читаем ТЗ, сверяем с прайсом и отписываемся для точного расчета полной стоимости.</p>
+          <p class="detail-card-text" id="step-text-team">Читаю ТЗ, сверяю с прайсом и отмечаю, чего не хватает для точной цены.</p>
         </div>
         <div class="detail-card">
           <div class="detail-card-title">Правки</div>
-          <p class="detail-card-text">Свободно. Пока работа не началась — ТЗ можно дополнять и менять как угодно.</p>
+          <p class="detail-card-text" id="step-text-edits">Свободно. Работа ещё не началась — ТЗ можно дополнять и менять как угодно.</p>
         </div>
       </div>
 
@@ -561,7 +584,7 @@
     function closeModal() { document.getElementById('orderModal').classList.remove('active'); }
     function closeModalOnBg(e) { if (e.target.id === 'orderModal') closeModal(); }
 
-    // ЛОГИКА ИНТЕРАКТИВНОГО РАСЧЕТА
+    // ЛОГИКА ИНТЕРАКТИВНОГО РАСЧЕТА НАДБАВОК
     const selectedOptions = {
       conf: false,       // +20%
       rush: false,       // +25%
@@ -615,6 +638,54 @@
         } else {
           calcTextEl.innerHTML = `Пример: Fullbody Base 50 000 ₽ → ${formattedTotal} · ${labelsStr}`;
         }
+      }
+    }
+
+    // ДАННЫЕ ДЛЯ ТАЙМЛАЙНА ШАГОВ (1-5)
+    const stepsData = {
+      1: {
+        user: "Состав заказа из корзины или конструктора и пара слов о персонаже. Референсы — картинки, шедев, настроение: их можно приложить прямо к заказу.",
+        team: "Читаю ТЗ, сверяю с прайсом и отмечаю, чего не хватает для точной цены.",
+        edits: "Свободно. Работа ещё не началась — ТЗ можно дополнять и менять как угодно."
+      },
+      2: {
+        user: "Быть на связи там, где указала в заказе: Telegram, VK.",
+        team: "Пишим первыми, задаю вопросы по ТЗ и называю ориентир по цене и срокам.",
+        edits: "Свободно. Можно убрать или добавить допы, сменить тип модели или уровень."
+      },
+      3: {
+        user: "Подтвердить референсы и дедлайн, рассказать, где будешь стримить: VTube Studio, iPhone для VBridger.",
+        team: "Фиксируем объём работ, срок и итоговую цену — чтобы потом не было сюрпризов.",
+        edits: "Последний момент, чтобы поменять состав без доплаты."
+      },
+      4: {
+        user: "Внести бронь 25% — она закрепляет место и входит в первые 50%. До старта доплатить ещё 25%, вторую половину — до передачи файлов.",
+        team: "Закрепляю за тобой место в очереди, называю дату старта и присылаю персональную ссылку LyssBoard — по ней видно, как идёт работа.",
+        edits: "Состав зафиксирован. Новые пункты считаю отдельно. При отмене бронь не возвращается."
+      },
+      5: {
+        user: "Смотреть этапы и оставлять комментарии: скетч, основной рисунок, лайн, тени, риг.",
+        team: "Рисуем и ригаем, показываем каждый этап. В финале — готовая модель для VTube Studio, исходники — по договорённости.",
+        edits: "До трёх правок на каждом этапе. Дизайн персонажа меняем на этапе скетча."
+      }
+    };
+
+    function selectStep(stepNum) {
+      for (let i = 1; i <= 5; i++) {
+        const nodeEl = document.getElementById('step-node-' + i);
+        if (i === stepNum) {
+          nodeEl.classList.add('active');
+        } else {
+          nodeEl.classList.remove('active');
+        }
+      }
+
+      // Обновление текстов в блоках
+      const data = stepsData[stepNum];
+      if (data) {
+        document.getElementById('step-text-user').innerText = data.user;
+        document.getElementById('step-text-team').innerText = data.team;
+        document.getElementById('step-text-edits').innerText = data.edits;
       }
     }
   </script>
