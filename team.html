@@ -328,7 +328,7 @@
     .glass-box {
       position: absolute;
       z-index: 4;
-      background: rgba(27, 26, 46, 0.82);
+      background: rgba(27, 26, 46, 0.85);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.15);
@@ -336,50 +336,55 @@
       box-shadow: 0 20px 40px rgba(0,0,0,0.4);
     }
 
-    /* ЛЕВЫЙ ВЕРХНИЙ БЛОК ЦЕН (ШИРИНА 800PX, ВЫСОТА 330PX) */
+    /* ЛЕВЫЕ БЛОКИ */
     .box-left-top {
-      top: 96px;
-      left: 50px;
-      width: 800px;
-      height: 330px;
-      padding: 24px 30px;
-      overflow: visible;
+      top: 90px;
+      left: 40px;
+      width: 480px;
+      padding: 16px 20px;
+    }
+
+    .box-left-bottom {
+      top: 360px;
+      left: 40px;
+      width: 480px;
+      padding: 14px 20px;
     }
 
     /* ПРАВЫЙ НИЖНИЙ БЛОК (ПРИМЕРЫ РАБОТ) */
     .box-right-bottom {
       bottom: 90px;
-      right: 50px;
-      width: 560px;
-      padding: 18px 22px;
+      right: 40px;
+      width: 480px;
+      padding: 16px 20px;
     }
 
     .box-title {
       font-family: 'Poppins', sans-serif;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 700;
       color: #ffd1dc;
       text-transform: uppercase;
       letter-spacing: 1px;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
-    /* ТАБЛИЦА ЦЕН КРУПНАЯ И ЧИТАЕМАЯ */
+    /* ТАБЛИЦА ЦЕН */
     .price-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 15px;
+      font-size: 13.5px;
     }
     .price-table th, .price-table td {
-      padding: 12px 14px;
+      padding: 8px 10px;
       text-align: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
     .price-table th {
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
       color: #ffd1dc;
-      font-size: 14px;
+      font-size: 13px;
     }
     .price-table td:first-child {
       text-align: left;
@@ -389,6 +394,25 @@
     .price-table td {
       color: #ffffff;
       font-weight: 500;
+    }
+
+    /* СПИСОК ДОП. УСЛУГ */
+    .extras-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 16px;
+      font-size: 12.5px;
+    }
+    .extra-item {
+      display: flex;
+      justify-content: space-between;
+      color: #e2d7f5;
+      padding: 3px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .extra-item span:last-child {
+      font-weight: 700;
+      color: #ffd1dc;
     }
 
     /* СТИЛИ ДЛЯ ИНТЕРАКТИВНОЙ ПОДСКАЗКИ */
@@ -404,9 +428,9 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 18px;
-      height: 18px;
-      font-size: 11px;
+      width: 16px;
+      height: 16px;
+      font-size: 10px;
       font-weight: 700;
       color: #ffd1dc;
       background: rgba(255, 209, 220, 0.15);
@@ -428,8 +452,8 @@
       background: #252336;
       border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 12px;
-      padding: 14px 18px;
-      width: 320px;
+      padding: 12px 16px;
+      width: 280px;
       box-shadow: 0 15px 35px rgba(0,0,0,0.6);
       z-index: 999;
       opacity: 0;
@@ -460,15 +484,15 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      font-size: 12.5px;
+      gap: 4px;
+      font-size: 12px;
       font-weight: 400;
       color: #e2d7f5;
     }
 
     .tooltip-list li {
       position: relative;
-      padding-left: 14px;
+      padding-left: 12px;
     }
 
     .tooltip-list li::before {
@@ -479,15 +503,15 @@
       font-weight: bold;
     }
 
-    /* СЕТКА ПРИМЕРОВ РАБОТ В ПРАВОМ НИЖНЕМ БЛОКЕ */
+    /* СЕТКА ПРИМЕРОВ РАБОТ */
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
+      gap: 10px;
     }
     .portfolio-item {
       aspect-ratio: 1;
-      border-radius: 12px;
+      border-radius: 10px;
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.15);
       cursor: pointer;
@@ -507,32 +531,32 @@
     .poster-label-left {
       position: absolute;
       top: 45%;
-      left: 10%;
+      left: 8%;
       z-index: 3;
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 16px;
     }
     .poster-label-left span {
       font-family: 'Poppins', sans-serif;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 2px;
       color: #ffffff;
     }
     .poster-label-left .line {
-      width: 180px;
+      width: 140px;
       height: 2px;
       background: rgba(255, 255, 255, 0.6);
     }
     .poster-brand-sub {
       position: absolute;
       top: 52%;
-      left: 12%;
+      left: 10%;
       z-index: 3;
       font-family: 'Poppins', sans-serif;
-      font-size: 15px;
+      font-size: 14px;
       color: rgba(255, 255, 255, 0.6);
       font-style: italic;
     }
@@ -541,22 +565,22 @@
     .poster-label-right {
       position: absolute;
       bottom: 30%;
-      right: 10%;
+      right: 8%;
       z-index: 3;
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 16px;
     }
     .poster-label-right span {
       font-family: 'Poppins', sans-serif;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 2px;
       color: #ffffff;
     }
     .poster-label-right .line {
-      width: 180px;
+      width: 140px;
       height: 2px;
       background: rgba(255, 255, 255, 0.6);
     }
@@ -564,12 +588,12 @@
     /* КНОПКИ */
     .poster-actions {
       position: absolute;
-      bottom: 25px;
+      bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 5;
       display: flex;
-      gap: 16px;
+      gap: 14px;
     }
 
     .btn {
@@ -583,7 +607,7 @@
     .btn:hover { transform: translateY(-2px); }
     .btn-secondary { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.25); }
 
-    .scroll-hint { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); text-align: center; font-size: 11px; color: rgba(255, 255, 255, 0.5); font-weight: 500; animation: bounce 2s infinite; cursor: pointer; z-index: 5; }
+    .scroll-hint { position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%); text-align: center; font-size: 11px; color: rgba(255, 255, 255, 0.5); font-weight: 500; animation: bounce 2s infinite; cursor: pointer; z-index: 5; }
     @keyframes bounce {
       0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);}
       40% {transform: translateX(-50%) translateY(-6px);}
@@ -641,7 +665,7 @@
     <div class="poster-scene">
       <div class="bg-watermark-text text-honnili">HonniLi</div>
       
-      <!-- ЛЕВЫЙ ВЕРХНИЙ БЛОК ЦЕН -->
+      <!-- ЦЕНЫ СВЕРХУ СЛЕВА -->
       <div class="glass-box box-left-top">
         <div class="box-title">Основные цены</div>
         <table class="price-table">
@@ -661,6 +685,18 @@
             <tr><td>Смайлики</td><td>400 ₽</td><td>600 ₽</td><td>900 ₽</td></tr>
           </tbody>
         </table>
+      </div>
+
+      <!-- ДОП. УСЛУГИ СНИЗУ СЛЕВА -->
+      <div class="glass-box box-left-bottom">
+        <div class="box-title">Доп. услуги</div>
+        <div class="extras-list">
+          <div class="extra-item"><span>Доп. персонаж</span><span>+100%</span></div>
+          <div class="extra-item"><span>Питомец</span><span>+700 ₽</span></div>
+          <div class="extra-item"><span>Сложный фон</span><span>+10 000 ₽</span></div>
+          <div class="extra-item"><span>Срочный заказ</span><span>+70%</span></div>
+          <div class="extra-item"><span>Предоплата</span><span>50%</span></div>
+        </div>
       </div>
 
       <!-- ПРАВЫЙ НИЖНИЙ БЛОК (ПРИМЕРЫ РАБОТ) -->
@@ -694,7 +730,7 @@
     <div class="scroll-hint" onclick="scrollToScreen('member-2')">Следующий участник ↓</div>
   </section>
 
-  <!-- УЧАСТНИК 2: САХАРНАЯ ДЕВОЧКА (РИГГЕР С БАЗОЙ И УЛУЧШЕННЫМ ТАРИФОМ) -->
+  <!-- УЧАСТНИК 2: САХАРНАЯ ДЕВОЧКА -->
   <section id="member-2" class="full-screen-section">
     <div class="poster-scene">
       <div class="bg-watermark-text text-sugar">Сахарная девочка</div>
@@ -734,11 +770,9 @@
                         <li>Повороты тела по XYZ</li>
                         <li>Наклоны тела вперёд-назад</li>
                         <li>Шаги при поворотах по XYZ</li>
-                        <li>Продвинутое отслеживание лица — более экспрессивные глаза и брови</li>
-                        <li>Продвинутая физика одежды</li>
-                        <li>Продвинутая физика волос</li>
-                        <li>Дополнительная физика бёдер</li>
-                        <li>Дополнительная физика кистей рук</li>
+                        <li>Продвинутое отслеживание лица</li>
+                        <li>Продвинутая физика одежды и волос</li>
+                        <li>Доп. физика бёдер и кистей рук</li>
                         <li>3 статичные эмоции</li>
                       </ul>
                     </div>
@@ -748,28 +782,21 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Фулл</td>
-              <td>19 000 ₽</td>
-              <td>20 000 ₽</td>
-            </tr>
-            <tr>
-              <td>Chibi</td>
-              <td>3 000 ₽</td>
-              <td>4 500 ₽</td>
-            </tr>
-            <tr>
-              <td>Фон</td>
-              <td>2 000 ₽</td>
-              <td>—</td>
-            </tr>
-            <tr>
-              <td>Смайлики</td>
-              <td>300 ₽</td>
-              <td>—</td>
-            </tr>
+            <tr><td>Фулл</td><td>19 000 ₽</td><td>20 000 ₽</td></tr>
+            <tr><td>Chibi</td><td>3 000 ₽</td><td>4 500 ₽</td></tr>
+            <tr><td>Фон</td><td>2 000 ₽</td><td>—</td></tr>
+            <tr><td>Смайлики</td><td>300 ₽</td><td>—</td></tr>
           </tbody>
         </table>
+      </div>
+
+      <div class="glass-box box-left-bottom">
+        <div class="box-title">Доп. услуги</div>
+        <div class="extras-list">
+          <div class="extra-item"><span>Доп. эмоция</span><span>+1 000 ₽</span></div>
+          <div class="extra-item"><span>Анимация предметов</span><span>+10–30%</span></div>
+          <div class="extra-item" style="grid-column: span 2;"><span>Срочный риггинг</span><span>+50%</span></div>
+        </div>
       </div>
 
       <div class="glass-box box-right-bottom">
@@ -826,6 +853,19 @@
             <tr><td>Смайлики</td><td>350 ₽</td><td>550 ₽</td><td>800 ₽</td></tr>
           </tbody>
         </table>
+      </div>
+
+      <div class="glass-box box-left-bottom" style="top: 380px;">
+        <div class="box-title">Доп. услуги</div>
+        <div class="extras-list">
+          <div class="extra-item"><span>Доп. наряд</span><span>+50%</span></div>
+          <div class="extra-item"><span>Доп. прическа</span><span>+50%</span></div>
+          <div class="extra-item"><span>Доп. эмоция</span><span>+50%</span></div>
+          <div class="extra-item"><span>Референс/концепт</span><span>4 500 ₽</span></div>
+          <div class="extra-item"><span>Доп. персонаж</span><span>+100%</span></div>
+          <div class="extra-item"><span>Коммерция</span><span>+100%</span></div>
+          <div class="extra-item" style="grid-column: span 2;"><span>NSFW-версия</span><span>+50%</span></div>
+        </div>
       </div>
 
       <div class="glass-box box-right-bottom">
@@ -957,7 +997,6 @@
       document.getElementById(screenId).scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Плавный скролл колесиком мыши по участникам
     let isScrolling = false;
     const sections = ['member-1', 'member-2', 'member-3'];
     
