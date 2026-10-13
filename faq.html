@@ -386,7 +386,7 @@
       text-decoration: underline;
     }
 
-    /* СЕКЦИЯ 2: ПРАВИЛА И ОПЛАТА (ФУЛЛ-СКРИН) */
+    /* БЛОК ПРАВИЛ И ВОПРОСОВ (КЛАСТЕР) */
     .rules-container-block {
       width: 100%;
       max-width: 900px;
@@ -568,7 +568,7 @@
       margin-bottom: 3px;
     }
 
-    /* СТИЛИ ДЛЯ ПРИМЕРА ОПЛАТЫ И ШКАЛЫ (ИЗ МАКЕТА) */
+    /* СТИЛИ ДЛЯ ПРИМЕРА ОПЛАТЫ И ШКАЛЫ */
     .payment-example-box {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -617,7 +617,6 @@
     .payment-row-label { color: #d1c8e8; }
     .payment-row-value { font-weight: 700; color: #ffffff; }
 
-    /* Визуальная шкала прогресса оплаты */
     .payment-progress-bar {
       display: flex;
       align-items: center;
@@ -666,6 +665,75 @@
     .payment-step-label {
       font-size: 11px;
       color: #7d7799;
+    }
+
+    /* КАРТОЧКА ПРОВЕРКИ РИГА (ЭКРАН 3) */
+    .rig-check-card {
+      width: 100%;
+      background: rgba(35, 33, 54, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 28px 32px;
+      display: flex;
+      align-items: flex-start;
+      gap: 32px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+      margin-bottom: 28px;
+      box-sizing: border-box;
+    }
+
+    .rig-check-badge-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .rig-check-number {
+      font-family: 'Poppins', sans-serif;
+      font-size: 64px;
+      font-weight: 900;
+      line-height: 0.9;
+      background: linear-gradient(135deg, #a88beb 0%, #ffd1dc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 4px;
+    }
+
+    .rig-check-unit {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: #8c88a3;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .rig-check-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rig-check-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 12px 0;
+    }
+
+    .rig-check-text {
+      font-size: 13px;
+      color: #b1a9cc;
+      line-height: 1.6;
+      margin: 0 0 10px 0;
+    }
+
+    .rig-check-text:last-child {
+      margin-bottom: 0;
     }
 
     /* ПРАВАЯ ПЛАВАЮЩАЯ КНОПКА «СОЦСЕТИ» */
@@ -768,6 +836,8 @@
       .faq-title { font-size: 32px; }
       .payment-progress-bar { flex-direction: column; gap: 12px; }
       .payment-progress-line { display: none; }
+      .rig-check-card { flex-direction: column; gap: 16px; text-align: center; }
+      .rig-check-badge-box { margin: 0 auto; }
     }
   </style>
 </head>
@@ -877,7 +947,7 @@
     </div>
   </main>
 
-  <!-- ЭКРАН 2: ПРАВИЛА РАБОТЫ И ОПЛАТЫ (ОТДЕЛЬНЫЙ ФУЛЛ-СКРИН С КАРТОЧКАМИ И ВОПРОСАМИ) -->
+  <!-- ЭКРАН 2: ПРАВИЛА РАБОТЫ И ОПЛАТЫ -->
   <section class="faq-page-section">
     <div class="rules-container-block">
       
@@ -920,7 +990,7 @@
 
       <div class="faq-section-label">БРОНЬ И ОПЛАТА</div>
 
-      <!-- ИНТЕРАКТИВНЫЙ АККОРДЕОН ВОПРОСОВ -->
+      <!-- ИНТЕРАКТИВНЫЙ АККОРДЕОН ВОПРОСОВ 1 -->
       <div class="faq-accordion-list">
 
         <div class="faq-accordion-item" onclick="toggleFaq(this)">
@@ -956,7 +1026,7 @@
           </div>
         </div>
 
-        <!-- НОВЫЙ ПУНКТ: КАК РАБОТАЕТ ОПЛАТА НА ПРИМЕРЕ -->
+        <!-- КАК РАБОТАЕТ ОПЛАТА НА ПРИМЕРЕ -->
         <div class="faq-accordion-item" onclick="toggleFaq(this)">
           <div class="faq-item-header">
             <h3 class="faq-item-title-text">Как работает оплата на примере?</h3>
@@ -990,7 +1060,6 @@
                   </div>
                 </div>
 
-                <!-- Визуальная шкала процентов -->
                 <div class="payment-progress-bar">
                   <div class="payment-progress-line"></div>
                   <div class="payment-step">
@@ -1064,6 +1133,157 @@
           <div class="faq-item-content">
             <div class="faq-text-body">
               Внесение брони или первой части оплаты означает, что заказчик ознакомился с правилами работы и согласен с условиями сотрудничества.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ЭКРАН 3: РАБОТА И ПРАВКИ (НОВЫЙ МАКЕТ С 14 ДНЯМИ И 9 ВОПРОСАМИ) -->
+  <section class="faq-page-section">
+    <div class="rules-container-block">
+      
+      <div class="faq-section-label" style="letter-spacing: 3px;">РАБОТА И ПРАВКИ</div>
+
+      <!-- КАРТОЧКА: 14 ДНЕЙ НА ТЕХНИЧЕСКУЮ ПРОВЕРКУ РИГА -->
+      <div class="rig-check-card">
+        <div class="rig-check-badge-box">
+          <div class="rig-check-number">14</div>
+          <div class="rig-check-unit">дней</div>
+        </div>
+        <div class="rig-check-content">
+          <h3 class="rig-check-title">14 дней на техническую проверку рига</h3>
+          <p class="rig-check-text">
+            После завершения и принятия Live2D-рига у вас есть 14 календарных дней на проверку технической части модели.
+          </p>
+          <p class="rig-check-text">
+            Если вы заметили ошибку в деформации, физике, параметрах или функции, входившей в первоначальное техническое задание, отправьте её в течение этого срока — исправление будет выполнено бесплатно.
+          </p>
+          <p class="rig-check-text">
+            Новые функции и изменения уже утверждённого рига не относятся к техническим ошибкам и рассчитываются отдельно.
+          </p>
+        </div>
+      </div>
+
+      <!-- ИНТЕРАКТИВНЫЙ АККОРДЕОН ВОПРОСОВ 2 -->
+      <div class="faq-accordion-list">
+
+        <!-- ВОПРОС 1 -->
+        <div class="faq-accordion-item" onclick="toggleFaq(this)">
+          <div class="faq-item-header">
+            <h3 class="faq-item-title-text">Что нужно подготовить перед началом работы?</h3>
+            <div class="faq-item-icon">+</div>
+          </div>
+          <div class="faq-item-content">
+            <div class="faq-text-body">
+              Желательно подготовить подробное ТЗ, текстовое описание персонажа, референсы (картинки, арт-борд, палитры) и список необходимых эмоций, переключателей или анимаций. Если у вас уже есть готовый PSD-файл модели для рига, убедитесь, что он нарезан по слоям.
+            </div>
+          </div>
+        </div>
+
+        <!-- ВОПРОС 2 -->
+        <div class="faq-accordion-item" onclick="toggleFaq(this)">
+          <div class="faq-item-header">
+            <h3 class="faq-item-title-text">Нужен ли готовый дизайн персонажа перед заказом арта модели?</h3>
+            <div class="faq-item-icon">+</div>
+          </div>
+          <div class="faq-item-content">
+            <div class="faq-text-body">
+              Не обязательно! Если у вас нет готового концепта, мы можем разработать дизайн персонажа «с нуля» на основе ваших идей, текстового описания и референсов.
+            </div>
+          </div>
+        </div>
+
+        <!-- ВОПРОС 3 -->
+        <div class="faq-accordion-item" onclick="toggleFaq(this)">
+          <div class="faq-item-header">
+            <h3 class="faq-item-title-text">Как проходят правки по арту?</h3>
+            <div class="faq-item-icon">+</div>
+          </div>
+          <div class="faq-item-content">
+            <div class="faq-text-body">
+              Правки вносятся пошагово: сначала утверждается скетч (на этом этапе можно вносить любые крупные изменения дизайна), затем лайн, базовые цвета и финальный рендер. На каждом этапе предоставляется до 3 бесплатных правок в рамках первоначального ТЗ.
+            </div>
+          </div>
+        </div>
+
+        <!-- ВОПРОС 4 -->
+        <div class="faq-accordion-item" onclick="toggleFaq(this)">
+          <div class="faq-item-header">
+            <h3 class="faq-item-title-text">Как проходят правки по Live2D-ригу?</h3>
+            <div class="faq-item-icon">+</div>
+          </div>
+          <div class="faq-item-content">
+            <div class="faq-text-body">
+              Мы демонстрируем промежуточные результаты рига (повороты головы, физика волос, одежды, эмоции) в формате видео. Вы можете указывать на неточности или пожелания по амплитуде движений.
+            </div>
+          </div>
+        </div>
+
+        <!-- ВОПРОС 5 -->
+        <div class="faq-accordion-item" onclick="toggleFaq(this)">
+          <div class="faq-item-header">
+            <h3 class="faq-item-title-text">Что считается технической ошибкой рига?</h3>
+            <div class="faq-item-icon">+</div>
+          </div>
+          <div class="faq-item-content">
+            <div class="faq-text-body">
+              Технической ошибкой считается некорректная работа параметров, «поплывшие» или некорректно отображающиеся сетки (mesh), баги физики, разрывы текстур или неработающие эмоции, которые были заявлены в ТЗ.
+            </div>
+          </div>
+        </div>
+
+        <!-- ВОПРОС 6 -->
+        <div class="faq-accordion-item" onclick="toggleFaq(this)">
+          <div class="faq-item-header">
+            <h3 class="faq-item-title-text">Как лучше отправлять правки?</h3>
+            <div class="faq-item-icon">+</div>
+          </div>
+          <div class="faq-item-content">
+            <div class="faq-text-body">
+              Лучше всего формировать правки одним структурированным списком или скриншотами с пометками и таймкодами видео. Это помогает избежать путаницы и ускоряет работу.
+            </div>
+          </div>
+        </div>
+
+        <!-- ВОПРОС 7 -->
+        <div class="faq-accordion-item" onclick="toggleFaq(this)">
+          <div class="faq-item-header">
+            <h3 class="faq-item-title-text">Что происходит, если я долго не отвечаю?</h3>
+            <div class="faq-item-icon">+</div>
+          </div>
+          <div class="faq-item-content">
+            <div class="faq-text-body">
+              Если заказчик не выходит на связь более 14 дней без предупреждения, проект может быть смещен в очереди или заморожен до освобождения рабочего слота.
+            </div>
+          </div>
+        </div>
+
+        <!-- ВОПРОС 8 -->
+        <div class="faq-accordion-item" onclick="toggleFaq(this)">
+          <div class="faq-item-header">
+            <h3 class="faq-item-title-text">Что требуется от PSD, если я заказываю только риг?</h3>
+            <div class="faq-item-icon">+</div>
+          </div>
+          <div class="faq-item-content">
+            <div class="faq-text-body">
+              PSD-файл должен иметь хорошую детализацию и грамотную нарезку: отдельные слои для глаз (веки, зрачки, блики), прядей волос, элементов одежды и тела с необходимыми дорисовками за перекрывающими частями.
+            </div>
+          </div>
+        </div>
+
+        <!-- ВОПРОС 9 -->
+        <div class="faq-accordion-item" onclick="toggleFaq(this)">
+          <div class="faq-item-header">
+            <h3 class="faq-item-title-text">Что если модель после сдачи редактировал другой риггер?</h3>
+            <div class="faq-item-icon">+</div>
+          </div>
+          <div class="faq-item-content">
+            <div class="faq-text-body">
+              В случае внесения изменений сторонними специалистами гарантия и бесплатное техническое обслуживание (14 дней) аннулируются, так как мы не можем отвечать за целостность чужих правок.
             </div>
           </div>
         </div>
