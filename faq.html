@@ -474,8 +474,7 @@
   <main class="faq-page-section">
 
     <div class="faq-header-block">
-      <span class="faq-sub-tag">01 / Условия ✦</span>
-      <span class="faq-sub-tag">Условия </span>
+       <span class="faq-sub-tag">Условия </span>
       <h1 class="faq-title">Условия и надбавки</h1>
       <p class="faq-description">Что влияет на цену и как устроена работа: надбавки, правки, оплата и исходные файлы в финале.</p>
     </div>
@@ -484,13 +483,11 @@
     <div class="faq-card-main">
       <div class="extras-cards-row">
         <div class="extra-card-item" id="opt-conf" onclick="toggleOption('conf')">
-          <div class="extra-card-value">+20%</div>
-          <div class="extra-card-value">+30%</div>
+           <div class="extra-card-value">+30%</div>
           <div class="extra-card-label">Конфиденциальность заказа</div>
         </div>
         <div class="extra-card-item" id="opt-rush" onclick="toggleOption('rush')">
-          <div class="extra-card-value">+25%</div>
-          <div class="extra-card-value">+30%</div>
+           <div class="extra-card-value">+30%</div>
           <div class="extra-card-label">Срочный заказ (rush)</div>
         </div>
         <div class="extra-card-item" id="opt-commercial" onclick="toggleOption('commercial')">
@@ -501,8 +498,7 @@
 
       <!-- ДИНАМИЧЕСКИЙ ПРИМЕР СТОИМОСТИ -->
       <div class="faq-calc-example" id="calcExampleText">
-        Пример: Fullbody Base 50 000 ₽. Нажмите на надбавку — покажу, как меняется сумма.
-        Пример: Fullbody 4 000 ₽. Нажмите на надбавку — покажу, как меняется сумма.
+            Пример: Fullbody 4 000 ₽. Нажмите на надбавку — покажу, как меняется сумма.
       </div>
 
       <p class="faq-note-text">Точную стоимость и сроки уточняем индивидуально после составления ТЗ. Как проходит работа и оплата — ниже.</p>
@@ -512,8 +508,7 @@
     <div class="steps-card-container">
       <div class="steps-title-sub">Путь заказа</div>
       <h2 class="steps-main-title">Как всё пройдёт — по шагам</h2>
-      <p class="steps-main-desc">Посмотрите, что нужно от вас, что делаем мы и где можно внести изменения.</p>
-      <p class="steps-main-desc">Посмотрим, что нужно от вас, что делаем мы и где можно внести изменения.</p>
+        <p class="steps-main-desc">Посмотрим, что нужно от вас, что делаем мы и где можно внести изменения.</p>
 
       <div class="steps-timeline">
         <div class="step-node active" id="step-node-1" onclick="selectStep(1)">
@@ -523,9 +518,7 @@
         </div>
         <div class="step-node" id="step-node-2" onclick="selectStep(2)">
           <div class="step-number">2</div>
-          <div class="step-name">Свяжусь с тобой</div>
-          <div class="step-name">Свяжемся с вами</div>
-          <div class="step-time">обсудим детали</div>
+            <div class="step-time">обсудим детали</div>
         </div>
         <div class="step-node" id="step-node-3" onclick="selectStep(3)">
           <div class="step-number">3</div>
@@ -548,13 +541,11 @@
       <div class="step-details-grid">
         <div class="detail-card">
           <div class="detail-card-title">От тебя</div>
-          <p class="detail-card-text" id="step-text-user">Состав заказа из корзины или конструктора и пара слов о персонаже. Референсы — картинки, шедев, настроение: их можно приложить прямо к заказу.</p>
-          <p class="detail-card-text" id="step-text-user">Состав заказа или конструктора и пара слов о персонаже. Референсы — картинки, шедев, настроение: их можно приложить прямо к заказу.</p>
+           <p class="detail-card-text" id="step-text-user">Состав заказа или конструктора и пара слов о персонаже. Референсы — картинки, шедев, настроение: их можно приложить прямо к заказу.</p>
         </div>
         <div class="detail-card">
           <div class="detail-card-title">Делаем мы</div>
-          <p class="detail-card-text" id="step-text-team">Читаю ТЗ, сверяю с прайсом и отмечаю, чего не хватает для точной цены.</p>
-          <p class="detail-card-text" id="step-text-team">Читаем ТЗ, сверяем с прайсом и отмечаем, чего не хватает для точной цены.</p>
+           <p class="detail-card-text" id="step-text-team">Читаем ТЗ, сверяем с прайсом и отмечаем, чего не хватает для точной цены.</p>
         </div>
         <div class="detail-card">
           <div class="detail-card-title">Правки</div>
@@ -613,20 +604,17 @@
     }
 
     function updateCalcResult() {
-      const basePrice = 50000;
-      const basePrice = 4000;
+       const basePrice = 4000;
       let total = basePrice;
       let activeLabels = [];
 
       if (selectedOptions.conf) {
-        total += basePrice * 0.20;
-        total += basePrice * 0.30;
+          total += basePrice * 0.30;
         activeLabels.push('конфиденциальность заказа');
       }
 
       if (selectedOptions.rush) {
-        total += basePrice * 0.25;
-        total += basePrice * 0.30;
+         total += basePrice * 0.30;
         activeLabels.push('срочный заказ (rush)');
       }
 
@@ -637,21 +625,17 @@
       const calcTextEl = document.getElementById('calcExampleText');
 
       if (activeLabels.length === 0) {
-        calcTextEl.innerHTML = 'Пример: Fullbody Base 50 000 ₽. Нажмите на надбавку — покажу, как меняется сумма.';
-        calcTextEl.innerHTML = 'Пример: Fullbody 4 000 ₽. Нажмите на надбавку — покажу, как меняется сумма.';
+           calcTextEl.innerHTML = 'Пример: Fullbody 4 000 ₽. Нажмите на надбавку — покажу, как меняется сумма.';
       } else {
         const formattedTotal = total.toLocaleString('ru-RU') + ' ₽';
         let labelsStr = activeLabels.join(', ');
 
         if (selectedOptions.commercial && !selectedOptions.conf && !selectedOptions.rush) {
-          calcTextEl.innerHTML = `Пример: Fullbody Base 50 000 ₽ → 50 000 ₽, лицензия обсуждается отдельно · ${labelsStr}`;
-          calcTextEl.innerHTML = `Пример: Fullbody 4 000 ₽ → 5 200 ₽, лицензия обсуждается отдельно · ${labelsStr}`;
+            calcTextEl.innerHTML = `Пример: Fullbody 4 000 ₽ → 5 200 ₽, лицензия обсуждается отдельно · ${labelsStr}`;
         } else if (selectedOptions.commercial) {
-          calcTextEl.innerHTML = `Пример: Fullbody Base 50 000 ₽ → ${formattedTotal}, лицензия обсуждается отдельно · ${labelsStr}`;
-          calcTextEl.innerHTML = `Пример: Fullbody 4 000 ₽ → ${formattedTotal}, лицензия обсуждается отдельно · ${labelsStr}`;
+            calcTextEl.innerHTML = `Пример: Fullbody 4 000 ₽ → ${formattedTotal}, лицензия обсуждается отдельно · ${labelsStr}`;
         } else {
-          calcTextEl.innerHTML = `Пример: Fullbody Base 50 000 ₽ → ${formattedTotal} · ${labelsStr}`;
-          calcTextEl.innerHTML = `Пример: Fullbody 4 000 ₽ → ${formattedTotal} · ${labelsStr}`;
+           calcTextEl.innerHTML = `Пример: Fullbody 4 000 ₽ → ${formattedTotal} · ${labelsStr}`;
         }
       }
     }
@@ -659,16 +643,13 @@
     // ДАННЫЕ ДЛЯ ТАЙМЛАЙНА ШАГОВ (1-5)
     const stepsData = {
       1: {
-        user: "Состав заказа из корзины или конструктора и пара слов о персонаже. Референсы — картинки, шедев, настроение: их можно приложить прямо к заказу.",
-        team: "Читаю ТЗ, сверяю с прайсом и отмечаю, чего не хватает для точной цены.",
-        user: "Состав заказа или конструктора и пара слов о персонаже. Референсы — картинки, шедев, настроение: их можно приложить прямо к заказу.",
+         user: "Состав заказа или конструктора и пара слов о персонаже. Референсы — картинки, шедев, настроение: их можно приложить прямо к заказу.",
         team: "Читаем ТЗ, сверяем с прайсом и отмечаем, чего не хватает для точной цены.",
         edits: "Свободно. Работа ещё не началась — ТЗ можно дополнять и менять как угодно."
       },
       2: {
         user: "Быть на связи там, где указала в заказе: Telegram, VK.",
-        team: "Пишим первыми, задаю вопросы по ТЗ и называю ориентир по цене и срокам.",
-        team: "Пишим первыми, задаем вопросы по ТЗ и называем ориентир по цене и срокам.",
+         team: "Пишим первыми, задаем вопросы по ТЗ и называем ориентир по цене и срокам.",
         edits: "Свободно. Можно убрать или добавить допы, сменить тип модели или уровень."
       },
       3: {
@@ -678,9 +659,7 @@
       },
       4: {
         user: "Внести бронь 25% — она закрепляет место и входит в первые 50%. До старта доплатить ещё 25%, вторую половину — до передачи файлов.",
-        team: "Закрепляю за тобой место в очереди, называю дату старта и присылаю персональную ссылку LyssBoard — по ней видно, как идёт работа.",
-        edits: "Состав зафиксирован. Новые пункты считаю отдельно. При отмене бронь не возвращается."
-        team: "Закрепляем за тобой место в очереди, называем дату старта и присылаем персональную ссылку Очереди — по ней видно, как идёт работа.",
+          team: "Закрепляем за тобой место в очереди, называем дату старта и присылаем персональную ссылку Очереди — по ней видно, как идёт работа.",
         edits: "Состав зафиксирован. Новые пункты считаем отдельно. При отмене бронь не возвращается."
       },
       5: {
