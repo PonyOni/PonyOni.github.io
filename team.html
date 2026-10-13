@@ -388,47 +388,20 @@
       box-sizing: border-box;
     }
 
- /* Метка «Визуальный стиль» в правой верхней части */
-.visual-style-label {
+/* Правый контейнер галереи от верха до низа */
+.portfolio-pinterest-card {
   position: absolute;
-  right: 60px;
-  top: 180px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  z-index: 10;
-}
-
-.visual-style-label .line {
-  width: 60px;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.4);
-}
-
-.visual-style-label span {
-  font-family: 'Poppins', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  color: #ffffff;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-/* Карточка «Примеры работ» в правом нижнем углу */
-.portfolio-examples-card {
-  position: absolute;
-  right: 60px;
-  bottom: 40px;
-  width: 100%;
-  max-width: 480px;
-  max-height: 280px;
-  background: rgba(35, 33, 54, 0.85);
+  right: 50px;
+  top: 220px; /* Начинается строго под надписью «Визуальный стиль» */
+  bottom: 40px; /* Растягивается почти до самого низа экрана */
+  width: 380px; /* Оптимальная ширина для 2-3 колонок артов */
+  background: rgba(35, 33, 54, 0.75);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 20px;
-  padding: 18px 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  padding: 18px 16px 18px 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -442,7 +415,65 @@
   color: #ffd1dc;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  flex-shrink: 0;
+}
+
+/* Pinterest-сетка с прокруткой */
+.portfolio-masonry-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 6px;
+  
+  /* Эффект Pinterest: разделение на колонки */
+  column-count: 2; /* 2 вертикальные колонки разной высоты */
+  column-gap: 10px;
+}
+
+/* Кастомный аккуратный скроллбар */
+.portfolio-masonry-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.portfolio-masonry-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+}
+.portfolio-masonry-scroll::-webkit-scrollbar-thumb {
+  background: rgba(168, 139, 235, 0.5);
+  border-radius: 10px;
+}
+.portfolio-masonry-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 139, 235, 0.8);
+}
+
+/* Карточка арта в Masonry-сетке */
+.masonry-item {
+  break-inside: avoid; /* Запрещает разрыв элементов между колонками */
+  margin-bottom: 10px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.masonry-item img {
+  width: 100%;
+  height: auto; /* Автоматическая высота создает разный Pinterest-размер карт */
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.masonry-item:hover {
+  border-color: rgba(255, 209, 220, 0.6);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.masonry-item:hover img {
+  transform: scale(1.05);
 }
 
 /* Сетка карточек с артами и прокруткой */
@@ -879,34 +910,38 @@
         </div>
       </div>
 
-     <!-- Метка визуального стиля справа сверху -->
-<div class="visual-style-label">
-  <div class="line"></div>
-  <span>Визуальный стиль</span>
-</div>
+    
 
 <!-- Заполненная карточка примеров работ справа снизу -->
-<div class="portfolio-examples-card">
-  <div class="portfolio-examples-header">Примеры работ</div>
-  
-  <div class="portfolio-grid-scroll">
-    <div class="portfolio-art-item" onclick="openLightbox('image/art1.png')">
-      <img src="image/art1.png" alt="Арт 1">
+<div class="portfolio-pinterest-card">
+  <div class="portfolio-examples-header">ПРИМЕРЫ РАБОТ</div>
+
+  <div class="portfolio-masonry-scroll">
+    <!-- Вертикальный арт -->
+    <div class="masonry-item" onclick="openLightbox('image/art1.png')">
+      <img src="image/art1.png" alt="Пример работы 1">
     </div>
-    <div class="portfolio-art-item" onclick="openLightbox('image/art2.png')">
-      <img src="image/art2.png" alt="Арт 2">
+
+    <!-- Квадратный / горизонтальный арт -->
+    <div class="masonry-item" onclick="openLightbox('image/art2.png')">
+      <img src="image/art2.png" alt="Пример работы 2">
     </div>
-    <div class="portfolio-art-item" onclick="openLightbox('image/art3.png')">
-      <img src="image/art3.png" alt="Арт 3">
+
+    <!-- Вытянутый арт -->
+    <div class="masonry-item" onclick="openLightbox('image/art3.png')">
+      <img src="image/art3.png" alt="Пример работы 3">
     </div>
-    <div class="portfolio-art-item" onclick="openLightbox('image/art4.png')">
-      <img src="image/art4.png" alt="Арт 4">
+
+    <div class="masonry-item" onclick="openLightbox('image/art4.png')">
+      <img src="image/art4.png" alt="Пример работы 4">
     </div>
-    <div class="portfolio-art-item" onclick="openLightbox('image/art5.png')">
-      <img src="image/art5.png" alt="Арт 5">
+
+    <div class="masonry-item" onclick="openLightbox('image/art5.png')">
+      <img src="image/art5.png" alt="Пример работы 5">
     </div>
-    <div class="portfolio-art-item" onclick="openLightbox('image/art6.png')">
-      <img src="image/art6.png" alt="Арт 6">
+
+    <div class="masonry-item" onclick="openLightbox('image/art6.png')">
+      <img src="image/art6.png" alt="Пример работы 6">
     </div>
   </div>
 </div>
@@ -1001,34 +1036,38 @@
         </div>
       </div>
 
-  <!-- Метка визуального стиля справа сверху -->
-<div class="visual-style-label">
-  <div class="line"></div>
-  <span>Визуальный стиль</span>
-</div>
+ 
 
 <!-- Заполненная карточка примеров работ справа снизу -->
-<div class="portfolio-examples-card">
-  <div class="portfolio-examples-header">Примеры работ</div>
-  
-  <div class="portfolio-grid-scroll">
-    <div class="portfolio-art-item" onclick="openLightbox('image/art1.png')">
-      <img src="image/art1.png" alt="Арт 1">
+<div class="portfolio-pinterest-card">
+  <div class="portfolio-examples-header">ПРИМЕРЫ РАБОТ</div>
+
+  <div class="portfolio-masonry-scroll">
+    <!-- Вертикальный арт -->
+    <div class="masonry-item" onclick="openLightbox('image/art1.png')">
+      <img src="image/art1.png" alt="Пример работы 1">
     </div>
-    <div class="portfolio-art-item" onclick="openLightbox('image/art2.png')">
-      <img src="image/art2.png" alt="Арт 2">
+
+    <!-- Квадратный / горизонтальный арт -->
+    <div class="masonry-item" onclick="openLightbox('image/art2.png')">
+      <img src="image/art2.png" alt="Пример работы 2">
     </div>
-    <div class="portfolio-art-item" onclick="openLightbox('image/art3.png')">
-      <img src="image/art3.png" alt="Арт 3">
+
+    <!-- Вытянутый арт -->
+    <div class="masonry-item" onclick="openLightbox('image/art3.png')">
+      <img src="image/art3.png" alt="Пример работы 3">
     </div>
-    <div class="portfolio-art-item" onclick="openLightbox('image/art4.png')">
-      <img src="image/art4.png" alt="Арт 4">
+
+    <div class="masonry-item" onclick="openLightbox('image/art4.png')">
+      <img src="image/art4.png" alt="Пример работы 4">
     </div>
-    <div class="portfolio-art-item" onclick="openLightbox('image/art5.png')">
-      <img src="image/art5.png" alt="Арт 5">
+
+    <div class="masonry-item" onclick="openLightbox('image/art5.png')">
+      <img src="image/art5.png" alt="Пример работы 5">
     </div>
-    <div class="portfolio-art-item" onclick="openLightbox('image/art6.png')">
-      <img src="image/art6.png" alt="Арт 6">
+
+    <div class="masonry-item" onclick="openLightbox('image/art6.png')">
+      <img src="image/art6.png" alt="Пример работы 6">
     </div>
   </div>
 </div>
@@ -1114,38 +1153,40 @@
         </div>
       </div>
 
-   <!-- Метка визуального стиля справа сверху -->
-<div class="visual-style-label">
-  <div class="line"></div>
-  <span>Визуальный стиль</span>
-</div>
 
 <!-- Заполненная карточка примеров работ справа снизу -->
-<div class="portfolio-examples-card">
-  <div class="portfolio-examples-header">Примеры работ</div>
-  
-  <div class="portfolio-grid-scroll">
-    <div class="portfolio-art-item" onclick="openLightbox('image/art1.png')">
-      <img src="image/art1.png" alt="Арт 1">
+<div class="portfolio-pinterest-card">
+  <div class="portfolio-examples-header">ПРИМЕРЫ РАБОТ</div>
+
+  <div class="portfolio-masonry-scroll">
+    <!-- Вертикальный арт -->
+    <div class="masonry-item" onclick="openLightbox('image/art1.png')">
+      <img src="image/art1.png" alt="Пример работы 1">
     </div>
-    <div class="portfolio-art-item" onclick="openLightbox('image/art2.png')">
-      <img src="image/art2.png" alt="Арт 2">
+
+    <!-- Квадратный / горизонтальный арт -->
+    <div class="masonry-item" onclick="openLightbox('image/art2.png')">
+      <img src="image/art2.png" alt="Пример работы 2">
     </div>
-    <div class="portfolio-art-item" onclick="openLightbox('image/art3.png')">
-      <img src="image/art3.png" alt="Арт 3">
+
+    <!-- Вытянутый арт -->
+    <div class="masonry-item" onclick="openLightbox('image/art3.png')">
+      <img src="image/art3.png" alt="Пример работы 3">
     </div>
-    <div class="portfolio-art-item" onclick="openLightbox('image/art4.png')">
-      <img src="image/art4.png" alt="Арт 4">
+
+    <div class="masonry-item" onclick="openLightbox('image/art4.png')">
+      <img src="image/art4.png" alt="Пример работы 4">
     </div>
-    <div class="portfolio-art-item" onclick="openLightbox('image/art5.png')">
-      <img src="image/art5.png" alt="Арт 5">
+
+    <div class="masonry-item" onclick="openLightbox('image/art5.png')">
+      <img src="image/art5.png" alt="Пример работы 5">
     </div>
-    <div class="portfolio-art-item" onclick="openLightbox('image/art6.png')">
-      <img src="image/art6.png" alt="Арт 6">
+
+    <div class="masonry-item" onclick="openLightbox('image/art6.png')">
+      <img src="image/art6.png" alt="Пример работы 6">
     </div>
   </div>
 </div>
-
       <div class="poster-label-left">
         <span>Художник</span>
         <div class="line"></div>
