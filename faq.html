@@ -387,105 +387,6 @@
       text-decoration: underline;
     }
 
-    /* НОВЫЙ БЛОК: FAQ АККОРДЕОН */
-    .faq-accordion-section {
-      width: 100%;
-      max-width: 820px;
-      margin-top: 24px;
-    }
-    .faq-accordion-title {
-      font-family: 'Poppins', sans-serif;
-      font-size: 22px;
-      font-weight: 800;
-      color: #ffffff;
-      margin-bottom: 16px;
-      text-align: left;
-    }
-    .faq-accordion-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .faq-accordion-item {
-      background: rgba(35, 33, 54, 0.7);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 16px;
-      overflow: hidden;
-      transition: all 0.25s ease;
-    }
-    .faq-accordion-item:hover {
-      background: rgba(45, 42, 68, 0.8);
-      border-color: rgba(255, 255, 255, 0.2);
-    }
-    .faq-accordion-item.active {
-      background: rgba(45, 42, 68, 0.9);
-      border-color: rgba(255, 209, 220, 0.3);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-    }
-    .faq-item-header {
-      padding: 16px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      user-select: none;
-    }
-    .faq-item-title-text {
-      font-family: 'Poppins', 'Inter', sans-serif;
-      font-size: 14.5px;
-      font-weight: 700;
-      color: #ffffff;
-      margin: 0;
-    }
-    .faq-item-icon {
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 15px;
-      color: #ffd1dc;
-      transition: transform 0.3s ease, background 0.2s ease;
-      flex-shrink: 0;
-    }
-    .faq-accordion-item.active .faq-item-icon {
-      transform: rotate(45deg);
-      background: #a88beb;
-      color: #ffffff;
-      border-color: transparent;
-    }
-    .faq-item-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s cubic-bezier(0, 1, 0, 1);
-      padding: 0 20px;
-    }
-    .faq-accordion-item.active .faq-item-content {
-      max-height: 1000px;
-      transition: max-height 0.4s ease-in-out;
-      padding-bottom: 20px;
-    }
-    .faq-text-body {
-      font-size: 13px;
-      color: #c4becc;
-      line-height: 1.6;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      padding-top: 12px;
-      margin: 0;
-    }
-    .faq-text-body ul {
-      margin: 6px 0 0 0;
-      padding-left: 18px;
-    }
-    .faq-text-body li {
-      margin-bottom: 3px;
-    }
-
     /* ПРАВАЯ ПЛАВАЮЩАЯ КНОПКА «СОЦСЕТИ» */
     .social-trigger-btn {
       position: fixed;
@@ -522,46 +423,7 @@
       letter-spacing: 1.5px; text-transform: uppercase; color: #e2d7f5;
     }
 
-    /* БОКОВАЯ ВЫДВИЖНАЯ ПАНЕЛЬ СОЦСЕТЕЙ */
-    .social-modal-overlay {
-      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(15, 14, 23, 0.6); backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px); display: flex; justify-content: flex-end;
-      z-index: 10000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
-    }
-    .social-modal-overlay.active { opacity: 1; pointer-events: auto; }
-    .social-modal-card {
-      background: #201e2d; border-left: 1px solid rgba(255, 255, 255, 0.12);
-      width: 100%; max-width: 400px; height: 100vh; padding: 40px 28px;
-      position: relative; box-shadow: -15px 0 40px rgba(0, 0, 0, 0.6);
-      text-align: left; overflow-y: auto; box-sizing: border-box;
-      transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .social-modal-overlay.active .social-modal-card { transform: translateX(0); }
-    .social-modal-header { font-size: 11px; font-weight: 700; color: #a88beb; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; }
-    .social-modal-title { font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 800; color: #ffffff; margin-bottom: 4px; }
-    .social-modal-subtitle { font-size: 12px; color: #a09cb8; margin-bottom: 24px; }
-    .social-modal-close {
-      position: absolute; top: 28px; right: 24px; background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12); color: #fff; width: 32px; height: 32px;
-      border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px;
-    }
-    .social-section-label { font-family: 'Poppins', sans-serif; font-size: 11px; font-weight: 700; color: #ffd1dc; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; margin-top: 20px; }
-    .social-links-list { display: flex; flex-direction: column; gap: 10px; }
-    .social-link-item {
-      display: flex; align-items: center; justify-content: space-between;
-      background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 14px; padding: 12px 14px; text-decoration: none; color: #ffffff; transition: all 0.2s ease;
-    }
-    .social-link-item:hover { background: rgba(255, 255, 255, 0.09); border-color: rgba(255, 255, 255, 0.2); transform: translateX(-4px); }
-    .social-link-info { display: flex; align-items: center; gap: 12px; }
-    .social-link-icon { width: 34px; height: 34px; background: rgba(255, 255, 255, 0.08); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 15px; }
-    .social-link-text h4 { font-size: 13.5px; font-weight: 600; color: #ffffff; margin: 0; }
-    .social-link-text p { font-size: 11.5px; color: #a09cb8; margin: 0; }
-    .social-link-arrow { color: #ffd1dc; font-size: 15px; }
-    .social-footer-note { text-align: center; margin-top: 30px; font-size: 12px; color: #8c88a3; }
-
-    /* МОДАЛКА ЗАКАЗА */
+    /* МОДАЛКИ */
     .modal-overlay {
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
       background: rgba(15, 14, 23, 0.7); backdrop-filter: blur(8px);
@@ -703,229 +565,10 @@
       <div class="steps-bottom-action" onclick="openModal()">Дальше: Связаться с нами →</div>
     </div>
 
-    <!-- НОВЫЙ БЛОК: FAQ (ВОПРОСЫ И ОТВЕТЫ С АККОРДЕОНОМ) -->
-    <div class="faq-accordion-section">
-      <div class="faq-accordion-title">Часто задаваемые вопросы</div>
-      <div class="faq-accordion-list">
-
-        <!-- Вопрос 1 -->
-        <div class="faq-accordion-item" onclick="toggleFaq(this)">
-          <div class="faq-item-header">
-            <h3 class="faq-item-title-text">Как работает бронь места в очереди?</h3>
-            <div class="faq-item-icon">+</div>
-          </div>
-          <div class="faq-item-content">
-            <div class="faq-text-body">
-              • Для закрепления места в очереди вносится бронь в размере 25% от полной стоимости заказа.<br>
-              • Бронь входит в общую стоимость работы.<br>
-              • После внесения брони выбранный временной слот закрепляется за заказчиком и становится недоступен для других заказов.<br>
-              • При отмене заказа со стороны заказчика сумма брони не возвращается.<br>
-              • Перед фактическим началом работы необходимо доплатить ещё 25%, чтобы общая внесённая сумма составляла 50% от стоимости заказа.
-            </div>
-          </div>
-        </div>
-
-        <!-- Вопрос 2 -->
-        <div class="faq-accordion-item" onclick="toggleFaq(this)">
-          <div class="faq-item-header">
-            <h3 class="faq-item-title-text">Как проходит оплата заказа?</h3>
-            <div class="faq-item-icon">+</div>
-          </div>
-          <div class="faq-item-content">
-            <div class="faq-text-body">
-              • Работа выполняется по схеме 50% / 50%.<br>
-              • Первые 50% должны быть оплачены до начала работы.<br>
-              • Если ранее была внесена бронь 25%, перед началом работы необходимо доплатить только оставшиеся 25%.<br>
-              • Оставшиеся 50% оплачиваются до окончательной передачи готовой работы и файлов, входящих в заказ.<br>
-              • Финальные файлы передаются после полной оплаты.<br>
-              • Для крупных или нестандартных проектов индивидуальный график платежей может быть согласован отдельно.
-            </div>
-          </div>
-        </div>
-
-        <!-- Вопрос 3 -->
-        <div class="faq-accordion-item" onclick="toggleFaq(this)">
-          <div class="faq-item-header">
-            <h3 class="faq-item-title-text">От чего зависит стоимость заказа?</h3>
-            <div class="faq-item-icon">+</div>
-          </div>
-          <div class="faq-item-content">
-            <div class="faq-text-body">
-              Финальная стоимость определяется после обсуждения технического задания.<br><br>
-              <strong>На цену могут влиять:</strong>
-              <ul>
-                <li>сложность дизайна</li>
-                <li>количество деталей</li>
-                <li>объём Live2D-рига?</li>
-                <li>сложность физики</li>
-                <li>дополнительные эмоции</li>
-                <li>переключатели</li>
-                <li>VBridger?</li>
-                <li>дополнительные костюмы</li>
-                <li>причёски</li>
-                <li>аксессуары</li>
-                <li>нестандартные функции</li>
-                <li>коммерческое использование</li>
-              </ul>
-              <br>
-              Если во время работы заказчик просит добавить элементы, которых не было в первоначальном техническом задании, их стоимость рассчитывается отдельно.
-            </div>
-          </div>
-        </div>
-
-        <!-- Вопрос 4 -->
-        <div class="faq-accordion-item" onclick="toggleFaq(this)">
-          <div class="faq-item-header">
-            <h3 class="faq-item-title-text">Что происходит при отмене заказа?</h3>
-            <div class="faq-item-icon">+</div>
-          </div>
-          <div class="faq-item-content">
-            <div class="faq-text-body">
-              • При отмене заказа до начала работы бронь 25% не возвращается.<br>
-              • Если работа уже началась, оплачивается фактически выполненный объём работы.<br>
-              • Уже выполненные и оплаченные этапы возврату не подлежат.<br>
-              • Если продолжение проекта становится невозможным по инициативе исполнителя, вопрос оплаты невыполненной части решается индивидуально.
-            </div>
-          </div>
-        </div>
-
-        <!-- Вопрос 5 -->
-        <div class="faq-accordion-item" onclick="toggleFaq(this)">
-          <div class="faq-item-header">
-            <h3 class="faq-item-title-text">Что означает внесение брони или оплаты?</h3>
-            <div class="faq-item-icon">+</div>
-          </div>
-          <div class="faq-item-content">
-            <div class="faq-text-body">
-              Внесение брони или первой части оплаты означает, что заказчик ознакомился с правилами работы и согласен с условиями сотрудничества.
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
     <div style="text-align: center; font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 30px;">
       © 2026, команда PonyOni ✨
     </div>
   </main>
-
-  <!-- ПРАВАЯ ПЛАВАЮЩАЯ КНОПКА «СОЦСЕТИ» -->
-  <button class="social-trigger-btn" onclick="openSocialModal()">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-    </svg>
-    <span>Соцсети</span>
-  </button>
-
-  <!-- БОКОВАЯ ВЫДВИЖНАЯ ПАНЕЛЬ СОЦСЕТЕЙ -->
-  <div id="socialModal" class="social-modal-overlay" onclick="closeSocialModalOnBg(event)">
-    <div class="social-modal-card">
-      <button class="social-modal-close" onclick="closeSocialModal()">×</button>
-      <div class="social-modal-header">Все ссылки</div>
-      <div class="social-modal-title">PonyOni в соцсетях</div>
-      <div class="social-modal-subtitle">Главные ресурсы и личные каналы участников команды</div>
-
-      <div class="social-section-label">Главные соцсети</div>
-      <div class="social-links-list">
-        <a href="https://vk.ru/ponyoni#section=market" target="_blank" class="social-link-item">
-          <div class="social-link-info">
-            <div class="social-link-icon">💬</div>
-            <div class="social-link-text">
-              <h4>ВКонтакте (Товары)</h4>
-              <p>сообщество и каталог услуг</p>
-            </div>
-          </div>
-          <div class="social-link-arrow">→</div>
-        </a>
-        <a href="https://t.me/Honnistar" target="_blank" class="social-link-item">
-          <div class="social-link-info">
-            <div class="social-link-icon">📢</div>
-            <div class="social-link-text">
-              <h4>Telegram</h4>
-              <p>главный канал и связь</p>
-            </div>
-          </div>
-          <div class="social-link-arrow">→</div>
-        </a>
-      </div>
-
-      <div class="social-section-label">HonniLi</div>
-      <div class="social-links-list">
-        <a href="https://t.me/Honnistar" target="_blank" class="social-link-item">
-          <div class="social-link-info">
-            <div class="social-link-icon">✈️</div>
-            <div class="social-link-text">
-              <h4>Telegram</h4>
-              <p>личный канал @Honnistar</p>
-            </div>
-          </div>
-          <div class="social-link-arrow">→</div>
-        </a>
-        <a href="https://www.twitch.tv/your_honni" target="_blank" class="social-link-item">
-          <div class="social-link-info">
-            <div class="social-link-icon">🎮</div>
-            <div class="social-link-text">
-              <h4>Twitch</h4>
-              <p>your_honni</p>
-            </div>
-          </div>
-          <div class="social-link-arrow">→</div>
-        </a>
-      </div>
-
-      <div class="social-section-label">Сахарная девочка</div>
-      <div class="social-links-list">
-        <a href="https://t.me/CaharookTwitch" target="_blank" class="social-link-item">
-          <div class="social-link-info">
-            <div class="social-link-icon">✈️</div>
-            <div class="social-link-text">
-              <h4>Telegram</h4>
-              <p>@CaharookTwitch</p>
-            </div>
-          </div>
-          <div class="social-link-arrow">→</div>
-        </a>
-        <a href="https://www.twitch.tv/caharook" target="_blank" class="social-link-item">
-          <div class="social-link-info">
-            <div class="social-link-icon">🎮</div>
-            <div class="social-link-text">
-              <h4>Twitch</h4>
-              <p>caharook</p>
-            </div>
-          </div>
-          <div class="social-link-arrow">→</div>
-        </a>
-      </div>
-
-      <div class="social-section-label">sad_potato_kate</div>
-      <div class="social-links-list">
-        <a href="https://t.me/sadpotato_Kate" target="_blank" class="social-link-item">
-          <div class="social-link-info">
-            <div class="social-link-icon">✈️</div>
-            <div class="social-link-text">
-              <h4>Telegram</h4>
-              <p>@sadpotato_Kate</p>
-            </div>
-          </div>
-          <div class="social-link-arrow">→</div>
-        </a>
-        <a href="https://www.twitch.tv/sad_potato_kate" target="_blank" class="social-link-item">
-          <div class="social-link-info">
-            <div class="social-link-icon">🎮</div>
-            <div class="social-link-text">
-              <h4>Twitch</h4>
-              <p>sad_potato_kate</p>
-            </div>
-          </div>
-          <div class="social-link-arrow">→</div>
-        </a>
-      </div>
-
-      <div class="social-footer-note">Команда PonyOni ✨ · 2026</div>
-    </div>
-  </div>
 
   <!-- МОДАЛКА ЗАКАЗА -->
   <div id="orderModal" class="modal-overlay" onclick="closeModalOnBg(event)">
@@ -949,10 +592,6 @@
     function closeModal() { document.getElementById('orderModal').classList.remove('active'); }
     function closeModalOnBg(e) { if (e.target.id === 'orderModal') closeModal(); }
 
-    function openSocialModal() { document.getElementById('socialModal').classList.add('active'); }
-    function closeSocialModal() { document.getElementById('socialModal').classList.remove('active'); }
-    function closeSocialModalOnBg(e) { if (e.target.id === 'socialModal') closeSocialModal(); }
-
     // ЛОГИКА ИНТЕРАКТИВНОГО РАСЧЕТА НАДБАВОК
     const selectedOptions = {
       conf: false,       // +20%
@@ -974,16 +613,19 @@
     }
 
     function updateCalcResult() {
+      const basePrice = 50000;
       const basePrice = 4000;
       let total = basePrice;
       let activeLabels = [];
 
       if (selectedOptions.conf) {
+        total += basePrice * 0.20;
         total += basePrice * 0.30;
         activeLabels.push('конфиденциальность заказа');
       }
 
       if (selectedOptions.rush) {
+        total += basePrice * 0.25;
         total += basePrice * 0.30;
         activeLabels.push('срочный заказ (rush)');
       }
@@ -995,16 +637,20 @@
       const calcTextEl = document.getElementById('calcExampleText');
 
       if (activeLabels.length === 0) {
+        calcTextEl.innerHTML = 'Пример: Fullbody Base 50 000 ₽. Нажмите на надбавку — покажу, как меняется сумма.';
         calcTextEl.innerHTML = 'Пример: Fullbody 4 000 ₽. Нажмите на надбавку — покажу, как меняется сумма.';
       } else {
         const formattedTotal = total.toLocaleString('ru-RU') + ' ₽';
         let labelsStr = activeLabels.join(', ');
 
         if (selectedOptions.commercial && !selectedOptions.conf && !selectedOptions.rush) {
-          calcTextEl.innerHTML = `Пример: Fullbody 4 000 ₽ → 4 000 ₽, лицензия обсуждается отдельно · ${labelsStr}`;
+          calcTextEl.innerHTML = `Пример: Fullbody Base 50 000 ₽ → 50 000 ₽, лицензия обсуждается отдельно · ${labelsStr}`;
+          calcTextEl.innerHTML = `Пример: Fullbody 4 000 ₽ → 5 200 ₽, лицензия обсуждается отдельно · ${labelsStr}`;
         } else if (selectedOptions.commercial) {
+          calcTextEl.innerHTML = `Пример: Fullbody Base 50 000 ₽ → ${formattedTotal}, лицензия обсуждается отдельно · ${labelsStr}`;
           calcTextEl.innerHTML = `Пример: Fullbody 4 000 ₽ → ${formattedTotal}, лицензия обсуждается отдельно · ${labelsStr}`;
         } else {
+          calcTextEl.innerHTML = `Пример: Fullbody Base 50 000 ₽ → ${formattedTotal} · ${labelsStr}`;
           calcTextEl.innerHTML = `Пример: Fullbody 4 000 ₽ → ${formattedTotal} · ${labelsStr}`;
         }
       }
@@ -1013,12 +659,15 @@
     // ДАННЫЕ ДЛЯ ТАЙМЛАЙНА ШАГОВ (1-5)
     const stepsData = {
       1: {
+        user: "Состав заказа из корзины или конструктора и пара слов о персонаже. Референсы — картинки, шедев, настроение: их можно приложить прямо к заказу.",
+        team: "Читаю ТЗ, сверяю с прайсом и отмечаю, чего не хватает для точной цены.",
         user: "Состав заказа или конструктора и пара слов о персонаже. Референсы — картинки, шедев, настроение: их можно приложить прямо к заказу.",
         team: "Читаем ТЗ, сверяем с прайсом и отмечаем, чего не хватает для точной цены.",
         edits: "Свободно. Работа ещё не началась — ТЗ можно дополнять и менять как угодно."
       },
       2: {
         user: "Быть на связи там, где указала в заказе: Telegram, VK.",
+        team: "Пишим первыми, задаю вопросы по ТЗ и называю ориентир по цене и срокам.",
         team: "Пишим первыми, задаем вопросы по ТЗ и называем ориентир по цене и срокам.",
         edits: "Свободно. Можно убрать или добавить допы, сменить тип модели или уровень."
       },
@@ -1029,6 +678,8 @@
       },
       4: {
         user: "Внести бронь 25% — она закрепляет место и входит в первые 50%. До старта доплатить ещё 25%, вторую половину — до передачи файлов.",
+        team: "Закрепляю за тобой место в очереди, называю дату старта и присылаю персональную ссылку LyssBoard — по ней видно, как идёт работа.",
+        edits: "Состав зафиксирован. Новые пункты считаю отдельно. При отмене бронь не возвращается."
         team: "Закрепляем за тобой место в очереди, называем дату старта и присылаем персональную ссылку Очереди — по ней видно, как идёт работа.",
         edits: "Состав зафиксирован. Новые пункты считаем отдельно. При отмене бронь не возвращается."
       },
@@ -1049,22 +700,12 @@
         }
       }
 
+      // Обновление текстов в блоках
       const data = stepsData[stepNum];
       if (data) {
         document.getElementById('step-text-user').innerText = data.user;
         document.getElementById('step-text-team').innerText = data.team;
         document.getElementById('step-text-edits').innerText = data.edits;
-      }
-    }
-
-    // ЛОГИКА АККОРДЕОНА FAQ
-    function toggleFaq(element) {
-      const isAlreadyActive = element.classList.contains('active');
-      document.querySelectorAll('.faq-accordion-item').forEach(item => {
-        item.classList.remove('active');
-      });
-      if (!isAlreadyActive) {
-        element.classList.add('active');
       }
     }
   </script>
