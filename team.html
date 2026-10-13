@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
   
   <style>
+    
     /* БЛОКИРОВКА ВЫДЕЛЕНИЯ И ПЕРЕТАСКИВАНИЯ */
     body {
       -webkit-user-select: none;
@@ -28,7 +29,176 @@
       -webkit-user-drag: none;
       user-drag: none;
     }
+/* --- СЛАЙДЕР ПРИМЕРОВ РАБОТ --- */
+.portfolio-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 40px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.carousel-viewport {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+.carousel-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Карточка слайда */
+.carousel-slide {
+  position: absolute;
+  width: 320px;
+  height: 420px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: rgba(35, 33, 54, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  transition: all 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: pointer;
+  user-select: none;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(0) scale(0.7);
+  z-index: 1;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Активный слайд по центру */
+.carousel-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0) scale(1);
+  z-index: 10;
+  border-color: rgba(255, 209, 220, 0.5);
+  box-shadow: 0 0 30px rgba(168, 139, 235, 0.35), 0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* Соседний слайд СЛЕВА (полупрозрачный) */
+.carousel-slide.prev {
+  opacity: 0.35;
+  pointer-events: auto;
+  transform: translateX(-240px) scale(0.82) rotateY(10deg);
+  filter: blur(1px) grayscale(20%);
+  z-index: 5;
+}
+
+/* Соседний слайд СПРАВА (полупрозрачный) */
+.carousel-slide.next {
+  opacity: 0.35;
+  pointer-events: auto;
+  transform: translateX(240px) scale(0.82) rotateY(-10deg);
+  filter: blur(1px) grayscale(20%);
+  z-index: 5;
+}
+
+.carousel-slide.prev:hover,
+.carousel-slide.next:hover {
+  opacity: 0.6;
+  filter: blur(0) grayscale(0%);
+}
+
+/* Кнопки стрелочек (в стиле сайта) */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(37, 35, 54, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffd1dc;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+  transition: all 0.25s ease;
+}
+
+.carousel-btn:hover {
+  background: linear-gradient(135deg, #a88beb 0%, #e87999 100%);
+  color: #ffffff;
+  border-color: transparent;
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 0 20px rgba(232, 121, 153, 0.5);
+}
+
+.carousel-btn.prev-btn { left: 15px; }
+.carousel-btn.next-btn { right: 15px; }
+
+/* Подпись под текущей работой */
+.carousel-caption {
+  margin-top: 15px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 6px 18px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Индикаторы (Точки) */
+.carousel-indicators {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.indicator-dot {
+  width: 24px;
+  height: 4px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator-dot.active {
+  background: linear-gradient(90deg, #a88beb, #ffd1dc);
+  width: 40px;
+  box-shadow: 0 0 10px rgba(168, 139, 235, 0.6);
+}
+
+@media(max-width: 768px) {
+  .carousel-viewport { height: 380px; }
+  .carousel-slide { width: 240px; height: 320px; }
+  .carousel-slide.prev { transform: translateX(-140px) scale(0.75); }
+  .carousel-slide.next { transform: translateX(140px) scale(0.75); }
+  .carousel-btn { width: 40px; height: 40px; font-size: 16px; }
+}
     /* ПРАВАЯ ПЛАВАЮЩАЯ КНОПКА «СОЦСЕТИ» */
     .social-trigger-btn {
       position: fixed;
@@ -745,14 +915,42 @@
       </div>
 
       <!-- ПРАВЫЙ НИЖНИЙ БЛОК (ПРИМЕРЫ РАБОТ) -->
-      <div class="box-right-bottom">
-        <div class="box-title">Примеры работ</div>
-        <div class="portfolio-grid">
-          <div class="portfolio-item"><img src="image/TeamHonniLi.png" alt="Work 1"></div>
-          <div class="portfolio-item"><img src="image/HonArt1.png" alt="Work 2"></div>
-          <div class="portfolio-item"><img src="image/logo.png" alt="Work 3"></div>
-        </div>
+    <div class="portfolio-carousel-wrapper">
+  
+  <div class="carousel-viewport">
+    <!-- Кнопки Назад / Вперед -->
+    <button class="carousel-btn prev-btn" onclick="moveCarousel(-1)">‹</button>
+    <button class="carousel-btn next-btn" onclick="moveCarousel(1)">›</button>
+
+    <div class="carousel-track" id="carouselTrack">
+      
+      <!-- Слайды работ -->
+      <div class="carousel-slide" data-title="ХОННИЛИ / CONCEPT ART">
+        <img src="image/artsait1.png" alt="Work 1">
       </div>
+      <div class="carousel-slide" data-title="САХАРОК / LIVE2D MODEL">
+        <img src="image/prev.jpe" alt="Work 2">
+      </div>
+      <div class="carousel-slide" data-title="PONYONI / CHIBI AVATAR">
+        <img src="image/logo.png" alt="Work 3">
+      </div>
+      <div class="carousel-slide" data-title="SAD_POTATO / EMOTES">
+        <img src="image/artsait1.png" alt="Work 4">
+      </div>
+      <div class="carousel-slide" data-title="FULLBODY VTUBER / CUSTOM RIG">
+        <img src="image/prev.jpe" alt="Work 5">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Плашка с названием работы -->
+  <div class="carousel-caption" id="carouselCaption">PONYONI / WORK</div>
+
+  <!-- Индикаторы (полоски) -->
+  <div class="carousel-indicators" id="carouselIndicators"></div>
+
+</div>
 
       <div class="poster-label-left">
         <span>Художник</span>
