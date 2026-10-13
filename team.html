@@ -388,21 +388,51 @@
       box-sizing: border-box;
     }
 
-  /* Карточка примеров работ в правом нижнем углу / нижней части */
+ /* Метка «Визуальный стиль» в правой верхней части */
+.visual-style-label {
+  position: absolute;
+  right: 60px;
+  top: 180px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  z-index: 10;
+}
+
+.visual-style-label .line {
+  width: 60px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.visual-style-label span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Карточка «Примеры работ» в правом нижнем углу */
 .portfolio-examples-card {
+  position: absolute;
+  right: 60px;
+  bottom: 40px;
   width: 100%;
-  max-width: 620px; /* Ширина подбирается под макет */
-  max-height: 280px; /* Ограничиваем высоту, чтобы не перекрывать «ВИЗУАЛЬНЫЙ СТИЛЬ» сверху */
-  background: rgba(35, 33, 54, 0.75);
+  max-width: 480px;
+  max-height: 280px;
+  background: rgba(35, 33, 54, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 20px;
-  padding: 20px 22px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  padding: 18px 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  z-index: 10;
 }
 
 .portfolio-examples-header {
@@ -412,9 +442,58 @@
   color: #ffd1dc;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
+/* Сетка карточек с артами и прокруткой */
+.portfolio-grid-scroll {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 колонки превью */
+  gap: 10px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.portfolio-grid-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.portfolio-grid-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+}
+.portfolio-grid-scroll::-webkit-scrollbar-thumb {
+  background: rgba(168, 139, 235, 0.5);
+  border-radius: 10px;
+}
+
+/* Элемент арта */
+.portfolio-art-item {
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.portfolio-art-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.portfolio-art-item:hover {
+  border-color: rgba(255, 209, 220, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.portfolio-art-item:hover img {
+  transform: scale(1.06);
+}
 /* Сетка карточек с прокруткой */
 .portfolio-grid-scroll {
   display: grid;
@@ -800,42 +879,35 @@
         </div>
       </div>
 
-      <!-- ПРАВЫЙ НИЖНИЙ БЛОК (ПРИМЕРЫ РАБОТ) -->
-      <div class="portfolio-examples-card">
-  <div class="portfolio-examples-header">ПРИМЕРЫ РАБОТ</div>
+     <!-- Метка визуального стиля справа сверху -->
+<div class="visual-style-label">
+  <div class="line"></div>
+  <span>Визуальный стиль</span>
+</div>
+
+<!-- Заполненная карточка примеров работ справа снизу -->
+<div class="portfolio-examples-card">
+  <div class="portfolio-examples-header">Примеры работ</div>
   
   <div class="portfolio-grid-scroll">
-    <!-- Арт 1 -->
     <div class="portfolio-art-item" onclick="openLightbox('image/art1.png')">
-      <img src="image/art1.png" alt="Пример работы 1">
+      <img src="image/art1.png" alt="Арт 1">
     </div>
-
-    <!-- Арт 2 -->
     <div class="portfolio-art-item" onclick="openLightbox('image/art2.png')">
-      <img src="image/art2.png" alt="Пример работы 2">
+      <img src="image/art2.png" alt="Арт 2">
     </div>
-
-    <!-- Арт 3 -->
     <div class="portfolio-art-item" onclick="openLightbox('image/art3.png')">
-      <img src="image/art3.png" alt="Пример работы 3">
+      <img src="image/art3.png" alt="Арт 3">
     </div>
-
-    <!-- Арт 4 -->
     <div class="portfolio-art-item" onclick="openLightbox('image/art4.png')">
-      <img src="image/art4.png" alt="Пример работы 4">
+      <img src="image/art4.png" alt="Арт 4">
     </div>
-
-    <!-- Арт 5 -->
     <div class="portfolio-art-item" onclick="openLightbox('image/art5.png')">
-      <img src="image/art5.png" alt="Пример работы 5">
+      <img src="image/art5.png" alt="Арт 5">
     </div>
-
-    <!-- Арт 6 -->
     <div class="portfolio-art-item" onclick="openLightbox('image/art6.png')">
-      <img src="image/art6.png" alt="Пример работы 6">
+      <img src="image/art6.png" alt="Арт 6">
     </div>
-
-    <!-- Добавляйте любые другие арты сюда -->
   </div>
 </div>
 
@@ -929,42 +1001,35 @@
         </div>
       </div>
 
-    <!-- ПРАВЫЙ НИЖНИЙ БЛОК (ПРИМЕРЫ РАБОТ) -->
-      <div class="portfolio-examples-card">
-  <div class="portfolio-examples-header">ПРИМЕРЫ РАБОТ</div>
+  <!-- Метка визуального стиля справа сверху -->
+<div class="visual-style-label">
+  <div class="line"></div>
+  <span>Визуальный стиль</span>
+</div>
+
+<!-- Заполненная карточка примеров работ справа снизу -->
+<div class="portfolio-examples-card">
+  <div class="portfolio-examples-header">Примеры работ</div>
   
   <div class="portfolio-grid-scroll">
-    <!-- Арт 1 -->
     <div class="portfolio-art-item" onclick="openLightbox('image/art1.png')">
-      <img src="image/art1.png" alt="Пример работы 1">
+      <img src="image/art1.png" alt="Арт 1">
     </div>
-
-    <!-- Арт 2 -->
     <div class="portfolio-art-item" onclick="openLightbox('image/art2.png')">
-      <img src="image/art2.png" alt="Пример работы 2">
+      <img src="image/art2.png" alt="Арт 2">
     </div>
-
-    <!-- Арт 3 -->
     <div class="portfolio-art-item" onclick="openLightbox('image/art3.png')">
-      <img src="image/art3.png" alt="Пример работы 3">
+      <img src="image/art3.png" alt="Арт 3">
     </div>
-
-    <!-- Арт 4 -->
     <div class="portfolio-art-item" onclick="openLightbox('image/art4.png')">
-      <img src="image/art4.png" alt="Пример работы 4">
+      <img src="image/art4.png" alt="Арт 4">
     </div>
-
-    <!-- Арт 5 -->
     <div class="portfolio-art-item" onclick="openLightbox('image/art5.png')">
-      <img src="image/art5.png" alt="Пример работы 5">
+      <img src="image/art5.png" alt="Арт 5">
     </div>
-
-    <!-- Арт 6 -->
     <div class="portfolio-art-item" onclick="openLightbox('image/art6.png')">
-      <img src="image/art6.png" alt="Пример работы 6">
+      <img src="image/art6.png" alt="Арт 6">
     </div>
-
-    <!-- Добавляйте любые другие арты сюда -->
   </div>
 </div>
 
@@ -1049,42 +1114,35 @@
         </div>
       </div>
 
-    <!-- ПРАВЫЙ НИЖНИЙ БЛОК (ПРИМЕРЫ РАБОТ) -->
-      <div class="portfolio-examples-card">
-  <div class="portfolio-examples-header">ПРИМЕРЫ РАБОТ</div>
+   <!-- Метка визуального стиля справа сверху -->
+<div class="visual-style-label">
+  <div class="line"></div>
+  <span>Визуальный стиль</span>
+</div>
+
+<!-- Заполненная карточка примеров работ справа снизу -->
+<div class="portfolio-examples-card">
+  <div class="portfolio-examples-header">Примеры работ</div>
   
   <div class="portfolio-grid-scroll">
-    <!-- Арт 1 -->
     <div class="portfolio-art-item" onclick="openLightbox('image/art1.png')">
-      <img src="image/art1.png" alt="Пример работы 1">
+      <img src="image/art1.png" alt="Арт 1">
     </div>
-
-    <!-- Арт 2 -->
     <div class="portfolio-art-item" onclick="openLightbox('image/art2.png')">
-      <img src="image/art2.png" alt="Пример работы 2">
+      <img src="image/art2.png" alt="Арт 2">
     </div>
-
-    <!-- Арт 3 -->
     <div class="portfolio-art-item" onclick="openLightbox('image/art3.png')">
-      <img src="image/art3.png" alt="Пример работы 3">
+      <img src="image/art3.png" alt="Арт 3">
     </div>
-
-    <!-- Арт 4 -->
     <div class="portfolio-art-item" onclick="openLightbox('image/art4.png')">
-      <img src="image/art4.png" alt="Пример работы 4">
+      <img src="image/art4.png" alt="Арт 4">
     </div>
-
-    <!-- Арт 5 -->
     <div class="portfolio-art-item" onclick="openLightbox('image/art5.png')">
-      <img src="image/art5.png" alt="Пример работы 5">
+      <img src="image/art5.png" alt="Арт 5">
     </div>
-
-    <!-- Арт 6 -->
     <div class="portfolio-art-item" onclick="openLightbox('image/art6.png')">
-      <img src="image/art6.png" alt="Пример работы 6">
+      <img src="image/art6.png" alt="Арт 6">
     </div>
-
-    <!-- Добавляйте любые другие арты сюда -->
   </div>
 </div>
 
