@@ -1388,5 +1388,76 @@
       }
     }, { passive: true });
   </script>
+  <script>
+  let currentSlideIndex = 0;
+  const slides = document.querySelectorAll('.carousel-slide');
+  const captionEl = document.getElementById('carouselCaption');
+  const indicatorsContainer = document.getElementById('carouselIndicators');
+
+  // Инициализация точек-индикаторов
+  slides.forEach((_, idx) => {
+    const dot = document.createElement('div');
+    dot.classList.add('indicator-dot');
+    if (idx === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goToSlide(idx));
+    indicatorsContainer.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll('.indicator-dot');
+
+  function updateCarousel() {
+    const total = slides.length;
+
+    slides.forEach((slide, idx) => {
+      slide.classList.remove('active', 'prev', 'next');
+
+      // Рассчитываем цикличные индексы
+      const prevIdx = (currentSlideIndex - 1 + total) % total;
+      const nextIdx = (currentSlideIndex + 1) % total;
+
+      if (idx === currentSlideIndex) {
+        slide.classList.add('active');
+      } else if (idx === prevIdx) {
+        slide.classList.add('prev');
+      } else if (idx === nextIdx) {
+        slide.classList.add('next');
+      }
+    });
+
+    // Обновляем название
+    const activeSlide = slides[currentSlideIndex];
+    if (activeSlide && activeSlide.dataset.title) {
+      captionEl.innerText = activeSlide.dataset.title;
+    }
+
+    // Обновляем точки
+    dots.forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === currentSlideIndex);
+    });
+  }
+
+  function moveCarousel(direction) {
+    const total = slides.length;
+    currentSlideIndex = (currentSlideIndex + direction + total) % total;
+    updateCarousel();
+  }
+
+  function goToSlide(index) {
+    currentSlideIndex = index;
+    updateCarousel();
+  }
+
+  // Клик по боковым карточкам сразу переключает на них
+  slides.forEach((slide, idx) => {
+    slide.addEventListener('click', () => {
+      if (idx !== currentSlideIndex) {
+        goToSlide(idx);
+      }
+    });
+  });
+
+  // Запуск при загрузке
+  updateCarousel();
+</script>
 </body>
 </html>
