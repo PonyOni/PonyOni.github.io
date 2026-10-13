@@ -388,198 +388,81 @@
       box-sizing: border-box;
     }
 
-/* Правый контейнер галереи от верха до низа */
-.portfolio-pinterest-card {
+/* Контейнер галереи на правой стороне (без подложки-карточки) */
+.pinterest-gallery-wrapper {
   position: absolute;
   right: 50px;
-  top: 220px; /* Начинается строго под надписью «Визуальный стиль» */
-  bottom: 40px; /* Растягивается почти до самого низа экрана */
-  width: 380px; /* Оптимальная ширина для 2-3 колонок артов */
-  background: rgba(35, 33, 54, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 20px;
-  padding: 18px 16px 18px 20px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-  box-sizing: border-box;
+  top: 220px; /* Начинается ровно от линии «Визуальный стиль» */
+  bottom: 40px;
+  width: 540px; /* Ширина под большее количество колонок */
   display: flex;
   flex-direction: column;
   z-index: 10;
 }
 
-.portfolio-examples-header {
+.gallery-section-title {
   font-family: 'Poppins', sans-serif;
   font-size: 11px;
   font-weight: 700;
   color: #ffd1dc;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  margin-bottom: 14px;
-  flex-shrink: 0;
+  margin-bottom: 12px;
 }
 
 /* Pinterest-сетка с прокруткой */
-.portfolio-masonry-scroll {
+.pinterest-masonry-scroll {
   flex: 1;
   overflow-y: auto;
   padding-right: 6px;
   
-  /* Эффект Pinterest: разделение на колонки */
-  column-count: 2; /* 2 вертикальные колонки разной высоты */
-  column-gap: 10px;
+  /* 3 колонки для красивого заполнения пространства */
+  column-count: 3;
+  column-gap: 12px;
 }
 
-/* Кастомный аккуратный скроллбар */
-.portfolio-masonry-scroll::-webkit-scrollbar {
+/* Скроллбар */
+.pinterest-masonry-scroll::-webkit-scrollbar {
   width: 4px;
 }
-.portfolio-masonry-scroll::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.03);
+.pinterest-masonry-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
   border-radius: 10px;
 }
-.portfolio-masonry-scroll::-webkit-scrollbar-thumb {
-  background: rgba(168, 139, 235, 0.5);
-  border-radius: 10px;
-}
-.portfolio-masonry-scroll::-webkit-scrollbar-thumb:hover {
-  background: rgba(168, 139, 235, 0.8);
-}
-
-/* Карточка арта в Masonry-сетке */
-.masonry-item {
-  break-inside: avoid; /* Запрещает разрыв элементов между колонками */
-  margin-bottom: 10px;
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
-  cursor: pointer;
-  transition: all 0.25s ease;
-  position: relative;
-}
-
-.masonry-item img {
-  width: 100%;
-  height: auto; /* Автоматическая высота создает разный Pinterest-размер карт */
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.masonry-item:hover {
-  border-color: rgba(255, 209, 220, 0.6);
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-}
-
-.masonry-item:hover img {
-  transform: scale(1.05);
-}
-
-/* Сетка карточек с артами и прокруткой */
-.portfolio-grid-scroll {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 колонки превью */
-  gap: 10px;
-  overflow-y: auto;
-  padding-right: 4px;
-}
-
-.portfolio-grid-scroll::-webkit-scrollbar {
-  width: 4px;
-}
-.portfolio-grid-scroll::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 10px;
-}
-.portfolio-grid-scroll::-webkit-scrollbar-thumb {
-  background: rgba(168, 139, 235, 0.5);
+.pinterest-masonry-scroll::-webkit-scrollbar-thumb {
+  background: rgba(168, 139, 235, 0.4);
   border-radius: 10px;
 }
 
 /* Элемент арта */
-.portfolio-art-item {
-  aspect-ratio: 1 / 1;
-  border-radius: 12px;
+.pinterest-art-item {
+  break-inside: avoid;
+  margin-bottom: 12px;
+  border-radius: 16px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(35, 33, 54, 0.5);
   cursor: pointer;
   transition: all 0.25s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.portfolio-art-item img {
+.pinterest-art-item img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
   transition: transform 0.3s ease;
 }
 
-.portfolio-art-item:hover {
-  border-color: rgba(255, 209, 220, 0.5);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+.pinterest-art-item:hover {
+  border-color: rgba(255, 209, 220, 0.6);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
 }
 
-.portfolio-art-item:hover img {
-  transform: scale(1.06);
+.pinterest-art-item:hover img {
+  transform: scale(1.05);
 }
-/* Сетка карточек с прокруткой */
-.portfolio-grid-scroll {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 колонки артов */
-  gap: 12px;
-  overflow-y: auto;
-  padding-right: 6px;
-}
-
-/* Кастомный аккуратный скроллбар */
-.portfolio-grid-scroll::-webkit-scrollbar {
-  width: 5px;
-}
-.portfolio-grid-scroll::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-}
-.portfolio-grid-scroll::-webkit-scrollbar-thumb {
-  background: rgba(168, 139, 235, 0.5);
-  border-radius: 10px;
-}
-.portfolio-grid-scroll::-webkit-scrollbar-thumb:hover {
-  background: rgba(168, 139, 235, 0.8);
-}
-
-/* Элемент арта в галерее */
-.portfolio-art-item {
-  aspect-ratio: 1 / 1;
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
-  cursor: pointer;
-  transition: all 0.25s ease;
-  position: relative;
-}
-
-.portfolio-art-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.portfolio-art-item:hover {
-  border-color: rgba(255, 209, 220, 0.5);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-}
-
-.portfolio-art-item:hover img {
-  transform: scale(1.08);
-}
-
     /* ТАБЛИЦА ЦЕН */
     .price-table {
       width: 100%;
@@ -913,35 +796,42 @@
     
 
 <!-- Заполненная карточка примеров работ справа снизу -->
-<div class="portfolio-pinterest-card">
-  <div class="portfolio-examples-header">ПРИМЕРЫ РАБОТ</div>
+<div class="pinterest-gallery-wrapper">
+  <div class="gallery-section-title">Примеры работ</div>
 
-  <div class="portfolio-masonry-scroll">
-    <!-- Вертикальный арт -->
-    <div class="masonry-item" onclick="openLightbox('image/art1.png')">
-      <img src="image/art1.png" alt="Пример работы 1">
+  <div class="pinterest-masonry-scroll">
+    <!-- 1 колонка / арт -->
+    <div class="pinterest-art-item" onclick="openLightbox('image/art1.png')">
+      <img src="image/art1.png" alt="Арт 1">
     </div>
 
-    <!-- Квадратный / горизонтальный арт -->
-    <div class="masonry-item" onclick="openLightbox('image/art2.png')">
-      <img src="image/art2.png" alt="Пример работы 2">
+    <div class="pinterest-art-item" onclick="openLightbox('image/art2.png')">
+      <img src="image/art2.png" alt="Арт 2">
     </div>
 
-    <!-- Вытянутый арт -->
-    <div class="masonry-item" onclick="openLightbox('image/art3.png')">
-      <img src="image/art3.png" alt="Пример работы 3">
+    <div class="pinterest-art-item" onclick="openLightbox('image/art3.png')">
+      <img src="image/art3.png" alt="Арт 3">
     </div>
 
-    <div class="masonry-item" onclick="openLightbox('image/art4.png')">
-      <img src="image/art4.png" alt="Пример работы 4">
+    <div class="pinterest-art-item" onclick="openLightbox('image/art4.png')">
+      <img src="image/art4.png" alt="Арт 4">
     </div>
 
-    <div class="masonry-item" onclick="openLightbox('image/art5.png')">
-      <img src="image/art5.png" alt="Пример работы 5">
+    <div class="pinterest-art-item" onclick="openLightbox('image/art5.png')">
+      <img src="image/art5.png" alt="Арт 5">
     </div>
 
-    <div class="masonry-item" onclick="openLightbox('image/art6.png')">
-      <img src="image/art6.png" alt="Пример работы 6">
+    <div class="pinterest-art-item" onclick="openLightbox('image/art6.png')">
+      <img src="image/art6.png" alt="Арт 6">
+    </div>
+
+    <!-- Дополнительные блоки влево -->
+    <div class="pinterest-art-item" onclick="openLightbox('image/art7.png')">
+      <img src="image/art7.png" alt="Арт 7">
+    </div>
+
+    <div class="pinterest-art-item" onclick="openLightbox('image/art8.png')">
+      <img src="image/art8.png" alt="Арт 8">
     </div>
   </div>
 </div>
@@ -1039,35 +929,42 @@
  
 
 <!-- Заполненная карточка примеров работ справа снизу -->
-<div class="portfolio-pinterest-card">
-  <div class="portfolio-examples-header">ПРИМЕРЫ РАБОТ</div>
+<div class="pinterest-gallery-wrapper">
+  <div class="gallery-section-title">Примеры работ</div>
 
-  <div class="portfolio-masonry-scroll">
-    <!-- Вертикальный арт -->
-    <div class="masonry-item" onclick="openLightbox('image/art1.png')">
-      <img src="image/art1.png" alt="Пример работы 1">
+  <div class="pinterest-masonry-scroll">
+    <!-- 1 колонка / арт -->
+    <div class="pinterest-art-item" onclick="openLightbox('image/art1.png')">
+      <img src="image/art1.png" alt="Арт 1">
     </div>
 
-    <!-- Квадратный / горизонтальный арт -->
-    <div class="masonry-item" onclick="openLightbox('image/art2.png')">
-      <img src="image/art2.png" alt="Пример работы 2">
+    <div class="pinterest-art-item" onclick="openLightbox('image/art2.png')">
+      <img src="image/art2.png" alt="Арт 2">
     </div>
 
-    <!-- Вытянутый арт -->
-    <div class="masonry-item" onclick="openLightbox('image/art3.png')">
-      <img src="image/art3.png" alt="Пример работы 3">
+    <div class="pinterest-art-item" onclick="openLightbox('image/art3.png')">
+      <img src="image/art3.png" alt="Арт 3">
     </div>
 
-    <div class="masonry-item" onclick="openLightbox('image/art4.png')">
-      <img src="image/art4.png" alt="Пример работы 4">
+    <div class="pinterest-art-item" onclick="openLightbox('image/art4.png')">
+      <img src="image/art4.png" alt="Арт 4">
     </div>
 
-    <div class="masonry-item" onclick="openLightbox('image/art5.png')">
-      <img src="image/art5.png" alt="Пример работы 5">
+    <div class="pinterest-art-item" onclick="openLightbox('image/art5.png')">
+      <img src="image/art5.png" alt="Арт 5">
     </div>
 
-    <div class="masonry-item" onclick="openLightbox('image/art6.png')">
-      <img src="image/art6.png" alt="Пример работы 6">
+    <div class="pinterest-art-item" onclick="openLightbox('image/art6.png')">
+      <img src="image/art6.png" alt="Арт 6">
+    </div>
+
+    <!-- Дополнительные блоки влево -->
+    <div class="pinterest-art-item" onclick="openLightbox('image/art7.png')">
+      <img src="image/art7.png" alt="Арт 7">
+    </div>
+
+    <div class="pinterest-art-item" onclick="openLightbox('image/art8.png')">
+      <img src="image/art8.png" alt="Арт 8">
     </div>
   </div>
 </div>
@@ -1155,35 +1052,42 @@
 
 
 <!-- Заполненная карточка примеров работ справа снизу -->
-<div class="portfolio-pinterest-card">
-  <div class="portfolio-examples-header">ПРИМЕРЫ РАБОТ</div>
+<div class="pinterest-gallery-wrapper">
+  <div class="gallery-section-title">Примеры работ</div>
 
-  <div class="portfolio-masonry-scroll">
-    <!-- Вертикальный арт -->
-    <div class="masonry-item" onclick="openLightbox('image/art1.png')">
-      <img src="image/art1.png" alt="Пример работы 1">
+  <div class="pinterest-masonry-scroll">
+    <!-- 1 колонка / арт -->
+    <div class="pinterest-art-item" onclick="openLightbox('image/art1.png')">
+      <img src="image/art1.png" alt="Арт 1">
     </div>
 
-    <!-- Квадратный / горизонтальный арт -->
-    <div class="masonry-item" onclick="openLightbox('image/art2.png')">
-      <img src="image/art2.png" alt="Пример работы 2">
+    <div class="pinterest-art-item" onclick="openLightbox('image/art2.png')">
+      <img src="image/art2.png" alt="Арт 2">
     </div>
 
-    <!-- Вытянутый арт -->
-    <div class="masonry-item" onclick="openLightbox('image/art3.png')">
-      <img src="image/art3.png" alt="Пример работы 3">
+    <div class="pinterest-art-item" onclick="openLightbox('image/art3.png')">
+      <img src="image/art3.png" alt="Арт 3">
     </div>
 
-    <div class="masonry-item" onclick="openLightbox('image/art4.png')">
-      <img src="image/art4.png" alt="Пример работы 4">
+    <div class="pinterest-art-item" onclick="openLightbox('image/art4.png')">
+      <img src="image/art4.png" alt="Арт 4">
     </div>
 
-    <div class="masonry-item" onclick="openLightbox('image/art5.png')">
-      <img src="image/art5.png" alt="Пример работы 5">
+    <div class="pinterest-art-item" onclick="openLightbox('image/art5.png')">
+      <img src="image/art5.png" alt="Арт 5">
     </div>
 
-    <div class="masonry-item" onclick="openLightbox('image/art6.png')">
-      <img src="image/art6.png" alt="Пример работы 6">
+    <div class="pinterest-art-item" onclick="openLightbox('image/art6.png')">
+      <img src="image/art6.png" alt="Арт 6">
+    </div>
+
+    <!-- Дополнительные блоки влево -->
+    <div class="pinterest-art-item" onclick="openLightbox('image/art7.png')">
+      <img src="image/art7.png" alt="Арт 7">
+    </div>
+
+    <div class="pinterest-art-item" onclick="openLightbox('image/art8.png')">
+      <img src="image/art8.png" alt="Арт 8">
     </div>
   </div>
 </div>
