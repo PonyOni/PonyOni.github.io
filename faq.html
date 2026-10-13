@@ -568,6 +568,106 @@
       margin-bottom: 3px;
     }
 
+    /* СТИЛИ ДЛЯ ПРИМЕРА ОПЛАТЫ И ШКАЛЫ (ИЗ МАКЕТА) */
+    .payment-example-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 20px;
+      margin-top: 10px;
+    }
+
+    .payment-example-subtitle {
+      font-size: 13px;
+      color: #a09cb8;
+      margin-bottom: 16px;
+    }
+
+    .payment-table {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .payment-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 10px;
+      font-size: 13px;
+    }
+
+    .payment-row.highlight {
+      background: rgba(168, 139, 235, 0.15);
+      border: 1px solid rgba(168, 139, 235, 0.3);
+    }
+
+    .payment-row.total {
+      background: transparent;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0;
+      padding-top: 14px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .payment-row-label { color: #d1c8e8; }
+    .payment-row-value { font-weight: 700; color: #ffffff; }
+
+    /* Визуальная шкала прогресса оплаты */
+    .payment-progress-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      padding: 0 20px;
+      margin-top: 10px;
+    }
+
+    .payment-progress-line {
+      position: absolute;
+      top: 16px;
+      left: 40px;
+      right: 40px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.15);
+      z-index: 1;
+    }
+
+    .payment-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .payment-node {
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: #252336;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 12px;
+      font-weight: 700;
+      color: #a09cb8;
+      margin-bottom: 8px;
+    }
+
+    .payment-node.active {
+      background: #a88beb;
+      border-color: #ffd1dc;
+      color: #ffffff;
+      box-shadow: 0 0 15px rgba(168, 139, 235, 0.5);
+    }
+
+    .payment-step-label {
+      font-size: 11px;
+      color: #7d7799;
+    }
+
     /* ПРАВАЯ ПЛАВАЮЩАЯ КНОПКА «СОЦСЕТИ» */
     .social-trigger-btn {
       position: fixed;
@@ -666,6 +766,8 @@
       .steps-timeline { grid-template-columns: repeat(3, 1fr); gap: 20px; }
       .steps-timeline::before { display: none; }
       .faq-title { font-size: 32px; }
+      .payment-progress-bar { flex-direction: column; gap: 12px; }
+      .payment-progress-line { display: none; }
     }
   </style>
 </head>
@@ -850,6 +952,62 @@
               • Оставшиеся 50% оплачиваются до окончательной передачи готовой работы и файлов, входящих в заказ.<br>
               • Финальные файлы передаются после полной оплаты.<br>
               • Для крупных или нестандартных проектов индивидуальный график платежей может быть согласован отдельно.
+            </div>
+          </div>
+        </div>
+
+        <!-- НОВЫЙ ПУНКТ: КАК РАБОТАЕТ ОПЛАТА НА ПРИМЕРЕ -->
+        <div class="faq-accordion-item" onclick="toggleFaq(this)">
+          <div class="faq-item-header">
+            <h3 class="faq-item-title-text">Как работает оплата на примере?</h3>
+            <div class="faq-item-icon">+</div>
+          </div>
+          <div class="faq-item-content">
+            <div class="faq-text-body">
+              <div class="payment-example-box">
+                <div class="payment-example-subtitle">Например, стоимость заказа составляет <strong>30 000 ₽</strong>.</div>
+                
+                <div class="payment-table">
+                  <div class="payment-row">
+                    <span class="payment-row-label">Бронь места — 25%</span>
+                    <span class="payment-row-value">7 500 ₽</span>
+                  </div>
+                  <div class="payment-row">
+                    <span class="payment-row-label">Перед началом работы необходимо доплатить</span>
+                    <span class="payment-row-value">7 500 ₽</span>
+                  </div>
+                  <div class="payment-row highlight">
+                    <span class="payment-row-label">К началу работы оплачено</span>
+                    <span class="payment-row-value">15 000 ₽ · 50%</span>
+                  </div>
+                  <div class="payment-row highlight">
+                    <span class="payment-row-label">Перед передачей финальных файлов</span>
+                    <span class="payment-row-value">15 000 ₽ · 50%</span>
+                  </div>
+                  <div class="payment-row total">
+                    <span class="payment-row-label">Итого</span>
+                    <span class="payment-row-value" style="color: #ffd1dc; font-size: 16px;">30 000 ₽</span>
+                  </div>
+                </div>
+
+                <!-- Визуальная шкала процентов -->
+                <div class="payment-progress-bar">
+                  <div class="payment-progress-line"></div>
+                  <div class="payment-step">
+                    <div class="payment-node">25%</div>
+                    <div class="payment-step-label">Бронь</div>
+                  </div>
+                  <div class="payment-step">
+                    <div class="payment-node">50%</div>
+                    <div class="payment-step-label">Начало работы</div>
+                  </div>
+                  <div class="payment-step">
+                    <div class="payment-node active">100%</div>
+                    <div class="payment-step-label">Передача финала</div>
+                  </div>
+                </div>
+
+              </div>
             </div>
           </div>
         </div>
