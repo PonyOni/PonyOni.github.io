@@ -29,6 +29,7 @@
       top: 0; left: 0; width: 100%; height: 80px; z-index: 100;
       background: rgba(27, 26, 46, 0.85);
       backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       display: flex; align-items: center; justify-content: center;
     }
@@ -48,11 +49,13 @@
       text-decoration: none; cursor: pointer; border: none;
       background: linear-gradient(135deg, #a88beb 0%, #e87999 100%); color: #ffffff;
       box-shadow: 0 10px 25px rgba(168, 139, 235, 0.3);
+      transition: transform 0.2s;
     }
+    .btn:hover { transform: translateY(-2px); }
 
     /* ОСНОВНОЙ КОНТЕЙНЕР СТРАНИЦЫ */
     .legal-main-wrapper {
-      max-width: 840px;
+      max-width: 1000px;
       width: 100%;
       margin: 120px auto 60px auto;
       padding: 0 20px;
@@ -60,74 +63,108 @@
       flex: 1;
     }
 
-    .legal-tabs-row {
+    /* ШАПКА ДОКУМЕНТОВ */
+    .legal-top-info {
+      margin-bottom: 35px;
+    }
+
+    .legal-tag-mini {
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #ffd1dc;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .legal-main-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 44px;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0 0 12px 0;
+      line-height: 1.15;
+    }
+
+    .legal-subtitle-meta {
+      font-size: 14px;
+      color: #a09cb8;
+      margin-bottom: 8px;
+    }
+
+    .legal-date-meta {
+      font-size: 13px;
+      color: #7d7799;
+    }
+
+    /* РЯД КНОПОК-ПЛАШЕК В СТИЛЕ МАКЕТА */
+    .legal-pills-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 30px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      padding-bottom: 20px;
+      gap: 12px;
+      margin-bottom: 40px;
     }
 
-    .legal-tab-btn {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+    .legal-pill-btn {
+      background: rgba(35, 33, 54, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       color: #b1a9cc;
-      padding: 10px 18px;
-      border-radius: 12px;
-      font-size: 13px;
+      padding: 14px 24px;
+      border-radius: 30px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s ease;
+      backdrop-filter: blur(12px);
+      transition: all 0.25s ease;
     }
 
-    .legal-tab-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
+    .legal-pill-btn:hover {
+      background: rgba(45, 42, 68, 0.95);
+      border-color: rgba(255, 255, 255, 0.25);
       color: #fff;
+      transform: translateY(-2px);
     }
 
-    .legal-tab-btn.active {
-      background: rgba(168, 139, 235, 0.2);
+    /* Активная плашка в стиле макета (с сиреневатым свечением/границей) */
+    .legal-pill-btn.active {
+      background: rgba(168, 139, 235, 0.18);
       border-color: #a88beb;
-      color: #ffd1dc;
+      color: #ffffff;
+      box-shadow: 0 0 20px rgba(168, 139, 235, 0.3);
     }
 
+    /* КАРТОЧКА С ТЕКСТОМ ДОКУМЕНТА */
     .legal-content-card {
       background: rgba(35, 33, 54, 0.7);
       backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 24px;
       padding: 40px;
       box-shadow: 0 20px 50px rgba(0,0,0,0.4);
     }
 
-    .legal-content-card h1 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 28px;
-      font-weight: 800;
-      color: #ffffff;
-      margin-top: 0;
-      margin-bottom: 20px;
-    }
-
     .legal-content-card h3 {
       font-family: 'Poppins', sans-serif;
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 700;
       color: #ffd1dc;
-      margin-top: 24px;
-      margin-bottom: 8px;
+      margin-top: 28px;
+      margin-bottom: 10px;
     }
 
     .legal-content-card p, .legal-content-card li {
-      font-size: 14px;
+      font-size: 14.5px;
       color: #c4becc;
       line-height: 1.7;
     }
 
     .legal-content-card ul {
       padding-left: 20px;
-      margin-top: 6px;
+      margin-top: 8px;
     }
 
     .doc-section {
@@ -137,7 +174,7 @@
       display: block;
     }
 
-    /* ФУТЕР ВНУТРИ СТРАНИЦЫ */
+    /* ФУТЕР ВНИЗУ СТРАНИЦЫ */
     .site-legal-footer {
       width: 100%;
       padding: 30px 20px;
@@ -150,6 +187,11 @@
     }
     .site-legal-footer a { color: #9a93b5; text-decoration: underline; margin: 0 10px; }
     .site-legal-footer a:hover { color: #ffd1dc; }
+
+    @media(max-width: 768px) {
+      .legal-main-title { font-size: 32px; }
+      .legal-pills-row { flex-direction: column; }
+    }
   </style>
 </head>
 <body>
@@ -164,69 +206,70 @@
     </div>
   </header>
 
-  <!-- КОНТЕНТ -->
-  <div class="legal-main-wrapper">
+  <!-- ОСНОВНОЙ БЛОК -->
+  <main class="legal-main-wrapper">
     
-    <!-- Переключатели вкладок -->
-    <div class="legal-tabs-row">
-      <button class="legal-tab-btn" id="btn-offer" onclick="switchDoc('offer')">Публичная оферта</button>
-      <button class="legal-tab-btn" id="btn-privacy" onclick="switchDoc('privacy')">Политика обработки персональных данных</button>
-      <button class="legal-tab-btn" id="btn-terms" onclick="switchDoc('terms')">Условия получения</button>
-      <button class="legal-tab-btn" id="btn-refund" onclick="switchDoc('refund')">Правила возврата</button>
+    <!-- Динамическая шапка документа -->
+    <div class="legal-top-info">
+      <span class="legal-tag-mini">Документы</span>
+      <h1 class="legal-main-title" id="docMainTitle">Публичная оферта PonyOni</h1>
+      <div class="legal-subtitle-meta" id="docSubMeta">Работы и услуги · цифровые продукты · Live2D-модели</div>
+      <div class="legal-date-meta" id="docDateMeta">Редакция от: 16.10.2026</div>
     </div>
 
-    <!-- Карточка с текстом документов -->
+    <!-- Плашки-переключатели в стиле макета -->
+    <div class="legal-pills-row">
+      <button class="legal-pill-btn active" id="btn-offer" onclick="switchDoc('offer')">Публичная оферта</button>
+      <button class="legal-pill-btn" id="btn-privacy" onclick="switchDoc('privacy')">Политика обработки персональных данных</button>
+      <button class="legal-pill-btn" id="btn-terms" onclick="switchDoc('terms')">Условия получения</button>
+      <button class="legal-pill-btn" id="btn-refund" onclick="switchDoc('refund')">Правила возврата</button>
+    </div>
+
+    <!-- Текстовое содержимое документов -->
     <div class="legal-content-card">
       
       <!-- 1. Публичная оферта -->
-      <div id="doc-offer" class="doc-section">
-        <h1>Публичная оферта</h1>
-        <p>Настоящий документ является официальным предложением (публичной офертой) команды PonyOni и определяет основные условия предоставления цифровых услуг, создания иллюстраций и Live2D-рига.</p>
-        
+      <div id="doc-offer" class="doc-section active">
         <h3>1. Общие положения</h3>
-        <p>1.1. В соответствии со ст. 437 ГК РФ данный документ является публичной офертой. Оплата заказа означает полное и безоговорочное принятие условий настоящей оферты.</p>
-        <p>1.2. Исполнитель обязуется оказать услуги по созданию цифрового контента и риггинга согласно утвержденному техническому заданию (ТЗ), а Заказчик обязуется оплатить их в соответствии с действующим прайсом.</p>
+        <p>Настоящий документ является официальным предложением (публичной офертой) команды PonyOni и определяет основные условия предоставления цифровых услуг, создания иллюстраций и Live2D-рига.</p>
+        <p>В соответствии со ст. 437 ГК РФ данный документ является публичной офертой. Оплата заказа означает полное и безоговорочное принятие условий настоящей оферты.</p>
 
-        <h3>2. Порядок оформления и выполнения заказа</h3>
-        <p>2.1. Заказ оформляется через официальные каналы связи команды (Telegram, ВКонтакте).</p>
-        <p>2.2. Работа над проектом начинается после внесения предоплаты (брони места и стартового платежа согласно условиям работы).</p>
+        <h3>2. Порядок оформления заказа</h3>
+        <p>Исполнитель обязуется оказать услуги по созданию цифрового контента и риггинга согласно утвержденному техническому заданию (ТЗ), а Заказчик обязуется оплатить их в соответствии с действующим прайсом.</p>
       </div>
 
       <!-- 2. Политика конфиденциальности -->
       <div id="doc-privacy" class="doc-section">
-        <h1>Политика обработки персональных данных</h1>
+        <h3>1. Сбор и обработка информации</h3>
         <p>Настоящая Политика конфиденциальности определяет, как команда PonyOni собирает, использует и защищает информацию, передаваемую пользователями при оформлении заказов.</p>
-        
-        <h3>1. Сбор информации</h3>
-        <p>1.1. Мы собираем только те данные, которые необходимы для связи с вами и выполнения заказа (имя в мессенджерах, ссылки на профили, референсы и пожелания к проекту).</p>
+        <p>Мы собираем только те данные, которые необходимы для связи с вами и выполнения заказа (имя в мессенджерах, ссылки на профили, референсы и пожелания).</p>
 
         <h3>2. Защита данных</h3>
-        <p>2.1. Все предоставленные материалы и личная информация строго защищены и не передаются третьим лицам, за исключением случаев, предусмотренных опцией конфиденциальности заказа.</p>
+        <p>Все предоставленные материалы и личная информация строго защищены и не передаются третьим лицам, за исключением случаев, предусмотренных опцией конфиденциальности заказа (+30%).</p>
       </div>
 
       <!-- 3. Условия получения -->
       <div id="doc-terms" class="doc-section">
-        <h1>Условия получения</h1>
-        <p>Правила передачи готовых материалов и исходных файлов Заказчику.</p>
-        
         <h3>1. Передача результатов</h3>
-        <p>1.1. Готовые файлы модели (модели .moc3, текстуры, настройки для VTube Studio) передаются Заказчику через защищенные облачные хранилища после полной оплаты стоимости заказа.</p>
-        <p>1.2. Срок хранения файлов на серверах исполнителя составляет 6 месяцев с момента сдачи проекта.</p>
+        <p>Готовые файлы модели (модели .moc3, текстуры, настройки для VTube Studio) передаются Заказчику через защищенные облачные хранилища после полной оплаты стоимости заказа.</p>
+        <p>При заказе арта также передается исходный многослойный PSD-файл (исходники рига оговариваются индивидуально).</p>
+
+        <h3>2. Сроки хранения файлов</h3>
+        <p>Исходные и финальные материалы хранятся на наших серверах в течение 6 месяцев после сдачи проекта. Рекомендуем сохранять полученную копию файлов на своем устройстве сразу после получения.</p>
       </div>
 
       <!-- 4. Правила возврата -->
       <div id="doc-refund" class="doc-section">
-        <h1>Правила возврата</h1>
-        <p>Условия возврата денежных средств при отмене или изменении параметров заказа.</p>
-        
         <h3>1. Возврат брони и предоплаты</h3>
-        <p>1.1. При отмене заказа со стороны Заказчика до начала работ внесенная бронь (25%) не возвращается, так как она закрепляет индивидуальный временной слот в очереди.</p>
-        <p>1.2. Если работа над проектом уже началась, возврат средств производится за вычетом фактически выполненного и утвержденного объема работы на текущий момент.</p>
-        <p>1.3. Технические ошибки рига, выявленные в течение 14 дней после сдачи проекта, устраняются бесплатно.</p>
+        <p>При отмене заказа со стороны Заказчика до начала работ внесенная бронь (25%) не возвращается, так как она закрепляет индивидуальный временной слот в очереди.</p>
+        <p>Если работа над проектом уже началась, возврат средств производится за вычетом фактически выполненного и утвержденного объема работы на текущий момент.</p>
+
+        <h3>2. Техническая поддержка и гарантия</h3>
+        <p>Технические ошибки рига (деформации, физика, параметры), выявленные в течение 14 дней после сдачи проекта в рамках первоначального ТЗ, устраняются бесплатно.</p>
       </div>
 
     </div>
-  </div>
+  </main>
 
   <!-- ФУТЕР -->
   <footer class="site-legal-footer">
@@ -240,34 +283,56 @@
   </footer>
 
   <script>
-    // Логика переключения вкладок через URL (?tab=...)
-    function getQueryParam(param) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(param);
-    }
+    // Данные для шапки под каждую вкладку
+    const docMeta = {
+      offer: {
+        title: "Публичная оферта PonyOni",
+        subtitle: "Работы и услуги · цифровые продукты · Live2D-модели",
+        date: "Редакция от: 16.10.2026"
+      },
+      privacy: {
+        title: "Политика персональных данных",
+        subtitle: "Конфиденциальность · безопасность данных · защита информации",
+        date: "Редакция от: 16.10.2026"
+      },
+      terms: {
+        title: "Условия получения",
+        subtitle: "Передача файлов · исходники · облачное хранение",
+        date: "Редакция от: 16.10.2026"
+      },
+      refund: {
+        title: "Правила возврата",
+        subtitle: "Условия отмены · предоплата · гарантия рига",
+        date: "Редакция от: 16.10.2026"
+      }
+    };
 
     function switchDoc(tabName) {
-      // Скрываем все разделы
+      // Скрываем все разделы текста
       document.querySelectorAll('.doc-section').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.legal-tab-btn').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.legal-pill-btn').forEach(el => el.classList.remove('active'));
 
-      // Показываем нужный
+      // Показываем выбранный раздел
       const targetDoc = document.getElementById('doc-' + tabName);
       const targetBtn = document.getElementById('btn-' + tabName);
 
       if (targetDoc && targetBtn) {
         targetDoc.classList.add('active');
         targetBtn.classList.add('active');
-      } else {
-        // Дефолт (оферта)
-        document.getElementById('doc-offer').classList.add('active');
-        document.getElementById('btn-offer').classList.add('active');
+
+        // Меняем шапку под выбранный документ
+        if (docMeta[tabName]) {
+          document.getElementById('docMainTitle').innerText = docMeta[tabName].title;
+          document.getElementById('docSubMeta').innerText = docMeta[tabName].subtitle;
+          document.getElementById('docDateMeta').innerText = docMeta[tabName].date;
+        }
       }
     }
 
-    // Инициализация при загрузке страницы
+    // Автоматическое переключение по параметру в URL (например, ?tab=privacy)
     window.addEventListener('DOMContentLoaded', () => {
-      const currentTab = getQueryParam('tab') || 'offer';
+      const urlParams = new URLSearchParams(window.location.search);
+      const currentTab = urlParams.get('tab') || 'offer';
       switchDoc(currentTab);
     });
   </script>
