@@ -3,24 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PonyOni — Live2D Модели, Риг и Арт</title>
+  <title>PonyOni — Творческая студия VTuber-моделей и рига</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-main: #091324;
-      --bg-elevated: #0f1d36;
-      --bg-card: #132442;
-      --bg-card-hover: #182d52;
-      --accent-gold: #f5cf87;
-      --accent-gold-soft: rgba(245, 207, 135, 0.16);
-      --accent-pine: #1f5c48;
-      --accent-red: #d94e5a;
-      --text-main: #f4f7fc;
-      --text-muted: #9eb0cc;
-      --border-subtle: rgba(245, 207, 135, 0.18);
-      --shadow-card: 0 12px 30px rgba(3, 8, 18, 0.45);
+      --bg-dark: #090d16;
+      --bg-surface: #0f1624;
+      --bg-card: #121b2d;
+      --bg-card-hover: #172238;
+      --gold: #f5bd41;
+      --gold-dim: rgba(245, 189, 65, 0.16);
+      --text: #f3f6fb;
+      --muted: #8f9bb3;
+      --line: rgba(255, 255, 255, 0.08);
+      --gold-line: rgba(245, 189, 65, 0.35);
       --radius-lg: 20px;
       --radius-md: 14px;
       --radius-sm: 10px;
@@ -31,8 +29,10 @@
 
     body {
       font-family: 'Manrope', sans-serif;
-      background: radial-gradient(circle at top right, #13294d 0%, var(--bg-main) 55%);
-      color: var(--text-main);
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(28, 43, 74, 0.72) 0%, rgba(9, 13, 22, 0.96) 58%),
+        var(--bg-dark);
+      color: var(--text);
       line-height: 1.55;
       overflow-x: hidden;
     }
@@ -44,16 +44,16 @@
     header {
       position: sticky;
       top: 0;
-      z-index: 50;
-      backdrop-filter: blur(14px);
-      background: rgba(9, 19, 36, 0.82);
-      border-bottom: 1px solid var(--border-subtle);
+      z-index: 60;
+      backdrop-filter: blur(12px);
+      background: rgba(9, 13, 22, 0.84);
+      border-bottom: 1px solid var(--line);
     }
 
-    .nav-wrap {
-      max-width: 1120px;
+    .header-inner {
+      max-width: 1140px;
       margin: 0 auto;
-      padding: 14px 20px;
+      padding: 12px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -61,417 +61,540 @@
       flex-wrap: wrap;
     }
 
-    .logo {
+    .brand {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       font-weight: 800;
-      font-size: 1.25rem;
-      letter-spacing: 0.02em;
-      color: var(--accent-gold);
+      font-size: 1.05rem;
     }
 
-    .santa-hat { font-size: 1.1rem; transform: translateY(-4px) rotate(-12deg); }
+    .brand-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      background: linear-gradient(135deg, #f5bd41, #e08e26);
+      color: #090d16;
+      font-size: 0.78rem;
+      font-weight: 800;
+      display: grid;
+      place-items: center;
+    }
 
-    nav { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; }
-    nav a, nav button.nav-link {
-      font-size: 0.92rem;
+    .brand-pill {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--gold);
+      background: var(--gold-dim);
+      border: 1px solid var(--gold-line);
+      padding: 2px 7px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    nav a, nav .nav-btn {
+      font-size: 0.86rem;
       font-weight: 600;
-      color: var(--text-muted);
+      color: var(--muted);
       transition: color 0.2s ease;
     }
-    nav a:hover, nav button.nav-link:hover { color: var(--accent-gold); }
 
-    /* Гирлянда */
-    .garland {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      padding: 10px 0 22px;
-      position: relative;
-      user-select: none;
+    nav a:hover, nav .nav-btn:hover { color: var(--text); }
+
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--line);
+      padding: 5px 11px;
+      border-radius: 8px;
+      color: var(--text);
     }
-    .garland::before {
-      content: "";
+
+    .container {
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      padding: 56px 0 24px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .snow-field {
       position: absolute;
-      top: 10px;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: rgba(245, 207, 135, 0.25);
+      inset: 0;
+      pointer-events: none;
     }
-    .bulb {
-      width: 11px;
-      height: 15px;
-      border-radius: 50%;
-      position: relative;
-      transition: transform 0.2s ease, filter 0.2s ease;
-      animation: twinkle 2.8s infinite ease-in-out;
-    }
-    .bulb:nth-child(3n+1) { background: #ff6b6b; box-shadow: 0 0 10px rgba(255, 107, 107, 0.7); }
-    .bulb:nth-child(3n+2) { background: #ffd166; box-shadow: 0 0 10px rgba(255, 209, 102, 0.7); animation-delay: 0.7s; }
-    .bulb:nth-child(3n)   { background: #5ce1e6; box-shadow: 0 0 10px rgba(92, 225, 230, 0.7); animation-delay: 1.4s; }
-    .bulb:hover { transform: scale(1.35) translateY(2px); filter: brightness(1.3); }
 
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.75; }
+    .flake {
+      position: absolute;
+      top: -10px;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.45);
+      animation: snowFall linear infinite;
+    }
+
+    @keyframes snowFall {
+      to { transform: translateY(420px); opacity: 0.05; }
+    }
+
+    /* Новогодняя веточка и шарик в правом верхнем углу */
+    .corner-decor {
+      position: absolute;
+      top: -6px;
+      right: 18px;
+      z-index: 2;
+      pointer-events: none;
+      animation: sway 4.5s ease-in-out infinite;
+      transform-origin: top right;
+    }
+
+    @keyframes sway {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(2.5deg); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--gold);
+      background: rgba(245, 189, 65, 0.09);
+      border: 1px solid rgba(245, 189, 65, 0.25);
+      padding: 5px 13px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 4.8vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.12;
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 0.98rem;
+      max-width: 540px;
+      margin: 0 auto 24px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: #090d16;
+      font-weight: 800;
+      font-size: 0.88rem;
+      padding: 11px 20px;
+      border-radius: 9px;
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+    .btn-gold:hover { transform: translateY(-2px); filter: brightness(1.05); }
+
+    .btn-dark {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 11px 20px;
+      border-radius: 9px;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .btn-dark:hover { transform: translateY(-2px); background: rgba(255, 255, 255, 0.09); }
+
+    /* Тонкая гирлянда-разделитель */
+    .string-lights {
+      max-width: 520px;
+      margin: 34px auto 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-inline: 16px;
+    }
+
+    .light-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      animation: glow 2.4s infinite ease-in-out;
+    }
+    .light-dot:nth-child(3n+1) { background: #ff6b6b; box-shadow: 0 0 8px #ff6b6b; }
+    .light-dot:nth-child(3n+2) { background: #ffd166; box-shadow: 0 0 8px #ffd166; animation-delay: 0.6s; }
+    .light-dot:nth-child(3n)   { background: #5ce1e6; box-shadow: 0 0 8px #5ce1e6; animation-delay: 1.2s; }
+
+    @keyframes glow {
+      0%, 100% { opacity: 0.55; }
       50% { opacity: 1; }
     }
 
-    .container { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
-    section { padding: 52px 0; }
+    /* Секции */
+    section { padding: 44px 0; }
 
-    .section-head {
+    .works-bar {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
       gap: 16px;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
       flex-wrap: wrap;
     }
-    .section-title { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; }
-    .section-sub { color: var(--text-muted); font-size: 0.96rem; max-width: 540px; }
 
-    /* Hero + легкий снег */
-    .hero {
-      position: relative;
-      padding: 68px 0 44px;
-      overflow: hidden;
-    }
-    .snow-layer {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-    .snowflake {
-      position: absolute;
-      top: -12px;
-      color: rgba(244, 247, 252, 0.55);
-      font-size: 12px;
-      animation: fall linear infinite;
-    }
-    @keyframes fall {
-      to { transform: translateY(420px) translateX(24px); opacity: 0.15; }
-    }
-
-    .hero-box {
-      position: relative;
-      z-index: 2;
-      background: linear-gradient(135deg, rgba(19, 36, 66, 0.92), rgba(31, 92, 72, 0.28));
-      border: 1px solid var(--border-subtle);
-      border-radius: 24px;
-      padding: clamp(28px, 5vw, 48px);
-      box-shadow: var(--shadow-card);
-    }
-    .badge-team {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      border-radius: 999px;
-      background: var(--accent-gold-soft);
-      color: var(--accent-gold);
-      font-size: 0.84rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-    .hero h1 {
-      font-size: clamp(2rem, 4.5vw, 3.1rem);
-      line-height: 1.15;
+    .works-bar h2 {
+      font-size: 1.55rem;
       font-weight: 800;
-      margin-bottom: 14px;
+      margin-bottom: 4px;
     }
-    .hero p {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      max-width: 680px;
-      margin-bottom: 26px;
-    }
-    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 
-    .btn-primary {
-      background: var(--accent-gold);
-      color: #091324;
-      font-weight: 800;
-      padding: 13px 22px;
-      border-radius: var(--radius-sm);
-      transition: transform 0.2s ease, filter 0.2s ease;
+    .works-bar p {
+      color: var(--muted);
+      font-size: 0.86rem;
     }
-    .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.05); }
 
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-main);
+    .filter-tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      font-size: 0.78rem;
       font-weight: 700;
-      padding: 13px 22px;
-      border-radius: var(--radius-sm);
-      transition: background 0.2s ease, transform 0.2s ease;
-    }
-    .btn-secondary:hover { background: rgba(255, 255, 255, 0.12); transform: translateY(-2px); }
-
-    /* Фильтры портфолио */
-    .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
-    .filter-btn {
-      padding: 8px 16px;
-      border-radius: 999px;
-      font-size: 0.88rem;
-      font-weight: 700;
-      background: var(--bg-elevated);
-      color: var(--text-muted);
-      border: 1px solid transparent;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--line);
+      padding: 6px 12px;
+      border-radius: 8px;
       transition: all 0.2s ease;
     }
-    .filter-btn.active, .filter-btn:hover {
-      color: var(--accent-gold);
-      border-color: var(--border-subtle);
-      background: var(--bg-card);
+
+    .tab-btn.active {
+      background: var(--gold);
+      color: #090d16;
+      border-color: var(--gold);
     }
 
-    /* Pinterest сетка: 2 колонки по горизонтали, 10 рядов вниз */
-    .pinterest-grid {
+    .tab-btn:hover:not(.active) {
+      color: var(--text);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* 2 колонки по горизонтали, 10 рядов вниз */
+    .masonry-2col {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+      gap: 18px;
       align-items: start;
     }
-    .pinterest-col {
+
+    .masonry-col {
       display: flex;
       flex-direction: column;
-      gap: 20px;
-    }
-    @media (max-width: 680px) {
-      .pinterest-grid { grid-template-columns: 1fr; }
+      gap: 18px;
     }
 
-    .work-card {
+    @media (max-width: 680px) {
+      .masonry-2col { grid-template-columns: 1fr; }
+    }
+
+    .art-card {
       background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--line);
       border-radius: var(--radius-md);
       overflow: hidden;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
       cursor: pointer;
-    }
-    .work-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(245, 207, 135, 0.45);
-      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.45), 0 0 18px rgba(245, 207, 135, 0.12);
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
     }
 
-    .work-thumb {
+    .art-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold-line);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.45);
+    }
+
+    .art-preview {
       position: relative;
       width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       overflow: hidden;
-      background: #0b172c;
-    }
-    .work-thumb img, .work-thumb svg {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.35s ease;
-    }
-    .work-card:hover .work-thumb img,
-    .work-card:hover .work-thumb svg {
-      transform: scale(1.03);
     }
 
-    .live2d-idle {
-      animation: breathe 3.2s ease-in-out infinite;
-      transform-origin: center bottom;
-    }
-    @keyframes breathe {
-      0%, 100% { transform: scaleY(1) translateY(0); }
-      50% { transform: scaleY(1.02) translateY(-3px); }
-    }
-
-    .work-tag {
+    .art-chip {
       position: absolute;
       top: 10px;
       left: 10px;
-      background: rgba(9, 19, 36, 0.85);
-      border: 1px solid rgba(245, 207, 135, 0.35);
-      color: var(--accent-gold);
-      font-size: 0.75rem;
+      z-index: 2;
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 4px 8px;
+      border-radius: 6px;
+      background: rgba(9, 13, 22, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: var(--text);
+    }
+
+    .live-motion {
+      animation: liveFloat 3s ease-in-out infinite;
+      transform-origin: center bottom;
+    }
+
+    @keyframes liveFloat {
+      0%, 100% { transform: translateY(0) scaleY(1); }
+      50% { transform: translateY(-3px) scaleY(1.018); }
+    }
+
+    .art-footer {
+      padding: 13px 16px;
+      border-top: 1px solid var(--line);
+    }
+
+    .art-title {
+      font-size: 0.94rem;
       font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 999px;
+      margin-bottom: 2px;
     }
 
-    .work-meta {
-      padding: 14px 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
+    .art-credit {
+      font-size: 0.78rem;
+      color: var(--muted);
     }
-    .work-title { font-weight: 700; font-size: 0.98rem; }
-    .work-sub { font-size: 0.82rem; color: var(--text-muted); }
 
-    /* Услуги и цены */
-    .main-services {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+    /* Услуги */
+    .sec-title {
+      font-size: 1.55rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .sec-sub {
+      color: var(--muted);
+      font-size: 0.88rem;
       margin-bottom: 22px;
     }
-    @media (max-width: 780px) {
-      .main-services { grid-template-columns: 1fr; }
+
+    .main-pair {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-bottom: 18px;
     }
 
-    .service-hero-card {
-      background: linear-gradient(155deg, #162a4d, #11203b);
-      border: 1px solid rgba(245, 207, 135, 0.32);
+    @media (max-width: 740px) {
+      .main-pair { grid-template-columns: 1fr; }
+    }
+
+    .big-service {
+      background: linear-gradient(160deg, #162138, #0f1624);
+      border: 1px solid var(--gold-line);
       border-radius: var(--radius-lg);
-      padding: 26px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 18px;
-      transition: transform 0.22s ease, border-color 0.22s ease;
+      padding: 24px;
       cursor: pointer;
+      transition: transform 0.2s ease, border-color 0.2s ease;
     }
-    .service-hero-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent-gold);
+
+    .big-service:hover {
+      transform: translateY(-3px);
+      border-color: var(--gold);
     }
-    .service-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
-    .service-hero-card h3 { font-size: 1.35rem; font-weight: 800; color: var(--accent-gold); }
-    .price-pill {
-      background: var(--accent-gold-soft);
-      color: var(--accent-gold);
+
+    .big-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .big-service h3 {
+      font-size: 1.2rem;
       font-weight: 800;
-      font-size: 0.86rem;
-      padding: 6px 12px;
+      color: var(--gold);
+    }
+
+    .price-tag {
+      background: var(--gold-dim);
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 4px 10px;
       border-radius: 999px;
       white-space: nowrap;
     }
-    .service-hero-card p { color: var(--text-muted); font-size: 0.95rem; }
-    .service-link { font-weight: 700; font-size: 0.9rem; color: var(--accent-gold); }
 
-    .sub-services-grid {
+    .big-service p {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .small-cols {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-    @media (max-width: 720px) {
-      .sub-services-grid { grid-template-columns: 1fr; }
+      gap: 18px;
     }
 
-    .sub-col { display: flex; flex-direction: column; gap: 14px; }
+    @media (max-width: 700px) {
+      .small-cols { grid-template-columns: 1fr; }
+    }
 
-    .mini-service {
+    .col-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .small-service {
       background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--line);
       border-radius: var(--radius-md);
-      padding: 18px 20px;
+      padding: 15px 18px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 14px;
-      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      gap: 12px;
       cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
     }
-    .mini-service:hover {
-      transform: translateY(-3px);
+
+    .small-service:hover {
+      transform: translateY(-2px);
       background: var(--bg-card-hover);
-      border-color: rgba(245, 207, 135, 0.45);
+      border-color: var(--gold-line);
     }
-    .mini-service h4 { font-size: 1.02rem; font-weight: 700; margin-bottom: 4px; }
-    .mini-service p { font-size: 0.86rem; color: var(--text-muted); }
-    .dev-tag {
-      display: inline-block;
-      margin-left: 8px;
-      font-size: 0.72rem;
+
+    .small-service h4 {
+      font-size: 0.95rem;
       font-weight: 700;
-      padding: 2px 8px;
+      margin-bottom: 2px;
+    }
+
+    .small-service p {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .wip-pill {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #ffb4ba;
+      background: rgba(255, 107, 107, 0.14);
+      padding: 2px 7px;
       border-radius: 999px;
-      background: rgba(217, 78, 90, 0.18);
-      color: #ff9aa2;
-      vertical-align: middle;
+      margin-left: 6px;
     }
 
     /* Как заказать */
-    .steps-grid {
+    .steps-row {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 14px;
-    }
-    @media (max-width: 960px) {
-      .steps-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 540px) {
-      .steps-grid { grid-template-columns: 1fr; }
+      gap: 12px;
     }
 
-    .step-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 18px;
+    @media (max-width: 920px) {
+      .steps-row { grid-template-columns: repeat(2, 1fr); }
     }
-    .step-num {
-      width: 30px;
-      height: 30px;
+    @media (max-width: 520px) {
+      .steps-row { grid-template-columns: 1fr; }
+    }
+
+    .step-box {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 16px;
+    }
+
+    .step-n {
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
-      background: var(--accent-gold);
-      color: #091324;
+      background: var(--gold);
+      color: #090d16;
+      font-size: 0.82rem;
       font-weight: 800;
-      font-size: 0.9rem;
       display: grid;
       place-items: center;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
-    .step-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
-    .step-card p { font-size: 0.85rem; color: var(--text-muted); }
 
-    /* Контакты и футер */
-    .contacts-box {
-      background: linear-gradient(135deg, rgba(19, 36, 66, 0.95), rgba(31, 92, 72, 0.35));
-      border: 1px solid var(--border-subtle);
+    .step-box h3 { font-size: 0.94rem; font-weight: 700; margin-bottom: 4px; }
+    .step-box p { font-size: 0.8rem; color: var(--muted); }
+
+    /* Контакты */
+    .contact-panel {
+      background: linear-gradient(145deg, #131d33, #0e1524);
+      border: 1px solid var(--gold-line);
       border-radius: var(--radius-lg);
-      padding: 32px;
+      padding: 28px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 20px;
+      gap: 18px;
       flex-wrap: wrap;
     }
-    .contact-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .social-group { display: flex; gap: 12px; flex-wrap: wrap; }
 
     .btn-tg {
       background: #2aabee;
       color: #fff;
       font-weight: 700;
-      padding: 12px 20px;
-      border-radius: var(--radius-sm);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      font-size: 0.88rem;
+      padding: 11px 18px;
+      border-radius: 9px;
     }
+
     .btn-vk {
       background: #0077ff;
       color: #fff;
       font-weight: 700;
-      padding: 12px 20px;
-      border-radius: var(--radius-sm);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      font-size: 0.88rem;
+      padding: 11px 18px;
+      border-radius: 9px;
     }
 
     footer {
-      border-top: 1px solid var(--border-subtle);
-      padding: 24px 20px;
-      margin-top: 32px;
-      color: var(--text-muted);
-      font-size: 0.88rem;
+      border-top: 1px solid var(--line);
+      padding: 22px 24px;
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 0.84rem;
     }
-    .footer-inner {
-      max-width: 1120px;
+
+    .footer-box {
+      max-width: 1020px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
@@ -479,211 +602,199 @@
       gap: 12px;
       flex-wrap: wrap;
     }
-    .footer-inner button { color: var(--accent-gold); font-weight: 700; text-decoration: underline; }
 
-    /* Внутренняя страница услуги + Модалка */
-    .overlay {
+    .footer-box button {
+      color: var(--gold);
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    /* Модальное окно */
+    .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(5, 11, 22, 0.82);
-      backdrop-filter: blur(8px);
+      background: rgba(4, 7, 13, 0.82);
+      backdrop-filter: blur(7px);
       z-index: 100;
       display: none;
       align-items: center;
       justify-content: center;
       padding: 20px;
-      overflow-y: auto;
     }
-    .overlay.open { display: flex; }
 
-    .modal-panel {
-      background: var(--bg-elevated);
-      border: 1px solid var(--border-subtle);
+    .modal-backdrop.open { display: flex; }
+
+    .modal-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--gold-line);
       border-radius: var(--radius-lg);
-      max-width: 780px;
+      max-width: 720px;
       width: 100%;
-      max-height: 88vh;
+      max-height: 86vh;
       overflow-y: auto;
-      padding: 28px;
-      box-shadow: var(--shadow-card);
+      padding: 26px;
     }
-    .modal-head {
+
+    .modal-top {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
       gap: 12px;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
-    .close-btn {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.08);
-      font-size: 1.2rem;
+
+    .x-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      font-size: 1.1rem;
       display: grid;
       place-items: center;
     }
-    .close-btn:hover { background: rgba(255, 255, 255, 0.16); }
+    .x-btn:hover { background: rgba(255, 255, 255, 0.14); }
 
-    .service-samples {
+    .sample-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      margin: 18px 0 22px;
+      gap: 12px;
+      margin: 16px 0 20px;
     }
-    @media (max-width: 560px) {
-      .service-samples { grid-template-columns: 1fr; }
+    @media (max-width: 540px) {
+      .sample-grid { grid-template-columns: 1fr; }
     }
-    .sample-box {
+
+    .sample-item {
       background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--line);
       border-radius: var(--radius-sm);
       padding: 12px;
     }
-    .sample-box strong { display: block; font-size: 0.92rem; margin-bottom: 4px; }
-    .sample-box span { font-size: 0.8rem; color: var(--text-muted); }
+    .sample-item strong { display: block; font-size: 0.9rem; margin-bottom: 3px; }
+    .sample-item span { font-size: 0.78rem; color: var(--muted); }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="nav-wrap">
-      <a href="#top" class="logo">
-        <span class="santa-hat">🎅</span>
+    <div class="header-inner">
+      <a href="#top" class="brand">
+        <span class="brand-badge">PO</span>
         <span>PonyOni</span>
+        <span class="brand-pill">Studio</span>
       </a>
       <nav>
         <a href="#works">Работы</a>
         <a href="#services">Услуги и цены</a>
         <a href="#order">Как заказать</a>
         <a href="#contacts">Контакты</a>
-        <button class="nav-link" onclick="openOffer()">Оферта</button>
+        <button class="nav-btn" onclick="openOffer()">Оферта</button>
       </nav>
     </div>
   </header>
 
-  <div class="container">
-    <div class="garland" aria-hidden="true">
-      <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
-      <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
-      <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
-      <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
-    </div>
-  </div>
-
-  <!-- 1. Короткое представление -->
   <section class="hero" id="top">
-    <div class="snow-layer" id="snowLayer" aria-hidden="true"></div>
-    <div class="container">
-      <div class="hero-box">
-        <div class="badge-team">❄️ Команда PonyOni • 2 художника + 1 риггер</div>
-        <h1>VTuber-модели, живой риг и иллюстрации в уютной подаче</h1>
-        <p>
-          Мы — творческая команда <strong>PonyOni</strong>. Создаем модели под ключ, чиби, PNG-модели,
-          эмоуты, иллюстрации и дополнения, а также берем на себя риг Live2D. В разработке —
-          3D-модели и оформление стримов, чатов и донатов.
-        </p>
-        <div class="hero-actions">
-          <a href="#works" class="btn-primary">Смотреть работы</a>
-          <a href="#contacts" class="btn-secondary">Связаться с нами</a>
-        </div>
+    <div class="snow-field" id="snowField" aria-hidden="true"></div>
+
+    <!-- Новогодняя веточка и шарик в правом верхнем углу -->
+    <svg class="corner-decor" width="110" height="125" viewBox="0 0 110 125" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M108 -4C88 14 70 36 58 64" stroke="#2b7a5b" stroke-width="3" stroke-linecap="round"/>
+      <path d="M92 12L78 8M82 24L68 22M73 38L58 37M65 51L52 53" stroke="#369971" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="88" y1="16" x2="88" y2="52" stroke="#f5bd41" stroke-width="1.5"/>
+      <circle cx="88" cy="60" r="10" fill="#d94e5a" stroke="#f5bd41" stroke-width="1.5"/>
+    </svg>
+
+    <div class="container hero-content">
+      <div class="kicker">✦ Открыта запись на заказы • PonyOni</div>
+      <h1>Творческая студия PonyOni</h1>
+      <p>
+        Команда из двух художников и риггера. Создаем уникальных 2D-персонажей,
+        живой Live2D-риг, иллюстрации и визуал для ваших стримов под ключ.
+      </p>
+      <div class="hero-buttons">
+        <a href="#works" class="btn-gold">Смотреть работы</a>
+        <a href="#contacts" class="btn-dark">Заказать проект</a>
+      </div>
+
+      <div class="string-lights" aria-hidden="true">
+        <span class="light-dot"></span><span class="light-dot"></span><span class="light-dot"></span>
+        <span class="light-dot"></span><span class="light-dot"></span><span class="light-dot"></span>
+        <span class="light-dot"></span><span class="light-dot"></span><span class="light-dot"></span>
       </div>
     </div>
   </section>
 
-  <!-- 2. Портфолио: 2 колонки по горизонтали, 10 рядов вниз (20 работ) -->
+  <!-- 2 колонки по горизонтали, 10 рядов вниз (20 работ) -->
   <section id="works">
     <div class="container">
-      <div class="section-head">
+      <div class="works-bar">
         <div>
-          <h2 class="section-title">Работы</h2>
-          <p class="section-sub">Портфолио студии: 2 колонки и 10 рядов в стиле Pinterest — PNG, арты и Live2D-риг.</p>
+          <h2>Наши работы</h2>
+          <p>Готовые Live2D-модели, риггинг, иллюстрации и PNG-персонажи</p>
+        </div>
+        <div class="filter-tabs">
+          <button class="tab-btn active" data-filter="all">Все работы (20)</button>
+          <button class="tab-btn" data-filter="live2d">Модели и Риг</button>
+          <button class="tab-btn" data-filter="art">Иллюстрации</button>
+          <button class="tab-btn" data-filter="png">PNG и Эмоуты</button>
         </div>
       </div>
 
-      <div class="filters">
-        <button class="filter-btn active" data-filter="all">Все работы</button>
-        <button class="filter-btn" data-filter="live2d">Live2D Риг</button>
-        <button class="filter-btn" data-filter="png">PNG и Эмоуты</button>
-        <button class="filter-btn" data-filter="art">Иллюстрации</button>
-      </div>
-
-      <div class="pinterest-grid" id="pinterestGrid">
-        <div class="pinterest-col" id="colLeft"></div>
-        <div class="pinterest-col" id="colRight"></div>
+      <div class="masonry-2col">
+        <div class="masonry-col" id="leftCol"></div>
+        <div class="masonry-col" id="rightCol"></div>
       </div>
     </div>
   </section>
 
-  <div class="container">
-    <div class="garland" aria-hidden="true">
-      <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
-      <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
-      <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
-      <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
-    </div>
-  </div>
-
-  <!-- 3. Услуги и цены -->
+  <!-- Услуги и цены -->
   <section id="services">
     <div class="container">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title">Услуги и цены</h2>
-          <p class="section-sub">Нажмите на любой блок, чтобы открыть страницу услуги с примерами работ и деталями.</p>
+      <h2 class="sec-title">Услуги и цены</h2>
+      <p class="sec-sub">Нажмите на любой блок, чтобы открыть страницу услуги с примерами работ.</p>
+
+      <div class="main-pair">
+        <div class="big-service" onclick="openService('turnkey')">
+          <div class="big-top">
+            <h3>Live2D-модель под ключ</h3>
+            <span class="price-tag">от 25 000 ₽</span>
+          </div>
+          <p>
+            Закажите Live2D-модель для стримов: художник нарисует персонажа, риггер настроит мимику и движения.
+            Поможем выбрать специалистов под ваш бюджет.
+          </p>
+        </div>
+
+        <div class="big-service" onclick="openService('rig')">
+          <div class="big-top">
+            <h3>Риг Live2D-моделей</h3>
+            <span class="price-tag">от 12 000 ₽</span>
+          </div>
+          <p>
+            Мимика, движения и физика. Настроим плавную анимацию головы, корпуса, волос, одежды и эмоций.
+          </p>
         </div>
       </div>
 
-      <!-- Главные два блока -->
-      <div class="main-services">
-        <div class="service-hero-card" onclick="openService('turnkey')">
-          <div>
-            <div class="service-top">
-              <h3>Live2D-модель под ключ</h3>
-              <span class="price-pill">от 25 000 ₽</span>
-            </div>
-            <p style="margin-top: 10px;">
-              Закажите Live2D-модель для стримов: художник нарисует персонажа, риггер настроит мимику и движения.
-              Поможем выбрать специалистов под ваш бюджет.
-            </p>
-          </div>
-          <div class="service-link">Открыть страницу услуги →</div>
-        </div>
-
-        <div class="service-hero-card" onclick="openService('rig')">
-          <div>
-            <div class="service-top">
-              <h3>Риг Live2D-моделей</h3>
-              <span class="price-pill">от 12 000 ₽</span>
-            </div>
-            <p style="margin-top: 10px;">
-              Мимика, движения и физика. Настроим плавную анимацию головы, корпуса, волос, одежды и выражений лица.
-            </p>
-          </div>
-          <div class="service-link">Открыть страницу услуги →</div>
-        </div>
-      </div>
-
-      <!-- Маленькие блоки снизу: левая и правая колонки по 4 блока -->
-      <div class="sub-services-grid">
-        <div class="sub-col">
-          <div class="mini-service" onclick="openService('chibi')">
+      <div class="small-cols">
+        <div class="col-stack">
+          <div class="small-service" onclick="openService('chibi')">
             <div>
               <h4>1. Чиби модели</h4>
-              <p>Милые мини-версии персонажей для стримов и контента</p>
+              <p>Мини-версии персонажей для стримов и соцсетей</p>
             </div>
             <span>→</span>
           </div>
 
-          <div class="mini-service" onclick="openService('addons')">
+          <div class="small-service" onclick="openService('addons')">
             <div>
               <h4>2. Дополнения</h4>
-              <p>Сменные прически, наряды, аксессуары и детали образа</p>
+              <p>Сменные детали образа, эмоции и аксессуары</p>
             </div>
             <span>→</span>
           </div>
 
-          <div class="mini-service" onclick="openService('png-left')">
+          <div class="small-service" onclick="openService('png-models')">
             <div>
               <h4>3. PNG Models</h4>
               <p>Персонаж с реакцией на голос для эфиров</p>
@@ -691,44 +802,44 @@
             <span>→</span>
           </div>
 
-          <div class="mini-service" onclick="openService('stream-ui')">
+          <div class="small-service" onclick="openService('stream-pack')">
             <div>
-              <h4>4. Оформление канала, чата и голдонатов <span class="dev-tag">В разработке</span></h4>
-              <p>Оверлеи, экраны, стиль чата и оповещений</p>
+              <h4>4. Оформление канала, чата и голдонатов <span class="wip-pill">В разработке</span></h4>
+              <p>Оверлеи, экраны, чат и виджеты донатов</p>
             </div>
             <span>→</span>
           </div>
         </div>
 
-        <div class="sub-col">
-          <div class="mini-service" onclick="openService('illustrations')">
+        <div class="col-stack">
+          <div class="small-service" onclick="openService('illustrations')">
             <div>
               <h4>1. Иллюстрации</h4>
-              <p>Арты, обложки, референсы и сцены с персонажами</p>
+              <p>Арты, обложки и сцены с персонажами</p>
             </div>
             <span>→</span>
           </div>
 
-          <div class="mini-service" onclick="openService('png-right')">
+          <div class="small-service" onclick="openService('2d-png')">
             <div>
               <h4>2. 2D PNG</h4>
-              <p>Готовые PNG-образы и эмоции для быстрого старта</p>
+              <p>Готовые 2D PNG-образы и эмоции</p>
             </div>
             <span>→</span>
           </div>
 
-          <div class="mini-service" onclick="openService('3d-models')">
+          <div class="small-service" onclick="openService('3d-models')">
             <div>
-              <h4>3. 3D Models <span class="dev-tag">В разработке</span></h4>
-              <p>Персонажи для 3D-сцен и виртуальной реальности</p>
+              <h4>3. 3D Models <span class="wip-pill">В разработке</span></h4>
+              <p>Персонажи для виртуальной реальности и 3D</p>
             </div>
             <span>→</span>
           </div>
 
-          <div class="mini-service" onclick="openService('emotes-ai')">
+          <div class="small-service" onclick="openService('emotes-ai')">
             <div>
               <h4>4. Эмоуты и ИИ-графика артов</h4>
-              <p>Смайлы для чата и доработка ИИ-артов вручную</p>
+              <p>Смайлы для чата и ручная доработка ИИ-артов</p>
             </div>
             <span>→</span>
           </div>
@@ -737,334 +848,308 @@
     </div>
   </section>
 
-  <!-- 4. Как заказать -->
+  <!-- Как заказать -->
   <section id="order">
     <div class="container">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title">Как заказать</h2>
-          <p class="section-sub">Прозрачный процесс от идеи до старта работы над вашим заказом.</p>
-        </div>
-      </div>
+      <h2 class="sec-title">Как заказать</h2>
+      <p class="sec-sub">Пять простых шагов до начала работы.</p>
 
-      <div class="steps-grid">
-        <div class="step-card">
-          <div class="step-num">1</div>
+      <div class="steps-row">
+        <div class="step-box">
+          <div class="step-n">1</div>
           <h3>Проверка ТЗ</h3>
-          <p>Изучаем описание персонажа, референсы и ваши пожелания.</p>
+          <p>Смотрим идею, референсы и требования.</p>
         </div>
-        <div class="step-card">
-          <div class="step-num">2</div>
+        <div class="step-box">
+          <div class="step-n">2</div>
           <h3>Свяжемся с вами</h3>
-          <p>Отвечаем в личных сообщениях, уточняем сроки и команду.</p>
+          <p>Отвечаем в личке, обсуждаем сроки.</p>
         </div>
-        <div class="step-card">
-          <div class="step-num">3</div>
+        <div class="step-box">
+          <div class="step-n">3</div>
           <h3>Уточняем детали</h3>
-          <p>Согласовываем состав работы, правки и итоговую цену.</p>
+          <p>Согласовываем состав задач и цену.</p>
         </div>
-        <div class="step-card">
-          <div class="step-num">4</div>
+        <div class="step-box">
+          <div class="step-n">4</div>
           <h3>Предоплата</h3>
-          <p>Фиксируем место в очереди после внесения предоплаты.</p>
+          <p>Бронируем место в очереди заказа.</p>
         </div>
-        <div class="step-card">
-          <div class="step-num">5</div>
+        <div class="step-box">
+          <div class="step-n">5</div>
           <h3>Старт работы</h3>
-          <p>Приступаем к созданию и присылаем этапы на проверку.</p>
+          <p>Начинаем работу и присылаем этапы.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 5. Контакты -->
+  <!-- Контакты -->
   <section id="contacts">
     <div class="container">
-      <div class="contacts-box">
+      <div class="contact-panel">
         <div>
-          <h2 class="section-title" style="margin-bottom: 6px;">Контакты</h2>
-          <p class="section-sub">Выберите удобную площадку — перейдите в Telegram или ВКонтакте, чтобы написать нам.</p>
+          <h2 class="sec-title" style="margin-bottom: 4px;">Контакты</h2>
+          <p style="color: var(--muted); font-size: 0.9rem;">Перейдите в Telegram или ВКонтакте, чтобы связаться с нами.</p>
         </div>
-        <div class="contact-btns">
-          <!-- Замени ссылку на свой реальный Telegram -->
-          <a href="https://t.me/ponyonistudio" target="_blank" rel="noopener" class="btn-tg">✈️ Написать в Telegram</a>
-          <!-- Замени ссылку на свой реальный VK -->
-          <a href="https://vk.com/ponyonistudio" target="_blank" rel="noopener" class="btn-vk">💙 Написать ВКонтакте</a>
+        <div class="social-group">
+          <a href="https://t.me/PonyOni" target="_blank" rel="noopener" class="btn-tg">Telegram</a>
+          <a href="https://vk.ru/club240301955" target="_blank" rel="noopener" class="btn-vk">ВКонтакте</a>
         </div>
       </div>
     </div>
   </section>
 
   <footer>
-    <div class="footer-inner">
+    <div class="footer-box">
       <span>© 2026 PonyOni. Все права защищены.</span>
-      <button onclick="openOffer()">Оферта и условия работы</button>
+      <button onclick="openOffer()">Оферта</button>
     </div>
   </footer>
 
-  <!-- Модальное окно внутренней страницы услуги / оферты -->
-  <div class="overlay" id="modalOverlay" onclick="if(event.target === this) closeModal()">
-    <div class="modal-panel" id="modalContent"></div>
+  <div class="modal-backdrop" id="modalBackdrop" onclick="if(event.target === this) closeModal()">
+    <div class="modal-card" id="modalBox"></div>
   </div>
 
   <script>
-    // Легкий снегопад только на первом экране
-    const snowLayer = document.getElementById('snowLayer');
-    for (let i = 0; i < 18; i++) {
-      const flake = document.createElement('span');
-      flake.className = 'snowflake';
-      flake.textContent = '❄';
-      flake.style.left = Math.random() * 100 + '%';
-      flake.style.fontSize = (10 + Math.random() * 8) + 'px';
-      flake.style.animationDuration = (6 + Math.random() * 7) + 's';
-      flake.style.animationDelay = (Math.random() * 5) + 's';
-      snowLayer.appendChild(flake);
+    const snowField = document.getElementById('snowField');
+    for (let i = 0; i < 20; i++) {
+      const f = document.createElement('span');
+      f.className = 'flake';
+      f.style.left = Math.random() * 100 + '%';
+      f.style.animationDuration = (6 + Math.random() * 7) + 's';
+      f.style.animationDelay = (Math.random() * 5) + 's';
+      snowField.appendChild(f);
     }
 
-    // 20 работ (2 колонки x 10 рядов) в стиле Pinterest
     const works = [
-      { id: 1, title: "Зимняя лисица — Live2D", cat: "live2d", h: 310, live: true, artist: "PonyOni Art & Rig", desc: "Модель под ключ с физикой волос, ушек и мимикой." },
-      { id: 2, title: "Праздничный PNG-образ", cat: "png", h: 230, live: false, artist: "Художник PonyOni", desc: "PNG-персонаж с базовыми эмоциями для стрима." },
-      { id: 3, title: "Ночной арт у камина", cat: "art", h: 260, live: false, artist: "Художник PonyOni", desc: "Иллюстрация в новогодней атмосфере." },
-      { id: 4, title: "Риг эмоций и поворота головы", cat: "live2d", h: 330, live: true, artist: "Риггер PonyOni", desc: "Плавные оси X/Y/Z и физика элементов." },
-      { id: 5, title: "Чиби-версия персонажа", cat: "png", h: 220, live: false, artist: "Художник PonyOni", desc: "Компактный чиби-арт для карточек и анонсов." },
-      { id: 6, title: "Набор эмоутов для чата", cat: "png", h: 270, live: false, artist: "Художник PonyOni", desc: "Смайлы с реакциями на смех, донаты и фейлы." },
-      { id: 7, title: "Дополнение: зимний шарф и шапка", cat: "live2d", h: 250, live: true, artist: "PonyOni Art & Rig", desc: "Съемные аксессуары с привязкой к физике." },
-      { id: 8, title: "Обложка стрима в снегах", cat: "art", h: 300, live: false, artist: "Художник PonyOni", desc: "Яркая обложка для трансляций и соцсетей." },
-      { id: 9, title: "Голосовой PNG-аватар", cat: "png", h: 240, live: false, artist: "Художник PonyOni", desc: "Переключение состояний при речи и молчании." },
-      { id: 10, title: "Доработка ИИ-арта вручную", cat: "art", h: 280, live: false, artist: "Художник PonyOni", desc: "Отрисовка деталей, анатомии, света и цвета." },
-      { id: 11, title: "Кафе-маскот Live2D", cat: "live2d", h: 320, live: true, artist: "PonyOni Art & Rig", desc: "Живая мимика и мягкая физика ленточек." },
-      { id: 12, title: "Сет эмоций в стиле чиби", cat: "png", h: 225, live: false, artist: "Художник PonyOni", desc: "Набор мини-реакций для общения со зрителями." },
-      { id: 13, title: "Зимний вечер — иллюстрация", cat: "art", h: 290, live: false, artist: "Художник PonyOni", desc: "Атмосферный арт с теплым светом гирлянд." },
-      { id: 14, title: "Тест физики рук и прядей", cat: "live2d", h: 255, live: true, artist: "Риггер PonyOni", desc: "Настройка инерции и вторичных движений." },
-      { id: 15, title: "PNG-модель с новогодним колпаком", cat: "png", h: 265, live: false, artist: "Художник PonyOni", desc: "Сезонный вариант персонажа для эфиров." },
-      { id: 16, title: "Сцена с персонажем и фоном", cat: "art", h: 315, live: false, artist: "Художник PonyOni", desc: "Полноценная иллюстрация для поста или баннера." },
-      { id: 17, title: "Пак смайлов «Уют и зима»", cat: "png", h: 215, live: false, artist: "Художник PonyOni", desc: "Четкие эмоуты для чата стрима." },
-      { id: 18, title: "Модель под ключ — демо рига", cat: "live2d", h: 295, live: true, artist: "PonyOni Art & Rig", desc: "Полный цикл от скетча до готовой модели." },
-      { id: 19, title: "Сменные аксессуары для арта", cat: "art", h: 245, live: false, artist: "Художник PonyOni", desc: "Дополнительные детали по ТЗ клиента." },
-      { id: 20, title: "Финальный PNG-релиз для стримера", cat: "png", h: 275, live: false, artist: "Художник PonyOni", desc: "Готовые файлы в высоком разрешении." }
+      { id: 1, title: "Зимняя Кицунэ Юки (Под ключ)", cat: "live2d", h: 250, live: true, hair: "#f4f7fb", ear: "#f5bd41", outfit: "#d9b44a", credit: "Арт: Художник #1 • Риг: Риггер PonyOni", desc: "Модель под ключ: отрисовка слоев, физика волос, ушек и настройка эмоций." },
+      { id: 2, title: "Чиби-модель для мини-стримов", cat: "live2d", h: 250, live: true, hair: "#161b26", ear: "#e8789a", outfit: "#e8789a", credit: "Арт: Художник #2 • Риг: Риггер PonyOni", desc: "Компактная модель с живой мимикой и легкой физикой." },
+      { id: 3, title: "Иллюстрация «Снежный вечер»", cat: "art", h: 220, live: false, hair: "#b8d0eb", ear: "#6da4d9", outfit: "#3a5f8a", credit: "Арт: Художник #1", desc: "Атмосферная иллюстрация с персонажем и зимним светом." },
+      { id: 4, title: "Пак эмоутов для чата", cat: "png", h: 210, live: false, hair: "#f5bd41", ear: "#f5bd41", outfit: "#2c3e5e", credit: "Арт: Художник #2", desc: "Набор выразительных смайлов для общения с чатом." },
+      { id: 5, title: "Риг поворотов головы и глаз", cat: "live2d", h: 260, live: true, hair: "#d8c3a5", ear: "#9cc5a1", outfit: "#4f6d7a", credit: "Риг: Риггер PonyOni", desc: "Плавные оси, моргание и естественная физика." },
+      { id: 6, title: "Голосовой PNG-персонаж", cat: "png", h: 225, live: false, hair: "#e5989b", ear: "#ffb4a2", outfit: "#6d597a", credit: "Арт: Художник #1", desc: "PNG-модель с реакцией на голос и базовыми эмоциями." },
+      { id: 7, title: "Дополнение: праздничный наряд", cat: "live2d", h: 245, live: true, hair: "#f4f7fb", ear: "#d94e5a", outfit: "#d94e5a", credit: "Арт: Художник #2 • Риг: Риггер PonyOni", desc: "Сменный образ и аксессуары с привязкой к физике." },
+      { id: 8, title: "Арт с ручной доработкой ИИ", cat: "art", h: 235, live: false, hair: "#90e0ef", ear: "#48cae4", outfit: "#023e8a", credit: "Арт: Художник #1", desc: "Очистка деталей, анатомии и покраса вручную." },
+      { id: 9, title: "Набор реакций PNG", cat: "png", h: 215, live: false, hair: "#ffd166", ear: "#06d6a0", outfit: "#118ab2", credit: "Арт: Художник #2", desc: "Готовые PNG-карточки под разные ситуации на стриме." },
+      { id: 10, title: "Обложка трансляции", cat: "art", h: 255, live: false, hair: "#c77dff", ear: "#e0aaff", outfit: "#3c096c", credit: "Арт: Художник #1", desc: "Яркая обложка для анонсов и оформления канала." },
+      { id: 11, title: "Модель под ключ — зимний сет", cat: "live2d", h: 250, live: true, hair: "#f4f7fb", ear: "#f5bd41", outfit: "#2b7a5b", credit: "Арт: Художник #1 • Риг: Риггер PonyOni", desc: "Полный цикл создания модели от концепта до рига." },
+      { id: 12, title: "Чиби-эмоции для чата", cat: "png", h: 205, live: false, hair: "#f28482", ear: "#f6bd60", outfit: "#84a59d", credit: "Арт: Художник #2", desc: "Милые чиби-иконки для чата и реакций." },
+      { id: 13, title: "Зимний референс персонажа", cat: "art", h: 240, live: false, hair: "#a8dadc", ear: "#457b9d", outfit: "#1d3557", credit: "Арт: Художник #1", desc: "Подробный лист с образом и деталями." },
+      { id: 14, title: "Физика волос и лент", cat: "live2d", h: 250, live: true, hair: "#f7cad0", ear: "#f5bd41", outfit: "#5c4d7d", credit: "Риг: Риггер PonyOni", desc: "Настройка плавной инерции прядей и элементов." },
+      { id: 15, title: "2D PNG в новогоднем стиле", cat: "png", h: 220, live: false, hair: "#eae2b7", ear: "#d62828", outfit: "#003049", credit: "Арт: Художник #2", desc: "Готовый PNG-аватар для стримов и соцсетей." },
+      { id: 16, title: "Сценическая иллюстрация", cat: "art", h: 260, live: false, hair: "#cdb4db", ear: "#ffc8dd", outfit: "#3a2e39", credit: "Арт: Художник #1", desc: "Полноценный арт с проработанным окружением." },
+      { id: 17, title: "Смайлы с эмоциями", cat: "png", h: 210, live: false, hair: "#98f5e1", ear: "#72efdd", outfit: "#2b2d42", credit: "Арт: Художник #2", desc: "Четкие эмоуты, хорошо читаемые в чате." },
+      { id: 18, title: "Демонстрация мимики Live2D", cat: "live2d", h: 245, live: true, hair: "#f5bd41", ear: "#ff9f1c", outfit: "#2ec4b6", credit: "Риг: Риггер PonyOni", desc: "Гибкая настройка выражений лица и глаз." },
+      { id: 19, title: "Дополнительный аксессуар", cat: "art", h: 225, live: false, hair: "#bdb2ff", ear: "#ffc6ff", outfit: "#3d405b", credit: "Арт: Художник #1", desc: "Деталь образа под запрос клиента." },
+      { id: 20, title: "PNG-образ для старта", cat: "png", h: 230, live: false, hair: "#a0c4ff", ear: "#bdb2ff", outfit: "#1d3557", credit: "Арт: Художник #2", desc: "Простой и аккуратный PNG-вариант для стримеров." }
     ];
 
-    const servicesData = {
+    const servicePages = {
       turnkey: {
         title: "Live2D-модель под ключ",
         price: "от 25 000 ₽",
         desc: "Закажите Live2D-модель для стримов: художник нарисует персонажа, риггер настроит мимику и движения. Поможем выбрать специалистов под ваш бюджет.",
-        samples: [
-          { name: "По пояс + базовый риг", info: "Отрисовка слоев + мимика, дыхание, физика волос" },
-          { name: "Полнорост + расширенный риг", info: "Полный рост, доп. эмоции, жест рук и точная физика" }
+        items: [
+          { t: "По пояс + базовый риг", d: "Отрисовка слоев + мимика, дыхание и физика волос" },
+          { t: "Полнорост + расширенный риг", d: "Полный рост, доп. эмоции, жест рук и точная физика" }
         ]
       },
       rig: {
         title: "Риг Live2D-моделей",
         price: "от 12 000 ₽",
         desc: "Мимика, движения и физика. Работаем с готовыми PSD-файлами с корректной нарезкой слоев.",
-        samples: [
-          { name: "Базовый риг", info: "Повороты головы/тела, моргание, рот, базовая физика" },
-          { name: "Продвинутый риг", info: "Расширенные углы, эмоции, физика одежды и аксессуаров" }
+        items: [
+          { t: "Базовый риг", d: "Повороты головы/тела, моргание, рот, базовая физика" },
+          { t: "Расширенный риг", d: "Доп. углы, эмоции, физика одежды и аксессуаров" }
         ]
       },
       chibi: {
         title: "Чиби модели",
         price: "от 6 000 ₽",
-        desc: "Компактные и выразительные чиби-персонажи для стримов, соцсетей и аватаров.",
-        samples: [
-          { name: "Чиби-персонаж", info: "Готовый арт в фирменном стиле студии" },
-          { name: "Чиби с эмоциями", info: "Основной образ + 2–3 сменных выражения" }
+        desc: "Компактные чиби-модели для стримов, анонсов и карточек.",
+        items: [
+          { t: "Чиби-персонаж", d: "Готовый арт в фирменном стиле студии" },
+          { t: "Чиби с эмоциями", d: "Базовый образ + сменные выражения лица" }
         ]
       },
       addons: {
         title: "Дополнения",
         price: "от 2 500 ₽",
-        desc: "Дополнительные прически, головные уборы, эмоции, детали одежды и элементы для существующих моделей.",
-        samples: [
-          { name: "Аксессуары и детали", info: "Шапки, ушки, очки, предметы в руки" },
-          { name: "Новые эмоции и образы", info: "Дополнительные выражения или сменный вариант" }
+        desc: "Дополнительные прически, аксессуары, элементы одежды и эмоции.",
+        items: [
+          { t: "Аксессуары и детали", d: "Шапки, ушки, очки и предметы" },
+          { t: "Сменные эмоции", d: "Дополнительные выражения для модели" }
         ]
       },
-      "png-left": {
+      "png-models": {
         title: "PNG Models",
         price: "от 3 500 ₽",
-        desc: "Персонаж с реакцией на голос — отличный вариант для старта стримов без сложного рига.",
-        samples: [
-          { name: "Базовый PNG-пак", info: "Закрытый/открытый рот и моргание" },
-          { name: "Расширенный PNG-пак", info: "Несколько эмоций для разных ситуаций на стриме" }
+        desc: "Персонаж с реакцией на голос для комфортного старта стримов.",
+        items: [
+          { t: "Базовый PNG-пак", d: "Закрытый/открытый рот и моргание" },
+          { t: "Пак эмоций", d: "Несколько реакций под ход эфира" }
         ]
       },
-      "stream-ui": {
+      "stream-pack": {
         title: "Оформление канала, чата и голдонатов (В разработке)",
-        price: "Скоро запуск",
-        desc: "Направление в разработке: готовим пакеты оформления для трансляций, виджетов чата и оповещений.",
-        samples: [
-          { name: "Экраны и оверлеи", info: "Скоро/Начало/Перерыв/Конец в едином стиле" },
-          { name: "Чат и донаты", info: "Аккуратные плашки под стиль канала" }
+        price: "Скоро",
+        desc: "Направление в разработке: готовим оформление экранов, чата и оповещений.",
+        items: [
+          { t: "Экраны и оверлеи", d: "Единый стиль для сцен трансляции" },
+          { t: "Чат и донаты", d: "Аккуратные блоки под стиль канала" }
         ]
       },
       illustrations: {
         title: "Иллюстрации",
         price: "от 5 000 ₽",
-        desc: "Арты с персонажами, обложки, поздравительные открытки и сцены под ваши задачи.",
-        samples: [
-          { name: "Персонажный арт", info: "Детализированная иллюстрация с фоном или эффектами" },
-          { name: "Обложка / анонс", info: "Композиция под формат стрима или поста" }
+        desc: "Иллюстрации с персонажами, обложки и сцены под ваш запрос.",
+        items: [
+          { t: "Арт с персонажем", d: "Проработка света, цвета и деталей" },
+          { t: "Обложка / пост", d: "Композиция под формат соцсетей или стрима" }
         ]
       },
-      "png-right": {
+      "2d-png": {
         title: "2D PNG",
         price: "от 3 000 ₽",
-        desc: "Чистые 2D PNG-изображения персонажей для аватаров, карточек, превью и стримов.",
-        samples: [
-          { name: "PNG-персонаж", info: "Прозрачный фон и высокое разрешение" },
-          { name: "Набор вариантов", info: "Несколько поз или эмоций в одном стиле" }
+        desc: "Готовые 2D PNG-персонажи и эмоции для стримов и карточек.",
+        items: [
+          { t: "PNG-образ", d: "Чистый контур и прозрачный фон" },
+          { t: "Набор вариантов", d: "Несколько поз или эмоций" }
         ]
       },
       "3d-models": {
         title: "3D Models (В разработке)",
-        price: "Скоро запуск",
-        desc: "Направление в разработке: создаем базу для 3D-персонажей под стримы и виртуальную реальность.",
-        samples: [
-          { name: "3D-концепт и база", info: "Подготовка моделей для 3D-пространств" },
-          { name: "Тестирование", info: "Оптимизация сетки и внешнего вида" }
+        price: "Скоро",
+        desc: "Направление в разработке: создаем 3D-персонажей для VR и 3D-сцен.",
+        items: [
+          { t: "3D-концепт", d: "Подготовка базы и внешнего вида" },
+          { t: "Тесты", d: "Проверка геометрии и отображения" }
         ]
       },
       "emotes-ai": {
         title: "Эмоуты и ИИ-графика артов",
         price: "от 1 500 ₽",
-        desc: "Эмоуты для чата и ручная доработка ИИ-артов: исправляем детали, выравниваем стиль и собираем чистый результат.",
-        samples: [
-          { name: "Эмоуты для чата", info: "Читаемые на маленьком размере смайлы" },
-          { name: "Доработка ИИ-артов", info: "Ручная правка деталей, света и чистоты линий" }
+        desc: "Эмоуты для чата и ручная доработка ИИ-артов.",
+        items: [
+          { t: "Эмоуты для чата", d: "Читаемые смайлы для стримов" },
+          { t: "Доработка ИИ-артов", d: "Ручная правка деталей, линий и света" }
         ]
       }
     };
 
-    function renderWorks(filter = 'all') {
-      const colLeft = document.getElementById('colLeft');
-      const colRight = document.getElementById('colRight');
-      colLeft.innerHTML = '';
-      colRight.innerHTML = '';
+    function renderList(filter = 'all') {
+      const leftCol = document.getElementById('leftCol');
+      const rightCol = document.getElementById('rightCol');
+      leftCol.innerHTML = '';
+      rightCol.innerHTML = '';
 
-      const list = filter === 'all' ? works : works.filter(w => w.cat === filter);
+      const items = filter === 'all' ? works : works.filter(x => x.cat === filter);
 
-      list.forEach((w, idx) => {
+      items.forEach((w, i) => {
         const card = document.createElement('div');
-        card.className = 'work-card';
-        card.onclick = () => openWorkModal(w);
+        card.className = 'art-card';
+        card.onclick = () => openWork(w);
 
         card.innerHTML = `
-          <div class="work-thumb" style="height: ${w.h}px;">
-            <span class="work-tag">${w.live ? '✨ Live2D Риг' : '🎨 ' + w.cat.toUpperCase()}</span>
-            <svg viewBox="0 0 400 ${w.h}" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="g${w.id}" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="${idx % 2 === 0 ? '#18325c' : '#163d3b'}"/>
-                  <stop offset="100%" stop-color="#0b1528"/>
-                </linearGradient>
-              </defs>
-              <rect width="400" height="${w.h}" fill="url(#g${w.id})"/>
-              <g class="${w.live ? 'live2d-idle' : ''}">
-                <circle cx="200" cy="${Math.round(w.h * 0.45)}" r="54" fill="#f5cf87" fill-opacity="0.16" stroke="#f5cf87" stroke-opacity="0.45" stroke-width="2"/>
-                <circle cx="182" cy="${Math.round(w.h * 0.43)}" r="6" fill="#f4f7fc"/>
-                <circle cx="218" cy="${Math.round(w.h * 0.43)}" r="6" fill="#f4f7fc"/>
-                <path d="M186 ${Math.round(w.h * 0.50)} Q200 ${Math.round(w.h * 0.56)} 214 ${Math.round(w.h * 0.50)}" stroke="#f5cf87" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <div class="art-preview" style="height: ${w.h}px; background: linear-gradient(160deg, #16233d, #0b101b);">
+            <span class="art-chip">${w.live ? 'LIVE2D RIG' : w.cat.toUpperCase()}</span>
+            <svg viewBox="0 0 420 ${w.h}" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <g class="${w.live ? 'live-motion' : ''}">
+                <polygon points="168,${Math.round(w.h * 0.28)} 154,${Math.round(w.h * 0.14)} 184,${Math.round(w.h * 0.25)}" fill="${w.ear}"/>
+                <polygon points="252,${Math.round(w.h * 0.28)} 266,${Math.round(w.h * 0.14)} 236,${Math.round(w.h * 0.25)}" fill="${w.ear}"/>
+                <circle cx="210" cy="${Math.round(w.h * 0.42)}" r="46" fill="#f7d6be"/>
+                <path d="M164,${Math.round(w.h * 0.40)} Q210,${Math.round(w.h * 0.19)} 256,${Math.round(w.h * 0.40)} L252,${Math.round(w.h * 0.31)} Q210,${Math.round(w.h * 0.24)} 168,${Math.round(w.h * 0.31)} Z" fill="${w.hair}"/>
+                <circle cx="193" cy="${Math.round(w.h * 0.43)}" r="4.5" fill="#111622"/>
+                <circle cx="227" cy="${Math.round(w.h * 0.43)}" r="4.5" fill="#111622"/>
+                <path d="M202,${Math.round(w.h * 0.51)} Q210,${Math.round(w.h * 0.56)} 218,${Math.round(w.h * 0.51)}" stroke="#c96b6b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M166,${Math.round(w.h * 0.88)} L180,${Math.round(w.h * 0.62)} L240,${Math.round(w.h * 0.62)} L254,${Math.round(w.h * 0.88)} Z" fill="${w.outfit}"/>
               </g>
-              <text x="200" y="${w.h - 18}" text-anchor="middle" fill="#9eb0cc" font-size="13" font-family="Manrope, sans-serif">
-                Пример работы #${w.id} • PonyOni
-              </text>
             </svg>
           </div>
-          <div class="work-meta">
-            <div>
-              <div class="work-title">${w.title}</div>
-              <div class="work-sub">${w.artist}</div>
-            </div>
-            <span style="color: var(--accent-gold); font-size: 0.85rem; font-weight: 700;">Смотреть</span>
+          <div class="art-footer">
+            <div class="art-title">${w.title}</div>
+            <div class="art-credit">${w.credit}</div>
           </div>
         `;
 
-        if (idx % 2 === 0) colLeft.appendChild(card);
-        else colRight.appendChild(card);
+        if (i % 2 === 0) leftCol.appendChild(card);
+        else rightCol.appendChild(card);
       });
     }
 
-    document.querySelectorAll('.filter-btn').forEach(btn => {
+    document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        renderWorks(btn.dataset.filter);
+        renderList(btn.dataset.filter);
       });
     });
 
-    function openWorkModal(w) {
-      document.getElementById('modalContent').innerHTML = `
-        <div class="modal-head">
+    function openWork(w) {
+      document.getElementById('modalBox').innerHTML = `
+        <div class="modal-top">
           <div>
-            <span class="price-pill">${w.live ? 'Live2D Риг' : 'Портфолио'}</span>
-            <h3 style="font-size: 1.4rem; margin-top: 8px;">${w.title}</h3>
+            <span class="price-tag">${w.live ? 'Live2D Риг' : 'Портфолио'}</span>
+            <h3 style="font-size: 1.35rem; margin-top: 8px;">${w.title}</h3>
           </div>
-          <button class="close-btn" onclick="closeModal()">✕</button>
+          <button class="x-btn" onclick="closeModal()">✕</button>
         </div>
-        <p style="color: var(--text-muted); margin-bottom: 14px;">${w.desc}</p>
-        <p style="font-size: 0.9rem; color: var(--accent-gold); margin-bottom: 20px;">Исполнитель: ${w.artist}</p>
-        <a href="#contacts" class="btn-primary" onclick="closeModal()">Заказать похожее</a>
+        <p style="color: var(--muted); margin-bottom: 10px;">${w.desc}</p>
+        <p style="color: var(--gold); font-size: 0.86rem; margin-bottom: 18px;">${w.credit}</p>
+        <a href="#contacts" class="btn-gold" onclick="closeModal()">Заказать похожий проект</a>
       `;
-      document.getElementById('modalOverlay').classList.add('open');
+      document.getElementById('modalBackdrop').classList.add('open');
     }
 
     function openService(key) {
-      const s = servicesData[key];
+      const s = servicePages[key];
       if (!s) return;
-      const samplesHtml = s.samples.map(item => `
-        <div class="sample-box">
-          <strong>${item.name}</strong>
-          <span>${item.info}</span>
+      const listHtml = s.items.map(it => `
+        <div class="sample-item">
+          <strong>${it.t}</strong>
+          <span>${it.d}</span>
         </div>
       `).join('');
 
-      document.getElementById('modalContent').innerHTML = `
-        <div class="modal-head">
+      document.getElementById('modalBox').innerHTML = `
+        <div class="modal-top">
           <div>
-            <span class="price-pill">${s.price}</span>
-            <h3 style="font-size: 1.45rem; margin-top: 8px;">${s.title}</h3>
+            <span class="price-tag">${s.price}</span>
+            <h3 style="font-size: 1.38rem; margin-top: 8px;">${s.title}</h3>
           </div>
-          <button class="close-btn" onclick="closeModal()">✕</button>
+          <button class="x-btn" onclick="closeModal()">✕</button>
         </div>
-        <p style="color: var(--text-muted);">${s.desc}</p>
-        <h4 style="margin-top: 18px; font-size: 1rem; color: var(--accent-gold);">Варианты и примеры по услуге</h4>
-        <div class="service-samples">${samplesHtml}</div>
-        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-          <a href="#contacts" class="btn-primary" onclick="closeModal()">Перейти к заказу</a>
-          <button class="btn-secondary" onclick="closeModal()">Назад</button>
+        <p style="color: var(--muted);">${s.desc}</p>
+        <h4 style="margin-top: 16px; font-size: 0.92rem; color: var(--gold);">Примеры и варианты по услуге</h4>
+        <div class="sample-grid">${listHtml}</div>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <a href="#contacts" class="btn-gold" onclick="closeModal()">Перейти к заказу</a>
+          <button class="btn-dark" onclick="closeModal()">Закрыть</button>
         </div>
       `;
-      document.getElementById('modalOverlay').classList.add('open');
+      document.getElementById('modalBackdrop').classList.add('open');
     }
 
     function openOffer() {
-      document.getElementById('modalContent').innerHTML = `
-        <div class="modal-head">
-          <h3 style="font-size: 1.4rem;">Оферта и условия работы PonyOni</h3>
-          <button class="close-btn" onclick="closeModal()">✕</button>
+      document.getElementById('modalBox').innerHTML = `
+        <div class="modal-top">
+          <h3 style="font-size: 1.35rem;">Оферта PonyOni</h3>
+          <button class="x-btn" onclick="closeModal()">✕</button>
         </div>
-        <p style="color: var(--text-muted); margin-bottom: 12px;">
-          1. Работа начинается после проверки ТЗ, согласования деталей и внесения предоплаты.
-        </p>
-        <p style="color: var(--text-muted); margin-bottom: 12px;">
-          2. Правки вносятся на согласованных этапах в рамках оговоренного объема. Крупные изменения сверх ТЗ оплачиваются отдельно.
-        </p>
-        <p style="color: var(--text-muted); margin-bottom: 20px;">
-          3. Передача исходников и права на использование фиксируются при обсуждении заказа перед стартом.
-        </p>
-        <button class="btn-primary" onclick="closeModal()">Понятно</button>
+        <p style="color: var(--muted); margin-bottom: 10px;">1. Работа стартует после проверки ТЗ, согласования деталей и внесения предоплаты.</p>
+        <p style="color: var(--muted); margin-bottom: 10px;">2. Правки вносятся на согласованных этапах в рамках утвержденного ТЗ.</p>
+        <p style="color: var(--muted); margin-bottom: 18px;">3. Условия передачи файлов и прав фиксируются перед началом работы.</p>
+        <button class="btn-gold" onclick="closeModal()">Понятно</button>
       `;
-      document.getElementById('modalOverlay').classList.add('open');
+      document.getElementById('modalBackdrop').classList.add('open');
     }
 
     function closeModal() {
-      document.getElementById('modalOverlay').classList.remove('open');
+      document.getElementById('modalBackdrop').classList.remove('open');
     }
 
-    renderWorks('all');
+    renderList('all');
   </script>
 </body>
 </html>
